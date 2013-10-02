@@ -110,6 +110,7 @@ GREEN = 0
 RED = 1
 YELLOW = 2
 
+
 def coloring(msg, color):
     colors = {GREEN: '\033[92m',
               RED: '\033[91m',
@@ -179,6 +180,7 @@ class OfTester(app_manager.RyuApp):
         self.state = STATE_INIT
         self.test_thread = None
         self.waiter = None
+        self.send_msg_xids = []
         self.rcv_msgs = []
         self.test_files = (sys.argv[1:] if len(sys.argv) > 1
                            else [DEFAULT_DIRECTORY])
@@ -289,7 +291,6 @@ class OfTester(app_manager.RyuApp):
             # Initialize for next test.
             self.test_sw.del_test_flow()
             self.state = STATE_INIT
-            self.rcv_msgs = []
 
         self.test_thread = None
         self.logger.info('---  Test end  ---')
@@ -299,13 +300,22 @@ class OfTester(app_manager.RyuApp):
                 STATE_FLOW_EXIST_CHK: self._test_flow_exist_check,
                 STATE_FLOW_MATCH_CHK: self._test_flow_matching_check,
                 STATE_NG_FLOW_INSTALL: self._test_invalid_flow_install}
+
         self.state = state
         test[state](*args)
 
+        self.send_msg_xids = []
+        self.rcv_msgs = []
+        
+
     def _test_flow_install(self, flow):
         #self.logger.info("install: [%s]", flow['description'])
-        self.test_sw.add_flow(flow_mod=flow['data'])
-        self.test_sw.send_barrier_request()
+        xid = self.test_sw.add_flow(flow_mod=flow['data'])
+        self.send_msg_xids.append(xid)
+
+        xid = self.test_sw.send_barrier_request()
+        self.send_msg_xids.append(xid)
+
         self._wait()
         assert len(self.rcv_msgs) == 1
         msg = self.rcv_msgs[0]
@@ -328,7 +338,8 @@ class OfTester(app_manager.RyuApp):
             return True
 
         #self.logger.info("exist check:[%s]", flow_mod['description'])
-        self.test_sw.send_flow_stats()
+        xid = self.test_sw.send_flow_stats()
+        self.send_msg_xids.append(xid)
         self._wait()
         for msg in self.rcv_msgs:
             assert isinstance(msg, ofproto_v1_3_parser.OFPFlowStatsReply)
@@ -384,7 +395,8 @@ class OfTester(app_manager.RyuApp):
                 if msg.datapath.id != pkt_in_src_model.dp.id:
                     self.logger.debug("received PacketIn from unsuitable SW.")
                     continue
-                self.logger.info("receive_packet:[%s]", packet.Packet(msg.data))
+                self.logger.info("receive_packet:[%s]",
+                                 packet.Packet(msg.data))
                 if str(msg.data) != str(rcv_pkt_model):
                     self.logger.debug("receive_packet is unmatch.")
                     continue
@@ -407,9 +419,11 @@ class OfTester(app_manager.RyuApp):
         # Install test flow.
         for flow in flows:
             #self.logger.info("invalid flow install:[%s]", flow['description'])
-            self.test_sw.add_flow(flow_mod=flow['data'])
+            xid = self.test_sw.add_flow(flow_mod=flow['data'])
+            self.send_msg_xids.append(xid)
         if not self.rcv_msgs:
-            self.test_sw.send_barrier_request()
+            xid = self.test_sw.send_barrier_request()
+            self.send_msg_xids.append(xid)
             self._wait()
 
         # Compare error message.
@@ -453,7 +467,8 @@ class OfTester(app_manager.RyuApp):
 
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, handler.MAIN_DISPATCHER)
     def stats_reply_handler(self, ev):
-        if self.state == STATE_FLOW_EXIST_CHK and self.waiter is not None:
+        if (self.state == STATE_FLOW_EXIST_CHK and self.waiter is not None
+                and ev.msg.xid in self.send_msg_xids):
             self.rcv_msgs.append(ev.msg)
             if not ev.msg.flags & ev.msg.datapath.ofproto.OFPMPF_REPLY_MORE:
                 self.waiter.set()
@@ -463,7 +478,8 @@ class OfTester(app_manager.RyuApp):
     def barrier_reply_handler(self, ev):
         if ((self.state == STATE_FLOW_INSTALL
                 or self.state == STATE_NG_FLOW_INSTALL)
-                and self.waiter is not None):
+                and self.waiter is not None
+                and ev.msg.xid in self.send_msg_xids):
             self.rcv_msgs.append(ev.msg)
             self.waiter.set()
             hub.sleep(0)
@@ -479,7 +495,7 @@ class OfTester(app_manager.RyuApp):
                                              handler.CONFIG_DISPATCHER,
                                              handler.MAIN_DISPATCHER])
     def error_msg_handler(self, ev):
-        if self.state != STATE_INIT:
+        if self.state != STATE_INIT and ev.msg.xid in self.send_msg_xids:
             self.rcv_msgs.append(ev.msg)
             if self.waiter is not None:
                 self.waiter.set()
@@ -493,6 +509,12 @@ class OpenFlowSw(object):
         self.logger = logger
         if len(dp.ports) < 3:
             raise TestEnvironmentError(dpid=dpid_lib.dpid_to_str(dp.id))
+
+    def _send_msg(self, msg):
+        msg.xid = None
+        self.dp.set_xid(msg)
+        self.dp.send_msg(msg)
+        return msg.xid
 
     def add_flow(self, flow_mod=None, out_port=None):
         """ Add flow. """
@@ -511,7 +533,7 @@ class OpenFlowSw(object):
             mod = parser.OFPFlowMod(self.dp, cookie=0,
                                     command=ofp.OFPFC_ADD,
                                     match=match, instructions=inst)
-        self.dp.send_msg(mod)
+        return self._send_msg(mod)
 
 
 class TestSw(OpenFlowSw):
@@ -540,13 +562,13 @@ class TestSw(OpenFlowSw):
         req = parser.OFPFlowStatsRequest(self.dp, 0, ofp.OFPTT_ALL,
                                          ofp.OFPP_ANY, ofp.OFPG_ANY,
                                          0, 0, parser.OFPMatch())
-        self.dp.send_msg(req)
+        return self._send_msg(req)
 
     def send_barrier_request(self):
         """ send a BARRIER_REQUEST message."""
         parser = self.dp.ofproto_parser
         req = parser.OFPBarrierRequest(self.dp)
-        self.dp.send_msg(req)
+        return self._send_msg(req)
 
 
 class SubSw(OpenFlowSw):
