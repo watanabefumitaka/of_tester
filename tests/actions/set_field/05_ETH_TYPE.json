@@ -1,10 +1,10 @@
 [
     {
-        "description": "ETH_DSTを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "ETH_TYPEを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
         "data": {
             "FLOW_MOD": [
                 {
-                    "description": "ポート1でIPv4パケットを受信した場合、ETH_DSTに'11:22:33'を設定してポート2から出力する。",
+                    "description": "ポート1でIPv4パケットを受信した場合、ETH_TYPEに0を設定してポート2から出力する。",
                     "data": {
                         "OFPFlowMod": {
                             "command": 0,
@@ -16,8 +16,8 @@
                                                 "OFPActionSetField": {
                                                     "field": {
                                                         "OXMTlv": {
-                                                            "field": "eth_dst",
-                                                            "value": "11:22:33"
+                                                            "field": "eth_type",
+                                                            "value": 0
                                                         }
                                                     }
                                                 }
@@ -64,18 +64,18 @@
                     "OFPErrorMsg": {
                         "type": 2,
                         "code": 15,
-                        "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAKAAAAAAAGQAQgAAGBgARACIAMwAAAAAAEAAAAAL//wAAAAAAAA=="
+                        "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAKAAAAAAAGQAQgAAKAgAAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
                     }
                 }
             }
         }
     },
     {
-        "description": "ETH_DSTを書き換える試験。",
+        "description": "ETH_TYPEを書き換える試験。",
         "data": {
             "FLOW_MOD": [
                 {
-                    "description": "ポート1でIPv4パケットを受信した場合、ETH_DSTに'cc:cc:cc:cc:cc:cc'を設定してポート2から出力する。",
+                    "description": "ポート1でIPv4パケットを受信した場合、ETH_TYPEに34525(IPv6)を設定してポート2から出力する。",
                     "data": {
                         "OFPFlowMod": {
                             "command": 0,
@@ -87,8 +87,8 @@
                                                 "OFPActionSetField": {
                                                     "field": {
                                                         "OXMTlv": {
-                                                            "field": "eth_dst",
-                                                            "value": "cc:cc:cc:cc:cc:cc"
+                                                            "field": "eth_type",
+                                                            "value": 34525
                                                         }
                                                     }
                                                 }
@@ -132,12 +132,12 @@
             "packets": [
                 {
                     "input": {
-                        "description": "ポート1で受信するIPv4パケット。ETH_DSTは'aa:aa:aa:aa:aa:aa'。",
+                        "description": "ポート1で受信するIPv4パケット。ETH_TYPEは2048(0x0800、IPv4)。",
                         "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
                     },
                     "output": {
-                        "description": "ポート2から送信されるIPv4パケット。ETH_DSTは'cc:cc:cc:cc:cc:cc'。",
-                        "data": "zMzMzMzMu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+                        "description": "ポート2から送信されるIPv4パケット。ETH_SRCは34525(0x86dd、IPv6)。",
+                        "data": "qqqqqqqqu7u7u7u7ht1FAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
                     }
                 }
             ]
