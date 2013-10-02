@@ -1,0 +1,74 @@
+[
+    {
+        "description": "",
+        "data": {
+            "FLOW_MOD": [
+                {
+                    "description": "match: arp_tpa=192.168.0.2",
+                    "data": {
+                        "OFPFlowMod": {
+                            "command": 0,
+                            "instructions": [
+                                {
+                                    "OFPInstructionActions": {
+                                        "actions": [
+                                            {
+                                                "OFPActionOutput": {
+                                                    "max_len": 0,
+                                                    "port": 2
+                                                }
+                                            }
+                                        ],
+                                        "type": 4
+                                    }
+                                }
+                            ],
+                            "match": {
+                                "OFPMatch": {
+                                    "oxm_fields": [
+                                        {
+                                            "OXMTlv": {
+                                                "field": "eth_type",
+                                                "value": 2054
+                                            }
+                                        },
+                                        {
+                                            "OXMTlv": {
+                                                "field": "arp_tpa",
+                                                "value": "192.168.0.2"
+                                            }
+                                        }
+                                    ],
+                                    "type": 1
+                                }
+                            },
+                            "priority": 1
+                        }
+                    }
+                }
+            ],
+            "packets": [
+                {
+                    "input": {
+                        "description": "arp_tpa=192.168.0.2",
+                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
+                    },
+                    "output": {
+                        "description": "arp_tpa=192.168.0.2",
+                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
+                    }
+                },
+                {
+                    "input": {
+                        "description": "arp_tpa=192.168.0.20",
+                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAU"
+                    },
+                    "PACKET_IN": {
+                        "description": "arp_tpa=192.168.0.20",
+                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAU"
+                    }
+                }
+            ]
+        }
+    }
+]

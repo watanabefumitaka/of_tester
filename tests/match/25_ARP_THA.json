@@ -1,0 +1,74 @@
+[
+    {
+        "description": "",
+        "data": {
+            "FLOW_MOD": [
+                {
+                    "description": "match: arp_tha=00:00:00:00:00:00",
+                    "data": {
+                        "OFPFlowMod": {
+                            "command": 0,
+                            "instructions": [
+                                {
+                                    "OFPInstructionActions": {
+                                        "actions": [
+                                            {
+                                                "OFPActionOutput": {
+                                                    "max_len": 0,
+                                                    "port": 2
+                                                }
+                                            }
+                                        ],
+                                        "type": 4
+                                    }
+                                }
+                            ],
+                            "match": {
+                                "OFPMatch": {
+                                    "oxm_fields": [
+                                        {
+                                            "OXMTlv": {
+                                                "field": "eth_type",
+                                                "value": 2054
+                                            }
+                                        },
+                                        {
+                                            "OXMTlv": {
+                                                "field": "arp_tha",
+                                                "value": "00:00:00:00:00:00"
+                                            }
+                                        }
+                                    ],
+                                    "type": 1
+                                }
+                            },
+                            "priority": 1
+                        }
+                    }
+                }
+            ],
+            "packets": [
+                {
+                    "input": {
+                        "description": "arp_tha=00:00:00:00:00:00",
+                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
+                    },
+                    "output": {
+                        "description": "arp_tha=00:00:00:00:00:00",
+                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
+                    }
+                },
+                {
+                    "input": {
+                        "description": "arp_tha=12:34:56:78:90:ab",
+                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAESNFZ4kKvAqAAC"
+                    },
+                    "PACKET_IN": {
+                        "description": "arp_tha=12:34:56:78:90:ab",
+                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAESNFZ4kKvAqAAC"
+                    }
+                }
+            ]
+        }
+    }
+]
