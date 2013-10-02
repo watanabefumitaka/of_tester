@@ -301,12 +301,11 @@ class OfTester(app_manager.RyuApp):
                 STATE_FLOW_MATCH_CHK: self._test_flow_matching_check,
                 STATE_NG_FLOW_INSTALL: self._test_invalid_flow_install}
 
-        self.state = state
-        test[state](*args)
-
         self.send_msg_xids = []
         self.rcv_msgs = []
-        
+
+        self.state = state
+        test[state](*args)
 
     def _test_flow_install(self, flow):
         #self.logger.info("install: [%s]", flow['description'])
@@ -365,7 +364,7 @@ class OfTester(app_manager.RyuApp):
             #                 packet_in['description'])
             invalid_receive_packet = packet_in['data']
 
-        self.logger.info("send_packet:[%s]", packet.Packet(send_packet))
+        self.logger.debug("send_packet:[%s]", packet.Packet(send_packet))
         self.logger.debug("valid_receive_packet:[%s]",
                           valid_receive_packet)
         self.logger.debug("invalid_receive_packet:[%s]",
@@ -395,8 +394,8 @@ class OfTester(app_manager.RyuApp):
                 if msg.datapath.id != pkt_in_src_model.dp.id:
                     self.logger.debug("received PacketIn from unsuitable SW.")
                     continue
-                self.logger.info("receive_packet:[%s]",
-                                 packet.Packet(msg.data))
+                self.logger.debug("receive_packet:[%s]",
+                                  packet.Packet(msg.data))
                 if str(msg.data) != str(rcv_pkt_model):
                     self.logger.debug("receive_packet is unmatch.")
                     continue
@@ -495,6 +494,8 @@ class OfTester(app_manager.RyuApp):
                                              handler.CONFIG_DISPATCHER,
                                              handler.MAIN_DISPATCHER])
     def error_msg_handler(self, ev):
+        print self.send_msg_xids
+        print ev.msg.xid
         if self.state != STATE_INIT and ev.msg.xid in self.send_msg_xids:
             self.rcv_msgs.append(ev.msg)
             if self.waiter is not None:
