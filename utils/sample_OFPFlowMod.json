@@ -1,0 +1,50 @@
+{
+    "OFPFlowMod": {
+        "command": 0,
+        "instructions": [
+            {
+                "OFPInstructionActions": {
+                    "actions": [
+                        {
+                            "OFPActionSetField": {
+                                "field": {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": -1
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "type": 4
+                }
+            },
+            {
+                "OFPInstructionGotoTable": {
+                    "table_id": 1
+                }
+            }
+        ],
+        "match": {
+            "OFPMatch": {
+                "oxm_fields": [
+                    {
+                        "OXMTlv": {
+                            "field": "in_port",
+                            "value": 1
+                        }
+                    },
+                    {
+                        "OXMTlv": {
+                            "field": "eth_type",
+                            "value": 2048
+                        }
+                    }
+                ],
+                "type": 1
+            }
+        },
+        "priority": 32768,
+        "table_id": 0
+    }
+}
