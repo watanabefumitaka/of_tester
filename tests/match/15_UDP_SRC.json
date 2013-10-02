@@ -1,0 +1,80 @@
+[
+    {
+        "description": "",
+        "data": {
+            "FLOW_MOD": [
+                {
+                    "description": "match: udp_src=12345",
+                    "data": {
+                        "OFPFlowMod": {
+                            "command": 0,
+                            "instructions": [
+                                {
+                                    "OFPInstructionActions": {
+                                        "actions": [
+                                            {
+                                                "OFPActionOutput": {
+                                                    "max_len": 0,
+                                                    "port": 2
+                                                }
+                                            }
+                                        ],
+                                        "type": 4
+                                    }
+                                }
+                            ],
+                            "match": {
+                                "OFPMatch": {
+                                    "oxm_fields": [
+                                        {
+                                            "OXMTlv": {
+                                                "field": "eth_type",
+                                                "value": 2048
+                                            }
+                                        },
+                                        {
+                                            "OXMTlv": {
+                                                "field": "ip_proto",
+                                                "value": 17
+                                            }
+                                        },
+                                        {
+                                            "OXMTlv": {
+                                                "field": "udp_src",
+                                                "value": 12345
+                                            }
+                                        }
+                                    ],
+                                    "type": 1
+                                }
+                            },
+                            "priority": 1
+                        }
+                    }
+                }
+            ],
+            "packets": [
+                {
+                    "input": {
+                        "description": "udp_src=12345",
+                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAjA5GoUACDHM"
+                    },
+                    "output": {
+                        "description": "udp_src=12345",
+                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAjA5GoUACDHM"
+                    }
+                },
+                {
+                    "input": {
+                        "description": "udp_src=11111",
+                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAitnGoUACDae"
+                    },
+                    "PACKET_IN": {
+                        "description": "udp_src=11111",
+                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAitnGoUACDae"
+                    }
+                }
+            ]
+        }
+    }
+]

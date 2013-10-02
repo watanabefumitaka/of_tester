@@ -1,0 +1,74 @@
+[
+    {
+        "description": "",
+        "data": {
+            "FLOW_MOD": [
+                {
+                    "description": "",
+                    "data": {
+                        "OFPFlowMod": {
+                            "command": 0,
+                            "instructions": [
+                                {
+                                    "OFPInstructionActions": {
+                                        "actions": [
+                                            {
+                                                "OFPActionOutput": {
+                                                    "max_len": 0,
+                                                    "port": 2
+                                                }
+                                            }
+                                        ],
+                                        "type": 4
+                                    }
+                                }
+                            ],
+                            "match": {
+                                "OFPMatch": {
+                                    "oxm_fields": [
+                                        {
+                                            "OXMTlv": {
+                                                "field": "eth_type",
+                                                "value": 2048
+                                            }
+                                        },
+                                        {
+                                            "OXMTlv": {
+                                                "field": "ipv4_src",
+                                                "value": "192.168.1.1"
+                                            }
+                                        }
+                                    ],
+                                    "type": 1
+                                }
+                            },
+                            "priority": 1
+                        }
+                    }
+                }
+            ],
+            "packets": [
+                {
+                    "input": {
+                        "description": "",
+                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+                    },
+                    "output": {
+                        "description": "",
+                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+                    }
+                },
+                {
+                    "input": {
+                        "description": "",
+                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0HAqAEFwKgBAgAKABQACHxo"
+                    },
+                    "PACKET_IN": {
+                        "description": "",
+                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0HAqAEFwKgBAgAKABQACHxo"
+                    }
+                }
+            ]
+        }
+    }
+]
