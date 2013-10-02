@@ -1,0 +1,36 @@
+[
+    {
+        "ethernet": {
+            "dst": "aa:aa:aa:aa:aa:aa",
+            "ethertype": 34525,
+            "src": "bb:bb:bb:bb:bb:bb"
+        }
+    },
+    {
+        "ipv6": {
+            "version": 6,
+            "traffic_class": 0,
+            "flow_label": 0,
+            "payload_length": 817,
+            "nxt": 58,
+            "hop_limit": 128,
+            "src": "2002:4637:d5d3::4637:d5d3",
+            "dst": "2001:4860:0:2001::68",
+            "ext_hdrs": []
+        }
+    },
+    {
+        "icmpv6": {
+            "type": 128,
+            "code": 0,
+            "csum": 0,
+            "data": {
+                "echo": {
+                    "id": 30240,
+                    "seq": 0,
+                    "data": "AcnnNtM5BgA="
+                }
+            }
+        }
+    }
+]
