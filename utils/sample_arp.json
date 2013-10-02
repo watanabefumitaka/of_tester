@@ -1,0 +1,16 @@
+[
+    {
+        "ethernet": {
+            "dst": "ff:ff:ff:ff:ff:ff",
+            "ethertype": 2054,
+            "src": "aa:aa:aa:aa:aa:aa"
+        }
+    },
+    {
+        "arp": {
+            "src_mac": "aa:aa:aa:aa:aa:aa",
+            "dst_mac": "00:00:00:00:00:00",
+            "opcode": 2
+        }
+    }
+]
