@@ -85,10 +85,6 @@ TEST_FILE_ERROR = '%(file)s : Test file format error (%(detail)s)'
 NO_TEST_FILE = 'Test file (*.json) is not found.'
 INVALID_PATH = '%(path)s : No such file or directory.'
 
-OK_GREEN = '\033[92m'
-NG_RED = '\033[91m'
-ENDC = '\033[0m'
-
 # Test result details.
 FAILURE = 0
 TIMEOUT = 1
@@ -108,6 +104,19 @@ MSG = {STATE_FLOW_INSTALL:
         TIMEOUT: 'invalid flows install is failure. no OFPBarrierReply.'}}
 
 ERR_MSG = 'OFPErrorMsg received. type=0x%02x code=0x%02x data=%s'
+
+
+GREEN = 0
+RED = 1
+YELLOW = 2
+
+def coloring(msg, color):
+    colors = {GREEN: '\033[92m',
+              RED: '\033[91m',
+              YELLOW: '\033[33m'}
+    end_tag = '\033[0m'
+
+    return colors[color] + msg + end_tag
 
 
 class TestFailure(RyuException):
@@ -238,7 +247,8 @@ class OfTester(app_manager.RyuApp):
         # Parse test pattern from test files.
         tests = TestPatterns(self.test_files, self.logger)
         if not tests:
-            self.logger.warning(NO_TEST_FILE)
+            msg = coloring(NO_TEST_FILE, YELLOW)
+            self.logger.warning(msg)
             return
 
         self.logger.info('--- Test start ---')
@@ -267,8 +277,8 @@ class OfTester(app_manager.RyuApp):
                 result = RYU_INTERNAL_ERROR
 
             # Output test result.
-            color_tag = OK_GREEN if result == OK else NG_RED
-            msg = color_tag + result + ENDC
+            msg = (coloring(result, GREEN) if result == OK
+                   else coloring(result, RED))
             self.logger.info('%s : %s', test.name, msg)
             if result == RYU_INTERNAL_ERROR:
                 self.logger.error(traceback.format_exc())
@@ -569,7 +579,8 @@ class TestPatterns(list):
 
     def _get_tests(self, path):
         if not os.path.exists(path):
-            self.logger.warning(INVALID_PATH % {'path': path})
+            msg = coloring(INVALID_PATH % {'path': path}, YELLOW)
+            self.logger.warning(msg)
             return
 
         if os.path.isdir(path):  # Directory
@@ -589,9 +600,10 @@ class TestPatterns(list):
                             i = None
                         self.append(Test(path, i, test_json))
                 except (ValueError, TypeError) as e:
-                    self.logger.warning(TEST_FILE_ERROR,
-                                        {'file': path,
-                                         'detail': e.message})
+                    result = (TEST_FILE_ERROR %
+                              {'file': path, 'detail': e.message})
+                    msg = coloring(result, YELLOW)
+                    self.logger.warning(msg)
 
 
 class Test(object):
