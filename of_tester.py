@@ -261,6 +261,8 @@ class OfTester(app_manager.RyuApp):
                 result = OK
             except (TestFailure, TestTimeout, TestReceiveError) as err:
                 result = str(err)
+                if test.description:
+                    result += os.linesep + unicode(test.description)
             except Exception:
                 result = RYU_INTERNAL_ERROR
 
