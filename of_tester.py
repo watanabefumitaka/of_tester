@@ -308,8 +308,7 @@ class OfTester(app_manager.RyuApp):
         test[state](*args)
 
     def _test_flow_install(self, flow):
-        #self.logger.info("install: [%s]", flow['description'])
-        xid = self.test_sw.add_flow(flow_mod=flow['data'])
+        xid = self.test_sw.add_flow(flow_mod=flow)
         self.send_msg_xids.append(xid)
 
         xid = self.test_sw.send_barrier_request()
@@ -336,33 +335,20 @@ class OfTester(app_manager.RyuApp):
                     return False
             return True
 
-        #self.logger.info("exist check:[%s]", flow_mod['description'])
         xid = self.test_sw.send_flow_stats()
         self.send_msg_xids.append(xid)
         self._wait()
         for msg in self.rcv_msgs:
             assert isinstance(msg, ofproto_v1_3_parser.OFPFlowStatsReply)
             for stats in msg.body:
-                if __compare_flow(stats, flow_mod['data']):
+                if __compare_flow(stats, flow_mod):
                     return
         raise TestFailure(self.state)
 
     def _test_flow_matching_check(self, pkt):
-        #self.logger.info("send_packet:[%s]",
-        #                 pkt['input']['description'])
-        send_packet = pkt['input']['data']
-        valid_receive_packet = None
-        output = pkt['output']
-        if output:
-            #self.logger.info("valid_receive_packet:[%s]",
-            #                 output['description'])
-            valid_receive_packet = output['data']
-        invalid_receive_packet = None
-        packet_in = pkt['packet_in']
-        if packet_in:
-            #self.logger.info("invalid_receive_packet:[%s]",
-            #                 packet_in['description'])
-            invalid_receive_packet = packet_in['data']
+        send_packet = pkt['input']
+        valid_receive_packet = pkt.get('output')
+        invalid_receive_packet = pkt.get('packet_in')
 
         self.logger.debug("send_packet:[%s]", packet.Packet(send_packet))
         self.logger.debug("valid_receive_packet:[%s]",
@@ -417,8 +403,7 @@ class OfTester(app_manager.RyuApp):
     def _test_invalid_flow_install(self, flows, error):
         # Install test flow.
         for flow in flows:
-            #self.logger.info("invalid flow install:[%s]", flow['description'])
-            xid = self.test_sw.add_flow(flow_mod=flow['data'])
+            xid = self.test_sw.add_flow(flow_mod=flow)
             self.send_msg_xids.append(xid)
         if not self.rcv_msgs:
             xid = self.test_sw.send_barrier_request()
@@ -426,9 +411,8 @@ class OfTester(app_manager.RyuApp):
             self._wait()
 
         # Compare error message.
-        #self.logger.info("compare error:[%s]", error['description'])
         for err_msg in self.rcv_msgs:
-            if str(err_msg) == str(error['data']):
+            if str(err_msg) == str(error):
                 return
         raise TestFailure(self.state)
 
@@ -653,83 +637,50 @@ class Test(object):
                 raise ValueError('"%s" field requires "%s."' % (field, key))
 
         description = buf.get('description')
-        data = buf.get('data')
-        if not data:
-            raise ValueError('a test requires a "data" block.')
 
         # parse 'FLOW_MOD'
         flows = []
-        if not 'FLOW_MOD' in data:
-            raise ValueError('a test requires a "FLOW_MOD" block '
-                             'in the "data" block.')
-        for flow in data['FLOW_MOD']:
-            flow_desc = flow.get('description')
-            if not 'data' in flow:
-                raise ValueError('a test requires a "data" field '
-                                 'in a "FLOW_MOD" block.')
-            msg = __ofp_from_json(
-                'OFPFlowMod', flow['data'], 'FLOW_MOD')
-            flows.append({'description': flow_desc, 'data': msg})
+        if not 'FLOW_MOD' in buf:
+            raise ValueError('a test requires a "FLOW_MOD" block')
+        for flow in buf['FLOW_MOD']:
+            msg = __ofp_from_json('OFPFlowMod', flow, 'FLOW_MOD')
+            flows.append(msg)
 
         # parse 'ERROR'
         error = None
-        if 'ERROR' in data:
-            error_desc = data['ERROR'].get('description')
-            if not 'data' in data['ERROR']:
-                raise ValueError('a test requires a "data" field '
-                                 'in an "ERROR" block.')
-            msg = __ofp_from_json(
-                'OFPErrorMsg', data['ERROR']['data'], 'ERROR')
-            error = {'description': error_desc, 'data': msg}
+        if 'ERROR' in buf:
+            error = __ofp_from_json('OFPErrorMsg', buf['ERROR'], 'ERROR')
 
         # parse 'packets'
         packets = []
-        if not 'packets' in data:
+        if not 'packets' in buf:
             if not error:
                 raise ValueError('a test requires "packet" block '
-                                 'when an "ERROR" block does not exist '
-                                 'in a "data" block.')
+                                 'when an "ERROR" block does not exist.')
         elif not error:
-            for pkt in data['packets']:
+            for pkt in buf['packets']:
                 # parse 'input'
                 if not 'input' in pkt:
-                    raise ValueError('a test requires "input" block '
-                                     'when an "ERROR" block does not exist '
-                                     'in "data" block.')
-                in_desc = pkt['input'].get('description')
-                if not 'data' in pkt['input']:
-                    raise ValueError('a test requires a "data" field '
-                                     'in an "input" block.')
-                in_msg = base64.b64decode(pkt['input']['data'])
-                in_pkt = {'description': in_desc, 'data': in_msg}
+                    raise ValueError('a test requires "input" field '
+                                     'when an "ERROR" block does not exist.')
+                in_pkt = base64.b64decode(pkt['input'])
 
                 # parse 'output'
                 out_pkt = None
                 if 'output' in pkt:
-                    out_desc = pkt['output'].get('description')
-                    if not 'data' in pkt['output']:
-                        raise ValueError('a test requires a "data" field '
-                                         'in an "output" block.')
-                    out_msg = base64.b64decode(pkt['output']['data'])
-                    out_pkt = {'description': out_desc, 'data': out_msg}
+                    out_pkt = base64.b64decode(pkt['output'])
 
                 # parse 'PACKET_IN'
                 pkt_in_pkt = None
                 if 'PACKET_IN' in pkt:
-                    pkt_in_desc = pkt['PACKET_IN'].get('description')
-                    if not 'data' in pkt['PACKET_IN']:
-                        raise ValueError('a test requires a "data" field '
-                                         'in a "PACKET_IN" block.')
-                    pkt_in_msg = base64.b64decode(pkt['PACKET_IN']['data'])
-                    pkt_in_pkt = {'description': pkt_in_desc,
-                                  'data': pkt_in_msg}
+                    pkt_in_pkt = base64.b64decode(pkt['PACKET_IN'])
 
                 if (not out_pkt and not pkt_in_pkt) or \
                         (out_pkt and pkt_in_pkt):
                     raise ValueError(
                         'a test requires either one of "output" or '
-                        '"PACKET_IN" block when '
-                        'an "ERROR" field does not exist in "data" block.')
+                        '"PACKET_IN" field when '
+                        'an "ERROR" block does not exist.')
                 packets.append({'input': in_pkt,
                                 'output': out_pkt,
                                 'packet_in': pkt_in_pkt})

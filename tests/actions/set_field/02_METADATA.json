@@ -1,229 +1,204 @@
 [
     {
         "description": "METADATAを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
-        "data": {
-            "FLOW_MOD": [
-                {
-                    "description": "ポート1でIPv4パケットを受信した場合、メタデータに-1を設定してテーブル1へ遷移する。",
-                    "data": {
-                        "OFPFlowMod": {
-                            "command": 0,
-                            "instructions": [
-                                {
-                                    "OFPInstructionActions": {
-                                        "actions": [
-                                            {
-                                                "OFPActionSetField": {
-                                                    "field": {
-                                                        "OXMTlv": {
-                                                            "field": "metadata",
-                                                            "value": -1
-                                                        }
-                                                    }
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "metadata",
+                                                    "value": -1
                                                 }
                                             }
-                                        ],
-                                        "type": 4
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 1
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
                                     }
                                 },
                                 {
-                                    "OFPInstructionGotoTable": {
-                                        "table_id": 1
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
                                     }
                                 }
                             ],
-                            "match": {
-                                "OFPMatch": {
-                                    "oxm_fields": [
-                                        {
-                                            "OXMTlv": {
-                                                "field": "in_port",
-                                                "value": 1
-                                            }
-                                        },
-                                        {
-                                            "OXMTlv": {
-                                                "field": "eth_type",
-                                                "value": 2048
-                                            }
-                                        }
-                                    ],
-                                    "type": 1
-                                }
-                            },
-                            "priority": 32768,
-                            "table_id": 0
+                            "type": 1
                         }
-                    }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
                 }
-            ],
-            "ERROR": {
-                "description": "set_fieldの値不備によるエラー。",
-                "data": {
-                    "OFPErrorMsg": {
-                        "type": 2,
-                        "code": 15,
-                        "data": "BA4AaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAGAAAAAAAGQAQgAAECP//////////AAEACAEAAAA="
-                    }
-                }
+            }
+        ],
+        "ERROR": {
+            "OFPErrorMsg": {
+                "type": 2,
+                "code": 15,
+                "data": "BA4AaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAGAAAAAAAGQAQgAAECP//////////AAEACAEAAAA="
             }
         }
     },
     {
         "description": "METADATAを書き換える試験(OpenFlowではサポートされていない)。",
-        "data": {
-            "FLOW_MOD": [
-                {
-                    "description": "ポート1でIPv4パケットを受信した場合、メタデータに1を設定してテーブル1へ遷移する。",
-                    "data": {
-                        "OFPFlowMod": {
-                            "command": 0,
-                            "instructions": [
-                                {
-                                    "OFPInstructionActions": {
-                                        "actions": [
-                                            {
-                                                "OFPActionSetField": {
-                                                    "field": {
-                                                        "OXMTlv": {
-                                                            "field": "metadata",
-                                                            "value": 1
-                                                        }
-                                                    }
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "metadata",
+                                                    "value": 1
                                                 }
                                             }
-                                        ],
-                                        "type": 4
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 1
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
                                     }
                                 },
                                 {
-                                    "OFPInstructionGotoTable": {
-                                        "table_id": 1
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
                                     }
                                 }
                             ],
-                            "match": {
-                                "OFPMatch": {
-                                    "oxm_fields": [
-                                        {
-                                            "OXMTlv": {
-                                                "field": "in_port",
-                                                "value": 1
-                                            }
-                                        },
-                                        {
-                                            "OXMTlv": {
-                                                "field": "eth_type",
-                                                "value": 2048
-                                            }
-                                        }
-                                    ],
-                                    "type": 1
-                                }
-                            },
-                            "priority": 32768,
-                            "table_id": 0
+                            "type": 1
                         }
-                    }
-                },
-                {
-                    "description": "メタデータが1のパケットを受信した場合、メタデータを2に書き換えてテーブル2へ遷移する。",
-                    "data": {
-                        "OFPFlowMod": {
-                            "command": 0,
-                            "instructions": [
-                                {
-                                    "OFPInstructionActions": {
-                                        "actions": [
-                                            {
-                                                "OFPActionSetField": {
-                                                    "field": {
-                                                        "OXMTlv": {
-                                                            "field": "metadata",
-                                                            "value": 2
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        ],
-                                        "type": 4
-                                    }
-                                },
-                                {
-                                    "OFPInstructionGotoTable": {
-                                        "table_id": 2
-                                    }
-                                }
-                            ],
-                            "match": {
-                                "OFPMatch": {
-                                    "oxm_fields": [
-                                        {
-                                            "OXMTlv": {
-                                                "field": "metadata",
-                                                "value": 1
-                                            }
-                                        }
-                                    ],
-                                    "type": 1
-                                }
-                            },
-                            "priority": 32768,
-                            "table_id": 1
-                        }
-                    }
-                },
-                {
-                    "description": "メタデータが2のパケットを受信した場合、ポート2から出力する。",
-                    "data": {
-                        "OFPFlowMod": {
-                            "command": 0,
-                            "instructions": [
-                                {
-                                    "OFPInstructionActions": {
-                                        "actions": [
-                                            {
-                                                "OFPActionOutput": {
-                                                    "max_len": 65535,
-                                                    "port": 2
-                                                }
-                                            }
-                                        ],
-                                        "type": 4
-                                    }
-                                }
-                            ],
-                            "match": {
-                                "OFPMatch": {
-                                    "oxm_fields": [
-                                        {
-                                            "OXMTlv": {
-                                                "field": "metadata",
-                                                "value": 2
-                                            }
-                                        }
-                                    ],
-                                    "type": 1
-                                }
-                            },
-                            "priority": 32768,
-                            "table_id": 2
-                        }
-                    }
-                }
-            ],
-            "packets": [
-                {
-                    "input": {
-                        "description": "ポート1で受信するIPv4パケット。",
-                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
                     },
-                    "output": {
-                        "description": "ポート2から送信されるIPv4パケット。",
-                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
-                    }
+                    "priority": 32768,
+                    "table_id": 0
                 }
-            ]
-        }
+            },
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "metadata",
+                                                    "value": 2
+                                                }
+                                            }
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 2
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "metadata",
+                                        "value": 1
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 1
+                }
+            },
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "metadata",
+                                        "value": 2
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 2
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
+                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+            }
+        ]
     }
 ]

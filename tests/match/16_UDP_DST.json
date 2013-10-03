@@ -1,80 +1,63 @@
 [
     {
         "description": "",
-        "data": {
-            "FLOW_MOD": [
-                {
-                    "description": "match: udp_dst=12345",
-                    "data": {
-                        "OFPFlowMod": {
-                            "command": 0,
-                            "instructions": [
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
                                 {
-                                    "OFPInstructionActions": {
-                                        "actions": [
-                                            {
-                                                "OFPActionOutput": {
-                                                    "max_len": 0,
-                                                    "port": 2
-                                                }
-                                            }
-                                        ],
-                                        "type": 4
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto",
+                                        "value": 17
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "udp_dst",
+                                        "value": 12345
                                     }
                                 }
                             ],
-                            "match": {
-                                "OFPMatch": {
-                                    "oxm_fields": [
-                                        {
-                                            "OXMTlv": {
-                                                "field": "eth_type",
-                                                "value": 2048
-                                            }
-                                        },
-                                        {
-                                            "OXMTlv": {
-                                                "field": "ip_proto",
-                                                "value": 17
-                                            }
-                                        },
-                                        {
-                                            "OXMTlv": {
-                                                "field": "udp_dst",
-                                                "value": 12345
-                                            }
-                                        }
-                                    ],
-                                    "type": 1
-                                }
-                            },
-                            "priority": 1
+                            "type": 1
                         }
-                    }
-                }
-            ],
-            "packets": [
-                {
-                    "input": {
-                        "description": "udp_dst=12345",
-                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAhqFMDkACDHM"
                     },
-                    "output": {
-                        "description": "udp_dst=12345",
-                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAhqFMDkACDHM"
-                    }
-                },
-                {
-                    "input": {
-                        "description": "udp_dst=11111",
-                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAhqFK2cACDae"
-                    },
-                    "PACKET_IN": {
-                        "description": "udp_dst=11111",
-                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAhqFK2cACDae"
-                    }
+                    "priority": 1
                 }
-            ]
-        }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAhqFMDkACDHM",
+                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAhqFMDkACDHM"
+            },
+            {
+                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAhqFK2cACDae",
+                "PACKET_IN": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAhqFK2cACDae"
+            }
+        ]
     }
 ]

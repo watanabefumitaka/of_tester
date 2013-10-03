@@ -1,74 +1,57 @@
 [
     {
         "description": "",
-        "data": {
-            "FLOW_MOD": [
-                {
-                    "description": "match: arp_sha=aa:aa:aa:aa:aa:aa",
-                    "data": {
-                        "OFPFlowMod": {
-                            "command": 0,
-                            "instructions": [
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
                                 {
-                                    "OFPInstructionActions": {
-                                        "actions": [
-                                            {
-                                                "OFPActionOutput": {
-                                                    "max_len": 0,
-                                                    "port": 2
-                                                }
-                                            }
-                                        ],
-                                        "type": 4
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_sha",
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ],
-                            "match": {
-                                "OFPMatch": {
-                                    "oxm_fields": [
-                                        {
-                                            "OXMTlv": {
-                                                "field": "eth_type",
-                                                "value": 2054
-                                            }
-                                        },
-                                        {
-                                            "OXMTlv": {
-                                                "field": "arp_sha",
-                                                "value": "aa:aa:aa:aa:aa:aa"
-                                            }
-                                        }
-                                    ],
-                                    "type": 1
-                                }
-                            },
-                            "priority": 1
+                            "type": 1
                         }
-                    }
-                }
-            ],
-            "packets": [
-                {
-                    "input": {
-                        "description": "arp_sha=aa:aa:aa:aa:aa:aa",
-                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
                     },
-                    "output": {
-                        "description": "arp_sha=aa:aa:aa:aa:aa:aa",
-                        "data": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
-                    }
-                },
-                {
-                    "input": {
-                        "description": "arp_sha=12:34:56:78:90:ab",
-                        "data": "////////qqqqqqqqCAYAAQgABgQAARI0VniQq8CoAAEAAAAAAADAqAAC"
-                    },
-                    "PACKET_IN": {
-                        "description": "arp_sha=12:34:56:78:90:ab",
-                        "data": "////////qqqqqqqqCAYAAQgABgQAARI0VniQq8CoAAEAAAAAAADAqAAC"
-                    }
+                    "priority": 1
                 }
-            ]
-        }
+            }
+        ],
+        "packets": [
+            {
+                "input": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC",
+                "output": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
+            },
+            {
+                "input": "////////qqqqqqqqCAYAAQgABgQAARI0VniQq8CoAAEAAAAAAADAqAAC",
+                "PACKET_IN": "////////qqqqqqqqCAYAAQgABgQAARI0VniQq8CoAAEAAAAAAADAqAAC"
+            }
+        ]
     }
 ]
