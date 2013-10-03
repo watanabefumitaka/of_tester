@@ -1,146 +1,127 @@
 [
     {
         "description": "ETH_DSTを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
-        "data": {
-            "FLOW_MOD": [
-                {
-                    "description": "ポート1でIPv4パケットを受信した場合、ETH_DSTに'11:22:33'を設定してポート2から出力する。",
-                    "data": {
-                        "OFPFlowMod": {
-                            "command": 0,
-                            "instructions": [
-                                {
-                                    "OFPInstructionActions": {
-                                        "actions": [
-                                            {
-                                                "OFPActionSetField": {
-                                                    "field": {
-                                                        "OXMTlv": {
-                                                            "field": "eth_dst",
-                                                            "value": "11:22:33"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "OFPActionOutput": {
-                                                    "max_len": 65535,
-                                                    "port": 2
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "eth_dst",
+                                                    "value": "11:22:33"
                                                 }
                                             }
-                                        ],
-                                        "type": 4
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
                                     }
                                 }
                             ],
-                            "match": {
-                                "OFPMatch": {
-                                    "oxm_fields": [
-                                        {
-                                            "OXMTlv": {
-                                                "field": "in_port",
-                                                "value": 1
-                                            }
-                                        },
-                                        {
-                                            "OXMTlv": {
-                                                "field": "eth_type",
-                                                "value": 2048
-                                            }
-                                        }
-                                    ],
-                                    "type": 1
-                                }
-                            },
-                            "priority": 32768,
-                            "table_id": 0
+                            "type": 1
                         }
-                    }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
                 }
-            ],
-            "ERROR": {
-                "description": "set_fieldの値不備によるエラー。",
-                "data": {
-                    "OFPErrorMsg": {
-                        "type": 2,
-                        "code": 15,
-                        "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAKAAAAAAAGQAQgAAGBgARACIAMwAAAAAAEAAAAAL//wAAAAAAAA=="
-                    }
-                }
+            }
+        ],
+        "ERROR": {
+            "OFPErrorMsg": {
+                "type": 2,
+                "code": 15,
+                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAKAAAAAAAGQAQgAAGBgARACIAMwAAAAAAEAAAAAL//wAAAAAAAA=="
             }
         }
     },
     {
         "description": "ETH_DSTを書き換える試験。",
-        "data": {
-            "FLOW_MOD": [
-                {
-                    "description": "ポート1でIPv4パケットを受信した場合、ETH_DSTに'cc:cc:cc:cc:cc:cc'を設定してポート2から出力する。",
-                    "data": {
-                        "OFPFlowMod": {
-                            "command": 0,
-                            "instructions": [
-                                {
-                                    "OFPInstructionActions": {
-                                        "actions": [
-                                            {
-                                                "OFPActionSetField": {
-                                                    "field": {
-                                                        "OXMTlv": {
-                                                            "field": "eth_dst",
-                                                            "value": "cc:cc:cc:cc:cc:cc"
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            {
-                                                "OFPActionOutput": {
-                                                    "max_len": 65535,
-                                                    "port": 2
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "eth_dst",
+                                                    "value": "cc:cc:cc:cc:cc:cc"
                                                 }
                                             }
-                                        ],
-                                        "type": 4
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
                                     }
                                 }
                             ],
-                            "match": {
-                                "OFPMatch": {
-                                    "oxm_fields": [
-                                        {
-                                            "OXMTlv": {
-                                                "field": "in_port",
-                                                "value": 1
-                                            }
-                                        },
-                                        {
-                                            "OXMTlv": {
-                                                "field": "eth_type",
-                                                "value": 2048
-                                            }
-                                        }
-                                    ],
-                                    "type": 1
-                                }
-                            },
-                            "priority": 32768,
-                            "table_id": 0
+                            "type": 1
                         }
-                    }
-                }
-            ],
-            "packets": [
-                {
-                    "input": {
-                        "description": "ポート1で受信するIPv4パケット。ETH_DSTは'aa:aa:aa:aa:aa:aa'。",
-                        "data": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
                     },
-                    "output": {
-                        "description": "ポート2から送信されるIPv4パケット。ETH_DSTは'cc:cc:cc:cc:cc:cc'。",
-                        "data": "zMzMzMzMu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
-                    }
+                    "priority": 32768,
+                    "table_id": 0
                 }
-            ]
-        }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
+                "output": "zMzMzMzMu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+            }
+        ]
     }
 ]
