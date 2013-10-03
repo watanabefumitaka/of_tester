@@ -1,6 +1,6 @@
 [
     {
-        "description": "IN_PHY_PORTを書き換えるフローの登録に失敗する試験。",
+        "description": "UDP_SRCを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -13,114 +13,12 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "in_phy_port",
-                                                    "value": 10
+                                                    "field": "udp_src",
+                                                    "value": 123456
                                                 }
                                             }
                                         }
-                                    }
-                                ],
-                                "type": 4
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable": {
-                                "table_id": 1
-                            }
-                        }
-                    ],
-                    "match": {
-                        "OFPMatch": {
-                            "oxm_fields": [
-                                {
-                                    "OXMTlv": {
-                                        "field": "in_port",
-                                        "value": 1
-                                    }
-                                },
-                                {
-                                    "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
-                                    }
-                                }
-                            ],
-                            "type": 1
-                        }
-                    },
-                    "priority": 32768,
-                    "table_id": 0
-                }
-            }
-        ],
-        "ERROR": {
-            "OFPErrorMsg": {
-                "type": 2,
-                "code": 13,
-                "data": "BA4AaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAGAAAAAAAGQAQgAACBP////4AAAAAAAEACAEAAAA="
-            }
-        }
-    },
-    {
-        "description": "IN_PHY_PORTを書き換える試験(OpenFlowではサポートされていない)。",
-        "FLOW_MOD": [
-            {
-                "OFPFlowMod": {
-                    "command": 0,
-                    "instructions": [
-                        {
-                            "OFPInstructionActions": {
-                                "actions": [
-                                    {
-                                        "OFPActionSetField": {
-                                            "field": {
-                                                "OXMTlv": {
-                                                    "field": "in_phy_port",
-                                                    "value": 10
-                                                }
-                                            }
-                                        }
-                                    }
-                                ],
-                                "type": 4
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable": {
-                                "table_id": 1
-                            }
-                        }
-                    ],
-                    "match": {
-                        "OFPMatch": {
-                            "oxm_fields": [
-                                {
-                                    "OXMTlv": {
-                                        "field": "in_port",
-                                        "value": 1
-                                    }
-                                },
-                                {
-                                    "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
-                                    }
-                                }
-                            ],
-                            "type": 1
-                        }
-                    },
-                    "priority": 32768,
-                    "table_id": 0
-                }
-            },
-            {
-                "OFPFlowMod": {
-                    "command": 0,
-                    "instructions": [
-                        {
-                            "OFPInstructionActions": {
-                                "actions": [
+                                    },
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535,
@@ -137,8 +35,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "in_phy_port",
-                                        "value": 10
+                                        "field": "in_port",
+                                        "value": 1
                                     }
                                 },
                                 {
@@ -146,20 +44,105 @@
                                         "field": "eth_type",
                                         "value": 2048
                                     }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto",
+                                        "value": 17
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "udp_src",
+                                        "value": 6789
+                                    }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
-                    "table_id": 1
+                    "table_id": 0
+                }
+            }
+        ],
+        "ERROR": {
+            "OFPErrorMsg": {
+                "type": 2,
+                "code": 15,
+                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAHYAAAAQAAAABgAAKAggAgAAUARGAAB4CGoUAAAAABAAoAAAAAAAZABCAAB4C4kAAAAAAAAAAAAAQAAAAAv//AAAAAAAA"
+            }
+        }
+    },
+    {
+        "description": "UDP_SRCを書き換える試験。",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "udp_src",
+                                                    "value": 1234
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto",
+                                        "value": 17
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "udp_src",
+                                        "value": 6789
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
                 }
             }
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
-                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAhqFK2cACDae",
+                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0XAqAEBwKgBAgTSK2cACExR"
             }
         ]
     }

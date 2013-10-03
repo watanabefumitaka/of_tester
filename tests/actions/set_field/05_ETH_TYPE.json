@@ -1,6 +1,6 @@
 [
     {
-        "description": "ETH_TYPEを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "ETH_TYPEを書き換えるフローの登録に失敗する試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -14,7 +14,7 @@
                                             "field": {
                                                 "OXMTlv": {
                                                     "field": "eth_type",
-                                                    "value": 0
+                                                    "value": 16
                                                 }
                                             }
                                         }
@@ -77,7 +77,7 @@
                                             "field": {
                                                 "OXMTlv": {
                                                     "field": "eth_type",
-                                                    "value": 34525
+                                                    "value": 34888
                                                 }
                                             }
                                         }
@@ -101,12 +101,6 @@
                                         "field": "in_port",
                                         "value": 1
                                     }
-                                },
-                                {
-                                    "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
-                                    }
                                 }
                             ],
                             "type": 1
@@ -119,8 +113,8 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
-                "output": "qqqqqqqqu7u7u7u7ht1FAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+                "input": "qqqqqqqqu7u7u7u7iEcAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
+                "output": "qqqqqqqqu7u7u7u7iEgAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
             }
         ]
     }
