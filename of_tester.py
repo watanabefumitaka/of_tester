@@ -18,6 +18,7 @@ import base64
 import json
 import logging
 import os
+import struct
 import sys
 import traceback
 
@@ -401,6 +402,22 @@ class OfTester(app_manager.RyuApp):
             raise TestTimeout(self.state)
 
     def _test_invalid_flow_install(self, flows, error):
+        def __compare_error(msg, pattern):
+            compare_list = [[msg.version, pattern.version],
+                            [msg.msg_type, pattern.msg_type],
+                            [msg.type, pattern.type],
+                            [msg.code, pattern.code]]
+            for value in compare_list:
+                if value[0] != value[1]:
+                    return False
+            head_len = struct.calcsize('!BBHI')
+            msg_data = msg.data[head_len:]
+            msg_len = len(msg_data)
+            error_data = error.data[head_len:head_len + msg_len]
+            if msg_data != error_data:
+                return False
+            return True
+
         # Install test flow.
         for flow in flows:
             xid = self.test_sw.add_flow(flow_mod=flow)
@@ -412,7 +429,9 @@ class OfTester(app_manager.RyuApp):
 
         # Compare error message.
         for err_msg in self.rcv_msgs:
-            if str(err_msg) == str(error):
+            if not isinstance(err_msg, ofproto_v1_3_parser.OFPErrorMsg):
+                continue
+            if __compare_error(err_msg, error):
                 return
         raise TestFailure(self.state)
 
