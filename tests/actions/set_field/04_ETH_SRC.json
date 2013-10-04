@@ -1,6 +1,6 @@
 [
     {
-        "description": "ETH_SRCを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "ETH_SRC書き換えフロー登録失敗試験。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -41,8 +41,8 @@
                                 },
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
+                                        "field": "eth_src",
+                                        "value": "bb:bb:bb:bb:bb:bb"
                                     }
                                 }
                             ],
@@ -58,12 +58,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAKAAAAAAAGQAQgAAIBgARACIAMwAAAAAAEAAAAAL//wAAAAAAAA=="
+                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAFoAAAAQAAAABgAAIBru7u7u7uwAAAAQAKAAAAAAAGQAQgAAIBgARACIAMwAAAAAAEAAAAAL//wAAAAAAAA=="
             }
         }
     },
     {
-        "description": "ETH_SRCを書き換える試験。",
+        "description": "ETH_SRC書き換え試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -104,8 +104,8 @@
                                 },
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
+                                        "field": "eth_src",
+                                        "value": "bb:bb:bb:bb:bb:bb"
                                     }
                                 }
                             ],

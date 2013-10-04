@@ -1,6 +1,6 @@
 [
     {
-        "description": "IPV4_DSTを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "IPV4_DST書き換えフロー登録失敗試験。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -14,7 +14,7 @@
                                             "field": {
                                                 "OXMTlv": {
                                                     "field": "ipv4_dst",
-                                                    "value": "192.168.1.255"
+                                                    "value": "192.168.1"
                                                 }
                                             }
                                         }
@@ -63,12 +63,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAGoAAAAQAAAABgAAKAggAgAAYBMCoAQIAAAAAAAAABAAoAAAAAAAZABCAABgEwKgB/wAAAAAAAAAQAAAAAv//AAAAAAAA"
+                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAGoAAAAQAAAABgAAKAggAgAAYBMCoAQIAAAAAAAAABAAoAAAAAAAZABCAABgEwKgAAQAAAAAAAAAQAAAAAv//AAAAAAAA"
             }
         }
     },
     {
-        "description": "IPV4_DSTを書き換える試験。",
+        "description": "IPV4_DST書き換え試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

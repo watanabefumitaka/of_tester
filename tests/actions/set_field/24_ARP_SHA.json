@@ -1,6 +1,6 @@
 [
     {
-        "description": "ARP_SHAを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "ARP_SHA書き換えフロー登録失敗試験。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではARP_SHAはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -68,7 +68,7 @@
         }
     },
     {
-        "description": "ARP_SHAを書き換える試験。",
+        "description": "ARP_SHA書き換え試験。OVSではARP_SHAはread onlyであるため、試験に失敗する。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

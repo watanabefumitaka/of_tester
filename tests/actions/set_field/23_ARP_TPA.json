@@ -1,6 +1,6 @@
 [
     {
-        "description": "ARP_TPAを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "ARP_TPA書き換えフロー登録失敗試験。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではARP_TPAはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -14,7 +14,7 @@
                                             "field": {
                                                 "OXMTlv": {
                                                     "field": "arp_tpa",
-                                                    "value": "192.168.2.254"
+                                                    "value": "192.168.2"
                                                 }
                                             }
                                         }
@@ -63,12 +63,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAGoAAAAQAAAABgAAKAggGgAAuBMCoAhQAAAAAAAAABAAoAAAAAAAZABCAAC4EwKgC/gAAAAAAAAAQAAAAAv//AAAAAAAA"
+                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAGoAAAAQAAAABgAAKAggGgAAuBMCoAhQAAAAAAAAABAAoAAAAAAAZABCAAC4EwKgAAgAAAAAAAAAQAAAAAv//AAAAAAAA"
             }
         }
     },
     {
-        "description": "ARP_TPAを書き換える試験。",
+        "description": "ARP_TPA書き換え試験。OVSではARP_TPAはread onlyであるため、試験に失敗する。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

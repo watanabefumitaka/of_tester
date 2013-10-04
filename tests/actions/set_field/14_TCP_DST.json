@@ -1,6 +1,6 @@
 [
     {
-        "description": "TCP_DSTを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "TCP_DST書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -14,7 +14,7 @@
                                             "field": {
                                                 "OXMTlv": {
                                                     "field": "tcp_dst",
-                                                    "value": 222222
+                                                    "value": 65536
                                                 }
                                             }
                                         }
@@ -69,12 +69,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAHYAAAAQAAAABgAAKAggAgAAUAQaAABwCK2cAAAAABAAoAAAAAAAZABCAABwCZA4AAAAAAAAAAAAQAAAAAv//AAAAAAAA"
+                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAHYAAAAQAAAABgAAKAggAgAAUAQaAABwCK2cAAAAABAAoAAAAAAAZABCAABwCAAAAAAAAAAAAAAAQAAAAAv//AAAAAAAA"
             }
         }
     },
     {
-        "description": "TCP_DSTを書き換える試験。",
+        "description": "TCP_DST書き換え試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

@@ -1,6 +1,6 @@
 [
     {
-        "description": "VLAN_PCPを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "VLAN_PCP書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -13,23 +13,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "vlan_vid",
-                                                    "value": 1
-                                                }
-                                            }
-                                        }
-                                    }
-                                ],
-                                "type": 3
-                            },
-                            "OFPInstructionActions": {
-                                "actions": [
-                                    {
-                                        "OFPActionSetField": {
-                                            "field": {
-                                                "OXMTlv": {
                                                     "field": "vlan_pcp",
-                                                    "value": 10
+                                                    "value": 8
                                                 }
                                             }
                                         }
@@ -57,8 +42,14 @@
                                 {
                                     "OXMTlv": {
                                         "field": "vlan_vid",
-                                        "mask": 4095,
-                                        "value": 1
+                                        "mask": null,
+                                        "value": 4128
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp",
+                                        "value": 3
                                     }
                                 }
                             ],
@@ -74,33 +65,18 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAFIAAAAQAAAABgAANBAABD/8AAAAAAAQAGAAAAAAAAAAQAAAAAv//AAAAAAAA"
+                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAF4AAAAQAAAABgAAMAhAggAAOAQMAAAQAKAAAAAAAGQAQgAAOAQgAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
             }
         }
     },
     {
-        "description": "VLAN_PCPを書き換える試験。",
+        "description": "VLAN_PCP書き換え試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
                     "command": 0,
                     "instructions": [
                         {
-                            "OFPInstructionActions": {
-                                "actions": [
-                                    {
-                                        "OFPActionSetField": {
-                                            "field": {
-                                                "OXMTlv": {
-                                                    "field": "vlan_vid",
-                                                    "value": 32
-                                                }
-                                            }
-                                        }
-                                    }
-                                ],
-                                "type": 3
-                            },
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
@@ -136,8 +112,14 @@
                                 {
                                     "OXMTlv": {
                                         "field": "vlan_vid",
-                                        "mask": 4095,
-                                        "value": 32
+                                        "mask": null,
+                                        "value": 4128
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp",
+                                        "value": 3
                                     }
                                 }
                             ],

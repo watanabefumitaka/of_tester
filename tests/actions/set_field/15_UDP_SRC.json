@@ -1,6 +1,6 @@
 [
     {
-        "description": "UDP_SRCを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "UDP_SRC書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -14,7 +14,7 @@
                                             "field": {
                                                 "OXMTlv": {
                                                     "field": "udp_src",
-                                                    "value": 123456
+                                                    "value": 65536
                                                 }
                                             }
                                         }
@@ -69,12 +69,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAHYAAAAQAAAABgAAKAggAgAAUARGAAB4CGoUAAAAABAAoAAAAAAAZABCAAB4C4kAAAAAAAAAAAAAQAAAAAv//AAAAAAAA"
+                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAHYAAAAQAAAABgAAKAggAgAAUARGAAB4CGoUAAAAABAAoAAAAAAAZABCAAB4CAAAAAAAAAAAAAAAQAAAAAv//AAAAAAAA"
             }
         }
     },
     {
-        "description": "UDP_SRCを書き換える試験。",
+        "description": "UDP_SRC書き換え試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

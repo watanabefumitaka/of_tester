@@ -1,6 +1,6 @@
 [
     {
-        "description": "IP_PROTOを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "IP_PROTO書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではIP_PROTOはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -68,7 +68,7 @@
         }
     },
     {
-        "description": "IP_PROTOを書き換える試験。",
+        "description": "IP_PROTO書き換え試験。OVSではIP_PROTOはread onlyであるため、試験に失敗する。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

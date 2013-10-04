@@ -1,6 +1,6 @@
 [
     {
-        "description": "IP_DSCPを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "IP_DSCP書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -14,7 +14,7 @@
                                             "field": {
                                                 "OXMTlv": {
                                                     "field": "ip_dscp",
-                                                    "value": 1000
+                                                    "value": 64
                                                 }
                                             }
                                         }
@@ -64,12 +64,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAFIAAAAQAAAABgAANBAABD/8AAAAAAAQAKAAAAAAAGQAQgAAQAQoAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
+                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAF4AAAAQAAAABgAAKAggAgAAQAQgAAAQAKAAAAAAAGQAQgAAQAUAAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
             }
         }
     },
     {
-        "description": "IP_DSCPを書き換える試験。",
+        "description": "IP_DSCP書き換え試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
