@@ -411,9 +411,8 @@ class OfTester(app_manager.RyuApp):
                 if value[0] != value[1]:
                     return False
             head_len = struct.calcsize('!BBHI')
-            msg_data = msg.data[head_len:]
-            msg_len = len(msg_data)
-            error_data = error.data[head_len:head_len + msg_len]
+            msg_data = msg.data[head_len:64]
+            error_data = pattern.data[head_len:64]
             if msg_data != error_data:
                 return False
             return True
