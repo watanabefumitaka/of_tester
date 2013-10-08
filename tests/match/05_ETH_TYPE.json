@@ -1,6 +1,6 @@
 [
     {
-        "description": "",
+        "description": "テスト0: match:eth_type=2054(ARP)のフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -41,10 +41,50 @@
             {
                 "input": "////////u7u7u7u7CAYAAQgABgQAAbu7u7u7uwAAAAAAAAAAAAAAAAAA",
                 "output": "////////u7u7u7u7CAYAAQgABgQAAbu7u7u7uwAAAAAAAAAAAAAAAAAA"
-            },
+            }
+        ]
+    },
+    {
+        "description": "テスト1: match:eth_type=2054(ARP)のフローにマッチしないパケットを印加",
+        "FLOW_MOD": [
             {
-                "input": "u7u7u7u7qqqqqqqqCABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
-                "PACKET_IN": "u7u7u7u7qqqqqqqqCABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2054
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 1
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "u7u7u7u7qqqqqqqqCABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
             }
         ]
     }

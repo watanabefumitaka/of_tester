@@ -1,6 +1,6 @@
 [
     {
-        "description": "",
+        "description": "テスト0: match:ipv4_dst=192.168.1.2のフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -47,10 +47,56 @@
             {
                 "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
                 "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
-            },
+            }
+        ]
+    },
+    {
+        "description": "テスト1: match:ipv4_dst=192.168.1.2のフローにマッチしないパケットを印加",
+        "FLOW_MOD": [
             {
-                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0LAqAEBwKgBBQAKABQACHxp",
-                "PACKET_IN": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0LAqAEBwKgBBQAKABQACHxp"
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv4_dst",
+                                        "value": "192.168.1.2"
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 1
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEARt0LAqAEBwKgBBQAKABQACHxp"
             }
         ]
     }

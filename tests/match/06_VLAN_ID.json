@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: match:arp_spa=192.168.0.1のフローにマッチするパケットを印加",
+        "description": "テスト0: match:vlan_vid=2のフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -25,14 +25,9 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2054
-                                    }
-                                },
-                                {
-                                    "OXMTlv": {
-                                        "field": "arp_spa",
-                                        "value": "192.168.0.1"
+                                        "field": "vlan_vid",
+                                        "mask": 4095,
+                                        "value": 2
                                     }
                                 }
                             ],
@@ -45,13 +40,13 @@
         ],
         "packets": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC",
-                "output": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
+                "input": "////////u7u7u7u7gQAAAggARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw==",
+                "output": "////////u7u7u7u7gQAAAggARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw=="
             }
         ]
     },
     {
-        "description": "テスト0: match:arp_spa=192.168.0.1のフローにマッチするパケットを印加",
+        "description": "テスト1: match:vlan_vid=2のフローにマッチしないパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -76,14 +71,9 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2054
-                                    }
-                                },
-                                {
-                                    "OXMTlv": {
-                                        "field": "arp_spa",
-                                        "value": "192.168.0.1"
+                                        "field": "vlan_vid",
+                                        "mask": 4095,
+                                        "value": 2
                                     }
                                 }
                             ],
@@ -96,7 +86,7 @@
         ],
         "packets": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAoAAAAAAADAqAAC"
+                "input": "////////u7u7u7u7gQAAAwgARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw=="
             }
         ]
     }

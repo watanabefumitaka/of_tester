@@ -1,6 +1,6 @@
 [
     {
-        "description": "",
+        "description": "テスト0: match:arp_sha=aa:aa:aa:aa:aa:aaのフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -47,10 +47,56 @@
             {
                 "input": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC",
                 "output": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
-            },
+            }
+        ]
+    },
+    {
+        "description": "テスト1: match:arp_sha=aa:aa:aa:aa:aa:aaのフローにマッチしないパケットを印加",
+        "FLOW_MOD": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAARI0VniQq8CoAAEAAAAAAADAqAAC",
-                "PACKET_IN": "////////qqqqqqqqCAYAAQgABgQAARI0VniQq8CoAAEAAAAAAADAqAAC"
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_sha",
+                                        "value": "aa:aa:aa:aa:aa:aa"
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 1
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "////////qqqqqqqqCAYAAQgABgQAARI0VniQq8CoAAEAAAAAAADAqAAC"
             }
         ]
     }
