@@ -351,14 +351,14 @@ class OfTester(app_manager.RyuApp):
         self.logger.debug("send_packet:[%s]", packet.Packet(pkt['input']))
         self.logger.debug("output:[%s]", packet.Packet(pkt.get('output')))
         self.logger.debug("packet_in:[%s]",
-                          packet.Packet(pkt.get('packet_in')))
+                          packet.Packet(pkt.get('PACKET_IN')))
 
         # 1. send a packet from the Open vSwitch.
         self.sub_sw.send_packet_out(pkt['input'])
 
         # 2. receive a PacketIn message.
         rcv_pkt_model = (pkt['output'] if 'output' in pkt
-                         else pkt['packet_in'])
+                         else pkt['PACKET_IN'])
         pkt_in_src_model = (self.sub_sw if 'output' in pkt
                             else self.test_sw)
 
@@ -511,43 +511,43 @@ class OfTester(app_manager.RyuApp):
 
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, handler.MAIN_DISPATCHER)
     def stats_reply_handler(self, ev):
-        if ((self.state == STATE_FLOW_EXIST_CHK
-                or self.state == STATE_GET_MATCH_COUNT
-                or self.state == STATE_FLOW_UNMATCH_CHK)
-                and self.waiter is not None
-                and ev.msg.xid in self.send_msg_xids):
-            self.rcv_msgs.append(ev.msg)
-            if not ev.msg.flags & ev.msg.datapath.ofproto.OFPMPF_REPLY_MORE:
-                self.waiter.set()
-                hub.sleep(0)
+        state_list = [STATE_FLOW_EXIST_CHK,
+                      STATE_GET_MATCH_COUNT,
+                      STATE_FLOW_UNMATCH_CHK]
+        if self.state in state_list:
+            if self.waiter and ev.msg.xid in self.send_msg_xids:
+                self.rcv_msgs.append(ev.msg)
+                if not ev.msg.flags & ofproto_v1_3.OFPMPF_REPLY_MORE:
+                    self.waiter.set()
+                    hub.sleep(0)
 
     @set_ev_cls(ofp_event.EventOFPBarrierReply, handler.MAIN_DISPATCHER)
     def barrier_reply_handler(self, ev):
-        if ((self.state == STATE_FLOW_INSTALL
-                or self.state == STATE_NG_FLOW_INSTALL
-                or self.state == STATE_UNMATCH_PKT_SEND)
-                and self.waiter is not None
-                and ev.msg.xid in self.send_msg_xids):
-            self.rcv_msgs.append(ev.msg)
-            self.waiter.set()
-            hub.sleep(0)
+        state_list = [STATE_FLOW_INSTALL,
+                      STATE_NG_FLOW_INSTALL,
+                      STATE_UNMATCH_PKT_SEND]
+        if self.state in state_list:
+            if self.waiter and ev.msg.xid in self.send_msg_xids:
+                self.rcv_msgs.append(ev.msg)
+                self.waiter.set()
+                hub.sleep(0)
 
     @set_ev_cls(ofp_event.EventOFPPacketIn, handler.MAIN_DISPATCHER)
     def packet_in_handler(self, ev):
-        if self.state == STATE_FLOW_MATCH_CHK and self.waiter is not None:
-            self.rcv_msgs.append(ev.msg)
-            self.waiter.set()
-            hub.sleep(0)
+        state_list = [STATE_FLOW_MATCH_CHK]
+        if self.state in state_list:
+            if self.waiter:
+                self.rcv_msgs.append(ev.msg)
+                self.waiter.set()
+                hub.sleep(0)
 
     @set_ev_cls(ofp_event.EventOFPErrorMsg, [handler.HANDSHAKE_DISPATCHER,
                                              handler.CONFIG_DISPATCHER,
                                              handler.MAIN_DISPATCHER])
     def error_msg_handler(self, ev):
-        print self.send_msg_xids
-        print ev.msg.xid
         if self.state != STATE_INIT and ev.msg.xid in self.send_msg_xids:
             self.rcv_msgs.append(ev.msg)
-            if self.waiter is not None:
+            if self.waiter:
                 self.waiter.set()
                 hub.sleep(0)
 
