@@ -1,0 +1,103 @@
+[
+    {
+        "description": "テスト0: match:ipv6_flabel=0のフローにマッチするパケットを印加",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_flabel",
+                                        "value": 0
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 1
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7ht1gAAAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABogABmeHYgAAAByec20zkGAA==",
+                "output": "qqqqqqqqu7u7u7u7ht1gAAAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABogABmeHYgAAAByec20zkGAA=="
+            }
+        ]
+    },
+    {
+        "description": "テスト1: match:ipv6_flabel=0のフローにマッチしないパケットを印加",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_flabel",
+                                        "value": 0
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 1
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7ht1gABAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABogABmeHYgAAAByec20zkGAA=="
+            }
+        ]
+    }
+]
