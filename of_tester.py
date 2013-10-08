@@ -120,18 +120,14 @@ MSG = {STATE_FLOW_INSTALL:
 ERR_MSG = 'OFPErrorMsg received. type=0x%02x code=0x%02x data=%s'
 
 
-GREEN = 0
-RED = 1
-YELLOW = 2
+GREEN = '\033[92m'
+RED = '\033[91m'
+YELLOW = '\033[33m'
+END_TAG = '\033[0m'
 
 
 def coloring(msg, color):
-    colors = {GREEN: '\033[92m',
-              RED: '\033[91m',
-              YELLOW: '\033[33m'}
-    end_tag = '\033[0m'
-
-    return colors[color] + msg + end_tag
+    return color + msg + END_TAG
 
 
 class TestFailure(RyuException):
