@@ -1,6 +1,6 @@
 [
     {
-        "description": "",
+        "description": "テスト0: match:eth_dst=aa:aa:aa:aa:aa:aaのフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -41,10 +41,50 @@
             {
                 "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
                 "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
-            },
+            }
+        ]
+    },
+    {
+        "description": "テスト1: match:eth_dst=aa:aa:aa:aa:aa:aaのフローにマッチしないパケットを印加",
+        "FLOW_MOD": [
             {
-                "input": "u7u7u7u7qqqqqqqqCABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
-                "PACKET_IN": "u7u7u7u7qqqqqqqqCABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_dst",
+                                        "value": "aa:aa:aa:aa:aa:aa"
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 32768
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "u7u7u7u7qqqqqqqqCABFAABUAABAAEABt1XAqAEBwKgBAggAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
             }
         ]
     }

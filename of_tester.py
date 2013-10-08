@@ -76,7 +76,10 @@ STATE_INIT = 0
 STATE_FLOW_INSTALL = 1
 STATE_FLOW_EXIST_CHK = 2
 STATE_FLOW_MATCH_CHK = 3
-STATE_NG_FLOW_INSTALL = 4
+STATE_GET_MATCH_COUNT = 4
+STATE_UNMATCH_PKT_SEND = 5
+STATE_FLOW_UNMATCH_CHK = 6
+STATE_NG_FLOW_INSTALL = 7
 
 # Test result.
 OK = 'OK'
@@ -100,6 +103,16 @@ MSG = {STATE_FLOW_INSTALL:
        STATE_FLOW_MATCH_CHK:
        {TIMEOUT: 'flow matching is failure. no expected OFPPacketIn.',
         RCV_ERR: 'flow matching is failure. sub SW error. %(err_msg)s'},
+       STATE_GET_MATCH_COUNT:
+       {TIMEOUT: 'flow unmatching check is failure. no OFPFlowStatsReply.',
+        RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
+       STATE_UNMATCH_PKT_SEND:
+       {TIMEOUT: 'flow unmatching check is failure. no OFPBarrierReply.',
+        RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
+       STATE_FLOW_UNMATCH_CHK:
+       {FAILURE: 'send packet was matched with the flow.',
+        TIMEOUT: 'flow unmatching check is failure. no OFPFlowStatsReply.',
+        RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
        STATE_NG_FLOW_INSTALL:
        {FAILURE: 'invalid flows install is failure. no expected OFPErrorMsg.',
         TIMEOUT: 'invalid flows install is failure. no OFPBarrierReply.'}}
@@ -256,7 +269,6 @@ class OfTester(app_manager.RyuApp):
 
         self.logger.info('--- Test start ---')
         for test in tests:
-            #self.logger.info("%s : [%s]", test.name, test.description)
             # Test execute.
             try:
                 if not test.error:
@@ -266,7 +278,12 @@ class OfTester(app_manager.RyuApp):
                         self._test(STATE_FLOW_EXIST_CHK, flow)
                     # 2. Check flow matching.
                     for pkt in test.packets:
-                        self._test(STATE_FLOW_MATCH_CHK, pkt)
+                        if 'output' in pkt or 'PACKET_IN' in pkt:
+                            self._test(STATE_FLOW_MATCH_CHK, pkt)
+                        else:
+                            before_stats = self._test(STATE_GET_MATCH_COUNT)
+                            self._test(STATE_UNMATCH_PKT_SEND, pkt)
+                            self._test(STATE_FLOW_UNMATCH_CHK, before_stats)
                 else:
                     # 1. Install invalid flows.
                     self._test(STATE_NG_FLOW_INSTALL, test.flows, test.error)
@@ -300,13 +317,16 @@ class OfTester(app_manager.RyuApp):
         test = {STATE_FLOW_INSTALL: self._test_flow_install,
                 STATE_FLOW_EXIST_CHK: self._test_flow_exist_check,
                 STATE_FLOW_MATCH_CHK: self._test_flow_matching_check,
+                STATE_GET_MATCH_COUNT: self._test_get_match_count,
+                STATE_UNMATCH_PKT_SEND: self._test_unmatch_packet_send,
+                STATE_FLOW_UNMATCH_CHK: self._test_flow_unmatching_check,
                 STATE_NG_FLOW_INSTALL: self._test_invalid_flow_install}
 
         self.send_msg_xids = []
         self.rcv_msgs = []
 
         self.state = state
-        test[state](*args)
+        return test[state](*args)
 
     def _test_flow_install(self, flow):
         xid = self.test_sw.add_flow(flow_mod=flow)
@@ -321,51 +341,30 @@ class OfTester(app_manager.RyuApp):
         assert isinstance(msg, ofproto_v1_3_parser.OFPBarrierReply)
 
     def _test_flow_exist_check(self, flow_mod):
-        def __compare_flow(stats, flow_mod):
-            compare_list = [[stats.cookie, flow_mod.cookie],
-                            [stats.priority, flow_mod.priority],
-                            [stats.flags, flow_mod.flags],
-                            [stats.hard_timeout, flow_mod.hard_timeout],
-                            [stats.idle_timeout, flow_mod.idle_timeout],
-                            [stats.table_id, flow_mod.table_id],
-                            [str(stats.instructions),
-                             str(flow_mod.instructions)],
-                            [str(stats.match), str(flow_mod.match)]]
-            for value in compare_list:
-                if value[0] != value[1]:
-                    return False
-            return True
-
         xid = self.test_sw.send_flow_stats()
         self.send_msg_xids.append(xid)
         self._wait()
         for msg in self.rcv_msgs:
             assert isinstance(msg, ofproto_v1_3_parser.OFPFlowStatsReply)
             for stats in msg.body:
-                if __compare_flow(stats, flow_mod):
+                if self._compare_flow(stats, flow_mod):
                     return
         raise TestFailure(self.state)
 
     def _test_flow_matching_check(self, pkt):
-        send_packet = pkt['input']
-        valid_receive_packet = pkt.get('output')
-        invalid_receive_packet = pkt.get('packet_in')
-
-        self.logger.debug("send_packet:[%s]", packet.Packet(send_packet))
-        self.logger.debug("valid_receive_packet:[%s]",
-                          valid_receive_packet)
-        self.logger.debug("invalid_receive_packet:[%s]",
-                          invalid_receive_packet)
+        self.logger.debug("send_packet:[%s]", packet.Packet(pkt['input']))
+        self.logger.debug("output:[%s]", packet.Packet(pkt.get('output')))
+        self.logger.debug("packet_in:[%s]",
+                          packet.Packet(pkt.get('packet_in')))
 
         # 1. send a packet from the Open vSwitch.
-        self.sub_sw.send_packet_out(send_packet)
+        self.sub_sw.send_packet_out(pkt['input'])
 
         # 2. receive a PacketIn message.
-        rcv_pkt_model = (invalid_receive_packet
-                         if valid_receive_packet is None
-                         else valid_receive_packet)
-        pkt_in_src_model = (self.test_sw if valid_receive_packet is None
-                            else self.sub_sw)
+        rcv_pkt_model = (pkt['output'] if 'output' in pkt
+                         else pkt['packet_in'])
+        pkt_in_src_model = (self.sub_sw if 'output' in pkt
+                            else self.test_sw)
 
         timer = hub.Timeout(WAIT_TIMER)
         timeout = False
@@ -401,6 +400,43 @@ class OfTester(app_manager.RyuApp):
         if timeout:
             raise TestTimeout(self.state)
 
+    def _test_get_match_count(self):
+        xid = self.test_sw.send_flow_stats()
+        self.send_msg_xids.append(xid)
+        self._wait()
+        return [stats for msg in self.rcv_msgs for stats in msg.body]
+
+    def _test_unmatch_packet_send(self, pkt):
+        # send a packet from the Open vSwitch.
+        self.logger.debug("send_packet:[%s]", packet.Packet(pkt['input']))
+        self.sub_sw.send_packet_out(pkt['input'])
+
+        # wait OFPBarrierReply.
+        xid = self.sub_sw.send_barrier_request()
+        self.send_msg_xids.append(xid)
+        self._wait()
+        assert len(self.rcv_msgs) == 1
+        msg = self.rcv_msgs[0]
+        assert isinstance(msg, ofproto_v1_3_parser.OFPBarrierReply)
+
+    def _test_flow_unmatching_check(self, before_stats):
+        # check match packet count
+        xid = self.test_sw.send_flow_stats()
+        self.send_msg_xids.append(xid)
+        self._wait()
+        for msg in self.rcv_msgs:
+            assert isinstance(msg, ofproto_v1_3_parser.OFPFlowStatsReply)
+            for stats in msg.body:
+                for before_stat in before_stats:
+                    if self._compare_flow(stats, before_stat):
+                        if stats.packet_count != before_stat.packet_count:
+                            raise TestFailure(self.state)
+                        before_stats.remove(before_stat)
+                        break
+                if before_stats:
+                    raise RyuException('Internal error. Unknown flow was'
+                                       ' installed. %s', before_stats)
+
     def _test_invalid_flow_install(self, flows, error):
         def __compare_error(msg, pattern):
             compare_list = [[msg.version, pattern.version],
@@ -434,6 +470,16 @@ class OfTester(app_manager.RyuApp):
             if __compare_error(err_msg, error):
                 return
         raise TestFailure(self.state)
+
+    def _compare_flow(self, stats1, stats2):
+        attr_list = ['cookie', 'priority', 'flags', 'hard_timeout',
+                     'idle_timeout', 'table_id', 'instructions', 'match']
+        for attr in attr_list:
+            value1 = getattr(stats1, attr)
+            value2 = getattr(stats2, attr)
+            if str(value1) != str(value2):
+                return False
+        return True
 
     def _wait(self, timer=True):
         """ Wait until specific OFP message received
@@ -469,7 +515,10 @@ class OfTester(app_manager.RyuApp):
 
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, handler.MAIN_DISPATCHER)
     def stats_reply_handler(self, ev):
-        if (self.state == STATE_FLOW_EXIST_CHK and self.waiter is not None
+        if ((self.state == STATE_FLOW_EXIST_CHK
+                or self.state == STATE_GET_MATCH_COUNT
+                or self.state == STATE_FLOW_UNMATCH_CHK)
+                and self.waiter is not None
                 and ev.msg.xid in self.send_msg_xids):
             self.rcv_msgs.append(ev.msg)
             if not ev.msg.flags & ev.msg.datapath.ofproto.OFPMPF_REPLY_MORE:
@@ -479,7 +528,8 @@ class OfTester(app_manager.RyuApp):
     @set_ev_cls(ofp_event.EventOFPBarrierReply, handler.MAIN_DISPATCHER)
     def barrier_reply_handler(self, ev):
         if ((self.state == STATE_FLOW_INSTALL
-                or self.state == STATE_NG_FLOW_INSTALL)
+                or self.state == STATE_NG_FLOW_INSTALL
+                or self.state == STATE_UNMATCH_PKT_SEND)
                 and self.waiter is not None
                 and ev.msg.xid in self.send_msg_xids):
             self.rcv_msgs.append(ev.msg)
@@ -539,13 +589,16 @@ class OpenFlowSw(object):
                                     match=match, instructions=inst)
         return self._send_msg(mod)
 
+    def send_barrier_request(self):
+        """ send a BARRIER_REQUEST message."""
+        parser = self.dp.ofproto_parser
+        req = parser.OFPBarrierRequest(self.dp)
+        return self._send_msg(req)
+
 
 class TestSw(OpenFlowSw):
     def __init__(self, dp, logger):
         super(TestSw, self).__init__(dp, logger)
-        # Add table miss flow (packet in controller).
-        ofp = self.dp.ofproto
-        self.add_flow(out_port=ofp.OFPP_CONTROLLER)
 
     def del_test_flow(self):
         """ Delete all flow except default flow. """
@@ -557,7 +610,6 @@ class TestSw(OpenFlowSw):
                                 out_port=ofp.OFPP_ANY,
                                 out_group=ofp.OFPG_ANY)
         self.dp.send_msg(mod)
-        self.add_flow(out_port=ofp.OFPP_CONTROLLER)
 
     def send_flow_stats(self):
         """ Get all flow. """
@@ -566,12 +618,6 @@ class TestSw(OpenFlowSw):
         req = parser.OFPFlowStatsRequest(self.dp, 0, ofp.OFPTT_ALL,
                                          ofp.OFPP_ANY, ofp.OFPG_ANY,
                                          0, 0, parser.OFPMatch())
-        return self._send_msg(req)
-
-    def send_barrier_request(self):
-        """ send a BARRIER_REQUEST message."""
-        parser = self.dp.ofproto_parser
-        req = parser.OFPBarrierRequest(self.dp)
         return self._send_msg(req)
 
 
@@ -678,31 +724,28 @@ class Test(object):
                                  'when an "ERROR" block does not exist.')
         elif not error:
             for pkt in buf['packets']:
+                pkt_data = {}
                 # parse 'input'
                 if not 'input' in pkt:
                     raise ValueError('a test requires "input" field '
                                      'when an "ERROR" block does not exist.')
-                in_pkt = base64.b64decode(pkt['input'])
+                pkt_data['input'] = base64.b64decode(pkt['input'])
 
                 # parse 'output'
                 out_pkt = None
                 if 'output' in pkt:
-                    out_pkt = base64.b64decode(pkt['output'])
+                    pkt_data['output'] = base64.b64decode(pkt['output'])
 
                 # parse 'PACKET_IN'
                 pkt_in_pkt = None
                 if 'PACKET_IN' in pkt:
-                    pkt_in_pkt = base64.b64decode(pkt['PACKET_IN'])
+                    pkt_data['PACKET_IN'] = base64.b64decode(pkt['PACKET_IN'])
 
-                if (not out_pkt and not pkt_in_pkt) or \
-                        (out_pkt and pkt_in_pkt):
+                if out_pkt and pkt_in_pkt:
                     raise ValueError(
-                        'a test requires either one of "output" or '
-                        '"PACKET_IN" field when '
-                        'an "ERROR" block does not exist.')
-                packets.append({'input': in_pkt,
-                                'output': out_pkt,
-                                'packet_in': pkt_in_pkt})
+                        'There must not be both "output" and "PACKET_IN"'
+                        ' field when an "ERROR" block does not exist.')
+                packets.append(pkt_data)
 
         return (description, flows, error, packets)
 
