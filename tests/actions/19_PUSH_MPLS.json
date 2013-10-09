@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: MPLSタグのないパケットを印可し、新たにMPLSタグを追加する(OVSではmplsフレーム構築時に内部エラーが発生し、試験に失敗する)",
+        "description": "テスト0: MPLSタグのないパケットを印加し、新たにMPLSタグを追加する(OVSではmplsフレーム構築時に内部エラーが発生し、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

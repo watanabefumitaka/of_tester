@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: eth_dst=aa:aa:aa:aa:aa:aaのパケットを印可し、eth_dst=cc:cc:cc:cc:cc:ccに書き換える",
+        "description": "テスト0: eth_dst=aa:aa:aa:aa:aa:aaのパケットを印加し、eth_dst=cc:cc:cc:cc:cc:ccに書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: ipv6_nd_target=3ffe:507:0:1:200:86ff:fe05:80daのパケットを印可し、ipv6_nd_target=3ffe:507:0:1:200:86ff:1234:5678に書き換える(OVSではipv6_nd_targetはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: ipv6_nd_target=3ffe:507:0:1:200:86ff:fe05:80daのパケットを印加し、ipv6_nd_target=3ffe:507:0:1:200:86ff:1234:5678に書き換える(OVSではipv6_nd_targetはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

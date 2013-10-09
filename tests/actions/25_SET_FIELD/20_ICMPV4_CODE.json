@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: icmpv4_code=0のパケットを印可し、icmpv4_code=10に書き換える(OVSではicmpv4_codeはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: icmpv4_code=0のパケットを印加し、icmpv4_code=10に書き換える(OVSではicmpv4_codeはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

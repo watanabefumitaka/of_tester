@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: ipv6_flabel=0のパケットを印可し、ipv6_flabel=16に書き換える(OVSではipv6_flabelはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: ipv6_flabel=0のパケットを印加し、ipv6_flabel=16に書き換える(OVSではipv6_flabelはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

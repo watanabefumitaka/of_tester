@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: tcp_src=6789のパケットを印可し、tcp_src=1234に書き換える",
+        "description": "テスト0: tcp_src=6789のパケットを印加し、tcp_src=1234に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
