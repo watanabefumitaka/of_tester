@@ -263,8 +263,11 @@ class OfTester(app_manager.RyuApp):
             self.logger.warning(msg)
             return
 
+        test_keys = tests.keys()
+        test_keys.sort()
         self.logger.info('--- Test start ---')
-        for test in tests:
+        for test_name in test_keys:
+            test = tests[test_name]
             # Test execute.
             try:
                 if not test.error:
@@ -295,7 +298,7 @@ class OfTester(app_manager.RyuApp):
             # Output test result.
             msg = (coloring(result, GREEN) if result == OK
                    else coloring(result, RED))
-            self.logger.info('%s : %s', test.name, msg)
+            self.logger.info('%s : %s', test_name, msg)
             if result == RYU_INTERNAL_ERROR:
                 self.logger.error(traceback.format_exc())
 
@@ -634,7 +637,7 @@ class SubSw(OpenFlowSw):
         self.dp.send_msg(out)
 
 
-class TestPatterns(list):
+class TestPatterns(dict):
     """ List of Test class objects. """
     def __init__(self, test_files, logger):
         super(TestPatterns, self).__init__()
@@ -663,9 +666,10 @@ class TestPatterns(list):
                 try:
                     json_list = json.loads(buf)
                     for i, test_json in enumerate(json_list):
-                        if len(json_list) == 1:
-                            i = None
-                        self.append(Test(path, i, test_json))
+                        test_name = path.rstrip('.json')
+                        key = (test_name if len(json_list) == 1
+                               else test_name + ('_%d' % i))
+                        self[key] = Test(test_json)
                 except (ValueError, TypeError) as e:
                     result = (TEST_FILE_ERROR %
                               {'file': path, 'detail': e.message})
@@ -674,11 +678,8 @@ class TestPatterns(list):
 
 
 class Test(object):
-    def __init__(self, test_file_path, number, test_json):
+    def __init__(self, test_json):
         super(Test, self).__init__()
-        self.name = test_file_path.rstrip('.json')
-        if number is not None:
-            self.name += '_%d' % number
         (self.description,
          self.flows,
          self.error,
