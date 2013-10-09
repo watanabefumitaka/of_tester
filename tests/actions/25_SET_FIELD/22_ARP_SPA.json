@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: arp_spa=192.168.1.10のパケットを印可し、arp_spa=192.168.1.100に書き換える(OVSではarp_spaはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: arp_spa=192.168.1.10のパケットを印加し、arp_spa=192.168.1.100に書き換える(OVSではarp_spaはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

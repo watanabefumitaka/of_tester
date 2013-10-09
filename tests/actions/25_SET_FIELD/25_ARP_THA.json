@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: arp_tha=bb:bb:bb:bb:bb:bbのパケットを印可し、arp_tha=cc:cc:cc:cc:cc:ccに書き換える(OVSではarp_thaはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: arp_tha=bb:bb:bb:bb:bb:bbのパケットを印加し、arp_tha=cc:cc:cc:cc:cc:ccに書き換える(OVSではarp_thaはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

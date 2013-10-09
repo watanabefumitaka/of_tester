@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: eth_src=bb:bb:bb:bb:bb:bbのパケットを印可し、eth_src=cc:cc:cc:cc:cc:ccに書き換える",
+        "description": "テスト0: eth_src=bb:bb:bb:bb:bb:bbのパケットを印加し、eth_src=cc:cc:cc:cc:cc:ccに書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

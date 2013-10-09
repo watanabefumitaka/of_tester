@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: icmpv6_type=58のパケットを印可し、icmpv6_type=129に書き換える(OVSではicmpv6_typeはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: icmpv6_type=58のパケットを印加し、icmpv6_type=129に書き換える(OVSではicmpv6_typeはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

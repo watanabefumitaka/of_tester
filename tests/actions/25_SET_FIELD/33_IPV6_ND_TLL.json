@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: ipv6_nd_tll=00:60:97:07:69:eaのパケットを印可し、ipv6_nd_tll=bb:bb:bb:bb:bb:bbに書き換える(OVSではipv6_nd_sllはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: ipv6_nd_tll=00:60:97:07:69:eaのパケットを印加し、ipv6_nd_tll=bb:bb:bb:bb:bb:bbに書き換える(OVSではipv6_nd_sllはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

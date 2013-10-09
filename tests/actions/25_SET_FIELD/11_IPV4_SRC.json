@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: ipv4_src=192.168.1.5のパケットを印可し、ipv4_src=192.168.1.50に書き換える",
+        "description": "テスト0: ipv4_src=192.168.1.5のパケットを印加し、ipv4_src=192.168.1.50に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

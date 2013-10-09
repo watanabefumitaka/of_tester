@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: 外側IPヘッダのttlが31、内側IPヘッダのttlが63のパケットを印可し、内側IPヘッダのttlを31に書き換える(OVSではcopy_ttl_inは未サポートであるため、試験に失敗する)",
+        "description": "テスト0: 外側IPヘッダのttlが31、内側IPヘッダのttlが63のパケットを印加し、内側IPヘッダのttlを31に書き換える(OVSではcopy_ttl_inは未サポートであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

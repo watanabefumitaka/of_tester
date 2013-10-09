@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: eth_type=0x0800のパケットを印可し、eth_type=0x8848に書き換える(OVSではeth_typeはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: eth_type=0x0800のパケットを印加し、eth_type=0x8848に書き換える(OVSではeth_typeはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

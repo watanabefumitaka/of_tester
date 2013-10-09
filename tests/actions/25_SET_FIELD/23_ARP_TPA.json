@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: arp_tpa=192.168.2.10のパケットを印可し、arp_tpa=192.168.2.200に書き換える(OVSではarp_tpaはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: arp_tpa=192.168.2.10のパケットを印加し、arp_tpa=192.168.2.200に書き換える(OVSではarp_tpaはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

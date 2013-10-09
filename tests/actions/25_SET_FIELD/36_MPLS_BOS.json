@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: mpls_bos=0のパケットを印可し、mpls_bos=1に書き換える(OVSではmpls_bosはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: mpls_bos=0のパケットを印加し、mpls_bos=1に書き換える(OVSではmpls_bosはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

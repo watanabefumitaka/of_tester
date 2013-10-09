@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: nw_ttl=64のパケットを印可し、nw_ttl=63に減算する",
+        "description": "テスト0: nw_ttl=64のパケットを印加し、nw_ttl=63に減算する",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

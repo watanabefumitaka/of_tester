@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: pbb_isid=100のパケットを印可し、pbb_isid=200に書き換える(OVSではpbb_isidは未サポートであるため、試験に失敗する)",
+        "description": "テスト0: pbb_isid=100のパケットを印加し、pbb_isid=200に書き換える(OVSではpbb_isidは未サポートであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

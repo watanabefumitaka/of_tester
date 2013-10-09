@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: vlan_pcp=3のパケットを印可し、vlan_pcp=7に書き換える",
+        "description": "テスト0: vlan_pcp=3のパケットを印加し、vlan_pcp=7に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

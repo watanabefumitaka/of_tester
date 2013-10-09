@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: VLANタグのないパケットを印可し、新たにVLANタグを追加する",
+        "description": "テスト0: VLANタグのないパケットを印加し、新たにVLANタグを追加する",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
