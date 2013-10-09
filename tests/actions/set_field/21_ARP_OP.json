@@ -1,6 +1,6 @@
 [
     {
-        "description": "ETH_TYPE書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではETH_TYPEはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
+        "description": "ARP_OP書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではARP_OPはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -13,7 +13,7 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "eth_type",
+                                                    "field": "arp_op",
                                                     "value": 65536
                                                 }
                                             }
@@ -42,11 +42,16 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_type",
-                                        "value": 2048
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op",
+                                        "value": 2
                                     }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
@@ -58,12 +63,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAKAAAAAAAGQAQgAAKAgAAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
+                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAGIAAAAQAAAABgAAKAggGgAAqAgACAAQAKAAAAAAAGQAQgAAqAgAAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
             }
         }
     },
     {
-        "description": "ETH_TYPE書き換え試験。OVSではETH_TYPEはread onlyであるため、試験に失敗する。",
+        "description": "ARP_OP書き換え試験。OVSではARP_OPはread onlyであるため、試験に失敗する。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -76,8 +81,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "eth_type",
-                                                    "value": 34888
+                                                    "field": "arp_op",
+                                                    "value": 20
                                                 }
                                             }
                                         }
@@ -105,11 +110,16 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_type",
-                                        "value": 2048
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op",
+                                        "value": 2
                                     }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
@@ -119,8 +129,8 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7iEcAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
-                "output": "qqqqqqqqu7u7u7u7iEgAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqgAAAAAAAAAAAAAAAAAA",
+                "output": "////////qqqqqqqqCAYAAQgABgQAFKqqqqqqqgAAAAAAAAAAAAAAAAAA"
             }
         ]
     }

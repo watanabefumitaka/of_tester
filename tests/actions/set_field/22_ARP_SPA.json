@@ -1,6 +1,6 @@
 [
     {
-        "description": "IN_PORTを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "ARP_SPA書き換えフロー登録失敗試験。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではARP_SPAはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -13,114 +13,12 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "in_port",
-                                                    "value": -1
+                                                    "field": "arp_spa",
+                                                    "value": "192.168.1"
                                                 }
                                             }
                                         }
-                                    }
-                                ],
-                                "type": 4
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable": {
-                                "table_id": 1
-                            }
-                        }
-                    ],
-                    "match": {
-                        "OFPMatch": {
-                            "oxm_fields": [
-                                {
-                                    "OXMTlv": {
-                                        "field": "in_port",
-                                        "value": 1
-                                    }
-                                },
-                                {
-                                    "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
-                                    }
-                                }
-                            ],
-                            "type": 1
-                        }
-                    },
-                    "priority": 32768,
-                    "table_id": 0
-                }
-            }
-        ],
-        "ERROR": {
-            "OFPErrorMsg": {
-                "type": 2,
-                "code": 15,
-                "data": "BA4AaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAGAAAAAAAGQAQgAAABP////8AAAAAAAEACAEAAAA="
-            }
-        }
-    },
-    {
-        "description": "IN_PORTを書き換える試験(OpenFlowではサポートされていない)。",
-        "FLOW_MOD": [
-            {
-                "OFPFlowMod": {
-                    "command": 0,
-                    "instructions": [
-                        {
-                            "OFPInstructionActions": {
-                                "actions": [
-                                    {
-                                        "OFPActionSetField": {
-                                            "field": {
-                                                "OXMTlv": {
-                                                    "field": "in_port",
-                                                    "value": 4294967294
-                                                }
-                                            }
-                                        }
-                                    }
-                                ],
-                                "type": 4
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable": {
-                                "table_id": 1
-                            }
-                        }
-                    ],
-                    "match": {
-                        "OFPMatch": {
-                            "oxm_fields": [
-                                {
-                                    "OXMTlv": {
-                                        "field": "in_port",
-                                        "value": 1
-                                    }
-                                },
-                                {
-                                    "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
-                                    }
-                                }
-                            ],
-                            "type": 1
-                        }
-                    },
-                    "priority": 32768,
-                    "table_id": 0
-                }
-            },
-            {
-                "OFPFlowMod": {
-                    "command": 0,
-                    "instructions": [
-                        {
-                            "OFPInstructionActions": {
-                                "actions": [
+                                    },
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535,
@@ -138,28 +36,101 @@
                                 {
                                     "OXMTlv": {
                                         "field": "in_port",
-                                        "value": 4294967294
+                                        "value": 1
                                     }
                                 },
                                 {
                                     "OXMTlv": {
                                         "field": "eth_type",
-                                        "value": 2048
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_spa",
+                                        "value": "192.168.1.10"
                                     }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
-                    "table_id": 1
+                    "table_id": 0
+                }
+            }
+        ],
+        "ERROR": {
+            "OFPErrorMsg": {
+                "type": 2,
+                "code": 15,
+                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAGoAAAAQAAAABgAAKAggGgAAsBMCoAQoAAAAAAAAABAAoAAAAAAAZABCAACwEwKgAAQAAAAAAAAAQAAAAAv//AAAAAAAA"
+            }
+        }
+    },
+    {
+        "description": "ARP_SPA書き換え試験。OVSではARP_SPAはread onlyであるため、試験に失敗する。",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "arp_spa",
+                                                    "value": "192.168.1.100"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_spa",
+                                        "value": "192.168.1.10"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
                 }
             }
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
-                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQq7u7u7u7vAqAIU",
+                "output": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAWS7u7u7u7vAqAIU"
             }
         ]
     }
