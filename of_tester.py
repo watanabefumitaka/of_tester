@@ -120,8 +120,8 @@ MSG = {STATE_FLOW_INSTALL:
 ERR_MSG = 'OFPErrorMsg received. type=0x%02x code=0x%02x data=%s'
 
 
-GREEN = '\033[92m'
-RED = '\033[91m'
+GREEN = '\033[32m'
+RED = '\033[31m'
 YELLOW = '\033[33m'
 END_TAG = '\033[0m'
 
@@ -443,9 +443,8 @@ class OfTester(app_manager.RyuApp):
                 if value[0] != value[1]:
                     return False
             head_len = struct.calcsize('!BBHI')
-            msg_data = msg.data[head_len:]
-            msg_len = len(msg_data)
-            error_data = error.data[head_len:head_len + msg_len]
+            msg_data = msg.data[head_len:64]
+            error_data = pattern.data[head_len:64]
             if msg_data != error_data:
                 return False
             return True
