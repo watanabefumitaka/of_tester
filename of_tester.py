@@ -357,7 +357,8 @@ class OfTester(app_manager.RyuApp):
                           packet.Packet(pkt.get('PACKET_IN')))
 
         # 1. send a packet from the Open vSwitch.
-        self.sub_sw.send_packet_out(pkt['input'])
+        xid = self.sub_sw.send_packet_out(pkt['input'])
+        self.send_msg_xids.append(xid)
 
         # 2. receive a PacketIn message.
         rcv_pkt_model = (pkt['output'] if 'output' in pkt
@@ -634,7 +635,7 @@ class SubSw(OpenFlowSw):
         out = parser.OFPPacketOut(
             datapath=self.dp, buffer_id=ofp.OFP_NO_BUFFER,
             data=data, in_port=ofp.OFPP_CONTROLLER, actions=actions)
-        self.dp.send_msg(out)
+        return self._send_msg(out)
 
 
 class TestPatterns(dict):
