@@ -1,0 +1,103 @@
+[
+    {
+        "description": "テスト0: match:vlan_pcp=3のフローにマッチするパケットを印加",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_vid",
+                                        "mask": null,
+                                        "value": 4128
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp",
+                                        "value": 3
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    }
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7gQBgIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
+                "output": "qqqqqqqqu7u7u7u7gQBgIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+            }
+        ]
+    },
+    {
+        "description": "テスト1: match:vlan_pcp=3のフローにマッチしないパケットを印加",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_vid",
+                                        "mask": null,
+                                        "value": 4128
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp",
+                                        "value": 3
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    }
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7gQBAIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+            }
+        ]
+    }
+]

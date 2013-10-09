@@ -1,0 +1,129 @@
+[
+    {
+        "description": "テスト0: match:ipv6_nd_target=3ffe:507:0:1:200:86ff:fe05:80daのフローにマッチするパケットを印加",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto",
+                                        "value": 58
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type",
+                                        "value": 135
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target",
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7ht1gABAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABohwBIiQAAAAA//gUHAAAAAQIAhv/+BYDaAQEAYJcHaeo=",
+                "output": "qqqqqqqqu7u7u7u7ht1gABAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABohwBIiQAAAAA//gUHAAAAAQIAhv/+BYDaAQEAYJcHaeo="
+            }
+        ]
+    },
+    {
+        "description": "テスト1: match:ipv6_nd_target=3ffe:507:0:1:200:86ff:fe05:80daのフローにマッチしないパケットを印加",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto",
+                                        "value": 58
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type",
+                                        "value": 135
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target",
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7ht1gABAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABohwBIiQAAAAA//gUHAAAAAQIAhv/+BYDbAQAAYJcHaeo="
+            }
+        ]
+    }
+]

@@ -1,0 +1,99 @@
+[
+    {
+        "description": "テスト0: match:mpls_lavel=100のフローにマッチするパケットを印加",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34887
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label",
+                                        "value": 100
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7iEcABk1ARQEAVAAAQABABrdLwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
+                "output": "qqqqqqqqu7u7u7u7iEcABk1ARQEAVAAAQABABrdLwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+            }
+        ]
+    },
+    {
+        "description": "テスト1: match:mpls_lavel=100のフローにマッチしないパケットを印加",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34887
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label",
+                                        "value": 100
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7iEcADI1ARQEAVAAAQABABrdLwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+            }
+        ]
+    }
+]
