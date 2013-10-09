@@ -1,61 +1,6 @@
 [
     {
-        "description": "TUNNEL_ID書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
-        "FLOW_MOD": [
-            {
-                "OFPFlowMod": {
-                    "command": 0,
-                    "instructions": [
-                        {
-                            "OFPInstructionActions": {
-                                "actions": [
-                                    {
-                                        "OFPActionSetField": {
-                                            "field": {
-                                                "OXMTlv": {
-                                                    "field": "tunnel_id",
-                                                    "value": 18446744073709551616
-                                                }
-                                            }
-                                        }
-                                    }
-                                ],
-                                "type": 4
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable": {
-                                "table_id": 1
-                            }
-                        }
-                    ],
-                    "match": {
-                        "OFPMatch": {
-                            "oxm_fields": [
-                                {
-                                    "OXMTlv": {
-                                        "field": "in_port",
-                                        "value": 1
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "priority": 32768,
-                    "table_id": 0
-                }
-            }
-        ],
-        "ERROR": {
-            "OFPErrorMsg": {
-                "type": 2,
-                "code": 15,
-                "data": "BA4AYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEADIAAAAQAAAABAAAAAAAEABgAAAAAABkAEIAATAgAAAAAAAAAAAABAAgBAAAA"
-            }
-        }
-    },
-    {
-        "description": "TUNNEL_ID書き換え試験。",
+        "description": "テスト0: 入力ポート1からのパケットにtunnel_id=100を設定し次テーブルに送り、次テーブルではtunnel_idが100であれば出力する",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
