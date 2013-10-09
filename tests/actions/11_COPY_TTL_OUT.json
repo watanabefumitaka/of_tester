@@ -1,0 +1,57 @@
+[
+    {
+        "description": "テスト0: 外側IPヘッダのttlが31、内側IPヘッダのttlが63のパケットを印可し、外側IPヘッダのttlを63に書き換える(OVSではcopy_ttl_outは未サポートであるため、試験に失敗する)",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionCopyTtlOut": {
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34887
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAB8E2E7AqAEFwKgBAkUAAFQAAEAAPwYkggqQAQEKkAECGoUrZwAAAHsAAAABYAEIADnmAG8AAAAA",
+                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAD8EuE7AqAEFwKgBAkUAAFQAAEAAPwYkggqQAQEKkAECGoUrZwAAAHsAAAABYAEIADnmAG8AAAAA"
+            }
+        ]
+    }
+]
