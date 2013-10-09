@@ -1,6 +1,6 @@
 [
     {
-        "description": "ETH_TYPE書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではETH_TYPEはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
+        "description": "IPV6_ND_TLL書き換えフロー登録失敗試験。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではIPV6_ND_TLLはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -13,8 +13,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "eth_type",
-                                                    "value": 65536
+                                                    "field": "ipv6_nd_tll",
+                                                    "value": "11:22:33"
                                                 }
                                             }
                                         }
@@ -42,11 +42,28 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_type",
-                                        "value": 2048
+                                        "value": 34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto",
+                                        "value": 58
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type",
+                                        "value": 136
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_tll",
+                                        "value": "00:60:97:07:69:ea"
                                     }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
@@ -58,12 +75,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAKAAAAAAAGQAQgAAKAgAAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
+                "data": "BA4AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAJoAAAAQAAAABgAAKAobdgAAUATqAADoBiIAAQgYAYJcHaeoAAAAEACgAAAAAABkAEIAAQgYAEQAiADMAAAAAABAAAAAC//8AAAAAAAA="
             }
         }
     },
     {
-        "description": "ETH_TYPE書き換え試験。OVSではETH_TYPEはread onlyであるため、試験に失敗する。",
+        "description": "IPV6_ND_TLL書き換え試験。OVSではIPV6_ND_TLLはread onlyであるため、試験に失敗する。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -76,8 +93,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "eth_type",
-                                                    "value": 34888
+                                                    "field": "ipv6_nd_tll",
+                                                    "value": "bb:bb:bb:bb:bb:bb"
                                                 }
                                             }
                                         }
@@ -105,11 +122,28 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_type",
-                                        "value": 2048
+                                        "value": 34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto",
+                                        "value": 58
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type",
+                                        "value": 136
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_tll",
+                                        "value": "00:60:97:07:69:ea"
                                     }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
@@ -119,8 +153,8 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7iEcAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
-                "output": "qqqqqqqqu7u7u7u7iEgAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+                "input": "wgFR+gAAwgBR+gAAht1gAAAAADw6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACiADM0gAAAAA//gUHAAAAAQIAhv/+BYDaAQEAYJcHaeo=",
+                "output": "wgFR+gAAwgBR+gAAht1gAAAAADw6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACiACa8QAAAAA//gUHAAAAAQIAhv/+BYDaAQG7u7u7u7s="
             }
         ]
     }

@@ -1,6 +1,6 @@
 [
     {
-        "description": "ETH_TYPE書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではETH_TYPEはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
+        "description": "IPV4_SRC書き換えフロー登録失敗試験。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -13,8 +13,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "eth_type",
-                                                    "value": 65536
+                                                    "field": "ipv4_src",
+                                                    "value": "192.168.1"
                                                 }
                                             }
                                         }
@@ -44,9 +44,14 @@
                                         "field": "eth_type",
                                         "value": 2048
                                     }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv4_src",
+                                        "value": "192.168.1.5"
+                                    }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
@@ -58,12 +63,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAKAAAAAAAGQAQgAAKAgAAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
+                "data": "BA4AeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAGoAAAAQAAAABgAAKAggAgAAWBMCoAQUAAAAAAAAABAAoAAAAAAAZABCAABYEwKgAAQAAAAAAAAAQAAAAAv//AAAAAAAA"
             }
         }
     },
     {
-        "description": "ETH_TYPE書き換え試験。OVSではETH_TYPEはread onlyであるため、試験に失敗する。",
+        "description": "IPV4_SRC書き換え試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -76,8 +81,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "eth_type",
-                                                    "value": 34888
+                                                    "field": "ipv4_src",
+                                                    "value": "192.168.1.50"
                                                 }
                                             }
                                         }
@@ -107,9 +112,14 @@
                                         "field": "eth_type",
                                         "value": 2048
                                     }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv4_src",
+                                        "value": "192.168.1.5"
+                                    }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
@@ -119,8 +129,8 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7iEcAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
-                "output": "qqqqqqqqu7u7u7u7iEgAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEAGt0zAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA==",
+                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAEAGtx/AqAEywKgBAhqFK2cAAAB7AAAAAWABCADNgwBvAAAAAA=="
             }
         ]
     }

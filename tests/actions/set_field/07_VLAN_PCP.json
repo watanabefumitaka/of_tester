@@ -1,6 +1,6 @@
 [
     {
-        "description": "ETH_TYPE書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。また、OVSではETH_TYPEはread onlyであるため、OFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)が発生し、試験が成功してしまう。",
+        "description": "VLAN_PCP書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -13,8 +13,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "eth_type",
-                                                    "value": 65536
+                                                    "field": "vlan_pcp",
+                                                    "value": 8
                                                 }
                                             }
                                         }
@@ -41,8 +41,15 @@
                                 },
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
+                                        "field": "vlan_vid",
+                                        "mask": null,
+                                        "value": 4128
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp",
+                                        "value": 3
                                     }
                                 }
                             ],
@@ -58,12 +65,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAKAAAAAAAGQAQgAAKAgAAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
+                "data": "BA4AcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAF4AAAAQAAAABgAAMAhAggAAOAQMAAAQAKAAAAAAAGQAQgAAOAQgAAAAAAAAAAAAAEAAAAAL//wAAAAAAAA=="
             }
         }
     },
     {
-        "description": "ETH_TYPE書き換え試験。OVSではETH_TYPEはread onlyであるため、試験に失敗する。",
+        "description": "VLAN_PCP書き換え試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -76,8 +83,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "eth_type",
-                                                    "value": 34888
+                                                    "field": "vlan_pcp",
+                                                    "value": 7
                                                 }
                                             }
                                         }
@@ -104,8 +111,15 @@
                                 },
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
+                                        "field": "vlan_vid",
+                                        "mask": null,
+                                        "value": 4128
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp",
+                                        "value": 3
                                     }
                                 }
                             ],
@@ -119,8 +133,8 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7iEcAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
-                "output": "qqqqqqqqu7u7u7u7iEgAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+                "input": "qqqqqqqqu7u7u7u7gQBgIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
+                "output": "qqqqqqqqu7u7u7u7gQDgIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
             }
         ]
     }

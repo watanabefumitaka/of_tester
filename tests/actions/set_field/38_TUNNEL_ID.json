@@ -1,6 +1,6 @@
 [
     {
-        "description": "METADATAを書き換えるフローの登録に失敗する試験(範囲外の値を設定できないため試験不可能)。",
+        "description": "TUNNEL_ID書き換えフロー登録失敗試験(最大値超過)。期待するエラーはOFPET_BAD_ACTION(2)/OFPBAC_BAD_SET_ARGUMENT(15)。ただしryuでは異常値を設定できないため試験不可能。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -13,8 +13,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "metadata",
-                                                    "value": -1
+                                                    "field": "tunnel_id",
+                                                    "value": 18446744073709551616
                                                 }
                                             }
                                         }
@@ -37,15 +37,8 @@
                                         "field": "in_port",
                                         "value": 1
                                     }
-                                },
-                                {
-                                    "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
-                                    }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
@@ -57,12 +50,12 @@
             "OFPErrorMsg": {
                 "type": 2,
                 "code": 15,
-                "data": "BA4AaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEAEoAAAAQAAAABgAAKAggAAAAAAAAAAAQAGAAAAAAAGQAQgAAECP//////////AAEACAEAAAA="
+                "data": "BA4AYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAD/////AAAAAAAAAAAAAAAAAAEADIAAAAQAAAABAAAAAAAEABgAAAAAABkAEIAATAgAAAAAAAAAAAABAAgBAAAA"
             }
         }
     },
     {
-        "description": "METADATAを書き換える試験(OpenFlowではサポートされていない)。",
+        "description": "TUNNEL_ID書き換え試験。",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -75,8 +68,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "metadata",
-                                                    "value": 1
+                                                    "field": "tunnel_id",
+                                                    "value": 100
                                                 }
                                             }
                                         }
@@ -99,63 +92,12 @@
                                         "field": "in_port",
                                         "value": 1
                                     }
-                                },
-                                {
-                                    "OXMTlv": {
-                                        "field": "eth_type",
-                                        "value": 2048
-                                    }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
                     "table_id": 0
-                }
-            },
-            {
-                "OFPFlowMod": {
-                    "command": 0,
-                    "instructions": [
-                        {
-                            "OFPInstructionActions": {
-                                "actions": [
-                                    {
-                                        "OFPActionSetField": {
-                                            "field": {
-                                                "OXMTlv": {
-                                                    "field": "metadata",
-                                                    "value": 2
-                                                }
-                                            }
-                                        }
-                                    }
-                                ],
-                                "type": 4
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable": {
-                                "table_id": 2
-                            }
-                        }
-                    ],
-                    "match": {
-                        "OFPMatch": {
-                            "oxm_fields": [
-                                {
-                                    "OXMTlv": {
-                                        "field": "metadata",
-                                        "value": 1
-                                    }
-                                }
-                            ],
-                            "type": 1
-                        }
-                    },
-                    "priority": 32768,
-                    "table_id": 1
                 }
             },
             {
@@ -181,23 +123,22 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "metadata",
-                                        "value": 2
+                                        "field": "tunnel_id",
+                                        "value": 100
                                     }
                                 }
-                            ],
-                            "type": 1
+                            ]
                         }
                     },
                     "priority": 32768,
-                    "table_id": 2
+                    "table_id": 1
                 }
             }
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
-                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAEABtizAqAHIwKgBZAgAvqwAAQABMDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM"
+                "input": "qqqqqqqqu7u7u7u7iOcAAABkzMzMzMzM3d3d3d3dCABFAABUAABAAEAGt0zAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA==",
+                "output": "qqqqqqqqu7u7u7u7iOcAAABkzMzMzMzM3d3d3d3dCABFAABUAABAAEAGt0zAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA=="
             }
         ]
     }
