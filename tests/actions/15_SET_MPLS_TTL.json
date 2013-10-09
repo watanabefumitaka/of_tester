@@ -1,0 +1,58 @@
+[
+    {
+        "description": "テスト0: mpls_ttl=64のパケットを印可し、mpls_ttl=128に書き換える(OVSではmplsフレーム構築時に内部エラーが発生し、試験に失敗する)",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetMplsTtl": {
+                                            "mpls_ttl": 128
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34887
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7iEcAAd1ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
+                "output": "qqqqqqqqu7u7u7u7iEcAAd2ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+            }
+        ]
+    }
+]

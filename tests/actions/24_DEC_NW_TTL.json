@@ -1,0 +1,57 @@
+[
+    {
+        "description": "テスト0: nw_ttl=64のパケットを印可し、nw_ttl=63に減算する",
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionDecNwTtl": {
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
+                }
+            }
+        ],
+        "packets": [
+            {
+                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEAGt0zAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA==",
+                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAD8GuEzAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA=="
+            }
+        ]
+    }
+]
