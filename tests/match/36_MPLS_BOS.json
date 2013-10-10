@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: match:mpls_bos=0のパフローにマッチするパケットを印加",
+        "description": "テスト0: match:mpls_bos=0のフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -49,7 +49,7 @@
         ]
     },
     {
-        "description": "テスト1: match:mpls_bos=0のパフローにマッチしないパケットを印加",
+        "description": "テスト1: match:mpls_bos=0のフローにマッチしないパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
