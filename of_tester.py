@@ -390,8 +390,10 @@ class OfTester(app_manager.RyuApp):
                     continue
                 self.logger.debug("receive_packet:[%s]",
                                   packet.Packet(msg.data))
-                if str(msg.data) != str(rcv_pkt_model):
-                    self.logger.debug("receive_packet is unmatch.")
+                if repr(msg.data) != repr(rcv_pkt_model):
+                    self.logger.debug("receive_packet is unmatch."
+                                      " rcv_pkt_model=%s, msg.data=%s" %
+                                      (repr(rcv_pkt_model), repr(msg.data)))
                     continue
                 break
 
