@@ -359,6 +359,7 @@ class OfTester(app_manager.RyuApp):
         raise TestFailure(self.state)
 
     def _test_flow_matching_check(self, pkt):
+        pad_zero = repr('\x00')[1:-1]
         self.logger.debug("send_packet:[%s]", packet.Packet(pkt['input']))
         self.logger.debug("output:[%s]", packet.Packet(pkt.get('output')))
         self.logger.debug("packet_in:[%s]",
@@ -369,8 +370,8 @@ class OfTester(app_manager.RyuApp):
         self.send_msg_xids.append(xid)
 
         # 2. receive a PacketIn message.
-        rcv_pkt_model = (pkt['output'] if 'output' in pkt
-                         else pkt['PACKET_IN'])
+        rcv_pkt_model = repr(pkt['output'] if 'output' in pkt
+                             else pkt['PACKET_IN'])[1:-1]
         pkt_in_src_model = (self.sub_sw if 'output' in pkt
                             else self.test_sw)
 
@@ -390,10 +391,15 @@ class OfTester(app_manager.RyuApp):
                     continue
                 self.logger.debug("receive_packet:[%s]",
                                   packet.Packet(msg.data))
-                if repr(msg.data) != repr(rcv_pkt_model):
+                msg_data = repr(msg.data)[1:-1]
+                rcv_pkt = msg_data[:len(rcv_pkt_model)]
+                padding = msg_data[len(rcv_pkt_model):]
+                padding_model = (pad_zero * ((len(msg_data)
+                                 - len(rcv_pkt_model))/len(pad_zero)))
+                if rcv_pkt != rcv_pkt_model or padding != padding_model:
                     self.logger.debug("receive_packet is unmatch."
-                                      " rcv_pkt_model=%s, msg.data=%s" %
-                                      (repr(rcv_pkt_model), repr(msg.data)))
+                                      " rcv_pkt_model=%s, msg_data=%s" %
+                                      (rcv_pkt_model, msg_data))
                     continue
                 break
 
