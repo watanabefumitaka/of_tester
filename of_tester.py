@@ -63,8 +63,9 @@ from ryu.ofproto import ofproto_v1_3_parser
 """
 
 
-DEFAULT_DIRECTORY = './'
+DEBUG_MODE = '--verbose'
 
+DEFAULT_DIRECTORY = './'
 TEST_SW_ID = dpid_lib.str_to_dpid('0000000000000001')
 SUB_SW_ID = dpid_lib.str_to_dpid('0000000000000002')
 SUB_SW_SENDER_PORT = 1
@@ -184,7 +185,12 @@ class OfTester(app_manager.RyuApp):
 
     def __init__(self):
         super(OfTester, self).__init__()
-        self._set_logger()
+        params = sys.argv
+        debug_mode = bool(DEBUG_MODE in params)
+        if debug_mode:
+            params.remove(DEBUG_MODE)
+
+        self._set_logger(debug_mode)
         self.test_sw = None
         self.sub_sw = None
         self.state = STATE_INIT
@@ -192,16 +198,18 @@ class OfTester(app_manager.RyuApp):
         self.waiter = None
         self.send_msg_xids = []
         self.rcv_msgs = []
-        self.test_files = (sys.argv[1:] if len(sys.argv) > 1
+        self.test_files = (params[1:] if len(params) > 1
                            else [DEFAULT_DIRECTORY])
         self.logger.info('Test files or directory = %s', self.test_files)
 
-    def _set_logger(self):
+    def _set_logger(self, debug_mode):
         self.logger.propagate = False
         hdlr = logging.StreamHandler()
         fmt_str = '[%(levelname)s] %(message)s'
         hdlr.setFormatter(logging.Formatter(fmt_str))
         self.logger.addHandler(hdlr)
+        if debug_mode:
+            self.logger.setLevel(logging.DEBUG)
 
     def close(self):
         self._test_terminate()
