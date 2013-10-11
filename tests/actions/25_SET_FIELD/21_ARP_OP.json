@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: arp_op=2のパケットを印加し、arp_op=20に書き換える(OVSではarp_opはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: arp_op=2のパケットを印加し、arp_op=20に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {

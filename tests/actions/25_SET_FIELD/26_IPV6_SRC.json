@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: ipv6_src=2001:db8:0:12::1のパケットを印加し、ipv6_src=2001d:db8:0:12::10に書き換える(OVSではipv6パケット構築時に内部エラーが発生し、試験に失敗する)",
+        "description": "テスト0: ipv6_src=2001:db8:0:12::1のパケットを印加し、ipv6_src=2001d:db8:0:12::10に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -61,8 +61,8 @@
         ],
         "packets": [
             {
-                "input": "wgFR+gAAwgBR+gAAht1gAAAAAAAAQCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAAC",
-                "output": "wgFR+gAAwgBR+gAAht1gAAAAAAAAQCABDbgAAAASAAAAAAAAABAgAQ24AAAAEgAAAAAAAAAC"
+                "input": "wgFR+gAAwgBR+gAAht1gAAAAADw6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACgAAhKXYgAAAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIz",
+                "output": "wgFR+gAAwgBR+gAAht1gAAAAADw6QCABDbgAAAASAAAAAAAAABAgAQ24AAAAEgAAAAAAAAACgAAhKXYgAAAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIz"
             }
         ]
     }
