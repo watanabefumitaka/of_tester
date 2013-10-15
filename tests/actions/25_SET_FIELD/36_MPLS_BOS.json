@@ -61,8 +61,112 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7iEcABk5ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
-                "output": "qqqqqqqqu7u7u7u7iEcABk9ARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+                "input": "qqqqqqqqALu7u7u7iEcABkBARQAANgAAQABABrdqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
+                "output": "qqqqqqqqALu7u7u7iEcABkFARQAANgAAQABABrdqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
+                "description": {
+                    "input": [
+                        {
+                            "ethernet": {
+                                "dst": "aa:aa:aa:aa:aa:aa",
+                                "ethertype": 34887,
+                                "src": "00:bb:bb:bb:bb:bb"
+                            }
+                        },
+                        {
+                            "mpls": {
+                                "label": 100,
+                                "exp": 0,
+                                "bsb": 0,
+                                "ttl": 64
+                            }
+                        },
+                        {
+                            "ipv4": {
+                                "csum": 46954,
+                                "dst": "192.168.1.2",
+                                "flags": 2,
+                                "header_length": 5,
+                                "identification": 0,
+                                "offset": 0,
+                                "option": null,
+                                "proto": 6,
+                                "src": "192.168.1.5",
+                                "tos": 0,
+                                "total_length": 54,
+                                "ttl": 64,
+                                "version": 4
+                            }
+                        },
+                        {
+                            "tcp": {
+                                "ack": 0,
+                                "bits": 48,
+                                "csum": 46170,
+                                "dst_port": 11111,
+                                "offset": 6,
+                                "option": "AAAAAA==",
+                                "seq": 123,
+                                "src_port": 6789,
+                                "urgent": 111,
+                                "window_size": 2048
+                            }
+                        },
+                        {
+                            "data": "AQIDBAUGBwgJCg=="
+                        }
+                    ],
+                    "output": [
+                        {
+                            "ethernet": {
+                                "dst": "aa:aa:aa:aa:aa:aa",
+                                "ethertype": 34887,
+                                "src": "00:bb:bb:bb:bb:bb"
+                            }
+                        },
+                        {
+                            "mpls": {
+                                "label": 100,
+                                "exp": 0,
+                                "bsb": 1,
+                                "ttl": 64
+                            }
+                        },
+                        {
+                            "ipv4": {
+                                "csum": 46954,
+                                "dst": "192.168.1.2",
+                                "flags": 2,
+                                "header_length": 5,
+                                "identification": 0,
+                                "offset": 0,
+                                "option": null,
+                                "proto": 6,
+                                "src": "192.168.1.5",
+                                "tos": 0,
+                                "total_length": 54,
+                                "ttl": 64,
+                                "version": 4
+                            }
+                        },
+                        {
+                            "tcp": {
+                                "ack": 0,
+                                "bits": 48,
+                                "csum": 46170,
+                                "dst_port": 11111,
+                                "offset": 6,
+                                "option": "AAAAAA==",
+                                "seq": 123,
+                                "src_port": 6789,
+                                "urgent": 111,
+                                "window_size": 2048
+                            }
+                        },
+                        {
+                            "data": "AQIDBAUGBwgJCg=="
+                        }
+                    ]
+                }
             }
         ]
     }

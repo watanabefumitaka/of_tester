@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: arp_tpa=192.168.2.10のパケットを印加し、arp_tpa=192.168.2.200に書き換える",
+        "description": "テスト0: arp_tpa=192.168.2.20のパケットを印加し、arp_tpa=192.168.2.200に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -61,8 +61,54 @@
         ],
         "packets": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQq7u7u7u7vAqAIU",
-                "output": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQq7u7u7u7vAqALI"
+                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQoAu7u7u7vAqAIU",
+                "output": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQoAu7u7u7vAqALI",
+                "description": {
+                    "input": [
+                        {
+                            "ethernet": {
+                                "dst": "ff:ff:ff:ff:ff:ff",
+                                "ethertype": 2054,
+                                "src": "aa:aa:aa:aa:aa:aa"
+                            }
+                        },
+                        {
+                            "arp": {
+                                "hwtype": 1,
+                                "proto": 2048,
+                                "hlen": 6,
+                                "plen": 4,
+                                "opcode": 2,
+                                "src_mac": "aa:aa:aa:aa:aa:aa",
+                                "src_ip": "192.168.1.10",
+                                "dst_mac": "00:bb:bb:bb:bb:bb",
+                                "dst_ip": "192.168.2.20"
+                            }
+                        }
+                    ],
+                    "output": [
+                        {
+                            "ethernet": {
+                                "dst": "ff:ff:ff:ff:ff:ff",
+                                "ethertype": 2054,
+                                "src": "aa:aa:aa:aa:aa:aa"
+                            }
+                        },
+                        {
+                            "arp": {
+                                "hwtype": 1,
+                                "proto": 2048,
+                                "hlen": 6,
+                                "plen": 4,
+                                "opcode": 2,
+                                "src_mac": "aa:aa:aa:aa:aa:aa",
+                                "src_ip": "192.168.1.10",
+                                "dst_mac": "00:bb:bb:bb:bb:bb",
+                                "dst_ip": "192.168.2.200"
+                            }
+                        }
+                    ]
+                }
             }
         ]
     }

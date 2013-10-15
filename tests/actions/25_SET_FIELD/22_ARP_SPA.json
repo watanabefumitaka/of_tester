@@ -61,8 +61,54 @@
         ],
         "packets": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQq7u7u7u7vAqAIU",
-                "output": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAWS7u7u7u7vAqAIU"
+                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQoAu7u7u7vAqAEU",
+                "output": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAWQAu7u7u7vAqAEU",
+                "description": {
+                    "input": [
+                        {
+                            "ethernet": {
+                                "dst": "ff:ff:ff:ff:ff:ff",
+                                "ethertype": 2054,
+                                "src": "aa:aa:aa:aa:aa:aa"
+                            }
+                        },
+                        {
+                            "arp": {
+                                "hwtype": 1,
+                                "proto": 2048,
+                                "hlen": 6,
+                                "plen": 4,
+                                "opcode": 2,
+                                "src_mac": "aa:aa:aa:aa:aa:aa",
+                                "src_ip": "192.168.1.10",
+                                "dst_mac": "00:bb:bb:bb:bb:bb",
+                                "dst_ip": "192.168.1.20"
+                            }
+                        }
+                    ],
+                    "output": [
+                        {
+                            "ethernet": {
+                                "dst": "ff:ff:ff:ff:ff:ff",
+                                "ethertype": 2054,
+                                "src": "aa:aa:aa:aa:aa:aa"
+                            }
+                        },
+                        {
+                            "arp": {
+                                "hwtype": 1,
+                                "proto": 2048,
+                                "hlen": 6,
+                                "plen": 4,
+                                "opcode": 2,
+                                "src_mac": "aa:aa:aa:aa:aa:aa",
+                                "src_ip": "192.168.1.100",
+                                "dst_mac": "00:bb:bb:bb:bb:bb",
+                                "dst_ip": "192.168.1.20"
+                            }
+                        }
+                    ]
+                }
             }
         ]
     }

@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: ipv6_nd_tll=00:60:97:07:69:eaのパケットを印加し、ipv6_nd_tll=bb:bb:bb:bb:bb:bbに書き換える(OVSではipv6_nd_sllはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: ipv6_nd_tll=00:60:97:07:69:eaのパケットを印加し、ipv6_nd_tll=00:bb:bb:bb:bb:bbに書き換える(OVSではipv6_nd_sllはread onlyであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -14,7 +14,7 @@
                                             "field": {
                                                 "OXMTlv": {
                                                     "field": "ipv6_nd_tll",
-                                                    "value": "bb:bb:bb:bb:bb:bb"
+                                                    "value": "00:bb:bb:bb:bb:bb"
                                                 }
                                             }
                                         }
@@ -73,8 +73,96 @@
         ],
         "packets": [
             {
-                "input": "wgFR+gAAwgBR+gAAht1gAAAAADw6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACiADM0gAAAAA//gUHAAAAAQIAhv/+BYDaAQEAYJcHaeo=",
-                "output": "wgFR+gAAwgBR+gAAht1gAAAAADw6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACiACa8QAAAAA//gUHAAAAAQIAhv/+BYDaAQG7u7u7u7s="
+                "input": "qqqqqqqqALu7u7u7ht1gAAAAACA6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACiADM0gAAAAA//gUHAAAAAQIAhv/+BYDaAQEAYJcHaeo=",
+                "output": "qqqqqqqqALu7u7u7ht1gAAAAACA6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACiABV8gAAAAA//gUHAAAAAQIAhv/+BYDaAQEAu7u7u7s=",
+                "description": {
+                    "input": [
+                        {
+                            "ethernet": {
+                                "dst": "aa:aa:aa:aa:aa:aa",
+                                "ethertype": 34525,
+                                "src": "00:bb:bb:bb:bb:bb"
+                            }
+                        },
+                        {
+                            "ipv6": {
+                                "version": 6,
+                                "traffic_class": 0,
+                                "flow_label": 0,
+                                "payload_length": 32,
+                                "nxt": 58,
+                                "hop_limit": 64,
+                                "src": "2001:db8:0:12::1",
+                                "dst": "2001:db8:0:12::2",
+                                "ext_hdrs": []
+                            }
+                        },
+                        {
+                            "icmpv6": {
+                                "type": 136,
+                                "code": 0,
+                                "csum": 52434,
+                                "data": {
+                                    "nd_neighbor": {
+                                        "type": 1,
+                                        "res": 0,
+                                        "length": 1,
+                                        "data": {
+                                            "nd_option_la": {
+                                                "data": null,
+                                                "hw_src": "00:60:97:07:69:ea"
+                                            }
+                                        },
+                                        "dst": "3ffe:507:0:1:200:86ff:fe05:80da"
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "output": [
+                        {
+                            "ethernet": {
+                                "dst": "aa:aa:aa:aa:aa:aa",
+                                "ethertype": 34525,
+                                "src": "00:bb:bb:bb:bb:bb"
+                            }
+                        },
+                        {
+                            "ipv6": {
+                                "version": 6,
+                                "traffic_class": 0,
+                                "flow_label": 0,
+                                "payload_length": 32,
+                                "nxt": 58,
+                                "hop_limit": 64,
+                                "src": "2001:db8:0:12::1",
+                                "dst": "2001:db8:0:12::2",
+                                "ext_hdrs": []
+                            }
+                        },
+                        {
+                            "icmpv6": {
+                                "type": 136,
+                                "code": 0,
+                                "csum": 22002,
+                                "data": {
+                                    "nd_neighbor": {
+                                        "type": 1,
+                                        "res": 0,
+                                        "length": 1,
+                                        "data": {
+                                            "nd_option_la": {
+                                                "data": null,
+                                                "hw_src": "00:bb:bb:bb:bb:bb"
+                                            }
+                                        },
+                                        "dst": "3ffe:507:0:1:200:86ff:fe05:80da"
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
             }
         ]
     }
