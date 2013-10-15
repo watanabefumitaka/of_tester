@@ -1,16 +1,22 @@
 [
-    {
-        "ethernet": {
-            "dst": "ff:ff:ff:ff:ff:ff",
-            "ethertype": 2054,
-            "src": "aa:aa:aa:aa:aa:aa"
-        }
-    },
-    {
-        "arp": {
-            "src_mac": "aa:aa:aa:aa:aa:aa",
-            "dst_mac": "00:00:00:00:00:00",
-            "opcode": 2
-        }
-    }
+                        {
+                            "ethernet": {
+                                "dst": "ff:ff:ff:ff:ff:ff",
+                                "ethertype": 2054,
+                                "src": "aa:aa:aa:aa:aa:aa"
+                            }
+                        },
+                        {
+                            "arp": {
+                                "hwtype": 1,
+                                "proto": 2048,
+                                "hlen": 6,
+                                "plen": 4,
+                                "opcode": 2,
+                                "src_mac": "aa:aa:aa:aa:aa:aa",
+                                "src_ip": "192.168.1.10",
+                                "dst_mac": "00:bb:bb:bb:bb:bb",
+                                "dst_ip": "192.168.2.20"
+                            }
+                        }
 ]
