@@ -150,10 +150,6 @@ class TestReceiveError(RyuException):
         super(TestReceiveError, self).__init__(msg)
 
 
-class TestEnvironmentError(RyuException):
-    message = 'dpid=%(dpid)s : At least three links are required.'
-
-
 def main():
     """ main function. start OpenFlowSwitch Tester. """
     log.init_log()
@@ -576,8 +572,6 @@ class OpenFlowSw(object):
         super(OpenFlowSw, self).__init__()
         self.dp = dp
         self.logger = logger
-        if len(dp.ports) < 3:
-            raise TestEnvironmentError(dpid=dpid_lib.dpid_to_str(dp.id))
 
     def _send_msg(self, msg):
         msg.xid = None
