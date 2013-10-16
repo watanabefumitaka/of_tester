@@ -64,10 +64,12 @@ from ryu.ofproto import ofproto_v1_3_parser
 
 
 DEBUG_MODE = '--verbose'
+ARG_TEST_SW_ID = '--test-sw-id'
+ARG_SUB_SW_ID = '--sub-sw-id'
 
 DEFAULT_DIRECTORY = './'
-TEST_SW_ID = dpid_lib.str_to_dpid('0000000000000001')
-SUB_SW_ID = dpid_lib.str_to_dpid('0000000000000002')
+DEFAULT_TEST_SW_ID = dpid_lib.str_to_dpid('0000000000000001')
+DEFAULT_SUB_SW_ID = dpid_lib.str_to_dpid('0000000000000002')
 SUB_SW_SENDER_PORT = 1
 
 WAIT_TIMER = 5  # sec
@@ -185,8 +187,26 @@ class OfTester(app_manager.RyuApp):
         debug_mode = bool(DEBUG_MODE in params)
         if debug_mode:
             params.remove(DEBUG_MODE)
-
         self._set_logger(debug_mode)
+
+        self.test_sw_id = DEFAULT_TEST_SW_ID
+        self.sub_sw_id = DEFAULT_SUB_SW_ID
+        try:
+            if ARG_TEST_SW_ID in params:
+                index = params.index(ARG_TEST_SW_ID) + 1
+                self.test_sw_id = int(params[index], 16)
+                params.pop(index)
+                params.remove(ARG_TEST_SW_ID)
+            if ARG_SUB_SW_ID in params:
+                index = params.index(ARG_SUB_SW_ID) + 1
+                self.sub_sw_id = int(params[index], 16)
+                params.pop(params.index(ARG_SUB_SW_ID)+1)
+                params.remove(ARG_SUB_SW_ID)
+        except (IndexError, ValueError):
+            self.logger.error('Invarid %s or %s parameter.',
+                              ARG_TEST_SW_ID, ARG_SUB_SW_ID)
+            sys.exit()
+
         self.test_sw = None
         self.sub_sw = None
         self.state = STATE_INIT
@@ -228,11 +248,11 @@ class OfTester(app_manager.RyuApp):
 
     def _register_sw(self, dp):
         try:
-            if dp.id == TEST_SW_ID:
+            if dp.id == self.test_sw_id:
                 self.test_sw = TestSw(dp, self.logger)
                 self.logger.info('dpid=%s : Join test SW.',
                                  dpid_lib.dpid_to_str(dp.id))
-            elif dp.id == SUB_SW_ID:
+            elif dp.id == self.sub_sw_id:
                 self.sub_sw = SubSw(dp, self.logger)
                 self.logger.info('dpid=%s : Join sub SW.',
                                  dpid_lib.dpid_to_str(dp.id))
@@ -244,15 +264,15 @@ class OfTester(app_manager.RyuApp):
             self.test_thread = hub.spawn(self._test_execute)
 
     def _unregister_sw(self, dp):
-        if dp.id == TEST_SW_ID or dp.id == SUB_SW_ID:
+        if dp.id == self.test_sw_id or dp.id == self.sub_sw_id:
             self._test_terminate()
 
-            if dp.id == TEST_SW_ID:
+            if dp.id == self.test_sw_id:
                 del self.test_sw
                 self.test_sw = None
                 self.logger.info('dpid=%s : Leave test SW.',
                                  dpid_lib.dpid_to_str(dp.id))
-            else:  # dp.id == SUB_SW_ID
+            else:  # dp.id == self.sub_sw_id
                 del self.sub_sw
                 self.sub_sw = None
                 self.logger.info('dpid=%s : Leave sub SW.',
