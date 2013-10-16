@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: arp_op=2のパケットを印加し、arp_op=20に書き換える(OVSではarp_opはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: arp_op=2のパケットを印加し、arp_op=20に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -62,7 +62,53 @@
         "packets": [
             {
                 "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqgAAAAAAAAAAAAAAAAAA",
-                "output": "////////qqqqqqqqCAYAAQgABgQAFKqqqqqqqgAAAAAAAAAAAAAAAAAA"
+                "output": "////////qqqqqqqqCAYAAQgABgQAFKqqqqqqqgAAAAAAAAAAAAAAAAAA",
+                "description": {
+                    "input": [
+                        {
+                            "ethernet": {
+                                "dst": "ff:ff:ff:ff:ff:ff",
+                                "ethertype": 2054,
+                                "src": "aa:aa:aa:aa:aa:aa"
+                            }
+                        },
+                        {
+                            "arp": {
+                                "hwtype": 1,
+                                "proto": 2048,
+                                "hlen": 6,
+                                "plen": 4,
+                                "opcode": 2,
+                                "src_mac": "aa:aa:aa:aa:aa:aa",
+                                "src_ip": "0.0.0.0",
+                                "dst_mac": "00:00:00:00:00:00",
+                                "dst_ip": "0.0.0.0"
+                            }
+                        }
+                    ],
+                    "output": [
+                        {
+                            "ethernet": {
+                                "dst": "ff:ff:ff:ff:ff:ff",
+                                "ethertype": 2054,
+                                "src": "aa:aa:aa:aa:aa:aa"
+                            }
+                        },
+                        {
+                            "arp": {
+                                "hwtype": 1,
+                                "proto": 2048,
+                                "hlen": 6,
+                                "plen": 4,
+                                "opcode": 20,
+                                "src_mac": "aa:aa:aa:aa:aa:aa",
+                                "src_ip": "0.0.0.0",
+                                "dst_mac": "00:00:00:00:00:00",
+                                "dst_ip": "0.0.0.0"
+                            }
+                        }
+                    ]
+                }
             }
         ]
     }

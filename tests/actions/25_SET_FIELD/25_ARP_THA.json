@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: arp_tha=bb:bb:bb:bb:bb:bbのパケットを印加し、arp_tha=cc:cc:cc:cc:cc:ccに書き換える(OVSではarp_thaはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: arp_tha=00:bb:bb:bb:bb:bbのパケットを印加し、arp_tha=cc:cc:cc:cc:cc:ccに書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -48,7 +48,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "arp_tha",
-                                        "value": "bb:bb:bb:bb:bb:bb"
+                                        "value": "00:bb:bb:bb:bb:bb"
                                     }
                                 }
                             ]
@@ -61,8 +61,54 @@
         ],
         "packets": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQq7u7u7u7vAqAIU",
-                "output": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQrMzMzMzMzAqAIU"
+                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQoAu7u7u7vAqAIU",
+                "output": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQrMzMzMzMzAqAIU",
+                "description": {
+                    "input": [
+                        {
+                            "ethernet": {
+                                "dst": "ff:ff:ff:ff:ff:ff",
+                                "ethertype": 2054,
+                                "src": "aa:aa:aa:aa:aa:aa"
+                            }
+                        },
+                        {
+                            "arp": {
+                                "hwtype": 1,
+                                "proto": 2048,
+                                "hlen": 6,
+                                "plen": 4,
+                                "opcode": 2,
+                                "src_mac": "aa:aa:aa:aa:aa:aa",
+                                "src_ip": "192.168.1.10",
+                                "dst_mac": "00:bb:bb:bb:bb:bb",
+                                "dst_ip": "192.168.2.20"
+                            }
+                        }
+                    ],
+                    "output": [
+                        {
+                            "ethernet": {
+                                "dst": "ff:ff:ff:ff:ff:ff",
+                                "ethertype": 2054,
+                                "src": "aa:aa:aa:aa:aa:aa"
+                            }
+                        },
+                        {
+                            "arp": {
+                                "hwtype": 1,
+                                "proto": 2048,
+                                "hlen": 6,
+                                "plen": 4,
+                                "opcode": 2,
+                                "src_mac": "aa:aa:aa:aa:aa:aa",
+                                "src_ip": "192.168.1.10",
+                                "dst_mac": "cc:cc:cc:cc:cc:cc",
+                                "dst_ip": "192.168.2.20"
+                            }
+                        }
+                    ]
+                }
             }
         ]
     }

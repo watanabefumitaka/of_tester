@@ -15,31 +15,28 @@
 # limitations under the License.
 
 import base64
+import inspect
 import json
 import sys
 
-from ryu.lib.packet import arp
-from ryu.lib.packet import ethernet
-from ryu.lib.packet import icmp
-from ryu.lib.packet import icmpv6
-from ryu.lib.packet import ipv4
-from ryu.lib.packet import ipv6
-from ryu.lib.packet import mpls
-from ryu.lib.packet import packet
-from ryu.lib.packet import tcp
-from ryu.lib.packet import udp
-from ryu.lib.packet import vlan
+import ryu.lib.packet
 
-_PROTOCOL_STACK = {'arp': arp.arp,
-                   'ethernet': ethernet.ethernet,
-                   'icmp': icmp.icmp,
-                   'icmpv6': icmpv6.icmpv6,
-                   'ipv4': ipv4.ipv4,
-                   'ipv6': ipv6.ipv6,
-                   'mpls': mpls.mpls,
-                   'tcp': tcp.tcp,
-                   'udp': udp.udp,
-                   'vlan': vlan.vlan}
+_COMMON_PATH = 'ryu.lib.packet.'
+_PROTOCOL_STACK = {}
+
+
+def get_protocols():
+    for modname, mod in sys.modules.iteritems():
+        if not modname.startswith(_COMMON_PATH) or not mod:
+            continue
+        modname = modname.replace(_COMMON_PATH, '')
+        for (clsname, cls, ) in inspect.getmembers(mod):
+            if not inspect.isclass(cls):
+                continue
+            for basecls in inspect.getmro(cls):
+                if 'PacketBase' != basecls.__name__:
+                    continue
+                _PROTOCOL_STACK[clsname] = cls
 
 
 def main():
@@ -48,14 +45,18 @@ def main():
     jsonstr = rfp.read()
     rfp.close()
     jsonlist = json.loads(jsonstr)
-    pkt = packet.Packet()
+    get_protocols()
+    pkt = ryu.lib.packet.packet.Packet()
     for jsondict in jsonlist:
         for key, value in jsondict.iteritems():
             cls_ = _PROTOCOL_STACK.get(key)
-            stack = (cls_.from_jsondict(value) if cls_ else value)
+            stack = cls_.from_jsondict(value) if cls_ \
+                else base64.b64decode(value)
             pkt.add_protocol(stack)
     pkt.serialize()
-    print base64.b64encode(pkt.data)
+    data = base64.b64encode(pkt.data)
+    print data
+    print pkt
 
 if __name__ == "__main__":
     main()

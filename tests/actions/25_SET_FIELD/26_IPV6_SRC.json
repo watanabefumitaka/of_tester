@@ -1,6 +1,6 @@
 [
     {
-        "description": "テスト0: ipv6_src=2001:db8:0:12::1のパケットを印加し、ipv6_src=2001d:db8:0:12::10に書き換える(OVSではipv6パケット構築時に内部エラーが発生し、試験に失敗する)",
+        "description": "テスト0: ipv6_src=2001:db8:0:12::1のパケットを印加し、ipv6_src=2001d:db8:0:12::10に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
@@ -61,8 +61,82 @@
         ],
         "packets": [
             {
-                "input": "wgFR+gAAwgBR+gAAht1gAAAAAAAAQCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAAC",
-                "output": "wgFR+gAAwgBR+gAAht1gAAAAAAAAQCABDbgAAAASAAAAAAAAABAgAQ24AAAAEgAAAAAAAAAC"
+                "input": "qqqqqqqqALu7u7u7ht1gAAAAADw6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACgAAhKXYgAAAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIz",
+                "output": "qqqqqqqqALu7u7u7ht1gAAAAADw6QCABDbgAAAASAAAAAAAAABAgAQ24AAAAEgAAAAAAAAACgAAhGnYgAAAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIz",
+                "description": {
+                    "input": [
+                        {
+                            "ethernet": {
+                                "dst": "aa:aa:aa:aa:aa:aa",
+                                "ethertype": 34525,
+                                "src": "00:bb:bb:bb:bb:bb"
+                            }
+                        },
+                        {
+                            "ipv6": {
+                                "version": 6,
+                                "traffic_class": 0,
+                                "flow_label": 0,
+                                "payload_length": 60,
+                                "nxt": 58,
+                                "hop_limit": 64,
+                                "src": "2001:db8:0:12::1",
+                                "dst": "2001:db8:0:12::2",
+                                "ext_hdrs": []
+                            }
+                        },
+                        {
+                            "icmpv6": {
+                                "type": 128,
+                                "code": 0,
+                                "csum": 8489,
+                                "data": {
+                                    "echo": {
+                                        "id": 30240,
+                                        "seq": 0,
+                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw=="
+                                    }
+                                }
+                            }
+                        }
+                    ],
+                    "output": [
+                        {
+                            "ethernet": {
+                                "dst": "aa:aa:aa:aa:aa:aa",
+                                "ethertype": 34525,
+                                "src": "00:bb:bb:bb:bb:bb"
+                            }
+                        },
+                        {
+                            "ipv6": {
+                                "version": 6,
+                                "traffic_class": 0,
+                                "flow_label": 0,
+                                "payload_length": 60,
+                                "nxt": 58,
+                                "hop_limit": 64,
+                                "src": "2001:db8:0:12::10",
+                                "dst": "2001:db8:0:12::2",
+                                "ext_hdrs": []
+                            }
+                        },
+                        {
+                            "icmpv6": {
+                                "type": 128,
+                                "code": 0,
+                                "csum": 8474,
+                                "data": {
+                                    "echo": {
+                                        "id": 30240,
+                                        "seq": 0,
+                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw=="
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
             }
         ]
     }

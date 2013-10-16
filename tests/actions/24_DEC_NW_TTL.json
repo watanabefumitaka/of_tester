@@ -49,8 +49,96 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7CABFAABUAABAAEAGt0zAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA==",
-                "output": "qqqqqqqqu7u7u7u7CABFAABUAABAAD8GuEzAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA=="
+                "input": "qqqqqqqqALu7u7u7CABFAAA2AABAAEAGt2rAqAEFwKgBAhqFK2cAAAB7AAC0WmAwCAAAAABvAAAAAAECAwQFBgcICQo=",
+                "output": "qqqqqqqqALu7u7u7CABFAAA2AABAAD8GuGrAqAEFwKgBAhqFK2cAAAB7AAC0WmAwCAAAAABvAAAAAAECAwQFBgcICQo=",
+                "description": {
+                    "input": [
+                        {
+                            "ethernet": {
+                                "dst": "aa:aa:aa:aa:aa:aa",
+                                "ethertype": 2048,
+                                "src": "00:bb:bb:bb:bb:bb"
+                            }
+                        },
+                        {
+                            "ipv4": {
+                                "csum": 46954,
+                                "dst": "192.168.1.2",
+                                "flags": 2,
+                                "header_length": 5,
+                                "identification": 0,
+                                "offset": 0,
+                                "option": null,
+                                "proto": 6,
+                                "src": "192.168.1.5",
+                                "tos": 0,
+                                "total_length": 54,
+                                "ttl": 64,
+                                "version": 4
+                            }
+                        },
+                        {
+                            "tcp": {
+                                "ack": 46170,
+                                "bits": 48,
+                                "csum": 0,
+                                "dst_port": 11111,
+                                "offset": 6,
+                                "option": "AAAAAA==",
+                                "seq": 123,
+                                "src_port": 6789,
+                                "urgent": 111,
+                                "window_size": 2048
+                            }
+                        },
+                        {
+                            "data": "AQIDBAUGBwgJCg=="
+                        }
+                    ],
+                    "output": [
+                        {
+                            "ethernet": {
+                                "dst": "aa:aa:aa:aa:aa:aa",
+                                "ethertype": 2048,
+                                "src": "00:bb:bb:bb:bb:bb"
+                            }
+                        },
+                        {
+                            "ipv4": {
+                                "csum": 47210,
+                                "dst": "192.168.1.2",
+                                "flags": 2,
+                                "header_length": 5,
+                                "identification": 0,
+                                "offset": 0,
+                                "option": null,
+                                "proto": 6,
+                                "src": "192.168.1.5",
+                                "tos": 0,
+                                "total_length": 54,
+                                "ttl": 63,
+                                "version": 4
+                            }
+                        },
+                        {
+                            "tcp": {
+                                "ack": 46170,
+                                "bits": 48,
+                                "csum": 0,
+                                "dst_port": 11111,
+                                "offset": 6,
+                                "option": "AAAAAA==",
+                                "seq": 123,
+                                "src_port": 6789,
+                                "urgent": 111,
+                                "window_size": 2048
+                            }
+                        },
+                        {
+                            "data": "AQIDBAUGBwgJCg=="
+                        }
+                    ]
+                }
             }
         ]
     }

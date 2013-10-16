@@ -2,8 +2,47 @@
                         {
                             "ethernet": {
                                 "dst": "aa:aa:aa:aa:aa:aa",
-                                "ethertype": 2048,
+                                "ethertype": 34984,
                                 "src": "00:bb:bb:bb:bb:bb"
+                            }
+                        },
+                        {
+                            "vlan": {
+                                "pcp": 0,
+                                "cfi": 0,
+                                "vid": 10,
+                                "ethertype": 35047
+                            }
+                        },
+                        {
+                            "vlan": {
+                                "pcp": 0,
+                                "cfi": 0,
+                                "vid": 0,
+                                "ethertype": 200
+                            }
+                        },
+                        {
+                            "ethernet": {
+                                "dst": "cc:cc:cc:cc:cc:cc",
+                                "ethertype": 34984,
+                                "src": "dd:dd:dd:dd:dd:dd"
+                            }
+                        },
+                        {
+                            "vlan": {
+                                "pcp": 0,
+                                "cfi": 0,
+                                "vid": 30,
+                                "ethertype": 33024
+                            }
+                        },
+                        {
+                            "vlan": {
+                                "pcp": 0,
+                                "cfi": 0,
+                                "vid": 40,
+                                "ethertype": 2048
                             }
                         },
                         {
