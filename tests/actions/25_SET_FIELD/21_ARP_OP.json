@@ -61,8 +61,8 @@
         ],
         "packets": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqgAAAAAAAAAAAAAAAAAA",
-                "output": "////////qqqqqqqqCAYAAQgABgQAFKqqqqqqqgAAAAAAAAAAAAAAAAAA",
+                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                "output": "////////qqqqqqqqCAYAAQgABgQAFKqqqqqqqgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
                 "description": {
                     "input": [
                         {
@@ -74,16 +74,19 @@
                         },
                         {
                             "arp": {
-                                "hwtype": 1,
-                                "proto": 2048,
-                                "hlen": 6,
-                                "plen": 4,
-                                "opcode": 2,
-                                "src_mac": "aa:aa:aa:aa:aa:aa",
-                                "src_ip": "0.0.0.0",
+                                "dst_ip": "0.0.0.0",
                                 "dst_mac": "00:00:00:00:00:00",
-                                "dst_ip": "0.0.0.0"
+                                "hlen": 6,
+                                "hwtype": 1,
+                                "opcode": 2,
+                                "plen": 4,
+                                "proto": 2048,
+                                "src_ip": "0.0.0.0",
+                                "src_mac": "aa:aa:aa:aa:aa:aa"
                             }
+                        },
+                        {
+                            "data": "AAAAAAAAAAAAAAAAAAAAAAAA"
                         }
                     ],
                     "output": [
@@ -96,16 +99,19 @@
                         },
                         {
                             "arp": {
-                                "hwtype": 1,
-                                "proto": 2048,
-                                "hlen": 6,
-                                "plen": 4,
-                                "opcode": 20,
-                                "src_mac": "aa:aa:aa:aa:aa:aa",
-                                "src_ip": "0.0.0.0",
+                                "dst_ip": "0.0.0.0",
                                 "dst_mac": "00:00:00:00:00:00",
-                                "dst_ip": "0.0.0.0"
+                                "hlen": 6,
+                                "hwtype": 1,
+                                "opcode": 20,
+                                "plen": 4,
+                                "proto": 2048,
+                                "src_ip": "0.0.0.0",
+                                "src_mac": "aa:aa:aa:aa:aa:aa"
                             }
+                        },
+                        {
+                            "data": "AAAAAAAAAAAAAAAAAAAAAAAA"
                         }
                     ]
                 }

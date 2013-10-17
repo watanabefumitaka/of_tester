@@ -50,8 +50,8 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqALu7u7u7CABFAAA2AABAAEAGt2rAqAEFwKgBAhqFK2cAAAB7AAC0WmAwCAAAAABvAAAAAAECAwQFBgcICQo=",
-                "output": "qqqqqqqqALu7u7u7CABFAAA2AABAACAG12rAqAEFwKgBAhqFK2cAAAB7AAC0WmAwCAAAAABvAAAAAAECAwQFBgcICQo=",
+                "input": "qqqqqqqqALu7u7u7CABFAAA2AABAAEAGt2rAqAEFwKgBAhqFK2cAAAB7AAAAAGAwCAC0WgBvAAAAAAECAwQFBgcICQo=",
+                "output": "qqqqqqqqALu7u7u7CABFAAA2AABAACAG12rAqAEFwKgBAhqFK2cAAAB7AAAAAGAwCAC0WgBvAAAAAAECAwQFBgcICQo=",
                 "description": {
                     "input": [
                         {
@@ -80,9 +80,9 @@
                         },
                         {
                             "tcp": {
-                                "ack": 46170,
+                                "ack": 0,
                                 "bits": 48,
-                                "csum": 0,
+                                "csum": 46170,
                                 "dst_port": 11111,
                                 "offset": 6,
                                 "option": "AAAAAA==",
@@ -123,9 +123,9 @@
                         },
                         {
                             "tcp": {
-                                "ack": 46170,
+                                "ack": 0,
                                 "bits": 48,
-                                "csum": 0,
+                                "csum": 46170,
                                 "dst_port": 11111,
                                 "offset": 6,
                                 "option": "AAAAAA==",

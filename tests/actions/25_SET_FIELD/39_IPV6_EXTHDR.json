@@ -74,61 +74,61 @@
                         },
                         {
                             "ipv6": {
-                                "version": 6,
-                                "traffic_class": 0,
-                                "flow_label": 0,
-                                "payload_length": 92,
-                                "nxt": 0,
-                                "hop_limit": 64,
-                                "src": "2001:db8:0:12::1",
                                 "dst": "2001:db8:0:12::2",
                                 "ext_hdrs": [
                                     {
                                         "hop_opts": {
-                                            "nxt": 51,
-                                            "size": 0,
                                             "data": [
                                                 {
                                                     "option": {
-                                                        "type": 5,
+                                                        "data": "AAA=",
                                                         "len": 2,
-                                                        "data": "AAA="
+                                                        "type": 5
                                                     }
                                                 },
                                                 {
                                                     "option": {
-                                                        "type": 1,
+                                                        "data": null,
                                                         "len": 0,
-                                                        "data": null
+                                                        "type": 1
                                                     }
                                                 }
-                                            ]
+                                            ],
+                                            "nxt": 51,
+                                            "size": 0
                                         }
                                     },
                                     {
                                         "auth": {
+                                            "data": "oOf4q/lpGovzn3yu",
                                             "nxt": 58,
-                                            "size": 4,
-                                            "spi": 256,
                                             "seq": 1,
-                                            "data": "oOf4q/lpGovzn3yu"
+                                            "size": 4,
+                                            "spi": 256
                                         }
                                     }
-                                ]
+                                ],
+                                "flow_label": 0,
+                                "hop_limit": 64,
+                                "nxt": 0,
+                                "payload_length": 92,
+                                "src": "2001:db8:0:12::1",
+                                "traffic_class": 0,
+                                "version": 6
                             }
                         },
                         {
                             "icmpv6": {
-                                "type": 128,
                                 "code": 0,
                                 "csum": 8489,
                                 "data": {
                                     "echo": {
+                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw==",
                                         "id": 30240,
-                                        "seq": 0,
-                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw=="
+                                        "seq": 0
                                     }
-                                }
+                                },
+                                "type": 128
                             }
                         }
                     ],
@@ -142,29 +142,29 @@
                         },
                         {
                             "ipv6": {
-                                "version": 6,
-                                "traffic_class": 0,
-                                "flow_label": 0,
-                                "payload_length": 60,
-                                "nxt": 0,
-                                "hop_limit": 64,
-                                "src": "2001:db8:0:12::1",
                                 "dst": "2001:db8:0:12::2",
-                                "ext_hdrs": []
+                                "ext_hdrs": [],
+                                "flow_label": 0,
+                                "hop_limit": 64,
+                                "nxt": 0,
+                                "payload_length": 60,
+                                "src": "2001:db8:0:12::1",
+                                "traffic_class": 0,
+                                "version": 6
                             }
                         },
                         {
                             "icmpv6": {
-                                "type": 128,
                                 "code": 0,
                                 "csum": 8489,
                                 "data": {
                                     "echo": {
+                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw==",
                                         "id": 30240,
-                                        "seq": 0,
-                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw=="
+                                        "seq": 0
                                     }
-                                }
+                                },
+                                "type": 128
                             }
                         }
                     ]
