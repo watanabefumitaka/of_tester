@@ -237,6 +237,8 @@ class OfTester(app_manager.RyuApp):
             hub.kill(self.test_thread)
             hub.joinall([self.test_thread])
             self.test_thread = None
+            if self.ctlr_thread is not None:
+                hub.kill(self.ctlr_thread)
             self.logger.info('--- Test terminated ---')
 
     @set_ev_cls(ofp_event.EventOFPStateChange,
@@ -335,10 +337,10 @@ class OfTester(app_manager.RyuApp):
             self.target_sw.del_test_flow()
             self.state = STATE_INIT
 
-        self.logger.info('---  Test end  ---')
         self.test_thread = None
         if self.ctlr_thread is not None:
             hub.kill(self.ctlr_thread)
+        self.logger.info('---  Test end  ---')
 
     def _test(self, state, *args):
         test = {STATE_FLOW_INSTALL: self._test_flow_install,
