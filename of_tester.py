@@ -211,14 +211,15 @@ class OfTester(app_manager.RyuApp):
         self.target_sw = None
         self.tester_sw = None
         self.state = STATE_INIT
-        self.ctlr_thread = None
-        self.test_thread = None
+        self.sw_waiter = None
         self.waiter = None
         self.send_msg_xids = []
         self.rcv_msgs = []
         self.test_files = (params[1:] if len(params) > 1
                            else [DEFAULT_DIRECTORY])
         self.logger.info('Test files or directory = %s', self.test_files)
+        self.ctlr_thread = None
+        self.test_thread = hub.spawn(self._test_execute)
 
     def _set_logger(self, debug_mode):
         self.logger.propagate = False
@@ -230,15 +231,10 @@ class OfTester(app_manager.RyuApp):
             self.logger.setLevel(logging.DEBUG)
 
     def close(self):
-        self._test_terminate()
-
-    def _test_terminate(self):
         if self.test_thread is not None:
             hub.kill(self.test_thread)
             hub.joinall([self.test_thread])
             self.test_thread = None
-            if self.ctlr_thread is not None:
-                hub.kill(self.ctlr_thread)
             self.logger.info('--- Test terminated ---')
 
     @set_ev_cls(ofp_event.EventOFPStateChange,
@@ -265,12 +261,11 @@ class OfTester(app_manager.RyuApp):
             return
 
         if self.target_sw and self.tester_sw:
-            self.test_thread = hub.spawn(self._test_execute)
+            if self.sw_waiter is not None:
+                self.sw_waiter.set()
 
     def _unregister_sw(self, dp):
         if dp.id == self.target_dpid or dp.id == self.tester_dpid:
-            self._test_terminate()
-
             if dp.id == self.target_dpid:
                 del self.target_sw
                 self.target_sw = None
@@ -295,6 +290,12 @@ class OfTester(app_manager.RyuApp):
         test_keys.sort()
         self.logger.info('--- Test start ---')
         for test_name in test_keys:
+            if self.target_sw is None or self.tester_sw is None:
+                self.logger.info('waiting for switches connection...')
+                self.sw_waiter = hub.Event()
+                self.sw_waiter.wait()
+                self.sw_waiter = None
+
             test = tests[test_name]
             # Test execute.
             try:
@@ -334,8 +335,10 @@ class OfTester(app_manager.RyuApp):
             #print raw_input("> Enter")
 
             # Initialize for next test.
-            self.target_sw.del_test_flow()
+            if self.target_sw is not None:
+                self.target_sw.del_test_flow()
             self.state = STATE_INIT
+            hub.sleep(0)
 
         self.test_thread = None
         if self.ctlr_thread is not None:
