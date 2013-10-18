@@ -80,29 +80,29 @@
                         },
                         {
                             "ipv6": {
-                                "version": 6,
-                                "traffic_class": 0,
-                                "flow_label": 0,
-                                "payload_length": 60,
-                                "nxt": 58,
-                                "hop_limit": 64,
-                                "src": "2001:db8:0:12::1",
                                 "dst": "2001:db8:0:12::2",
-                                "ext_hdrs": []
+                                "ext_hdrs": [],
+                                "flow_label": 0,
+                                "hop_limit": 64,
+                                "nxt": 58,
+                                "payload_length": 60,
+                                "src": "2001:db8:0:12::1",
+                                "traffic_class": 0,
+                                "version": 6
                             }
                         },
                         {
                             "icmpv6": {
-                                "type": 128,
                                 "code": 0,
                                 "csum": 8489,
                                 "data": {
                                     "echo": {
+                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw==",
                                         "id": 30240,
-                                        "seq": 0,
-                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw=="
+                                        "seq": 0
                                     }
-                                }
+                                },
+                                "type": 128
                             }
                         }
                     ],
@@ -116,29 +116,29 @@
                         },
                         {
                             "ipv6": {
-                                "version": 6,
-                                "traffic_class": 0,
-                                "flow_label": 0,
-                                "payload_length": 60,
-                                "nxt": 58,
-                                "hop_limit": 64,
-                                "src": "2001:db8:0:12::1",
                                 "dst": "2001:db8:0:12::2",
-                                "ext_hdrs": []
+                                "ext_hdrs": [],
+                                "flow_label": 0,
+                                "hop_limit": 64,
+                                "nxt": 58,
+                                "payload_length": 60,
+                                "src": "2001:db8:0:12::1",
+                                "traffic_class": 0,
+                                "version": 6
                             }
                         },
                         {
                             "icmpv6": {
-                                "type": 129,
                                 "code": 0,
                                 "csum": 8233,
                                 "data": {
                                     "echo": {
+                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw==",
                                         "id": 30240,
-                                        "seq": 0,
-                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw=="
+                                        "seq": 0
                                     }
-                                }
+                                },
+                                "type": 129
                             }
                         }
                     ]

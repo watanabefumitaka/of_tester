@@ -50,8 +50,8 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqALu7u7u7CABFAAA2AABAAD8GuGrAqAEFwKgBAhqFK2cAAAB7AAC0WmAwCAAAAABvAAAAAAECAwQFBgcICQo=",
-                "output": "qqqqqqqqALu7u7u7iEcAAAE/RQAANgAAQAA/BrhqwKgBBcCoAQIahStnAAAAewAAtFpgMAgAAAAAbwAAAAABAgMEBQYHCAkK",
+                "input": "qqqqqqqqALu7u7u7CABFAAA2AABAAD8GuGrAqAEFwKgBAhqFK2cAAAB7AAAAAGAwCAC0WgBvAAAAAAECAwQFBgcICQo=",
+                "output": "qqqqqqqqALu7u7u7iEcAAAE/RQAANgAAQAA/BrhqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
                 "description": {
                     "input": [
                         {
@@ -80,9 +80,9 @@
                         },
                         {
                             "tcp": {
-                                "ack": 46170,
+                                "ack": 0,
                                 "bits": 48,
-                                "csum": 0,
+                                "csum": 46170,
                                 "dst_port": 11111,
                                 "offset": 6,
                                 "option": "AAAAAA==",
@@ -106,9 +106,9 @@
                         },
                         {
                             "mpls": {
-                                "label": 0,
-                                "exp": 0,
                                 "bsb": 1,
+                                "exp": 0,
+                                "label": 0,
                                 "ttl": 63
                             }
                         },
@@ -131,9 +131,9 @@
                         },
                         {
                             "tcp": {
-                                "ack": 46170,
+                                "ack": 0,
                                 "bits": 48,
-                                "csum": 0,
+                                "csum": 46170,
                                 "dst_port": 11111,
                                 "offset": 6,
                                 "option": "AAAAAA==",

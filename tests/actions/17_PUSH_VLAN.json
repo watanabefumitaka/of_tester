@@ -50,14 +50,14 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqALu7u7u7CABFAAA2AABAAD8GuGrAqAEFwKgBAhqFK2cAAAB7AAC0WmAwCAAAAABvAAAAAAECAwQFBgcICQo=",
-                "output": "qqqqqqqqALu7u7u7gQAAAAgARQAANgAAQAA/BrhqwKgBBcCoAQIahStnAAAAewAAtFpgMAgAAAAAbwAAAAABAgMEBQYHCAkK",
+                "input": "qqqqqqqqALu7u7u7CABFAAA2AABAAD8GuGrAqAEFwKgBAhqFK2cAAAB7AAAAAGAwCAC0WgBvAAAAAAECAwQFBgcICQo=",
+                "output": "qqqqqqqqALu7u7u7gQAAAAgARQAANgAAQAA/BrhqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
                 "description": {
                     "input": [
                         {
                             "ethernet": {
                                 "dst": "aa:aa:aa:aa:aa:aa",
-                                "ethertype": 34887,
+                                "ethertype": 2048,
                                 "src": "00:bb:bb:bb:bb:bb"
                             }
                         },
@@ -80,9 +80,9 @@
                         },
                         {
                             "tcp": {
-                                "ack": 46170,
+                                "ack": 0,
                                 "bits": 48,
-                                "csum": 0,
+                                "csum": 46170,
                                 "dst_port": 11111,
                                 "offset": 6,
                                 "option": "AAAAAA==",
@@ -131,9 +131,9 @@
                         },
                         {
                             "tcp": {
-                                "ack": 46170,
+                                "ack": 0,
                                 "bits": 48,
-                                "csum": 0,
+                                "csum": 46170,
                                 "dst_port": 11111,
                                 "offset": 6,
                                 "option": "AAAAAA==",

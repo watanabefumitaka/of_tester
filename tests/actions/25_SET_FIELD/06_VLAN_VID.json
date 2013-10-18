@@ -115,40 +115,51 @@
                         {
                             "ethernet": {
                                 "dst": "aa:aa:aa:aa:aa:aa",
-                                "ethertype": 2048,
+                                "ethertype": 33024,
                                 "src": "00:bb:bb:bb:bb:bb"
                             }
                         },
                         {
+                            "vlan": {
+                                "cfi": 0,
+                                "ethertype": 2048,
+                                "pcp": 0,
+                                "vid": 2
+                            }
+                        },
+                        {
                             "ipv4": {
-                                "csum": 46644,
-                                "dst": "192.168.1.100",
+                                "csum": 46954,
+                                "dst": "192.168.1.2",
                                 "flags": 2,
                                 "header_length": 5,
                                 "identification": 0,
                                 "offset": 0,
                                 "option": null,
-                                "proto": 1,
-                                "src": "192.168.1.200",
+                                "proto": 6,
+                                "src": "192.168.1.5",
                                 "tos": 0,
-                                "total_length": 76,
+                                "total_length": 54,
                                 "ttl": 64,
                                 "version": 4
                             }
                         },
                         {
-                            "icmp": {
-                                "code": 0,
-                                "csum": 48812,
-                                "data": {
-                                    "echo": {
-                                        "data": "MDEyMzQ1Njc4OWFiY2RlZmdoaWprbG1ub3BxcnN0dXZ3eHl6QUJDREVGR0hJSktM",
-                                        "id_": 1,
-                                        "seq": 1
-                                    }
-                                },
-                                "type": 8
+                            "tcp": {
+                                "ack": 0,
+                                "bits": 48,
+                                "csum": 46170,
+                                "dst_port": 11111,
+                                "offset": 6,
+                                "option": "AAAAAA==",
+                                "seq": 123,
+                                "src_port": 6789,
+                                "urgent": 111,
+                                "window_size": 2048
                             }
+                        },
+                        {
+                            "data": "AQIDBAUGBwgJCg=="
                         }
                     ]
                 }
