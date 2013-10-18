@@ -166,10 +166,10 @@ def main():
     app_mgr.instantiate_apps(**contexts)
 
     ctlr = controller.OpenFlowController()
-    thr = hub.spawn(ctlr)
-
+    of_tester = app_mgr.applications['of_tester']
+    of_tester.ctlr_thread = hub.spawn(ctlr)
     try:
-        hub.joinall([thr])
+        hub.joinall([of_tester.ctlr_thread])
     finally:
         app_mgr.close()
 
@@ -211,6 +211,7 @@ class OfTester(app_manager.RyuApp):
         self.target_sw = None
         self.tester_sw = None
         self.state = STATE_INIT
+        self.ctlr_thread = None
         self.test_thread = None
         self.waiter = None
         self.send_msg_xids = []
@@ -334,8 +335,10 @@ class OfTester(app_manager.RyuApp):
             self.target_sw.del_test_flow()
             self.state = STATE_INIT
 
-        self.test_thread = None
         self.logger.info('---  Test end  ---')
+        self.test_thread = None
+        if self.ctlr_thread is not None:
+            hub.kill(self.ctlr_thread)
 
     def _test(self, state, *args):
         test = {STATE_FLOW_INSTALL: self._test_flow_install,
