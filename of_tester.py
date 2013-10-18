@@ -38,38 +38,39 @@ from ryu.ofproto import ofproto_v1_3_parser
 
 """ Required test network.
 
-                      +---------+
-           +----------| test sw | The switch to test
-           |          +---------+
-    +------------+      (1) (2)
-    | controller |       |   |
-    +------------+      (1) (2)
-           |          +---------+
-           +----------| sub sw  | Open vSwtich
-                      +---------+
+                      +-----------+
+           +----------| target sw | The switch to be tested
+           |          +-----------+
+    +------------+      (1)   (2)
+    | controller |       |     |
+    +------------+      (1)   (2)
+           |          +-----------+
+           +----------| tester sw | Open vSwtich
+                      +-----------+
 
       (X) : port number
 
-    Tests send a packet from port 1 of the Open vSwitch. If the packet
-    matched with a flow entry of the switch to test, the switch resends
-    the packet from port 2, according to the flow entry. then the Open
-    vSwitch receives the packet and sends a PacketIn message. if the
-    packet did not match, the switch to test sends a PacketIn message.
+    Tests send a packet from port 1 of the tester sw. If the packet
+    matched with a flow entry of the target sw, the switch resends the
+    packet from port 2, according to the flow entry. then the tester sw
+    receives the packet and sends a PacketIn message. if the packet did
+    not match, the target sw drops the packet.
 
     In other words, when a test succeeded, the controller will receive
-    a PacketIn message from the Open vSwitch, otherwise it will receive
-    from the switch to test.
+    a PacketIn message from the tester sw, otherwise it will drops on
+    the target sw.
 
 """
 
 
+# Command line parameters.
 DEBUG_MODE = '--verbose'
-ARG_TEST_SW_ID = '--test-sw-id'
-ARG_SUB_SW_ID = '--sub-sw-id'
+ARG_TARGET = '--target='
+ARG_TESTER = '--tester='
 
 DEFAULT_DIRECTORY = './'
-DEFAULT_TEST_SW_ID = dpid_lib.str_to_dpid('0000000000000001')
-DEFAULT_SUB_SW_ID = dpid_lib.str_to_dpid('0000000000000002')
+DEFAULT_TARGET_DPID = dpid_lib.str_to_dpid('0000000000000001')
+DEFAULT_TESTER_DPID = dpid_lib.str_to_dpid('0000000000000002')
 SUB_SW_SENDER_PORT = 1
 
 WAIT_TIMER = 5  # sec
@@ -105,7 +106,7 @@ MSG = {STATE_FLOW_INSTALL:
         RCV_ERR: 'flow existence check is failure. %(err_msg)s'},
        STATE_FLOW_MATCH_CHK:
        {TIMEOUT: 'flow matching is failure. no expected OFPPacketIn.',
-        RCV_ERR: 'flow matching is failure. sub SW error. %(err_msg)s'},
+        RCV_ERR: 'flow matching is failure. tester SW error. %(err_msg)s'},
        STATE_GET_MATCH_COUNT:
        {TIMEOUT: 'flow unmatching check is failure. no OFPFlowStatsReply.',
         RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
@@ -189,26 +190,25 @@ class OfTester(app_manager.RyuApp):
             params.remove(DEBUG_MODE)
         self._set_logger(debug_mode)
 
-        self.test_sw_id = DEFAULT_TEST_SW_ID
-        self.sub_sw_id = DEFAULT_SUB_SW_ID
-        try:
-            if ARG_TEST_SW_ID in params:
-                index = params.index(ARG_TEST_SW_ID) + 1
-                self.test_sw_id = int(params[index], 16)
-                params.pop(index)
-                params.remove(ARG_TEST_SW_ID)
-            if ARG_SUB_SW_ID in params:
-                index = params.index(ARG_SUB_SW_ID) + 1
-                self.sub_sw_id = int(params[index], 16)
-                params.pop(params.index(ARG_SUB_SW_ID)+1)
-                params.remove(ARG_SUB_SW_ID)
-        except (IndexError, ValueError):
-            self.logger.error('Invarid %s or %s parameter.',
-                              ARG_TEST_SW_ID, ARG_SUB_SW_ID)
-            sys.exit()
+        def __get_dpid(params, arg_type):
+            dpid = (DEFAULT_TARGET_DPID if arg_type == ARG_TARGET
+                    else DEFAULT_TESTER_DPID)
+            for param in params:
+                if param.find(arg_type) == 0:
+                    try:
+                        dpid = int(param[len(arg_type):], 16)
+                    except ValueError as err:
+                        self.logger.error('Invarid %s(dpid) parameter. %s',
+                                          arg_type, err)
+                        sys.exit()
+                    params.remove(param)
+                    break
+            return dpid
+        self.target_dpid = __get_dpid(params, ARG_TARGET)
+        self.tester_dpid = __get_dpid(params, ARG_TESTER)
 
-        self.test_sw = None
-        self.sub_sw = None
+        self.target_sw = None
+        self.tester_sw = None
         self.state = STATE_INIT
         self.test_thread = None
         self.waiter = None
@@ -248,34 +248,34 @@ class OfTester(app_manager.RyuApp):
 
     def _register_sw(self, dp):
         try:
-            if dp.id == self.test_sw_id:
-                self.test_sw = TestSw(dp, self.logger)
-                self.logger.info('dpid=%s : Join test SW.',
+            if dp.id == self.target_dpid:
+                self.target_sw = TargetSw(dp, self.logger)
+                self.logger.info('dpid=%s : Join target SW.',
                                  dpid_lib.dpid_to_str(dp.id))
-            elif dp.id == self.sub_sw_id:
-                self.sub_sw = SubSw(dp, self.logger)
-                self.logger.info('dpid=%s : Join sub SW.',
+            elif dp.id == self.tester_dpid:
+                self.tester_sw = TesterSw(dp, self.logger)
+                self.logger.info('dpid=%s : Join tester SW.',
                                  dpid_lib.dpid_to_str(dp.id))
         except TestEnvironmentError as err:
             self.logger.error(str(err))
             return
 
-        if self.test_sw and self.sub_sw:
+        if self.target_sw and self.tester_sw:
             self.test_thread = hub.spawn(self._test_execute)
 
     def _unregister_sw(self, dp):
-        if dp.id == self.test_sw_id or dp.id == self.sub_sw_id:
+        if dp.id == self.target_dpid or dp.id == self.tester_dpid:
             self._test_terminate()
 
-            if dp.id == self.test_sw_id:
-                del self.test_sw
-                self.test_sw = None
-                self.logger.info('dpid=%s : Leave test SW.',
+            if dp.id == self.target_dpid:
+                del self.target_sw
+                self.target_sw = None
+                self.logger.info('dpid=%s : Leave target SW.',
                                  dpid_lib.dpid_to_str(dp.id))
-            else:  # dp.id == self.sub_sw_id
-                del self.sub_sw
-                self.sub_sw = None
-                self.logger.info('dpid=%s : Leave sub SW.',
+            else:  # dp.id == self.tester_dpid
+                del self.tester_sw
+                self.tester_sw = None
+                self.logger.info('dpid=%s : Leave tester SW.',
                                  dpid_lib.dpid_to_str(dp.id))
 
     def _test_execute(self):
@@ -330,7 +330,7 @@ class OfTester(app_manager.RyuApp):
             #print raw_input("> Enter")
 
             # Initialize for next test.
-            self.test_sw.del_test_flow()
+            self.target_sw.del_test_flow()
             self.state = STATE_INIT
 
         self.test_thread = None
@@ -352,10 +352,10 @@ class OfTester(app_manager.RyuApp):
         return test[state](*args)
 
     def _test_flow_install(self, flow):
-        xid = self.test_sw.add_flow(flow_mod=flow)
+        xid = self.target_sw.add_flow(flow_mod=flow)
         self.send_msg_xids.append(xid)
 
-        xid = self.test_sw.send_barrier_request()
+        xid = self.target_sw.send_barrier_request()
         self.send_msg_xids.append(xid)
 
         self._wait()
@@ -364,7 +364,7 @@ class OfTester(app_manager.RyuApp):
         assert isinstance(msg, ofproto_v1_3_parser.OFPBarrierReply)
 
     def _test_flow_exist_check(self, flow_mod):
-        xid = self.test_sw.send_flow_stats()
+        xid = self.target_sw.send_flow_stats()
         self.send_msg_xids.append(xid)
         self._wait()
         for msg in self.rcv_msgs:
@@ -382,14 +382,14 @@ class OfTester(app_manager.RyuApp):
                           packet.Packet(pkt.get('PACKET_IN')))
 
         # 1. send a packet from the Open vSwitch.
-        xid = self.sub_sw.send_packet_out(pkt['input'])
+        xid = self.tester_sw.send_packet_out(pkt['input'])
         self.send_msg_xids.append(xid)
 
         # 2. receive a PacketIn message.
         rcv_pkt_model = repr(pkt['output'] if 'output' in pkt
                              else pkt['PACKET_IN'])[1:-1]
-        pkt_in_src_model = (self.sub_sw if 'output' in pkt
-                            else self.test_sw)
+        pkt_in_src_model = (self.tester_sw if 'output' in pkt
+                            else self.target_sw)
 
         timer = hub.Timeout(WAIT_TIMER)
         timeout = False
@@ -433,7 +433,7 @@ class OfTester(app_manager.RyuApp):
             raise TestTimeout(self.state)
 
     def _test_get_match_count(self):
-        xid = self.test_sw.send_flow_stats()
+        xid = self.target_sw.send_flow_stats()
         self.send_msg_xids.append(xid)
         self._wait()
         return [stats for msg in self.rcv_msgs for stats in msg.body]
@@ -441,10 +441,10 @@ class OfTester(app_manager.RyuApp):
     def _test_unmatch_packet_send(self, pkt):
         # send a packet from the Open vSwitch.
         self.logger.debug("send_packet:[%s]", packet.Packet(pkt['input']))
-        self.sub_sw.send_packet_out(pkt['input'])
+        self.tester_sw.send_packet_out(pkt['input'])
 
         # wait OFPBarrierReply.
-        xid = self.sub_sw.send_barrier_request()
+        xid = self.tester_sw.send_barrier_request()
         self.send_msg_xids.append(xid)
         self._wait()
         assert len(self.rcv_msgs) == 1
@@ -453,7 +453,7 @@ class OfTester(app_manager.RyuApp):
 
     def _test_flow_unmatching_check(self, before_stats):
         # check match packet count
-        xid = self.test_sw.send_flow_stats()
+        xid = self.target_sw.send_flow_stats()
         self.send_msg_xids.append(xid)
         self._wait()
         for msg in self.rcv_msgs:
@@ -487,10 +487,10 @@ class OfTester(app_manager.RyuApp):
 
         # Install test flow.
         for flow in flows:
-            xid = self.test_sw.add_flow(flow_mod=flow)
+            xid = self.target_sw.add_flow(flow_mod=flow)
             self.send_msg_xids.append(xid)
         if not self.rcv_msgs:
-            xid = self.test_sw.send_barrier_request()
+            xid = self.target_sw.send_barrier_request()
             self.send_msg_xids.append(xid)
             self._wait()
 
@@ -625,9 +625,9 @@ class OpenFlowSw(object):
         return self._send_msg(req)
 
 
-class TestSw(OpenFlowSw):
+class TargetSw(OpenFlowSw):
     def __init__(self, dp, logger):
-        super(TestSw, self).__init__(dp, logger)
+        super(TargetSw, self).__init__(dp, logger)
 
     def del_test_flow(self):
         """ Delete all flow except default flow. """
@@ -650,9 +650,9 @@ class TestSw(OpenFlowSw):
         return self._send_msg(req)
 
 
-class SubSw(OpenFlowSw):
+class TesterSw(OpenFlowSw):
     def __init__(self, dp, logger):
-        super(SubSw, self).__init__(dp, logger)
+        super(TesterSw, self).__init__(dp, logger)
         # Add packet in flow.
         ofp = self.dp.ofproto
         self.add_flow(out_port=ofp.OFPP_CONTROLLER)
