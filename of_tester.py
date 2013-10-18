@@ -75,6 +75,7 @@ SUB_SW_SENDER_PORT = 1
 
 WAIT_TIMER = 5  # sec
 
+
 # Test state.
 STATE_INIT = 0
 STATE_FLOW_INSTALL = 1
@@ -301,7 +302,7 @@ class OfTester(app_manager.RyuApp):
                         self._test(STATE_FLOW_EXIST_CHK, flow)
                     # 2. Check flow matching.
                     for pkt in test.packets:
-                        if 'output' in pkt or 'PACKET_IN' in pkt:
+                        if 'egress' in pkt or 'PACKET_IN' in pkt:
                             self._test(STATE_FLOW_MATCH_CHK, pkt)
                         else:
                             before_stats = self._test(STATE_GET_MATCH_COUNT)
@@ -376,19 +377,19 @@ class OfTester(app_manager.RyuApp):
 
     def _test_flow_matching_check(self, pkt):
         pad_zero = repr('\x00')[1:-1]
-        self.logger.debug("send_packet:[%s]", packet.Packet(pkt['input']))
-        self.logger.debug("output:[%s]", packet.Packet(pkt.get('output')))
+        self.logger.debug("send_packet:[%s]", packet.Packet(pkt['ingress']))
+        self.logger.debug("output:[%s]", packet.Packet(pkt.get('egress')))
         self.logger.debug("packet_in:[%s]",
                           packet.Packet(pkt.get('PACKET_IN')))
 
         # 1. send a packet from the Open vSwitch.
-        xid = self.tester_sw.send_packet_out(pkt['input'])
+        xid = self.tester_sw.send_packet_out(pkt['ingress'])
         self.send_msg_xids.append(xid)
 
         # 2. receive a PacketIn message.
-        rcv_pkt_model = repr(pkt['output'] if 'output' in pkt
+        rcv_pkt_model = repr(pkt['egress'] if 'egress' in pkt
                              else pkt['PACKET_IN'])[1:-1]
-        pkt_in_src_model = (self.tester_sw if 'output' in pkt
+        pkt_in_src_model = (self.tester_sw if 'egress' in pkt
                             else self.target_sw)
 
         timer = hub.Timeout(WAIT_TIMER)
@@ -440,8 +441,8 @@ class OfTester(app_manager.RyuApp):
 
     def _test_unmatch_packet_send(self, pkt):
         # send a packet from the Open vSwitch.
-        self.logger.debug("send_packet:[%s]", packet.Packet(pkt['input']))
-        self.tester_sw.send_packet_out(pkt['input'])
+        self.logger.debug("send_packet:[%s]", packet.Packet(pkt['ingress']))
+        self.tester_sw.send_packet_out(pkt['ingress'])
 
         # wait OFPBarrierReply.
         xid = self.tester_sw.send_barrier_request()
@@ -752,16 +753,16 @@ class Test(object):
         elif not error:
             for pkt in buf['packets']:
                 pkt_data = {}
-                # parse 'input'
-                if not 'input' in pkt:
-                    raise ValueError('a test requires "input" field '
+                # parse 'ingress'
+                if not 'ingress' in pkt:
+                    raise ValueError('a test requires "ingress" field '
                                      'when an "ERROR" block does not exist.')
-                pkt_data['input'] = base64.b64decode(pkt['input'])
+                pkt_data['ingress'] = base64.b64decode(pkt['ingress'])
 
-                # parse 'output'
+                # parse 'egress'
                 out_pkt = None
-                if 'output' in pkt:
-                    pkt_data['output'] = base64.b64decode(pkt['output'])
+                if 'egress' in pkt:
+                    pkt_data['egress'] = base64.b64decode(pkt['egress'])
 
                 # parse 'PACKET_IN'
                 pkt_in_pkt = None
@@ -770,7 +771,7 @@ class Test(object):
 
                 if out_pkt and pkt_in_pkt:
                     raise ValueError(
-                        'There must not be both "output" and "PACKET_IN"'
+                        'There must not be both "egress" and "PACKET_IN"'
                         ' field when an "ERROR" block does not exist.')
                 packets.append(pkt_data)
 

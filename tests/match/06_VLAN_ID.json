@@ -40,8 +40,8 @@
         ],
         "packets": [
             {
-                "input": "////////u7u7u7u7gQAAAggARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw==",
-                "output": "////////u7u7u7u7gQAAAggARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw=="
+                "ingress": "////////u7u7u7u7gQAAAggARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw==",
+                "egress": "////////u7u7u7u7gQAAAggARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw=="
             }
         ]
     },
@@ -86,7 +86,7 @@
         ],
         "packets": [
             {
-                "input": "////////u7u7u7u7gQAAAwgARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw=="
+                "ingress": "////////u7u7u7u7gQAAAwgARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw=="
             }
         ]
     }

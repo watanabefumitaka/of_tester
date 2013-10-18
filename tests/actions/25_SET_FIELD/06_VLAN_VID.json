@@ -57,10 +57,10 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqALu7u7u7gQAAIAgARQAANgAAQABABrdqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
-                "output": "qqqqqqqqALu7u7u7gQAAAggARQAANgAAQABABrdqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
+                "ingress": "qqqqqqqqALu7u7u7gQAAIAgARQAANgAAQABABrdqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
+                "egress": "qqqqqqqqALu7u7u7gQAAAggARQAANgAAQABABrdqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
                 "description": {
-                    "input": [
+                    "ingress": [
                         {
                             "ethernet": {
                                 "dst": "aa:aa:aa:aa:aa:aa",
@@ -111,7 +111,7 @@
                             "data": "AQIDBAUGBwgJCg=="
                         }
                     ],
-                    "output": [
+                    "egress": [
                         {
                             "ethernet": {
                                 "dst": "aa:aa:aa:aa:aa:aa",

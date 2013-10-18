@@ -43,8 +43,8 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7ht1gABAAAzEAgCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABoOgAFAgAAiABGwgAAAAA//gUHAAAAAQIAhv/+BYDaAgEAYJcHaes=",
-                "output": "qqqqqqqqu7u7u7u7ht1gABAAAzEAgCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABoOgAFAgAAiABGwgAAAAA//gUHAAAAAQIAhv/+BYDaAgEAYJcHaes="
+                "ingress": "qqqqqqqqu7u7u7u7ht1gABAAAzEAgCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABoOgAFAgAAiABGwgAAAAA//gUHAAAAAQIAhv/+BYDaAgEAYJcHaes=",
+                "egress": "qqqqqqqqu7u7u7u7ht1gABAAAzEAgCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABoOgAFAgAAiABGwgAAAAA//gUHAAAAAQIAhv/+BYDaAgEAYJcHaes="
             }
         ]
     },
@@ -92,7 +92,7 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7ht1gABAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABoiABGiAAAAAA//gUHAAAAAQIAhv/+BYDaAgEAYJcHaes="
+                "ingress": "qqqqqqqqu7u7u7u7ht1gABAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABoiABGiAAAAAA//gUHAAAAAQIAhv/+BYDaAgEAYJcHaes="
             }
         ]
     }

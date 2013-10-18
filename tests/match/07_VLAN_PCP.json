@@ -45,8 +45,8 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7gQBgIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
-                "output": "qqqqqqqqu7u7u7u7gQBgIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+                "ingress": "qqqqqqqqu7u7u7u7gQBgIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
+                "egress": "qqqqqqqqu7u7u7u7gQBgIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
             }
         ]
     },
@@ -96,7 +96,7 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqu7u7u7u7gQBAIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+                "ingress": "qqqqqqqqu7u7u7u7gQBAIAgARQAAVAAAQABABrdMwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
             }
         ]
     }

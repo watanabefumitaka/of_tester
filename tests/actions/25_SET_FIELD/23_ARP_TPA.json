@@ -61,10 +61,10 @@
         ],
         "packets": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQoAu7u7u7vAqAIUAAAAAAAAAAAAAAAAAAAAAAAA",
-                "output": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQoAu7u7u7vAqALIAAAAAAAAAAAAAAAAAAAAAAAA",
+                "ingress": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQoAu7u7u7vAqAIUAAAAAAAAAAAAAAAAAAAAAAAA",
+                "egress": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQoAu7u7u7vAqALIAAAAAAAAAAAAAAAAAAAAAAAA",
                 "description": {
-                    "input": [
+                    "ingress": [
                         {
                             "ethernet": {
                                 "dst": "ff:ff:ff:ff:ff:ff",
@@ -89,7 +89,7 @@
                             "data": "AAAAAAAAAAAAAAAAAAAAAAAA"
                         }
                     ],
-                    "output": [
+                    "egress": [
                         {
                             "ethernet": {
                                 "dst": "ff:ff:ff:ff:ff:ff",

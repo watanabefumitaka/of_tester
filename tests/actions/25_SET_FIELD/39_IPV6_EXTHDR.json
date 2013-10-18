@@ -61,10 +61,10 @@
         ],
         "packets": [
             {
-                "input": "qqqqqqqqALu7u7u7ht1gAAAAAFwAQCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACMwAFAgAAAQA6BAAAAAABAAAAAAGg5/ir+Wkai/OffK6AACEpdiAAAAABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uLzAxMjM=",
-                "output": "qqqqqqqqALu7u7u7ht1gAAAAADwAQCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACgAAhKXYgAAAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIz",
+                "ingress": "qqqqqqqqALu7u7u7ht1gAAAAAFwAQCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACMwAFAgAAAQA6BAAAAAABAAAAAAGg5/ir+Wkai/OffK6AACEpdiAAAAABAgMEBQYHCAkKCwwNDg8QERITFBUWFxgZGhscHR4fICEiIyQlJicoKSorLC0uLzAxMjM=",
+                "egress": "qqqqqqqqALu7u7u7ht1gAAAAADwAQCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACgAAhKXYgAAAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIz",
                 "description": {
-                    "input": [
+                    "ingress": [
                         {
                             "ethernet": {
                                 "dst": "aa:aa:aa:aa:aa:aa",
@@ -132,7 +132,7 @@
                             }
                         }
                     ],
-                    "output": [
+                    "egress": [
                         {
                             "ethernet": {
                                 "dst": "aa:aa:aa:aa:aa:aa",

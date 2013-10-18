@@ -45,8 +45,8 @@
         ],
         "packets": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC",
-                "output": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
+                "ingress": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC",
+                "egress": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
             }
         ]
     },
@@ -96,7 +96,7 @@
         ],
         "packets": [
             {
-                "input": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAESNFZ4kKvAqAAC"
+                "ingress": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAESNFZ4kKvAqAAC"
             }
         ]
     }
