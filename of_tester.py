@@ -251,20 +251,17 @@ class OfTester(app_manager.RyuApp):
             self._unregister_sw(ev.datapath)
 
     def _register_sw(self, dp):
-        try:
-            if dp.id == self.target_dpid:
-                self.target_sw = TargetSw(dp, self.logger)
-                msg = 'Join target SW.'
-            elif dp.id == self.tester_dpid:
-                self.tester_sw = TesterSw(dp, self.logger)
-                msg = 'Join tester SW.'
-            else:
-                msg = 'Connect unknown SW.'
+        if dp.id == self.target_dpid:
+            self.target_sw = TargetSw(dp, self.logger)
+            msg = 'Join target SW.'
+        elif dp.id == self.tester_dpid:
+            self.tester_sw = TesterSw(dp, self.logger)
+            msg = 'Join tester SW.'
+        else:
+            msg = 'Connect unknown SW.'
+        if dp.id:
             self.logger.info('dpid=%s : %s',
                              dpid_lib.dpid_to_str(dp.id), msg)
-        except TestEnvironmentError as err:
-            self.logger.error(str(err))
-            return
 
         if self.target_sw and self.tester_sw:
             if self.sw_waiter is not None:
@@ -281,7 +278,9 @@ class OfTester(app_manager.RyuApp):
             msg = 'Leave tester SW.'
         else:
             msg = 'Disconnect unknown SW.'
-        self.logger.info('dpid=%s : %s', dpid_lib.dpid_to_str(dp.id), msg)
+        if dp.id:
+            self.logger.info('dpid=%s : %s',
+                             dpid_lib.dpid_to_str(dp.id), msg)
 
     def _test_execute(self):
         """ Execute OpenFlowSwitch test. """
