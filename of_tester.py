@@ -207,6 +207,10 @@ class OfTester(app_manager.RyuApp):
             return dpid
         self.target_dpid = __get_dpid(params, ARG_TARGET)
         self.tester_dpid = __get_dpid(params, ARG_TESTER)
+        self.logger.info('target dpid=%s',
+                         dpid_lib.dpid_to_str(self.target_dpid))
+        self.logger.info('tester dpid=%s',
+                         dpid_lib.dpid_to_str(self.tester_dpid))
 
         self.target_sw = None
         self.tester_sw = None
@@ -250,12 +254,14 @@ class OfTester(app_manager.RyuApp):
         try:
             if dp.id == self.target_dpid:
                 self.target_sw = TargetSw(dp, self.logger)
-                self.logger.info('dpid=%s : Join target SW.',
-                                 dpid_lib.dpid_to_str(dp.id))
+                msg = 'Join target SW.'
             elif dp.id == self.tester_dpid:
                 self.tester_sw = TesterSw(dp, self.logger)
-                self.logger.info('dpid=%s : Join tester SW.',
-                                 dpid_lib.dpid_to_str(dp.id))
+                msg = 'Join tester SW.'
+            else:
+                msg = 'Connect unknown SW.'
+            self.logger.info('dpid=%s : %s',
+                             dpid_lib.dpid_to_str(dp.id), msg)
         except TestEnvironmentError as err:
             self.logger.error(str(err))
             return
@@ -265,17 +271,17 @@ class OfTester(app_manager.RyuApp):
                 self.sw_waiter.set()
 
     def _unregister_sw(self, dp):
-        if dp.id == self.target_dpid or dp.id == self.tester_dpid:
-            if dp.id == self.target_dpid:
-                del self.target_sw
-                self.target_sw = None
-                self.logger.info('dpid=%s : Leave target SW.',
-                                 dpid_lib.dpid_to_str(dp.id))
-            else:  # dp.id == self.tester_dpid
-                del self.tester_sw
-                self.tester_sw = None
-                self.logger.info('dpid=%s : Leave tester SW.',
-                                 dpid_lib.dpid_to_str(dp.id))
+        if dp.id == self.target_dpid:
+            del self.target_sw
+            self.target_sw = None
+            msg = 'Leave target SW.'
+        elif dp.id == self.tester_dpid:
+            del self.tester_sw
+            self.tester_sw = None
+            msg = 'Leave tester SW.'
+        else:
+            msg = 'Disconnect unknown SW.'
+        self.logger.info('dpid=%s : %s', dpid_lib.dpid_to_str(dp.id), msg)
 
     def _test_execute(self):
         """ Execute OpenFlowSwitch test. """
