@@ -68,7 +68,7 @@ DEBUG_MODE = '--verbose'
 ARG_TARGET = '--target='
 ARG_TESTER = '--tester='
 
-DEFAULT_DIRECTORY = './'
+DEFAULT_DIRECTORY = './tests'
 DEFAULT_TARGET_DPID = dpid_lib.str_to_dpid('0000000000000001')
 DEFAULT_TESTER_DPID = dpid_lib.str_to_dpid('0000000000000002')
 SUB_SW_SENDER_PORT = 1
