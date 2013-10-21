@@ -15,10 +15,12 @@
 
 
 import base64
+import datetime  #TODO: for capture log
 import json
 import logging
 import os
 import struct
+import subprocess  #TODO: for capture log
 import sys
 import traceback
 
@@ -67,11 +69,13 @@ from ryu.ofproto import ofproto_v1_3_parser
 DEBUG_MODE = '--verbose'
 ARG_TARGET = '--target='
 ARG_TESTER = '--tester='
+ARG_CAP_IF = '--cap-if='  #TODO: for capture log
 
 DEFAULT_DIRECTORY = './tests'
 DEFAULT_TARGET_DPID = dpid_lib.str_to_dpid('0000000000000001')
 DEFAULT_TESTER_DPID = dpid_lib.str_to_dpid('0000000000000002')
 SUB_SW_SENDER_PORT = 1
+CAP_LOG_DIRECTORY = './logs/'  #TODO: for capture log
 
 WAIT_TIMER = 5  # sec
 
@@ -191,26 +195,12 @@ class OfTester(app_manager.RyuApp):
             params.remove(DEBUG_MODE)
         self._set_logger(debug_mode)
 
-        def __get_dpid(params, arg_type):
-            dpid = (DEFAULT_TARGET_DPID if arg_type == ARG_TARGET
-                    else DEFAULT_TESTER_DPID)
-            for param in params:
-                if param.find(arg_type) == 0:
-                    try:
-                        dpid = int(param[len(arg_type):], 16)
-                    except ValueError as err:
-                        self.logger.error('Invarid %s(dpid) parameter. %s',
-                                          arg_type, err)
-                        sys.exit()
-                    params.remove(param)
-                    break
-            return dpid
-        self.target_dpid = __get_dpid(params, ARG_TARGET)
-        self.tester_dpid = __get_dpid(params, ARG_TESTER)
-        self.logger.info('target dpid=%s',
-                         dpid_lib.dpid_to_str(self.target_dpid))
-        self.logger.info('tester dpid=%s',
-                         dpid_lib.dpid_to_str(self.tester_dpid))
+        self.target_dpid = self._get_dpid(params, ARG_TARGET)
+        self.tester_dpid = self._get_dpid(params, ARG_TESTER)
+        self.cap_ifs = self._get_capture_if(params)  #TODO: for capture log
+        self.test_files = (params[1:] if len(params) > 1
+                           else [DEFAULT_DIRECTORY])
+        self.logger.info('Test files or directory = %s', self.test_files)
 
         self.target_sw = None
         self.tester_sw = None
@@ -219,11 +209,48 @@ class OfTester(app_manager.RyuApp):
         self.waiter = None
         self.send_msg_xids = []
         self.rcv_msgs = []
-        self.test_files = (params[1:] if len(params) > 1
-                           else [DEFAULT_DIRECTORY])
-        self.logger.info('Test files or directory = %s', self.test_files)
         self.ctlr_thread = None
-        self.test_thread = hub.spawn(self._test_execute)
+
+        #TODO: for capture log
+        caplog_dir = None
+        if self.cap_ifs:
+            if not os.path.exists(CAP_LOG_DIRECTORY):
+                os.system('mkdir %s' % CAP_LOG_DIRECTORY)
+            caplog_dir = (CAP_LOG_DIRECTORY +
+                        datetime.datetime.today().strftime("%Y%m%d_%H%M%S")
+                        + '/')
+            os.system('mkdir %s' % caplog_dir)
+            self.logger.info('Output capture logs to [%s]', caplog_dir)
+
+        self.test_thread = hub.spawn(self._test_execute, caplog_dir)
+
+    def _get_dpid(self, params, arg_type):
+        dpid = (DEFAULT_TARGET_DPID if arg_type == ARG_TARGET
+                else DEFAULT_TESTER_DPID)
+        for param in params:
+            if param.find(arg_type) == 0:
+                try:
+                    dpid = int(param[len(arg_type):], 16)
+                except ValueError as err:
+                    self.logger.error('Invarid %s(dpid) parameter. %s',
+                                      arg_type, err)
+                    sys.exit()
+                params.remove(param)
+                break
+        self.logger.info('%s%s', arg_type, dpid_lib.dpid_to_str(dpid))
+        return dpid
+
+    #TODO: for capture log
+    def _get_capture_if(self, params):
+        ifs = []
+        for param in params:
+            if param.find(ARG_CAP_IF) == 0:
+                ifs = param[len(ARG_CAP_IF):].split(',')
+                params.remove(param)
+                break
+        if ifs:
+            self.logger.info('%s%s', ARG_CAP_IF, ifs)
+        return ifs
 
     def _set_logger(self, debug_mode):
         self.logger.propagate = False
@@ -282,7 +309,7 @@ class OfTester(app_manager.RyuApp):
             self.logger.info('dpid=%s : %s',
                              dpid_lib.dpid_to_str(dp.id), msg)
 
-    def _test_execute(self):
+    def _test_execute(self, caplog_dir):
         """ Execute OpenFlowSwitch test. """
         # Parse test pattern from test files.
         tests = TestPatterns(self.test_files, self.logger)
@@ -300,6 +327,12 @@ class OfTester(app_manager.RyuApp):
                 self.sw_waiter = hub.Event()
                 self.sw_waiter.wait()
                 self.sw_waiter = None
+
+            #TODO: for capture log
+            cap_logs = []
+            if self.cap_ifs:
+                for cap_if in self.cap_ifs:
+                    cap_logs.append(CaptureLog(cap_if, test_name, caplog_dir))
 
             test = tests[test_name]
             # Test execute.
@@ -328,6 +361,10 @@ class OfTester(app_manager.RyuApp):
                     result += os.linesep + unicode(test.description)
             except Exception:
                 result = RYU_INTERNAL_ERROR
+
+            #TODO: for capture log
+            for cap_log in cap_logs:
+                cap_log.stop()
 
             # Output test result.
             msg = (coloring(result, GREEN) if result == OK
@@ -391,7 +428,7 @@ class OfTester(app_manager.RyuApp):
     def _test_flow_matching_check(self, pkt):
         pad_zero = repr('\x00')[1:-1]
         self.logger.debug("send_packet:[%s]", packet.Packet(pkt['ingress']))
-        self.logger.debug("output:[%s]", packet.Packet(pkt.get('egress')))
+        self.logger.debug("egress:[%s]", packet.Packet(pkt.get('egress')))
         self.logger.debug("packet_in:[%s]",
                           packet.Packet(pkt.get('PACKET_IN')))
 
@@ -599,6 +636,19 @@ class OfTester(app_manager.RyuApp):
             if self.waiter:
                 self.waiter.set()
                 hub.sleep(0)
+
+
+#TODO: for capture log
+class CaptureLog(object):
+    def __init__(self, if_name, test_name, dir_path):
+        test_name = test_name.replace('.', '').replace('/', '\\')
+        file_name = '%s_%s.cap' % (test_name, if_name)
+        self.process = subprocess.Popen(
+            ('sudo', 'tcpdump', '-n', '-i', if_name, '-s 0', '-w',
+             dir_path + file_name), stdout=subprocess.PIPE)
+
+    def stop(self):
+        self.process.terminate()
 
 
 class OpenFlowSw(object):
