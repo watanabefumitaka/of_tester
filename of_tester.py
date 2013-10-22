@@ -255,7 +255,7 @@ class OfTester(app_manager.RyuApp):
     def _set_logger(self, debug_mode):
         self.logger.propagate = False
         hdlr = logging.StreamHandler()
-        fmt_str = '[%(levelname)s] %(message)s'
+        fmt_str = '%(asctime)s [%(levelname)s] %(message)s'
         hdlr.setFormatter(logging.Formatter(fmt_str))
         self.logger.addHandler(hdlr)
         if debug_mode:
