@@ -1,10 +1,9 @@
 [
     {
-        "description": "テスト0: arp_tha=00:bb:bb:bb:bb:bbのパケットを印加し、arp_tha=cc:cc:cc:cc:cc:ccに書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
@@ -13,108 +12,65 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "arp_tha",
+                                                    "field": "arp_tha", 
                                                     "value": "cc:cc:cc:cc:cc:cc"
                                                 }
                                             }
                                         }
-                                    },
+                                    }, 
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535,
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "in_port",
+                                        "field": "in_port", 
                                         "value": 1
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 2054
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "arp_tha",
+                                        "field": "arp_tha", 
                                         "value": "00:bb:bb:bb:bb:bb"
                                     }
                                 }
                             ]
                         }
-                    },
-                    "priority": 32768,
+                    }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
-        ],
+        ], 
+        "description": "テスト0: arp_tha=00:bb:bb:bb:bb:bbのパケットを印加し、arp_tha=cc:cc:cc:cc:cc:ccに書き換える", 
         "packets": [
             {
-                "ingress": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQoAu7u7u7vAqAIUAAAAAAAAAAAAAAAAAAAAAAAA",
-                "egress": "////////qqqqqqqqCAYAAQgABgQAAqqqqqqqqsCoAQrMzMzMzMzAqAIUAAAAAAAAAAAAAAAAAAAAAAAA",
-                "description": {
-                    "ingress": [
-                        {
-                            "ethernet": {
-                                "dst": "ff:ff:ff:ff:ff:ff",
-                                "ethertype": 2054,
-                                "src": "aa:aa:aa:aa:aa:aa"
-                            }
-                        },
-                        {
-                            "arp": {
-                                "dst_ip": "192.168.2.20",
-                                "dst_mac": "00:bb:bb:bb:bb:bb",
-                                "hlen": 6,
-                                "hwtype": 1,
-                                "opcode": 2,
-                                "plen": 4,
-                                "proto": 2048,
-                                "src_ip": "192.168.1.10",
-                                "src_mac": "aa:aa:aa:aa:aa:aa"
-                            }
-                        },
-                        {
-                            "data": "AAAAAAAAAAAAAAAAAAAAAAAA"
-                        }
-                    ],
-                    "egress": [
-                        {
-                            "ethernet": {
-                                "dst": "ff:ff:ff:ff:ff:ff",
-                                "ethertype": 2054,
-                                "src": "aa:aa:aa:aa:aa:aa"
-                            }
-                        },
-                        {
-                            "arp": {
-                                "dst_ip": "192.168.2.20",
-                                "dst_mac": "cc:cc:cc:cc:cc:cc",
-                                "hlen": 6,
-                                "hwtype": 1,
-                                "opcode": 2,
-                                "plen": 4,
-                                "proto": 2048,
-                                "src_ip": "192.168.1.10",
-                                "src_mac": "aa:aa:aa:aa:aa:aa"
-                            }
-                        },
-                        {
-                            "data": "AAAAAAAAAAAAAAAAAAAAAAAA"
-                        }
-                    ]
-                }
+                "egress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')", 
+                    "arp(dst_ip='192.168.2.20',dst_mac='cc:cc:cc:cc:cc:cc',hlen=6,hwtype=1,opcode=2,plen=4,proto=2048,src_ip='192.168.1.10',src_mac='aa:aa:aa:aa:aa:aa')", 
+                    "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
+                ], 
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')", 
+                    "arp(dst_ip='192.168.2.20',dst_mac='00:bb:bb:bb:bb:bb',hlen=6,hwtype=1,opcode=2,plen=4,proto=2048,src_ip='192.168.1.10',src_mac='aa:aa:aa:aa:aa:aa')", 
+                    "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
+                ]
             }
         ]
     }

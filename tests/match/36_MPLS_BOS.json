@@ -1,37 +1,36 @@
 [
     {
-        "description": "テスト0: match:mpls_bos=0のフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535,
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 34887
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "mpls_bos",
+                                        "field": "mpls_bos", 
                                         "value": 0
                                     }
                                 }
@@ -40,47 +39,61 @@
                     }
                 }
             }
-        ],
+        ], 
+        "description": "テスト0: match:mpls_bos=0のフローにマッチするパケットを印加", 
         "packets": [
             {
-                "ingress": "qqqqqqqqu7u7u7u7iEcABkxARQEAVAAAQABABrdLwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA=",
-                "egress": "qqqqqqqqu7u7u7u7iEcABkxARQEAVAAAQABABrdLwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34887,src='bb:bb:bb:bb:bb:bb')", 
+                    "mpls(bsb=0,exp=6,label=100,ttl=64)", 
+                    "mpls(bsb=0,exp=0,label=282640,ttl=84)", 
+                    "mpls(bsb=0,exp=0,label=4,ttl=0)", 
+                    "mpls(bsb=1,exp=3,label=262251,ttl=75)", 
+                    "'\\xc0\\xa8\\x01\\x05\\xc0\\xa8\\x01\\x02\\x1a\\x85+g\\x00\\x00\\x00{\\x00\\x00\\x00\\x01`\\x01\\x08\\x00\\xcd\\xb0\\x00o\\x00\\x00\\x00\\x00'"
+                ], 
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34887,src='bb:bb:bb:bb:bb:bb')", 
+                    "mpls(bsb=0,exp=6,label=100,ttl=64)", 
+                    "mpls(bsb=0,exp=0,label=282640,ttl=84)", 
+                    "mpls(bsb=0,exp=0,label=4,ttl=0)", 
+                    "mpls(bsb=1,exp=3,label=262251,ttl=75)", 
+                    "'\\xc0\\xa8\\x01\\x05\\xc0\\xa8\\x01\\x02\\x1a\\x85+g\\x00\\x00\\x00{\\x00\\x00\\x00\\x01`\\x01\\x08\\x00\\xcd\\xb0\\x00o\\x00\\x00\\x00\\x00'"
+                ]
             }
         ]
-    },
+    }, 
     {
-        "description": "テスト1: match:mpls_bos=0のフローにマッチしないパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535,
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 34887
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "mpls_bos",
+                                        "field": "mpls_bos", 
                                         "value": 0
                                     }
                                 }
@@ -89,10 +102,16 @@
                     }
                 }
             }
-        ],
+        ], 
+        "description": "テスト1: match:mpls_bos=0のフローにマッチしないパケットを印加", 
         "packets": [
             {
-                "ingress": "qqqqqqqqu7u7u7u7iEcABk1ARQEAVAAAQABABrdLwKgBBcCoAQIahStnAAAAewAAAAFgAQgAzbAAbwAAAAA="
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34887,src='bb:bb:bb:bb:bb:bb')", 
+                    "mpls(bsb=1,exp=6,label=100,ttl=64)", 
+                    "ipv4(csum=46923,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=1,total_length=84,ttl=64,version=4)", 
+                    "tcp(ack=1,bits=1,csum=52656,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)"
+                ]
             }
         ]
     }

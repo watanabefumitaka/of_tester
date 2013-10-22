@@ -1,92 +1,107 @@
 [
     {
-        "description": "テスト0: match:vlan_vid=2のフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0,
+                                            "max_len": 0, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "vlan_vid",
-                                        "mask": 4095,
+                                        "field": "vlan_vid", 
+                                        "mask": 4095, 
                                         "value": 2
                                     }
                                 }
-                            ],
+                            ], 
                             "type": 1
                         }
-                    },
+                    }, 
                     "priority": 1
                 }
             }
-        ],
+        ], 
+        "description": "テスト0: match:vlan_vid=2のフローにマッチするパケットを印加", 
         "packets": [
             {
-                "ingress": "////////u7u7u7u7gQAAAggARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw==",
-                "egress": "////////u7u7u7u7gQAAAggARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw=="
+                "egress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=33024,src='bb:bb:bb:bb:bb:bb')", 
+                    "vlan(cfi=0,ethertype=2048,pcp=0,vid=2)", 
+                    "ipv4(csum=46933,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.1',tos=0,total_length=84,ttl=64,version=4)", 
+                    "icmp(code=0,csum=3371,data=echo(data='\\xd3]\\xb7\\xe3\\x9e\\xbb\\xf3\\xd6\\x9bq\\xd7\\x9f\\x82\\x18\\xa3\\x92Y\\xa7\\xa2\\x9a\\xab\\xb2\\xdb\\xaf\\xc3\\x1c\\xb3\\x00\\x10\\x83\\x10Q\\x87 \\x92\\x8b',id_=1,seq=1),type_=8)"
+                ], 
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=33024,src='bb:bb:bb:bb:bb:bb')", 
+                    "vlan(cfi=0,ethertype=2048,pcp=0,vid=2)", 
+                    "ipv4(csum=46933,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.1',tos=0,total_length=84,ttl=64,version=4)", 
+                    "icmp(code=0,csum=3371,data=echo(data='\\xd3]\\xb7\\xe3\\x9e\\xbb\\xf3\\xd6\\x9bq\\xd7\\x9f\\x82\\x18\\xa3\\x92Y\\xa7\\xa2\\x9a\\xab\\xb2\\xdb\\xaf\\xc3\\x1c\\xb3\\x00\\x10\\x83\\x10Q\\x87 \\x92\\x8b',id_=1,seq=1),type_=8)"
+                ]
             }
         ]
-    },
+    }, 
     {
-        "description": "テスト1: match:vlan_vid=2のフローにマッチしないパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0,
+                                            "max_len": 0, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "vlan_vid",
-                                        "mask": 4095,
+                                        "field": "vlan_vid", 
+                                        "mask": 4095, 
                                         "value": 2
                                     }
                                 }
-                            ],
+                            ], 
                             "type": 1
                         }
-                    },
+                    }, 
                     "priority": 1
                 }
             }
-        ],
+        ], 
+        "description": "テスト1: match:vlan_vid=2のフローにマッチしないパケットを印加", 
         "packets": [
             {
-                "ingress": "////////u7u7u7u7gQAAAwgARQAAVAAAQABAAbdVwKgBAcCoAQIIAA0rAAEAAdNdt+Oeu/PWm3HXn4IYo5JZp6Kaq7Lbr8McswAQgxBRhyCSiw=="
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=33024,src='bb:bb:bb:bb:bb:bb')", 
+                    "vlan(cfi=0,ethertype=2048,pcp=0,vid=3)", 
+                    "ipv4(csum=46933,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.1',tos=0,total_length=84,ttl=64,version=4)", 
+                    "icmp(code=0,csum=3371,data=echo(data='\\xd3]\\xb7\\xe3\\x9e\\xbb\\xf3\\xd6\\x9bq\\xd7\\x9f\\x82\\x18\\xa3\\x92Y\\xa7\\xa2\\x9a\\xab\\xb2\\xdb\\xaf\\xc3\\x1c\\xb3\\x00\\x10\\x83\\x10Q\\x87 \\x92\\x8b',id_=1,seq=1),type_=8)"
+                ]
             }
         ]
     }

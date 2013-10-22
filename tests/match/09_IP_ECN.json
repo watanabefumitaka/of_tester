@@ -1,37 +1,36 @@
 [
     {
-        "description": "テスト0: match:ip_ecn=0のフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535,
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 2048
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "ip_ecn",
+                                        "field": "ip_ecn", 
                                         "value": 0
                                     }
                                 }
@@ -40,47 +39,55 @@
                     }
                 }
             }
-        ],
+        ], 
+        "description": "テスト0: match:ip_ecn=0のフローにマッチするパケットを印加", 
         "packets": [
             {
-                "ingress": "qqqqqqqqu7u7u7u7CABFAABUAABAAEAGt0zAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA==",
-                "egress": "qqqqqqqqu7u7u7u7CABFAABUAABAAEAGt0zAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA=="
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')", 
+                    "ipv4(csum=46924,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,total_length=84,ttl=64,version=4)", 
+                    "tcp(ack=1,bits=1,csum=52656,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)"
+                ], 
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')", 
+                    "ipv4(csum=46924,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,total_length=84,ttl=64,version=4)", 
+                    "tcp(ack=1,bits=1,csum=52656,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)"
+                ]
             }
         ]
-    },
+    }, 
     {
-        "description": "テスト1: match:ip_ecn=0のフローにマッチしないパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535,
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 2048
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "ip_ecn",
+                                        "field": "ip_ecn", 
                                         "value": 0
                                     }
                                 }
@@ -89,10 +96,15 @@
                     }
                 }
             }
-        ],
+        ], 
+        "description": "テスト1: match:ip_ecn=0のフローにマッチしないパケットを印加", 
         "packets": [
             {
-                "ingress": "qqqqqqqqu7u7u7u7CABFAQBUAABAAEAGt0vAqAEFwKgBAhqFK2cAAAB7AAAAAWABCADNsABvAAAAAA=="
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')", 
+                    "ipv4(csum=46923,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=1,total_length=84,ttl=64,version=4)", 
+                    "tcp(ack=1,bits=1,csum=52656,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)"
+                ]
             }
         ]
     }

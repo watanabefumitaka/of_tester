@@ -1,102 +1,114 @@
 [
     {
-        "description": "テスト0: match:ipv6_src=2002:4637:d5d3::4637:d5d3のフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0,
+                                            "max_len": 0, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 34525
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "ipv6_src",
+                                        "field": "ipv6_src", 
                                         "value": "2002:4637:d5d3::4637:d5d3"
                                     }
                                 }
-                            ],
+                            ], 
                             "type": 1
                         }
-                    },
+                    }, 
                     "priority": 1
                 }
             }
-        ],
+        ], 
+        "description": "テスト0: match:ipv6_src=2002:4637:d5d3::4637:d5d3のフローにマッチするパケットを印加", 
         "packets": [
             {
-                "ingress": "qqqqqqqqu7u7u7u7ht1gAAAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABogABmeHYgAAAByec20zkGAA==",
-                "egress": "qqqqqqqqu7u7u7u7ht1gAAAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABogABmeHYgAAAByec20zkGAA=="
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='bb:bb:bb:bb:bb:bb')", 
+                    "ipv6(dst='2001:4860:0:2001::68',ext_hdrs=[],flow_label=0,hop_limit=128,nxt=58,payload_length=817,src='2002:4637:d5d3::4637:d5d3',traffic_class=0,version=6)", 
+                    "icmpv6(code=0,csum=26232,data=echo(data='\\x01\\xc9\\xe76\\xd39\\x06\\x00',id_=30240,seq=0),type_=128)"
+                ], 
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='bb:bb:bb:bb:bb:bb')", 
+                    "ipv6(dst='2001:4860:0:2001::68',ext_hdrs=[],flow_label=0,hop_limit=128,nxt=58,payload_length=817,src='2002:4637:d5d3::4637:d5d3',traffic_class=0,version=6)", 
+                    "icmpv6(code=0,csum=26232,data=echo(data='\\x01\\xc9\\xe76\\xd39\\x06\\x00',id_=30240,seq=0),type_=128)"
+                ]
             }
         ]
-    },
+    }, 
     {
-        "description": "テスト1: match:ipv6_src=2002:4637:d5d3::4637:d5d3のフローにマッチしないパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0,
+                                            "max_len": 0, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 34525
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "ipv6_src",
+                                        "field": "ipv6_src", 
                                         "value": "2002:4637:d5d3::4637:d5d3"
                                     }
                                 }
-                            ],
+                            ], 
                             "type": 1
                         }
-                    },
+                    }, 
                     "priority": 1
                 }
             }
-        ],
+        ], 
+        "description": "テスト1: match:ipv6_src=2002:4637:d5d3::4637:d5d3のフローにマッチしないパケットを印加", 
         "packets": [
             {
-                "ingress": "qqqqqqqqu7u7u7u7ht1gAAAAAzE6gCACRjfV0wAAAAAAAEY31dUgAUhgAAAgAQAAAAAAAABogABmdnYgAAAByec20zkGAA=="
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='bb:bb:bb:bb:bb:bb')", 
+                    "ipv6(dst='2001:4860:0:2001::68',ext_hdrs=[],flow_label=0,hop_limit=128,nxt=58,payload_length=817,src='2002:4637:d5d3::4637:d5d5',traffic_class=0,version=6)", 
+                    "icmpv6(code=0,csum=26230,data=echo(data='\\x01\\xc9\\xe76\\xd39\\x06\\x00',id_=30240,seq=0),type_=128)"
+                ]
             }
         ]
     }

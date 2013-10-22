@@ -1,37 +1,36 @@
 [
     {
-        "description": "テスト0: match:ipv6_exthdr=64(Hop-by-Hop)のフローにマッチするパケットを印加(OVSではipv6_exthdrは未サポートであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535,
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 34525
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "ipv6_exthdr",
+                                        "field": "ipv6_exthdr", 
                                         "value": 64
                                     }
                                 }
@@ -40,47 +39,55 @@
                     }
                 }
             }
-        ],
+        ], 
+        "description": "テスト0: match:ipv6_exthdr=64(Hop-by-Hop)のフローにマッチするパケットを印加(OVSではipv6_exthdrは未サポートであるため、試験に失敗する)", 
         "packets": [
             {
-                "ingress": "qqqqqqqqu7u7u7u7ht1gABAAAzEAgCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABoOgAFAgAAiABGwgAAAAA//gUHAAAAAQIAhv/+BYDaAgEAYJcHaes=",
-                "egress": "qqqqqqqqu7u7u7u7ht1gABAAAzEAgCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABoOgAFAgAAiABGwgAAAAA//gUHAAAAAQIAhv/+BYDaAgEAYJcHaes="
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='bb:bb:bb:bb:bb:bb')", 
+                    "ipv6(dst='2001:4860:0:2001::68',ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=136)],nxt=58,size=0)],flow_label=4096,hop_limit=128,nxt=0,payload_length=817,src='2002:4637:d5d3::4637:d5d3',traffic_class=0,version=6)", 
+                    "icmpv6(code=194,csum=0,data='\\x00\\x00?\\xfe\\x05\\x07\\x00\\x00\\x00\\x01\\x02\\x00\\x86\\xff\\xfe\\x05\\x80\\xda\\x02\\x01\\x00`\\x97\\x07i\\xeb',type_=70)"
+                ], 
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='bb:bb:bb:bb:bb:bb')", 
+                    "ipv6(dst='2001:4860:0:2001::68',ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=136)],nxt=58,size=0)],flow_label=4096,hop_limit=128,nxt=0,payload_length=817,src='2002:4637:d5d3::4637:d5d3',traffic_class=0,version=6)", 
+                    "icmpv6(code=194,csum=0,data='\\x00\\x00?\\xfe\\x05\\x07\\x00\\x00\\x00\\x01\\x02\\x00\\x86\\xff\\xfe\\x05\\x80\\xda\\x02\\x01\\x00`\\x97\\x07i\\xeb',type_=70)"
+                ]
             }
         ]
-    },
+    }, 
     {
-        "description": "テスト1: match:ipv6_exthdr=64(Hop-by-Hop)のフローにマッチしないパケットを印加(OVSではipv6_exthdrは未サポートであるため、試験に失敗する)",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535,
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 34525
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "ipv6_exthdr",
+                                        "field": "ipv6_exthdr", 
                                         "value": 64
                                     }
                                 }
@@ -89,10 +96,15 @@
                     }
                 }
             }
-        ],
+        ], 
+        "description": "テスト1: match:ipv6_exthdr=64(Hop-by-Hop)のフローにマッチしないパケットを印加(OVSではipv6_exthdrは未サポートであるため、試験に失敗する)", 
         "packets": [
             {
-                "ingress": "qqqqqqqqu7u7u7u7ht1gABAAAzE6gCACRjfV0wAAAAAAAEY31dMgAUhgAAAgAQAAAAAAAABoiABGiAAAAAA//gUHAAAAAQIAhv/+BYDaAgEAYJcHaes="
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='bb:bb:bb:bb:bb:bb')", 
+                    "ipv6(dst='2001:4860:0:2001::68',ext_hdrs=[],flow_label=4096,hop_limit=128,nxt=58,payload_length=817,src='2002:4637:d5d3::4637:d5d3',traffic_class=0,version=6)", 
+                    "icmpv6(code=0,csum=18056,data=nd_neighbor(data=nd_option_la(data=None,hw_src='00:60:97:07:69:eb'),dst='3ffe:507:0:1:200:86ff:fe05:80da',length=1,res=0,type_=2),type_=136)"
+                ]
             }
         ]
     }

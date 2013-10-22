@@ -1,10 +1,9 @@
 [
     {
-        "description": "テスト0: ipv6_dst=2001:db8:0:12::2のパケットを印加し、ipv6_dst=2001d:db8:0:12::20に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
@@ -13,130 +12,65 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "ipv6_dst",
+                                                    "field": "ipv6_dst", 
                                                     "value": "2001:db8:0:12::20"
                                                 }
                                             }
                                         }
-                                    },
+                                    }, 
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535,
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "in_port",
+                                        "field": "in_port", 
                                         "value": 1
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 34525
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "ipv6_dst",
+                                        "field": "ipv6_dst", 
                                         "value": "2001:db8:0:12::2"
                                     }
                                 }
                             ]
                         }
-                    },
-                    "priority": 32768,
+                    }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
-        ],
+        ], 
+        "description": "テスト0: ipv6_dst=2001:db8:0:12::2のパケットを印加し、ipv6_dst=2001d:db8:0:12::20に書き換える", 
         "packets": [
             {
-                "ingress": "qqqqqqqqALu7u7u7ht1gAAAAADw6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAACgAAhKXYgAAAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIz",
-                "egress": "qqqqqqqqALu7u7u7ht1gAAAAADw6QCABDbgAAAASAAAAAAAAAAEgAQ24AAAAEgAAAAAAAAAggAAhC3YgAAAAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIz",
-                "description": {
-                    "ingress": [
-                        {
-                            "ethernet": {
-                                "dst": "aa:aa:aa:aa:aa:aa",
-                                "ethertype": 34525,
-                                "src": "00:bb:bb:bb:bb:bb"
-                            }
-                        },
-                        {
-                            "ipv6": {
-                                "dst": "2001:db8:0:12::2",
-                                "ext_hdrs": [],
-                                "flow_label": 0,
-                                "hop_limit": 64,
-                                "nxt": 58,
-                                "payload_length": 60,
-                                "src": "2001:db8:0:12::1",
-                                "traffic_class": 0,
-                                "version": 6
-                            }
-                        },
-                        {
-                            "icmpv6": {
-                                "code": 0,
-                                "csum": 8489,
-                                "data": {
-                                    "echo": {
-                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw==",
-                                        "id": 30240,
-                                        "seq": 0
-                                    }
-                                },
-                                "type": 128
-                            }
-                        }
-                    ],
-                    "egress": [
-                        {
-                            "ethernet": {
-                                "dst": "aa:aa:aa:aa:aa:aa",
-                                "ethertype": 34525,
-                                "src": "00:bb:bb:bb:bb:bb"
-                            }
-                        },
-                        {
-                            "ipv6": {
-                                "dst": "2001:db8:0:12::20",
-                                "ext_hdrs": [],
-                                "flow_label": 0,
-                                "hop_limit": 64,
-                                "nxt": 58,
-                                "payload_length": 60,
-                                "src": "2001:db8:0:12::1",
-                                "traffic_class": 0,
-                                "version": 6
-                            }
-                        },
-                        {
-                            "icmpv6": {
-                                "code": 0,
-                                "csum": 8459,
-                                "data": {
-                                    "echo": {
-                                        "data": "AAECAwQFBgcICQoLDA0ODxAREhMUFRYXGBkaGxwdHh8gISIjJCUmJygpKissLS4vMDEyMw==",
-                                        "id": 30240,
-                                        "seq": 0
-                                    }
-                                },
-                                "type": 128
-                            }
-                        }
-                    ]
-                }
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')", 
+                    "ipv6(dst='2001:db8:0:12::20',ext_hdrs=[],flow_label=0,hop_limit=64,nxt=58,payload_length=60,src='2001:db8:0:12::1',traffic_class=0,version=6)", 
+                    "icmpv6(code=0,csum=8459,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123',id_=30240,seq=0),type_=128)"
+                ], 
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')", 
+                    "ipv6(dst='2001:db8:0:12::2',ext_hdrs=[],flow_label=0,hop_limit=64,nxt=58,payload_length=60,src='2001:db8:0:12::1',traffic_class=0,version=6)", 
+                    "icmpv6(code=0,csum=8489,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123',id_=30240,seq=0),type_=128)"
+                ]
             }
         ]
     }

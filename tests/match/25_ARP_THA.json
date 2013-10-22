@@ -1,102 +1,111 @@
 [
     {
-        "description": "テスト0: match:arp_tha=00:00:00:00:00:00のフローにマッチするパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0,
+                                            "max_len": 0, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 2054
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "arp_tha",
+                                        "field": "arp_tha", 
                                         "value": "00:00:00:00:00:00"
                                     }
                                 }
-                            ],
+                            ], 
                             "type": 1
                         }
-                    },
+                    }, 
                     "priority": 1
                 }
             }
-        ],
+        ], 
+        "description": "テスト0: match:arp_tha=00:00:00:00:00:00のフローにマッチするパケットを印加", 
         "packets": [
             {
-                "ingress": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC",
-                "egress": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAEAAAAAAADAqAAC"
+                "egress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')", 
+                    "arp(dst_ip='192.168.0.2',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='192.168.0.1',src_mac='aa:aa:aa:aa:aa:aa')"
+                ], 
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')", 
+                    "arp(dst_ip='192.168.0.2',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='192.168.0.1',src_mac='aa:aa:aa:aa:aa:aa')"
+                ]
             }
         ]
-    },
+    }, 
     {
-        "description": "テスト1: match:arp_tha=00:00:00:00:00:00のフローにマッチしないパケットを印加",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0,
+                                            "max_len": 0, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type",
+                                        "field": "eth_type", 
                                         "value": 2054
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "arp_tha",
+                                        "field": "arp_tha", 
                                         "value": "00:00:00:00:00:00"
                                     }
                                 }
-                            ],
+                            ], 
                             "type": 1
                         }
-                    },
+                    }, 
                     "priority": 1
                 }
             }
-        ],
+        ], 
+        "description": "テスト1: match:arp_tha=00:00:00:00:00:00のフローにマッチしないパケットを印加", 
         "packets": [
             {
-                "ingress": "////////qqqqqqqqCAYAAQgABgQAAaqqqqqqqsCoAAESNFZ4kKvAqAAC"
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')", 
+                    "arp(dst_ip='192.168.0.2',dst_mac='12:34:56:78:90:ab',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='192.168.0.1',src_mac='aa:aa:aa:aa:aa:aa')"
+                ]
             }
         ]
     }

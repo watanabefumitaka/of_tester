@@ -13,9 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 import base64
 import datetime  #TODO: for capture log
+import inspect
 import json
 import logging
 import os
@@ -23,6 +23,16 @@ import struct
 import subprocess  #TODO: for capture log
 import sys
 import traceback
+
+# import all packet libraries.
+PKT_LIB_PATH = 'ryu.lib.packet'
+for modname, mod in sys.modules.iteritems():
+    if not modname.startswith(PKT_LIB_PATH) or not mod:
+        continue
+    for (clsname, cls, ) in inspect.getmembers(mod):
+        if not inspect.isclass(cls):
+            continue
+        exec 'from %s import %s' % (modname, clsname)
 
 from ryu import log
 from ryu.base import app_manager
@@ -820,17 +830,23 @@ class Test(object):
                 if not 'ingress' in pkt:
                     raise ValueError('a test requires "ingress" field '
                                      'when an "ERROR" block does not exist.')
-                pkt_data['ingress'] = base64.b64decode(pkt['ingress'])
+                data = eval('/'.join(pkt['ingress']))
+                data.serialize()
+                pkt_data['ingress'] = str(data.data)
 
                 # parse 'egress'
                 out_pkt = None
                 if 'egress' in pkt:
-                    pkt_data['egress'] = base64.b64decode(pkt['egress'])
+                    data = eval('/'.join(pkt['egress']))
+                    data.serialize()
+                    pkt_data['egress'] = str(data.data)
 
                 # parse 'PACKET_IN'
                 pkt_in_pkt = None
                 if 'PACKET_IN' in pkt:
-                    pkt_data['PACKET_IN'] = base64.b64decode(pkt['PACKET_IN'])
+                    data = eval('/'.join(pkt['PACKET_IN']))
+                    data.serialize()
+                    pkt_data['PACKET_IN'] = str(data.data)
 
                 if out_pkt and pkt_in_pkt:
                     raise ValueError(

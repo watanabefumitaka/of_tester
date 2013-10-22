@@ -1,10 +1,9 @@
 [
     {
-        "description": "テスト0: vlan_vid=32のパケットを印加し、vlan_vid=2に書き換える",
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0,
+                    "command": 0, 
                     "instructions": [
                         {
                             "OFPInstructionActions": {
@@ -13,156 +12,65 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "vlan_vid",
+                                                    "field": "vlan_vid", 
                                                     "value": 2
                                                 }
                                             }
                                         }
-                                    },
+                                    }, 
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535,
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
-                                ],
+                                ], 
                                 "type": 4
                             }
                         }
-                    ],
+                    ], 
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "in_port",
+                                        "field": "in_port", 
                                         "value": 1
                                     }
-                                },
+                                }, 
                                 {
                                     "OXMTlv": {
-                                        "field": "vlan_vid",
-                                        "mask": 4095,
+                                        "field": "vlan_vid", 
+                                        "mask": 4095, 
                                         "value": 32
                                     }
                                 }
-                            ],
+                            ], 
                             "type": 1
                         }
-                    },
-                    "priority": 32768,
+                    }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
-        ],
+        ], 
+        "description": "テスト0: vlan_vid=32のパケットを印加し、vlan_vid=2に書き換える", 
         "packets": [
             {
-                "ingress": "qqqqqqqqALu7u7u7gQAAIAgARQAANgAAQABABrdqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
-                "egress": "qqqqqqqqALu7u7u7gQAAAggARQAANgAAQABABrdqwKgBBcCoAQIahStnAAAAewAAAABgMAgAtFoAbwAAAAABAgMEBQYHCAkK",
-                "description": {
-                    "ingress": [
-                        {
-                            "ethernet": {
-                                "dst": "aa:aa:aa:aa:aa:aa",
-                                "ethertype": 33024,
-                                "src": "00:bb:bb:bb:bb:bb"
-                            }
-                        },
-                        {
-                            "vlan": {
-                                "cfi": 0,
-                                "ethertype": 2048,
-                                "pcp": 0,
-                                "vid": 32
-                            }
-                        },
-                        {
-                            "ipv4": {
-                                "csum": 46954,
-                                "dst": "192.168.1.2",
-                                "flags": 2,
-                                "header_length": 5,
-                                "identification": 0,
-                                "offset": 0,
-                                "option": null,
-                                "proto": 6,
-                                "src": "192.168.1.5",
-                                "tos": 0,
-                                "total_length": 54,
-                                "ttl": 64,
-                                "version": 4
-                            }
-                        },
-                        {
-                            "tcp": {
-                                "ack": 0,
-                                "bits": 48,
-                                "csum": 46170,
-                                "dst_port": 11111,
-                                "offset": 6,
-                                "option": "AAAAAA==",
-                                "seq": 123,
-                                "src_port": 6789,
-                                "urgent": 111,
-                                "window_size": 2048
-                            }
-                        },
-                        {
-                            "data": "AQIDBAUGBwgJCg=="
-                        }
-                    ],
-                    "egress": [
-                        {
-                            "ethernet": {
-                                "dst": "aa:aa:aa:aa:aa:aa",
-                                "ethertype": 33024,
-                                "src": "00:bb:bb:bb:bb:bb"
-                            }
-                        },
-                        {
-                            "vlan": {
-                                "cfi": 0,
-                                "ethertype": 2048,
-                                "pcp": 0,
-                                "vid": 2
-                            }
-                        },
-                        {
-                            "ipv4": {
-                                "csum": 46954,
-                                "dst": "192.168.1.2",
-                                "flags": 2,
-                                "header_length": 5,
-                                "identification": 0,
-                                "offset": 0,
-                                "option": null,
-                                "proto": 6,
-                                "src": "192.168.1.5",
-                                "tos": 0,
-                                "total_length": 54,
-                                "ttl": 64,
-                                "version": 4
-                            }
-                        },
-                        {
-                            "tcp": {
-                                "ack": 0,
-                                "bits": 48,
-                                "csum": 46170,
-                                "dst_port": 11111,
-                                "offset": 6,
-                                "option": "AAAAAA==",
-                                "seq": 123,
-                                "src_port": 6789,
-                                "urgent": 111,
-                                "window_size": 2048
-                            }
-                        },
-                        {
-                            "data": "AQIDBAUGBwgJCg=="
-                        }
-                    ]
-                }
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=33024,src='00:bb:bb:bb:bb:bb')", 
+                    "vlan(cfi=0,ethertype=2048,pcp=0,vid=2)", 
+                    "ipv4(csum=46954,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,total_length=54,ttl=64,version=4)", 
+                    "tcp(ack=0,bits=48,csum=46170,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)", 
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n'"
+                ], 
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=33024,src='00:bb:bb:bb:bb:bb')", 
+                    "vlan(cfi=0,ethertype=2048,pcp=0,vid=32)", 
+                    "ipv4(csum=46954,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,total_length=54,ttl=64,version=4)", 
+                    "tcp(ack=0,bits=48,csum=46170,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)", 
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n'"
+                ]
             }
         ]
     }
