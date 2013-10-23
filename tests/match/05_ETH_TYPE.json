@@ -3,97 +3,97 @@
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0, 
+                    "command": 0,
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0, 
+                                            "max_len": 0,
                                             "port": 2
                                         }
                                     }
-                                ], 
+                                ],
                                 "type": 4
                             }
                         }
-                    ], 
+                    ],
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type", 
+                                        "field": "eth_type",
                                         "value": 2054
                                     }
                                 }
-                            ], 
+                            ],
                             "type": 1
                         }
-                    }, 
+                    },
                     "priority": 1
                 }
             }
-        ], 
-        "description": "テスト0: match:eth_type=2054(ARP)のフローにマッチするパケットを印加", 
+        ],
+        "description": "テスト0: match:eth_type=2054(ARP)のフローにマッチするパケットを印加",
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='bb:bb:bb:bb:bb:bb')", 
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='bb:bb:bb:bb:bb:bb')",
                     "arp(dst_ip='0.0.0.0',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='0.0.0.0',src_mac='bb:bb:bb:bb:bb:bb')"
-                ], 
+                ],
                 "ingress": [
-                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='bb:bb:bb:bb:bb:bb')", 
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='bb:bb:bb:bb:bb:bb')",
                     "arp(dst_ip='0.0.0.0',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='0.0.0.0',src_mac='bb:bb:bb:bb:bb:bb')"
                 ]
             }
         ]
-    }, 
+    },
     {
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0, 
+                    "command": 0,
                     "instructions": [
                         {
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0, 
+                                            "max_len": 0,
                                             "port": 2
                                         }
                                     }
-                                ], 
+                                ],
                                 "type": 4
                             }
                         }
-                    ], 
+                    ],
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type", 
+                                        "field": "eth_type",
                                         "value": 2054
                                     }
                                 }
-                            ], 
+                            ],
                             "type": 1
                         }
-                    }, 
+                    },
                     "priority": 1
                 }
             }
-        ], 
-        "description": "テスト1: match:eth_type=2054(ARP)のフローにマッチしないパケットを印加", 
+        ],
+        "description": "テスト1: match:eth_type=2054(ARP)のフローにマッチしないパケットを印加",
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb',ethertype=2048,src='aa:aa:aa:aa:aa:aa')", 
-                    "ipv4(csum=46933,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.1',tos=0,total_length=84,ttl=64,version=4)", 
-                    "icmp(code=0,csum=48812,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb',ethertype=2048,src='aa:aa:aa:aa:aa:aa')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.1',tos=0,ttl=64,version=4)",
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
                 ]
             }
         ]

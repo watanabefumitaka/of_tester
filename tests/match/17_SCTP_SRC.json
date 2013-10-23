@@ -31,12 +31,12 @@
                                 {
                                     "OXMTlv": {
                                         "field": "ip_proto",
-                                        "value": 6
+                                        "value": 132
                                     }
                                 },
                                 {
                                     "OXMTlv": {
-                                        "field": "tcp_dst",
+                                        "field": "sctp_src",
                                         "value": 12345
                                     }
                                 }
@@ -48,20 +48,18 @@
                 }
             }
         ],
-        "description": "テスト0: match:tcp_dst=12345のフローにマッチするパケットを印加",
+        "description": "テスト0: match:sctp_src=12345のフローにマッチするパケットを印加",
         "packets": [
             {
                 "egress": [
                     "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')",
-                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,ttl=64,version=4)",
-                    "tcp(ack=1,bits=1,csum=0,dst_port=12345,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
-                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=132,src='192.168.1.5',tos=0,ttl=64,version=4)",
+                    "sctp(chunks=[chunk_data(begin=1,end=1,length=52,payload_id=0,payload_data='0123456789abcdefghijklmnopqrstuvwxyz',seq=0,sid=1,tsn=1,unordered=1)],csum=0,dst_port=6789,src_port=12345,vtag=0)"
                 ],
                 "ingress": [
                     "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')",
-                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,ttl=64,version=4)",
-                    "tcp(ack=1,bits=1,csum=0,dst_port=12345,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
-                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=132,src='192.168.1.5',tos=0,ttl=64,version=4)",
+                    "sctp(chunks=[chunk_data(begin=1,end=1,length=52,payload_id=0,payload_data='0123456789abcdefghijklmnopqrstuvwxyz',seq=0,sid=1,tsn=1,unordered=1)],csum=0,dst_port=6789,src_port=12345,vtag=0)"
                 ]
             }
         ]
@@ -98,12 +96,12 @@
                                 {
                                     "OXMTlv": {
                                         "field": "ip_proto",
-                                        "value": 6
+                                        "value": 132
                                     }
                                 },
                                 {
                                     "OXMTlv": {
-                                        "field": "tcp_dst",
+                                        "field": "sctp_src",
                                         "value": 12345
                                     }
                                 }
@@ -115,14 +113,13 @@
                 }
             }
         ],
-        "description": "テスト1: match:tcp_dst=12345のフローにマッチしないパケットを印加",
+        "description": "テスト1: match:sctp_src=12345のフローにマッチしないパケットを印加",
         "packets": [
             {
                 "ingress": [
                     "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')",
-                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,ttl=64,version=4)",
-                    "tcp(ack=1,bits=1,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
-                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=132,src='192.168.1.5',tos=0,ttl=64,version=4)",
+                    "sctp(chunks=[chunk_data(begin=1,end=1,length=52,payload_id=0,payload_data='0123456789abcdefghijklmnopqrstuvwxyz',seq=0,sid=1,tsn=1,unordered=1)],csum=0,dst_port=6789,src_port=11111,vtag=0)"
                 ]
             }
         ]
