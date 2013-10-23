@@ -3,7 +3,7 @@
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0, 
+                    "command": 0,
                     "instructions": [
                         {
                             "OFPInstructionActions": {
@@ -12,66 +12,66 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "ipv4_dst", 
+                                                    "field": "ipv4_dst",
                                                     "value": "192.168.1.20"
                                                 }
                                             }
                                         }
-                                    }, 
+                                    },
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
+                                            "max_len": 65535,
                                             "port": 2
                                         }
                                     }
-                                ], 
+                                ],
                                 "type": 4
                             }
                         }
-                    ], 
+                    ],
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "in_port", 
+                                        "field": "in_port",
                                         "value": 1
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type", 
+                                        "field": "eth_type",
                                         "value": 2048
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "ipv4_dst", 
+                                        "field": "ipv4_dst",
                                         "value": "192.168.1.2"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "priority": 32768, 
+                    },
+                    "priority": 32768,
                     "table_id": 0
                 }
             }
-        ], 
-        "description": "テスト0: ipv4_dst=192.168.1.2のパケットを印加し、ipv4_dst=192.168.1.20に書き換える", 
+        ],
+        "description": "テスト0: ipv4_dst=192.168.1.2のパケットを印加し、ipv4_dst=192.168.1.20に書き換える",
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')", 
-                    "ipv4(csum=46936,dst='192.168.1.20',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,total_length=54,ttl=64,version=4)", 
-                    "tcp(ack=0,bits=48,csum=46152,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)", 
-                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n'"
-                ], 
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.20',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,ttl=64,version=4)",
+                    "tcp(ack=0,bits=48,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
+                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
+                ],
                 "ingress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')", 
-                    "ipv4(csum=46954,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,total_length=54,ttl=64,version=4)", 
-                    "tcp(ack=0,bits=48,csum=46170,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)", 
-                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n'"
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,ttl=64,version=4)",
+                    "tcp(ack=0,bits=48,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
+                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
                 ]
             }
         ]

@@ -3,7 +3,7 @@
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0, 
+                    "command": 0,
                     "instructions": [
                         {
                             "OFPInstructionActions": {
@@ -12,58 +12,58 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "eth_type", 
+                                                    "field": "eth_type",
                                                     "value": 34888
                                                 }
                                             }
                                         }
-                                    }, 
+                                    },
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
+                                            "max_len": 65535,
                                             "port": 2
                                         }
                                     }
-                                ], 
+                                ],
                                 "type": 4
                             }
                         }
-                    ], 
+                    ],
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "in_port", 
+                                        "field": "in_port",
                                         "value": 1
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type", 
+                                        "field": "eth_type",
                                         "value": 2048
                                     }
                                 }
-                            ], 
+                            ],
                             "type": 1
                         }
-                    }, 
-                    "priority": 32768, 
+                    },
+                    "priority": 32768,
                     "table_id": 0
                 }
             }
-        ], 
-        "description": "テスト0: eth_type=0x0800のパケットを印加し、eth_type=0x8848に書き換える(OVSではeth_typeはread onlyであるため、試験に失敗する)", 
+        ],
+        "description": "テスト0: eth_type=0x0800のパケットを印加し、eth_type=0x8848に書き換える(OVSではeth_typeはread onlyであるため、試験に失敗する)",
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34888,src='00:bb:bb:bb:bb:bb')", 
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34888,src='00:bb:bb:bb:bb:bb')",
                     "'E\\x00\\x00L\\x00\\x00@\\x00@\\x01\\xb64\\xc0\\xa8\\x01\\xc8\\xc0\\xa8\\x01d\\x08\\x00\\xbe\\xac\\x00\\x01\\x00\\x010123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'"
-                ], 
+                ],
                 "ingress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')", 
-                    "ipv4(csum=46644,dst='192.168.1.100',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.200',tos=0,total_length=76,ttl=64,version=4)", 
-                    "icmp(code=0,csum=48812,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.100',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.200',tos=0,ttl=64,version=4)",
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
                 ]
             }
         ]

@@ -3,7 +3,7 @@
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0, 
+                    "command": 0,
                     "instructions": [
                         {
                             "OFPInstructionActions": {
@@ -12,76 +12,76 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "ipv6_nd_target", 
+                                                    "field": "ipv6_nd_target",
                                                     "value": "3ffe:507:0:1:200:86ff:1234:5678"
                                                 }
                                             }
                                         }
-                                    }, 
+                                    },
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
+                                            "max_len": 65535,
                                             "port": 2
                                         }
                                     }
-                                ], 
+                                ],
                                 "type": 4
                             }
                         }
-                    ], 
+                    ],
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "in_port", 
+                                        "field": "in_port",
                                         "value": 1
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type", 
+                                        "field": "eth_type",
                                         "value": 34525
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "ip_proto", 
+                                        "field": "ip_proto",
                                         "value": 58
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "icmpv6_type", 
+                                        "field": "icmpv6_type",
                                         "value": 135
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "ipv6_nd_target", 
+                                        "field": "ipv6_nd_target",
                                         "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "priority": 32768, 
+                    },
+                    "priority": 32768,
                     "table_id": 0
                 }
             }
-        ], 
-        "description": "テスト0: ipv6_nd_target=3ffe:507:0:1:200:86ff:fe05:80daのパケットを印加し、ipv6_nd_target=3ffe:507:0:1:200:86ff:1234:5678に書き換える(OVSではipv6_nd_targetはread onlyであるため、試験に失敗する)", 
+        ],
+        "description": "テスト0: ipv6_nd_target=3ffe:507:0:1:200:86ff:fe05:80daのパケットを印加し、ipv6_nd_target=3ffe:507:0:1:200:86ff:1234:5678に書き換える(OVSではipv6_nd_targetはread onlyであるため、試験に失敗する)",
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')", 
-                    "ipv6(dst='2001:db8:0:12::2',ext_hdrs=[],flow_label=0,hop_limit=64,nxt=58,payload_length=32,src='2001:db8:0:12::1',traffic_class=0,version=6)", 
-                    "icmpv6(code=0,csum=58374,data=nd_neighbor(data=nd_option_la(data=None,hw_src='00:60:97:07:69:ea'),dst='3ffe:507:0:1:200:86ff:1234:5678',length=1,res=0,type_=1),type_=135)"
-                ], 
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')",
+                    "ipv6(dst='2001:db8:0:12::2',ext_hdrs=[],flow_label=0,hop_limit=64,nxt=58,payload_length=32,src='2001:db8:0:12::1',traffic_class=0,version=6)",
+                    "icmpv6(code=0,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='00:60:97:07:69:ea'),dst='3ffe:507:0:1:200:86ff:1234:5678',length=1,res=0,type_=1),type_=135)"
+                ],
                 "ingress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')", 
-                    "ipv6(dst='2001:db8:0:12::2',ext_hdrs=[],flow_label=0,hop_limit=64,nxt=58,payload_length=32,src='2001:db8:0:12::1',traffic_class=0,version=6)", 
-                    "icmpv6(code=0,csum=52690,data=nd_neighbor(data=nd_option_la(data=None,hw_src='00:60:97:07:69:ea'),dst='3ffe:507:0:1:200:86ff:fe05:80da',length=1,res=0,type_=1),type_=135)"
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')",
+                    "ipv6(dst='2001:db8:0:12::2',ext_hdrs=[],flow_label=0,hop_limit=64,nxt=58,payload_length=32,src='2001:db8:0:12::1',traffic_class=0,version=6)",
+                    "icmpv6(code=0,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='00:60:97:07:69:ea'),dst='3ffe:507:0:1:200:86ff:fe05:80da',length=1,res=0,type_=1),type_=135)"
                 ]
             }
         ]

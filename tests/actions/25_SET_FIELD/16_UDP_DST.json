@@ -3,7 +3,7 @@
         "FLOW_MOD": [
             {
                 "OFPFlowMod": {
-                    "command": 0, 
+                    "command": 0,
                     "instructions": [
                         {
                             "OFPInstructionActions": {
@@ -12,71 +12,71 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "udp_dst", 
+                                                    "field": "udp_dst",
                                                     "value": 22222
                                                 }
                                             }
                                         }
-                                    }, 
+                                    },
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
+                                            "max_len": 65535,
                                             "port": 2
                                         }
                                     }
-                                ], 
+                                ],
                                 "type": 4
                             }
                         }
-                    ], 
+                    ],
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "in_port", 
+                                        "field": "in_port",
                                         "value": 1
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_type", 
+                                        "field": "eth_type",
                                         "value": 2048
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "ip_proto", 
+                                        "field": "ip_proto",
                                         "value": 17
                                     }
-                                }, 
+                                },
                                 {
                                     "OXMTlv": {
-                                        "field": "udp_dst", 
+                                        "field": "udp_dst",
                                         "value": 11111
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "priority": 32768, 
+                    },
+                    "priority": 32768,
                     "table_id": 0
                 }
             }
-        ], 
-        "description": "テスト0: udp_dst=11111のパケットを印加し、udp_dst=22222に書き換える", 
+        ],
+        "description": "テスト0: udp_dst=11111のパケットを印加し、udp_dst=22222に書き換える",
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')", 
-                    "ipv4(csum=46941,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=17,src='192.168.1.1',tos=0,total_length=60,ttl=64,version=4)", 
-                    "udp(csum=2534,dst_port=22222,src_port=6789,total_length=40)", 
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=17,src='192.168.1.1',tos=0,ttl=64,version=4)",
+                    "udp(dst_port=22222,src_port=6789)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f '"
-                ], 
+                ],
                 "ingress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')", 
-                    "ipv4(csum=46941,dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=17,src='192.168.1.1',tos=0,total_length=60,ttl=64,version=4)", 
-                    "udp(csum=13645,dst_port=11111,src_port=6789,total_length=40)", 
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=17,src='192.168.1.1',tos=0,ttl=64,version=4)",
+                    "udp(dst_port=11111,src_port=6789)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f '"
                 ]
             }
