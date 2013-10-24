@@ -97,5 +97,106 @@
                 ]
             }
         ]
+    },
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_src",
+                                        "mask": 1099511627775,
+                                        "value": "00:bb:bb:bb:bb:bb"
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    }
+                }
+            }
+        ],
+        "description": "テスト2: match:eth_src=xx:bb:bb:bb:bb:bb(先頭不問)のフローにマッチするパケットを印加",
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='34:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.1',tos=0,ttl=64,version=4)",
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
+                ],
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='34:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.1',tos=0,ttl=64,version=4)",
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_src",
+                                        "mask": 1099511627775,
+                                        "value": "00:bb:bb:bb:bb:bb"
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    }
+                }
+            }
+        ],
+        "description": "テスト3: match:eth_src=xx:bb:bb:bb:bb:bb(先頭不問)のフローにマッチしないパケットを印加",
+        "packets": [
+            {
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:ab:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.1',tos=0,ttl=64,version=4)",
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
+                ]
+            }
+        ]
     }
 ]
