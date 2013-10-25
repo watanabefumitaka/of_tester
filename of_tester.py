@@ -526,9 +526,9 @@ class OfTester(app_manager.RyuApp):
                             raise TestFailure(self.state)
                         before_stats.remove(before_stat)
                         break
-                if before_stats:
-                    raise RyuException('Internal error. Unknown flow was'
-                                       ' installed. %s' % before_stats)
+        if before_stats:
+            raise RyuException('Internal error. Unknown flow was'
+                               ' installed. %s' % before_stats)
 
     def _test_invalid_flow_install(self, flows, error):
         def __compare_error(msg, pattern):
