@@ -517,20 +517,25 @@ class OfTester(app_manager.RyuApp):
         xid = self.target_sw.send_flow_stats()
         self.send_msg_xids.append(xid)
         self._wait()
+        rcv_msgs = [stats for msg in self.rcv_msgs for stats in msg.body]
+        print 'before_stats = ' + str(before_stats)
+        print 'rcv_msgs = ' + str(rcv_msgs)
         for msg in self.rcv_msgs:
             assert isinstance(msg, ofproto_v1_3_parser.OFPFlowStatsReply)
             for stats in msg.body:
-                print 'before_stats = ' + str(before_stats)
-                print 'stats = ' + str(stats)
                 for before_stat in before_stats:
                     if self._compare_flow(stats, before_stat):
                         if stats.packet_count != before_stat.packet_count:
                             raise TestFailure(self.state)
                         before_stats.remove(before_stat)
+                        rcv_msgs.remove(stats)
                         break
         if before_stats:
             raise RyuException('Internal error. Unknown flow was'
                                ' installed. %s' % before_stats)
+        if rcv_msgs:
+            raise RyuException('Internal error. Unknown flow was'
+                               ' installed. %s' % rcv_msgs)
 
     def _test_invalid_flow_install(self, flows, error):
         def __compare_error(msg, pattern):
