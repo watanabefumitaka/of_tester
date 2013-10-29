@@ -358,7 +358,8 @@ class OfTester(app_manager.RyuApp):
                             self._test(STATE_FLOW_MATCH_CHK, pkt)
                         else:
                             before_stats = self._test(STATE_GET_MATCH_COUNT)
-                            self._test(STATE_UNMATCH_PKT_SEND, pkt)
+                            #TODO:
+                            #self._test(STATE_UNMATCH_PKT_SEND, pkt)
                             self._test(STATE_FLOW_UNMATCH_CHK, before_stats)
                 else:
                     # 1. Install invalid flows.
