@@ -520,6 +520,8 @@ class OfTester(app_manager.RyuApp):
         for msg in self.rcv_msgs:
             assert isinstance(msg, ofproto_v1_3_parser.OFPFlowStatsReply)
             for stats in msg.body:
+                print 'before_stats = ' + str(before_stats)
+                print 'stats = ' + str(stats)
                 for before_stat in before_stats:
                     if self._compare_flow(stats, before_stat):
                         if stats.packet_count != before_stat.packet_count:
