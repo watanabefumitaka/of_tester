@@ -358,8 +358,7 @@ class OfTester(app_manager.RyuApp):
                             self._test(STATE_FLOW_MATCH_CHK, pkt)
                         else:
                             before_stats = self._test(STATE_GET_MATCH_COUNT)
-                            #TODO:
-                            #self._test(STATE_UNMATCH_PKT_SEND, pkt)
+                            self._test(STATE_UNMATCH_PKT_SEND, pkt)
                             self._test(STATE_FLOW_UNMATCH_CHK, before_stats)
                 else:
                     # 1. Install invalid flows.
@@ -519,8 +518,6 @@ class OfTester(app_manager.RyuApp):
         self.send_msg_xids.append(xid)
         self._wait()
         rcv_msgs = [stats for msg in self.rcv_msgs for stats in msg.body]
-        print 'before_stats = ' + str(before_stats)
-        print 'rcv_msgs = ' + str(rcv_msgs)
         for msg in self.rcv_msgs:
             assert isinstance(msg, ofproto_v1_3_parser.OFPFlowStatsReply)
             for stats in msg.body:
