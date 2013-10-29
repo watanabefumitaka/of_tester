@@ -227,8 +227,8 @@ class OfTester(app_manager.RyuApp):
             if not os.path.exists(CAP_LOG_DIRECTORY):
                 os.system('mkdir %s' % CAP_LOG_DIRECTORY)
             caplog_dir = (CAP_LOG_DIRECTORY +
-                        datetime.datetime.today().strftime("%Y%m%d_%H%M%S")
-                        + '/')
+                          datetime.datetime.today().strftime("%Y%m%d_%H%M%S")
+                          + '/')
             os.system('mkdir %s' % caplog_dir)
             self.logger.info('Output capture logs to [%s]', caplog_dir)
 
@@ -529,11 +529,11 @@ class OfTester(app_manager.RyuApp):
                         rcv_msgs.remove(stats)
                         break
         if before_stats:
-            raise RyuException('Internal error. Unknown flow was'
-                               ' installed. %s' % before_stats)
+            raise RyuException('Unknown flow was installed. %s'
+                               % before_stats)
         if rcv_msgs:
-            raise RyuException('Internal error. Unknown flow was'
-                               ' installed. %s' % rcv_msgs)
+            raise RyuException('Unknown flow was installed. %s'
+                               % rcv_msgs)
 
     def _test_invalid_flow_install(self, flows, error):
         def __compare_error(msg, pattern):
