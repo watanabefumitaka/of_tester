@@ -111,7 +111,7 @@
                 }
             }
         ],
-        "description": "テスト1: 外側MPLSヘッダのttlが63、内側IPヘッダのttlが31のパケットを印加し、内側IPヘッダのttlを63に書き換える(OVSではcopy_ttl_inは未サポートであるため、試験に失敗する)",
+        "description": "テスト1: 外側IPヘッダのttlが63、内側IPヘッダのttlが31のパケットを印加し、内側IPヘッダのttlを63に書き換える(OVSではcopy_ttl_inは未サポートであるため、試験に失敗する)",
         "packets": [
             {
                 "egress": [
@@ -177,7 +177,7 @@
                 }
             }
         ],
-        "description": "テスト2: 外側MPLSヘッダのttlが63、内側IPヘッダのttlが31のパケットを印加し、内側IPヘッダのttlを63に書き換える(OVSではcopy_ttl_inは未サポートであるため、試験に失敗する)",
+        "description": "テスト2: 外側MPLSヘッダのttlが63、内側MPLSヘッダのttlが31のパケットを印加し、内側MPLSヘッダのttlを63に書き換える(OVSではcopy_ttl_inは未サポートであるため、試験に失敗する)",
         "packets": [
             {
                 "egress": [
