@@ -1,0 +1,83 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "icmpv4_code",
+                                                    "value": 10
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv4_code",
+                                        "value": 0
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
+                }
+            }
+        ],
+        "description": "テスト0: icmpv4_code=0のパケットを印加し、icmpv4_code=10に書き換える(OVSではicmpv4_codeはread onlyであるため、試験に失敗する)",
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.100',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.200',tos=0,ttl=64,version=4)",
+                    "icmp(code=10,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
+                ],
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.100',flags=2,header_length=5,identification=0,offset=0,option=None,proto=1,src='192.168.1.200',tos=0,ttl=64,version=4)",
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
+                ]
+            }
+        ]
+    }
+]

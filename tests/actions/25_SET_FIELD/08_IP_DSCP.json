@@ -1,0 +1,79 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "ip_dscp",
+                                                    "value": 32
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_dscp",
+                                        "value": 8
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
+                }
+            }
+        ],
+        "description": "テスト0: ip_dscp=8のパケットを印加し、ip_dscp=32に書き換える",
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=128,ttl=64,version=4)",
+                    "tcp(ack=0,bits=48,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
+                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
+                ],
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=32,ttl=64,version=4)",
+                    "tcp(ack=0,bits=48,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
+                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
+                ]
+            }
+        ]
+    }
+]

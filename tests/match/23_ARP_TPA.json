@@ -1,0 +1,224 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_tpa",
+                                        "value": "192.168.0.2"
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 1
+                }
+            }
+        ],
+        "description": "テスト0: match:arp_tpa=192.168.0.2のフローにマッチするパケットを印加",
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')",
+                    "arp(dst_ip='192.168.0.2',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='192.168.0.1',src_mac='aa:aa:aa:aa:aa:aa')"
+                ],
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')",
+                    "arp(dst_ip='192.168.0.2',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='192.168.0.1',src_mac='aa:aa:aa:aa:aa:aa')"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_tpa",
+                                        "value": "192.168.0.2"
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 1
+                }
+            }
+        ],
+        "description": "テスト1: match:arp_tpa=192.168.0.2のフローにマッチしないパケットを印加",
+        "packets": [
+            {
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')",
+                    "arp(dst_ip='192.168.0.20',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='192.168.0.1',src_mac='aa:aa:aa:aa:aa:aa')"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_tpa",
+                                        "mask": 4294967168,
+                                        "value": "192.168.0.0"
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 1
+                }
+            }
+        ],
+        "description": "テスト2: match:arp_tpa=192.168.0.x(xは127以下)のフローにマッチするパケットを印加",
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')",
+                    "arp(dst_ip='192.168.0.23',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='192.168.0.1',src_mac='aa:aa:aa:aa:aa:aa')"
+                ],
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')",
+                    "arp(dst_ip='192.168.0.23',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='192.168.0.1',src_mac='aa:aa:aa:aa:aa:aa')"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 0,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_tpa",
+                                        "mask": 4294967168,
+                                        "value": "192.168.0.0"
+                                    }
+                                }
+                            ],
+                            "type": 1
+                        }
+                    },
+                    "priority": 1
+                }
+            }
+        ],
+        "description": "テスト3: match:arp_tpa=192.168.0.x(xは127以下)のフローにマッチしないパケットを印加",
+        "packets": [
+            {
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')",
+                    "arp(dst_ip='192.168.0.234',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=1,plen=4,proto=2048,src_ip='192.168.0.1',src_mac='aa:aa:aa:aa:aa:aa')"
+                ]
+            }
+        ]
+    }
+]

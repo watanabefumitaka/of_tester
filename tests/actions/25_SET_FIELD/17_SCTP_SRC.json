@@ -1,0 +1,83 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "sctp_src",
+                                                    "value": 11111
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto",
+                                        "value": 132
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "sctp_src",
+                                        "value": 12345
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
+                }
+            }
+        ],
+        "description": "テスト0: sctp_src=12345のパケットを印加し、sctp_src=11111に書き換える",
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=132,src='192.168.1.5',tos=16,ttl=64,version=4)",
+                    "sctp(chunks=[chunk_data(begin=1,end=1,length=52,payload_id=0,payload_data='0123456789abcdefghijklmnopqrstuvwxyz',seq=0,sid=1,tsn=1,unordered=1)],csum=0,dst_port=6789,src_port=11111,vtag=0)"
+                ],
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=132,src='192.168.1.5',tos=16,ttl=64,version=4)",
+                    "sctp(chunks=[chunk_data(begin=1,end=1,length=52,payload_id=0,payload_data='0123456789abcdefghijklmnopqrstuvwxyz',seq=0,sid=1,tsn=1,unordered=1)],csum=0,dst_port=6789,src_port=12345,vtag=0)"
+                ]
+            }
+        ]
+    }
+]
