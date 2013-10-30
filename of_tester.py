@@ -123,14 +123,14 @@ MSG = {STATE_FLOW_INSTALL:
        {TIMEOUT: 'flow matching is failure. no expected OFPPacketIn.',
         RCV_ERR: 'flow matching is failure. tester SW error. %(err_msg)s'},
        STATE_GET_MATCH_COUNT:
-       {TIMEOUT: 'flow unmatching check is failure. no OFPFlowStatsReply.',
+       {TIMEOUT: 'flow unmatching check is failure. no OFPTableStatsReply.',
         RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
        STATE_UNMATCH_PKT_SEND:
        {TIMEOUT: 'flow unmatching check is failure. no OFPBarrierReply.',
         RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
        STATE_FLOW_UNMATCH_CHK:
        {FAILURE: 'send packet was matched with the flow.',
-        TIMEOUT: 'flow unmatching check is failure. no OFPFlowStatsReply.',
+        TIMEOUT: 'flow unmatching check is failure. no OFPTableStatsReply.',
         RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
        STATE_NG_FLOW_INSTALL:
        {FAILURE: 'invalid flows install is failure. no expected OFPErrorMsg.',
@@ -494,10 +494,11 @@ class OfTester(app_manager.RyuApp):
             raise TestTimeout(self.state)
 
     def _test_get_match_count(self):
-        xid = self.target_sw.send_flow_stats()
+        xid = self.target_sw.send_table_stats()
         self.send_msg_xids.append(xid)
         self._wait()
-        return [stats for msg in self.rcv_msgs for stats in msg.body]
+        return {stats.table_id: stats.matched_count
+                 for msg in self.rcv_msgs for stats in msg.body}
 
     def _test_unmatch_packet_send(self, pkt):
         # send a packet from the Open vSwitch.
@@ -514,26 +515,13 @@ class OfTester(app_manager.RyuApp):
 
     def _test_flow_unmatching_check(self, before_stats):
         # check match packet count
-        xid = self.target_sw.send_flow_stats()
+        xid = self.target_sw.send_table_stats()
         self.send_msg_xids.append(xid)
         self._wait()
-        rcv_msgs = [stats for msg in self.rcv_msgs for stats in msg.body]
-        for msg in self.rcv_msgs:
-            assert isinstance(msg, ofproto_v1_3_parser.OFPFlowStatsReply)
-            for stats in msg.body:
-                for before_stat in before_stats:
-                    if self._compare_flow(stats, before_stat):
-                        if stats.packet_count != before_stat.packet_count:
-                            raise TestFailure(self.state)
-                        before_stats.remove(before_stat)
-                        rcv_msgs.remove(stats)
-                        break
-        if before_stats:
-            raise RyuException('Unknown flow was installed. %s'
-                               % before_stats)
-        if rcv_msgs:
-            raise RyuException('Unknown flow was installed. %s'
-                               % rcv_msgs)
+        rcv_msgs = {stats.table_id: stats.matched_count
+                    for msg in self.rcv_msgs for stats in msg.body}
+        if before_stats != rcv_msgs:
+            raise TestFailure(self.state)
 
     def _test_invalid_flow_install(self, flows, error):
         def __compare_error(msg, pattern):
@@ -611,10 +599,8 @@ class OfTester(app_manager.RyuApp):
             raise TestReceiveError(self.state, self.rcv_msgs[0])
 
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, handler.MAIN_DISPATCHER)
-    def stats_reply_handler(self, ev):
-        state_list = [STATE_FLOW_EXIST_CHK,
-                      STATE_GET_MATCH_COUNT,
-                      STATE_FLOW_UNMATCH_CHK]
+    def flow_stats_reply_handler(self, ev):
+        state_list = [STATE_FLOW_EXIST_CHK]
         if self.state in state_list:
             if self.waiter and ev.msg.xid in self.send_msg_xids:
                 self.rcv_msgs.append(ev.msg)
@@ -622,6 +608,17 @@ class OfTester(app_manager.RyuApp):
                     self.waiter.set()
                     hub.sleep(0)
 
+    @set_ev_cls(ofp_event.EventOFPTableStatsReply, handler.MAIN_DISPATCHER)
+    def table_stats_reply_handler(self, ev):
+        state_list = [STATE_GET_MATCH_COUNT,
+                      STATE_FLOW_UNMATCH_CHK]
+        if self.state in state_list:
+            if self.waiter and ev.msg.xid in self.send_msg_xids:
+                self.rcv_msgs.append(ev.msg)
+                if not ev.msg.flags & ofproto_v1_3.OFPMPF_REPLY_MORE:
+                    self.waiter.set()
+                    hub.sleep(0)
+    
     @set_ev_cls(ofp_event.EventOFPBarrierReply, handler.MAIN_DISPATCHER)
     def barrier_reply_handler(self, ev):
         state_list = [STATE_FLOW_INSTALL,
@@ -726,6 +723,13 @@ class TargetSw(OpenFlowSw):
         req = parser.OFPFlowStatsRequest(self.dp, 0, ofp.OFPTT_ALL,
                                          ofp.OFPP_ANY, ofp.OFPG_ANY,
                                          0, 0, parser.OFPMatch())
+        return self._send_msg(req)
+
+    def send_table_stats(self):
+        """ Get table stats. """
+        ofp = self.dp.ofproto
+        parser = self.dp.ofproto_parser
+        req = parser.OFPTableStatsRequest(self.dp, 0)
         return self._send_msg(req)
 
 
