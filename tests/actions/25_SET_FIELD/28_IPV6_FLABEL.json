@@ -12,8 +12,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "ip_proto",
-                                                    "value": 17
+                                                    "field": "ipv6_flabel",
+                                                    "value": 16
                                                 }
                                             }
                                         }
@@ -41,13 +41,13 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_type",
-                                        "value": 2048
+                                        "value": 34525
                                     }
                                 },
                                 {
                                     "OXMTlv": {
-                                        "field": "ip_proto",
-                                        "value": 6
+                                        "field": "ipv6_flabel",
+                                        "value": 0
                                     }
                                 }
                             ]
@@ -58,16 +58,18 @@
                 }
             }
         ],
-        "description": "テスト0: ip_proto=6のパケットを印加し、ip_proto=17に書き換える",
+        "description": "テスト0: ipv6_flabel=0のパケットを印加し、ipv6_flabel=16に書き換える(OVSではipv6_flabelはread onlyであるため、試験に失敗する)",
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
-                    "str('\\x45\\x00\\x00\\x50\\x00\\x00\\x40\\x00\\x40\\x11\\xb7\\x50\\xc0\\xa8\\x01\\x05\\xc0\\xa8\\x01\\x02\\x1a\\x85\\x2b\\x67\\x00\\x01\\x00\\x7b\\x00\\x00\\x00\\x00\\x60\\x30\\x08\\x00\\x39\\xb8\\x00\\x6f\\x00\\x00\\x00\\x00\\x30\\x31\\x32\\x33\\x34\\x35\\x36\\x37\\x38\\x39\\x61\\x62\\x63\\x64\\x65\\x66\\x67\\x68\\x69\\x6a\\x6b\\x6c\\x6d\\x6e\\x6f\\x70\\x71\\x72\\x73\\x74\\x75\\x76\\x77\\x78\\x79\\x7a')"
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')",
+                    "ipv6(dst='2001:db8:0:12::2',ext_hdrs=[],flow_label=16,hop_limit=64,nxt=58,payload_length=60,src='2001:db8:0:12::1',traffic_class=0,version=6)",
+                    "icmpv6(code=0,csum=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123',id_=30240,seq=0),type_=128)"
                 ],
                 "ingress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
-                    "str('\\x45\\x00\\x00\\x50\\x00\\x00\\x40\\x00\\x40\\x06\\xb7\\x50\\xc0\\xa8\\x01\\x05\\xc0\\xa8\\x01\\x02\\x1a\\x85\\x2b\\x67\\x00\\x01\\x00\\x7b\\x00\\x00\\x00\\x00\\x60\\x30\\x08\\x00\\x39\\xb8\\x00\\x6f\\x00\\x00\\x00\\x00\\x30\\x31\\x32\\x33\\x34\\x35\\x36\\x37\\x38\\x39\\x61\\x62\\x63\\x64\\x65\\x66\\x67\\x68\\x69\\x6a\\x6b\\x6c\\x6d\\x6e\\x6f\\x70\\x71\\x72\\x73\\x74\\x75\\x76\\x77\\x78\\x79\\x7a')"
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')",
+                    "ipv6(dst='2001:db8:0:12::2',ext_hdrs=[],flow_label=0,hop_limit=64,nxt=58,payload_length=60,src='2001:db8:0:12::1',traffic_class=0,version=6)",
+                    "icmpv6(code=0,csum=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123',id_=30240,seq=0),type_=128)"
                 ]
             }
         ]
