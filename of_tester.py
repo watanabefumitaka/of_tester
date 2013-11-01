@@ -118,6 +118,7 @@ MSG = {STATE_FLOW_INSTALL:
         RCV_ERR: 'flows install is failure. %(err_msg)s'},
        STATE_FLOW_EXIST_CHK:
        {FAILURE: 'expected flow was not installed.',
+        TIMEOUT: 'flow existence check is failure. no OFPFlowStatsReply.',
         RCV_ERR: 'flow existence check is failure. %(err_msg)s'},
        STATE_FLOW_MATCH_CHK:
        {TIMEOUT: 'flow matching is failure. no expected OFPPacketIn.',
