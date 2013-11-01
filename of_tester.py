@@ -124,11 +124,12 @@ MSG = {STATE_FLOW_INSTALL:
        {TIMEOUT: 'flow matching is failure. no expected OFPPacketIn.',
         RCV_ERR: 'flow matching is failure. tester SW error. %(err_msg)s'},
        STATE_GET_MATCH_COUNT:
-       {TIMEOUT: 'flow unmatching check is failure. no OFPTableStatsReply.',
-        RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
+       {TIMEOUT: 'get before table matched count is failure.'
+                 ' no OFPTableStatsReply.',
+        RCV_ERR: 'get before table matched count is failure. %(err_msg)s'},
        STATE_UNMATCH_PKT_SEND:
-       {TIMEOUT: 'flow unmatching check is failure. no OFPBarrierReply.',
-        RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
+       {TIMEOUT: 'unmatch packet sending is failure. no OFPBarrierReply.',
+        RCV_ERR: 'unmatch packet sending is failure. %(err_msg)s'},
        STATE_FLOW_UNMATCH_CHK:
        {FAILURE: 'send packet was matched with the flow.',
         TIMEOUT: 'flow unmatching check is failure. no OFPTableStatsReply.',
@@ -499,7 +500,7 @@ class OfTester(app_manager.RyuApp):
         self.send_msg_xids.append(xid)
         self._wait()
         return {stats.table_id: stats.matched_count
-                 for msg in self.rcv_msgs for stats in msg.body}
+                for msg in self.rcv_msgs for stats in msg.body}
 
     def _test_unmatch_packet_send(self, pkt):
         # send a packet from the Open vSwitch.
@@ -619,7 +620,7 @@ class OfTester(app_manager.RyuApp):
                 if not ev.msg.flags & ofproto_v1_3.OFPMPF_REPLY_MORE:
                     self.waiter.set()
                     hub.sleep(0)
-    
+
     @set_ev_cls(ofp_event.EventOFPBarrierReply, handler.MAIN_DISPATCHER)
     def barrier_reply_handler(self, ev):
         state_list = [STATE_FLOW_INSTALL,
