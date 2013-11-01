@@ -70,18 +70,18 @@
                 }
             }
         ],
-        "description": "テスト0: ipv6_nd_tll=00:60:97:07:69:eaのパケットを印加し、ipv6_nd_tll=00:bb:bb:bb:bb:bbに書き換える(OVSではipv6_nd_tllはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: ipv6_nd_tll=00:60:97:07:69:eaのパケットを印加し、ipv6_nd_tll=00:bb:bb:bb:bb:bbに書き換える(OVSではipv6_nd_sllはread onlyであるため、試験に失敗する)",
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='00:00:86:05:80:da',ethertype=34525,src='00:60:97:07:69:ea')",
-                    "ipv6(dst='3ffe:507:0:1:200:86ff:fe05:80da',ext_hdrs=[],flow_label=0,hop_limit=255,nxt=58,payload_length=32,src='3ffe:507:0:1:260:97ff:fe07:69ea',traffic_class=0,version=6)",
-                    "icmpv6(code=0,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='00:bb:bb:bb:bb:bb'),dst='3ffe:507:0:1:260:97ff:fe07:80da',length=1,res=0,type_=2),type_=136)"
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')",
+                    "ipv6(dst='2001:db8:0:12::2',ext_hdrs=[],flow_label=0,hop_limit=64,nxt=58,payload_length=32,src='2001:db8:0:12::1',traffic_class=0,version=6)",
+                    "icmpv6(code=0,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='00:bb:bb:bb:bb:bb'),dst='3ffe:507:0:1:200:86ff:fe05:80da',length=1,res=0,type_=1),type_=136)"
                 ],
                 "ingress": [
-                    "ethernet(dst='00:00:86:05:80:da',ethertype=34525,src='00:60:97:07:69:ea')",
-                    "ipv6(dst='3ffe:507:0:1:200:86ff:fe05:80da',ext_hdrs=[],flow_label=0,hop_limit=255,nxt=58,payload_length=32,src='3ffe:507:0:1:260:97ff:fe07:69ea',traffic_class=0,version=6)",
-                    "icmpv6(code=0,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='00:60:97:07:69:ea'),dst='3ffe:507:0:1:260:97ff:fe07:80da',length=1,res=0,type_=2),type_=136)"
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34525,src='00:bb:bb:bb:bb:bb')",
+                    "ipv6(dst='2001:db8:0:12::2',ext_hdrs=[],flow_label=0,hop_limit=64,nxt=58,payload_length=32,src='2001:db8:0:12::1',traffic_class=0,version=6)",
+                    "icmpv6(code=0,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='00:60:97:07:69:ea'),dst='3ffe:507:0:1:200:86ff:fe05:80da',length=1,res=0,type_=1),type_=136)"
                 ]
             }
         ]

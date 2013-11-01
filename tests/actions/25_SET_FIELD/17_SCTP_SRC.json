@@ -12,8 +12,8 @@
                                         "OFPActionSetField": {
                                             "field": {
                                                 "OXMTlv": {
-                                                    "field": "mpls_bos",
-                                                    "value": 1
+                                                    "field": "sctp_src",
+                                                    "value": 11111
                                                 }
                                             }
                                         }
@@ -41,13 +41,19 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_type",
-                                        "value": 34887
+                                        "value": 2048
                                     }
                                 },
                                 {
                                     "OXMTlv": {
-                                        "field": "mpls_bos",
-                                        "value": 0
+                                        "field": "ip_proto",
+                                        "value": 132
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "sctp_src",
+                                        "value": 12345
                                     }
                                 }
                             ]
@@ -58,23 +64,18 @@
                 }
             }
         ],
-        "description": "テスト0: mpls_bos=0のパケットを印加し、mpls_bos=1に書き換える(OVSではmpls_bosはread onlyであるため、試験に失敗する)",
+        "description": "テスト0: sctp_src=12345のパケットを印加し、sctp_src=11111に書き換える",
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34887,src='00:bb:bb:bb:bb:bb')",
-                    "mpls(bsb=1,exp=0,label=100,ttl=64)",
-                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,ttl=64,version=4)",
-                    "tcp(ack=0,bits=48,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
-                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n'"
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=132,src='192.168.1.5',tos=16,ttl=64,version=4)",
+                    "sctp(chunks=[chunk_data(begin=1,end=1,length=52,payload_id=0,payload_data='0123456789abcdefghijklmnopqrstuvwxyz',seq=0,sid=1,tsn=1,unordered=1)],csum=0,dst_port=6789,src_port=11111,vtag=0)"
                 ],
                 "ingress": [
-                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34887,src='00:bb:bb:bb:bb:bb')",
-                    "mpls(bsb=0,exp=0,label=100,ttl=64)",
-                    "mpls(bsb=0,exp=0,label=282624,ttl=54)",
-                    "mpls(bsb=0,exp=0,label=4,ttl=0)",
-                    "mpls(bsb=1,exp=3,label=262251,ttl=106)",
-                    "'\\xc0\\xa8\\x01\\x05\\xc0\\xa8\\x01\\x02\\x1a\\x85+g\\x00\\x00\\x00{\\x00\\x00\\x00\\x00`0\\x08\\x00\\xb4Z\\x00o\\x00\\x00\\x00\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n'"
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='bb:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=132,src='192.168.1.5',tos=16,ttl=64,version=4)",
+                    "sctp(chunks=[chunk_data(begin=1,end=1,length=52,payload_id=0,payload_data='0123456789abcdefghijklmnopqrstuvwxyz',seq=0,sid=1,tsn=1,unordered=1)],csum=0,dst_port=6789,src_port=12345,vtag=0)"
                 ]
             }
         ]
