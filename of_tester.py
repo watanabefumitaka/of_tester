@@ -121,8 +121,7 @@ MSG = {STATE_FLOW_INSTALL:
         TIMEOUT: 'flow existence check is failure. no OFPFlowStatsReply.',
         RCV_ERR: 'flow existence check is failure. %(err_msg)s'},
        STATE_FLOW_MATCH_CHK:
-       {FAILURE: 'flow matching is failure. receive unexpected OFPPacketIn.\n'
-                 ' expected packet: %(expect)s\n %(rcv_pkt)s',
+       {FAILURE: 'failed to validate egress packet. %(rcv_pkt)s',
         TIMEOUT: 'flow matching is failure. no OFPPacketIn.',
         RCV_ERR: 'flow matching is failure. tester SW error. %(err_msg)s'},
        STATE_GET_MATCH_COUNT:
@@ -441,36 +440,29 @@ class OfTester(app_manager.RyuApp):
 
     def _test_flow_matching_check(self, pkt):
         def __diff_packets(model_pkt, rcv_pkt):
-            # Diff protocol stack.
-            model_protocols = '/'.join([proto.__class__.__name__
-                                        for proto in model_pkt.protocols
-                                        if type(proto) != str])
-            rcv_protocols = '/'.join([proto.__class__.__name__
-                                      for proto in rcv_pkt.protocols
-                                      if type(proto) != str])
-            if model_protocols != rcv_protocols:
-                return rcv_protocols
-            # Diff protocol members.
             msg = []
-            for model_p in model_pkt.protocols:
-                if type(model_p) != str:
-                    rcv_p = rcv_pkt.get_protocol(type(model_p))
-                    diff = []
-                    for attr in rcv_p.__dict__:
-                        if attr.startswith('_'):
-                            continue
-                        if callable(attr):
-                            continue
-                        if hasattr(rcv_p.__class__, attr):
-                            continue
-                        rcv_attr = repr(getattr(rcv_p, attr))
-                        model_attr = repr(getattr(model_p, attr))
-                        if rcv_attr != model_attr:
-                            diff.append('%s=%s' % (attr, rcv_attr))
-                    if diff:
-                        msg.append('%s(%s)' %
-                                   (rcv_p.__class__.__name__,
-                                    ','.join(diff)))
+            for rcv_p in rcv_pkt.protocols:
+                if type(rcv_p) != str:
+                    model_p = model_pkt.get_protocol(type(rcv_p))
+                    if model_p:
+                        diff = []
+                        for attr in rcv_p.__dict__:
+                            if attr.startswith('_'):
+                                continue
+                            if callable(attr):
+                                continue
+                            if hasattr(rcv_p.__class__, attr):
+                                continue
+                            rcv_attr = repr(getattr(rcv_p, attr))
+                            model_attr = repr(getattr(model_p, attr))
+                            if rcv_attr != model_attr:
+                                diff.append('%s=%s' % (attr, rcv_attr))
+                        if diff:
+                            msg.append('%s(%s)' %
+                                       (rcv_p.__class__.__name__,
+                                        ','.join(diff)))
+                    else:
+                        msg.append(str(rcv_p))
                 else:
                     rcv_p = ''
                     for p in rcv_pkt.protocols:
@@ -481,7 +473,7 @@ class OfTester(app_manager.RyuApp):
                         msg.append('str(%s)' % repr(rcv_p))
 
             if msg:
-                return ', '.join(msg)
+                return '/'.join(msg)
             else:
                 raise RyuException('Internal error.'
                                    ' receive packet is matching.')
@@ -527,8 +519,7 @@ class OfTester(app_manager.RyuApp):
                 if rcv_pkt != rcv_pkt_model or padding != padding_model:
                     err_msg = __diff_packets(packet.Packet(model_pkt),
                                              packet.Packet(msg.data))
-                    log_msg.append('received packet[%d]: %s' %
-                                   (len(log_msg), err_msg))
+                    log_msg.append(err_msg)
                     continue
                 break
 
@@ -545,8 +536,7 @@ class OfTester(app_manager.RyuApp):
         if timeout:
             if log_msg:
                 raise TestFailure(self.state,
-                                  expect=packet.Packet(model_pkt),
-                                  rcv_pkt='\n '.join(log_msg))
+                                  rcv_pkt=', '.join(log_msg))
             else:
                 raise TestTimeout(self.state)
 
