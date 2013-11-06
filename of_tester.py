@@ -391,6 +391,8 @@ class OfTester(app_manager.RyuApp):
             self.logger.info('%s : %s', test_name, msg)
             if result == RYU_INTERNAL_ERROR:
                 self.logger.error(traceback.format_exc())
+            if result != OK and self.state == STATE_INIT:
+                break  # Terminate tests.
 
             #TODO: for debug
             #print raw_input("> Enter")
