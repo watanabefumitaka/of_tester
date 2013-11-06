@@ -1,0 +1,239 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "arp_tpa", 
+                                                    "value": "192.168.2.200"
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 2
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_tpa", 
+                                        "value": "192.168.2.20"
+                                    }
+                                }
+                            ]
+                        }
+                    }, 
+                    "priority": 32768, 
+                    "table_id": 0
+                }
+            }
+        ], 
+        "description": "テスト0: arp_tpa=192.168.2.20のパケットを印加し、arp_tpa=192.168.2.200に書き換える", 
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=%s)", 
+                    "vlan(pcp=7, cfi=0, vid=304, ethertype=%s)", 
+                    "arp(dst_ip='172.16.40.40',dst_mac='44:44:44:44:44:44', opcode=3, src_ip='172.16.30.30',src_mac='33:33:33:33:33:33')"
+                ], 
+                "ingress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    }, 
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 2
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "xxx", 
+                                        "value": 123
+                                    }
+                                }
+                            ]
+                        }
+                    }, 
+                    "table_id": 0
+                }
+            }
+        ], 
+        "description": "xxxxx", 
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=%s)", 
+                    "mpls(label=304, exp=7, bsb=7)", 
+                    "arp(dst_ip='172.16.40.40',dst_mac='44:44:44:44:44:44', opcode=3, src_ip='172.16.30.30',src_mac='33:33:33:33:33:33')"
+                ], 
+                "ingress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "mpls(label=100, exp=3, bsb=3)", 
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    }, 
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 2
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "xxx", 
+                                        "value": 123
+                                    }
+                                }
+                            ]
+                        }
+                    }, 
+                    "table_id": 0
+                }
+            }
+        ], 
+        "description": "xxxxx", 
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=%s)", 
+                    "arp(dst_ip='172.16.40.40',dst_mac='44:44:44:44:44:44', opcode=3, src_ip='172.16.30.30',src_mac='33:33:33:33:33:33')"
+                ], 
+                "ingress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    }, 
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 2
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "xxx", 
+                                        "value": 123
+                                    }
+                                }
+                            ]
+                        }
+                    }, 
+                    "table_id": 0
+                }
+            }
+        ], 
+        "description": "xxxxx", 
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=%s)", 
+                    "svlan(ethertype=%s, vid=10)", 
+                    "itag(sid=304)", 
+                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=%s)", 
+                    "svlan(ethertype=%s, vid=10)", 
+                    "vlan(pcp=7, cfi=0, vid=304, ethertype=%s)", 
+                    "arp(dst_ip='172.16.40.40',dst_mac='44:44:44:44:44:44', opcode=3, src_ip='172.16.30.30',src_mac='33:33:33:33:33:33')"
+                ], 
+                "ingress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=35047, vid=10)", 
+                    "itag(sid=100)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=35047, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    }
+]

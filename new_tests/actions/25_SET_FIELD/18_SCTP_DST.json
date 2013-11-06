@@ -1,0 +1,128 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 2
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "xxx", 
+                                        "value": 123
+                                    }
+                                }
+                            ]
+                        }
+                    }, 
+                    "table_id": 0
+                }
+            }
+        ], 
+        "description": "テスト0: sctp_dst=6789のパケットを印加し、sctp_dst=22222に書き換える", 
+        "packets": {
+            "egress": [], 
+            "ingress": []
+        }
+    }, 
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 2
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "xxx", 
+                                        "value": 123
+                                    }
+                                }
+                            ]
+                        }
+                    }, 
+                    "table_id": 0
+                }
+            }
+        ], 
+        "description": "テスト0: sctp_dst=6789のパケットを印加し、sctp_dst=22222に書き換える", 
+        "packets": {
+            "egress": [], 
+            "ingress": []
+        }
+    }, 
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 2
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "xxx", 
+                                        "value": 123
+                                    }
+                                }
+                            ]
+                        }
+                    }, 
+                    "table_id": 0
+                }
+            }
+        ], 
+        "description": "テスト0: sctp_dst=6789のパケットを印加し、sctp_dst=22222に書き換える", 
+        "packets": {
+            "egress": [], 
+            "ingress": []
+        }
+    }
+]
