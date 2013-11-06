@@ -56,13 +56,13 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
@@ -133,13 +133,13 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
@@ -172,8 +172,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -187,7 +187,7 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='aa:aa:aa:aa:aa:aa'),dst='b0::b0',length=1,res=0,type_=1),type_=135)"
@@ -220,8 +220,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -235,14 +235,14 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "mpls(label=100, exp=3, bsb=3)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "mpls(label=100, exp=3, bsb=3)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ]
@@ -274,8 +274,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -289,14 +289,14 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "mpls(label=100, exp=3, bsb=3)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "mpls(label=100, exp=3, bsb=3)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ]
@@ -328,8 +328,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -343,8 +343,8 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
-                    "mpls(label=203, exp=5, bsb=5)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
+                    "mpls(label=203, exp=5)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='aa:aa:aa:aa:aa:aa'),dst='b0::b0',length=1,res=0,type_=1),type_=135)"
                 ]
@@ -376,8 +376,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -391,12 +391,12 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ]
@@ -428,8 +428,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -443,12 +443,12 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ]
@@ -480,8 +480,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -495,7 +495,7 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='aa:aa:aa:aa:aa:aa'),dst='b0::b0',length=1,res=0,type_=1),type_=135)"
                 ]
@@ -527,8 +527,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -542,20 +542,20 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
@@ -589,8 +589,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -604,20 +604,20 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
@@ -651,8 +651,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -666,10 +666,10 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=203)", 
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 

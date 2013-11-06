@@ -44,13 +44,13 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
@@ -103,13 +103,13 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
@@ -142,8 +142,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -157,7 +157,7 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
@@ -190,8 +190,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -205,14 +205,14 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "mpls(label=100, exp=3, bsb=3)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "mpls(label=100, exp=3, bsb=3)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -244,8 +244,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -259,14 +259,14 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "mpls(label=100, exp=3, bsb=3)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "mpls(label=100, exp=3, bsb=3)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -298,8 +298,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -313,8 +313,8 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
-                    "mpls(label=203, exp=5, bsb=5)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
+                    "mpls(label=203, exp=5)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
@@ -346,8 +346,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -361,12 +361,12 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -398,8 +398,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -413,12 +413,12 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -450,8 +450,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -465,7 +465,7 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
@@ -497,8 +497,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -512,20 +512,20 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
@@ -559,8 +559,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -574,20 +574,20 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)], flow_label=100, nxt=51, src='10::10')", 
@@ -621,8 +621,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -636,10 +636,10 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=203)", 
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 

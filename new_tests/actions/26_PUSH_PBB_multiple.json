@@ -24,8 +24,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -48,10 +48,10 @@
                     "arp(dst_ip='172.16.40.40',dst_mac='44:44:44:44:44:44', opcode=3, src_ip='172.16.30.30',src_mac='33:33:33:33:33:33')"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
@@ -84,8 +84,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -109,10 +109,10 @@
                     "tcp(dst_port=4444, option='\\x00\\x00\\x00\\x00', src_port=3333)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20')", 
@@ -146,8 +146,8 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "xxx", 
-                                        "value": 123
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
                             ]
@@ -171,10 +171,10 @@
                     "tcp(dst_port=4444, option='\\x00\\x00\\x00\\x00', src_port=3333)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
