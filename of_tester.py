@@ -376,8 +376,6 @@ class OfTester(app_manager.RyuApp):
                 result = OK
             except (TestFailure, TestTimeout, TestReceiveError) as err:
                 result = str(err)
-                if test.description:
-                    result += os.linesep + unicode(test.description)
             except Exception:
                 result = RYU_INTERNAL_ERROR
 
@@ -389,6 +387,8 @@ class OfTester(app_manager.RyuApp):
             msg = (coloring(result, GREEN) if result == OK
                    else coloring(result, RED))
             self.logger.info('%s : %s', test_name, msg)
+            if test.description:
+                self.logger.debug(unicode(test.description))
             if result == RYU_INTERNAL_ERROR:
                 self.logger.error(traceback.format_exc())
             if result != OK and self.state == STATE_INIT:
