@@ -127,19 +127,17 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "mask": 281474976710400, 
-                                        "value": "aa:aa:aa:aa:aa:00"
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ], 
-                            "type": 1
+                            ]
                         }
                     }, 
-                    "priority": 32768
+                    "table_id": 0
                 }
             }
         ], 
-        "description": "テスト2: match:eth_dst=aa:aa:aa:aa:aa:xx(末尾不問)のフローにマッチするパケットを印加", 
+        "description": "xxxxx", 
         "packets": [
             {
                 "ingress": [
@@ -175,19 +173,17 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "mask": 281474976710400, 
-                                        "value": "aa:aa:aa:aa:aa:00"
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ], 
-                            "type": 1
+                            ]
                         }
                     }, 
-                    "priority": 32768
+                    "table_id": 0
                 }
             }
         ], 
-        "description": "テスト3: match:eth_dst=aa:aa:aa:aa:aa:xx(末尾不問)のフローにマッチしないパケットを印加", 
+        "description": "xxxxx", 
         "packets": [
             {
                 "egress": [

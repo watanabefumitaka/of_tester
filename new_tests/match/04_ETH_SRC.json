@@ -124,19 +124,18 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_src", 
-                                        "mask": 1099511627775, 
-                                        "value": "00:bb:bb:bb:bb:bb"
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ], 
-                            "type": 1
+                            ]
                         }
-                    }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
-        "description": "テスト2: match:eth_src=xx:bb:bb:bb:bb:bb(先頭不問)のフローにマッチするパケットを印加", 
+        "description": "xxxxx", 
         "packets": [
             {
                 "ingress": [
@@ -171,19 +170,18 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_src", 
-                                        "mask": 1099511627775, 
-                                        "value": "00:bb:bb:bb:bb:bb"
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ], 
-                            "type": 1
+                            ]
                         }
-                    }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
-        "description": "テスト3: match:eth_src=xx:bb:bb:bb:bb:bb(先頭不問)のフローにマッチしないパケットを印加", 
+        "description": "xxxxx", 
         "packets": [
             {
                 "egress": [

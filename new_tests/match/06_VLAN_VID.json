@@ -118,7 +118,7 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0, 
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
@@ -132,20 +132,18 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "vlan_vid", 
-                                        "mask": 3, 
-                                        "value": 0
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ], 
-                            "type": 1
+                            ]
                         }
                     }, 
-                    "priority": 1
+                    "table_id": 0
                 }
             }
         ], 
-        "description": "テスト2: match:vlan_vid=4の倍数のフローにマッチするパケットを印加", 
+        "description": "xxxxx", 
         "packets": [
             {
                 "ingress": [
@@ -167,7 +165,7 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0, 
+                                            "max_len": 65535, 
                                             "port": 2
                                         }
                                     }
@@ -181,20 +179,18 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "vlan_vid", 
-                                        "mask": 3, 
-                                        "value": 0
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ], 
-                            "type": 1
+                            ]
                         }
                     }, 
-                    "priority": 1
+                    "table_id": 0
                 }
             }
         ], 
-        "description": "テスト3: match:vlan_vid=4の倍数のフローにマッチしないパケットを印加", 
+        "description": "xxxxx", 
         "packets": [
             {
                 "egress": [
