@@ -113,7 +113,10 @@ FAILURE = 0
 TIMEOUT = 1
 RCV_ERR = 2
 
-MSG = {STATE_FLOW_INSTALL:
+MSG = {STATE_INIT:
+       {TIMEOUT: 'initialize is failure. no OFPBarrierReply.',
+        RCV_ERR: 'initialize is failure. %(err_msg)s'},
+       STATE_FLOW_INSTALL:
        {TIMEOUT: 'flows install is failure. no OFPBarrierReply.',
         RCV_ERR: 'flows install is failure. %(err_msg)s'},
        STATE_FLOW_EXIST_CHK:
@@ -350,6 +353,9 @@ class OfTester(app_manager.RyuApp):
             test = tests[test_name]
             # Test execute.
             try:
+                # 0. Initialize.
+                self._test(STATE_INIT)
+
                 if not test.error:
                     # 1. Install flows.
                     for flow in test.flows:
@@ -389,10 +395,6 @@ class OfTester(app_manager.RyuApp):
             #TODO: for debug
             #print raw_input("> Enter")
 
-            # Initialize for next test.
-            if self.target_sw is not None:
-                self.target_sw.del_test_flow()
-            self.state = STATE_INIT
             hub.sleep(0)
 
         self.test_thread = None
@@ -401,7 +403,8 @@ class OfTester(app_manager.RyuApp):
         self.logger.info('---  Test end  ---')
 
     def _test(self, state, *args):
-        test = {STATE_FLOW_INSTALL: self._test_flow_install,
+        test = {STATE_INIT: self._test_initialize,
+                STATE_FLOW_INSTALL: self._test_flow_install,
                 STATE_FLOW_EXIST_CHK: self._test_flow_exist_check,
                 STATE_FLOW_MATCH_CHK: self._test_flow_matching_check,
                 STATE_GET_MATCH_COUNT: self._test_get_match_count,
@@ -414,6 +417,18 @@ class OfTester(app_manager.RyuApp):
 
         self.state = state
         return test[state](*args)
+
+    def _test_initialize(self):
+        xid = self.target_sw.del_test_flow()
+        self.send_msg_xids.append(xid)
+
+        xid = self.target_sw.send_barrier_request()
+        self.send_msg_xids.append(xid)
+
+        self._wait()
+        assert len(self.rcv_msgs) == 1
+        msg = self.rcv_msgs[0]
+        assert isinstance(msg, ofproto_v1_3_parser.OFPBarrierReply)
 
     def _test_flow_install(self, flow):
         xid = self.target_sw.add_flow(flow_mod=flow)
@@ -668,7 +683,8 @@ class OfTester(app_manager.RyuApp):
 
     @set_ev_cls(ofp_event.EventOFPBarrierReply, handler.MAIN_DISPATCHER)
     def barrier_reply_handler(self, ev):
-        state_list = [STATE_FLOW_INSTALL,
+        state_list = [STATE_INIT,
+                      STATE_FLOW_INSTALL,
                       STATE_NG_FLOW_INSTALL,
                       STATE_UNMATCH_PKT_SEND]
         if self.state in state_list:
@@ -690,7 +706,7 @@ class OfTester(app_manager.RyuApp):
                                              handler.CONFIG_DISPATCHER,
                                              handler.MAIN_DISPATCHER])
     def error_msg_handler(self, ev):
-        if self.state != STATE_INIT and ev.msg.xid in self.send_msg_xids:
+        if ev.msg.xid in self.send_msg_xids:
             self.rcv_msgs.append(ev.msg)
             if self.waiter:
                 self.waiter.set()
