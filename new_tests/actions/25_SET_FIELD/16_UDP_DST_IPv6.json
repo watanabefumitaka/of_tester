@@ -1,0 +1,170 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 4294967293
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
+                                    }
+                                }
+                            ], 
+                            "type": 1
+                        }
+                    }
+                }
+            }
+        ], 
+        "description": "test0: actions[OFPActionOutput] packet=ethernet/vlan/ipv6/udp", 
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "udp(dst_port=2222, src_port=11111)"
+                ], 
+                "ingress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "udp(dst_port=2222, src_port=11111)"
+                ]
+            }
+        ]
+    }, 
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 4294967293
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
+                                    }
+                                }
+                            ], 
+                            "type": 1
+                        }
+                    }
+                }
+            }
+        ], 
+        "description": "test1: actions[OFPActionOutput] packet=ethernet/ipv6/udp", 
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "udp(dst_port=2222, src_port=11111)"
+                ], 
+                "ingress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "udp(dst_port=2222, src_port=11111)"
+                ]
+            }
+        ]
+    }, 
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 4294967293
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_dst", 
+                                        "value": "aa:aa:aa:aa:aa:aa"
+                                    }
+                                }
+                            ], 
+                            "type": 1
+                        }
+                    }
+                }
+            }
+        ], 
+        "description": "test2: actions[OFPActionOutput] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/udp", 
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "svlan(ethertype=35047, vid=10)", 
+                    "itag(sid=100)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "svlan(ethertype=35047, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "udp(dst_port=2222, src_port=11111)"
+                ], 
+                "ingress": [
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "svlan(ethertype=35047, vid=10)", 
+                    "itag(sid=100)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "svlan(ethertype=35047, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "udp(dst_port=2222, src_port=11111)"
+                ]
+            }
+        ]
+    }
+]
