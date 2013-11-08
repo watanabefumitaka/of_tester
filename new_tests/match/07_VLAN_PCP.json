@@ -11,7 +11,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -70,7 +70,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -91,7 +91,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "vlan_pcp", 
-                                        "value": 5
+                                        "value": 3
                                     }
                                 }
                             ], 
@@ -129,7 +129,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -142,14 +142,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "vlan_vid", 
+                                        "mask": null, 
+                                        "value": 4128
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp", 
+                                        "value": 3
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -176,7 +183,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -189,14 +196,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "vlan_vid", 
+                                        "mask": null, 
+                                        "value": 4128
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp", 
+                                        "value": 3
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -230,7 +244,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -243,14 +257,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "vlan_vid", 
+                                        "mask": null, 
+                                        "value": 4128
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp", 
+                                        "value": 3
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -284,7 +305,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -297,14 +318,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "vlan_vid", 
+                                        "mask": null, 
+                                        "value": 4128
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp", 
+                                        "value": 3
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -332,7 +360,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -345,14 +373,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "vlan_vid", 
+                                        "mask": null, 
+                                        "value": 4128
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp", 
+                                        "value": 3
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -386,7 +421,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -399,14 +434,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "vlan_vid", 
+                                        "mask": null, 
+                                        "value": 4128
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp", 
+                                        "value": 3
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -440,7 +482,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -453,14 +495,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "vlan_vid", 
+                                        "mask": null, 
+                                        "value": 4128
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp", 
+                                        "value": 3
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 

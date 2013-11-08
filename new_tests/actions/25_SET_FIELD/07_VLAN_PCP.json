@@ -64,9 +64,9 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
-                    "vlan(pcp=7, cfi=0, vid=304, ethertype=2054)", 
-                    "arp(dst_ip='172.16.40.40',dst_mac='44:44:44:44:44:44', opcode=3, src_ip='172.16.30.30',src_mac='33:33:33:33:33:33')"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
@@ -86,6 +86,16 @@
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "vlan_pcp", 
+                                                    "value": 7
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
                                             "port": 2
@@ -101,13 +111,28 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_vid", 
+                                        "mask": null, 
+                                        "value": 4128
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp", 
+                                        "value": 3
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
@@ -116,10 +141,10 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
-                    "vlan(pcp=7, cfi=0, vid=304, ethertype=2054)", 
-                    "ipv4(tos=127, proto=6, src='172.16.30.30', dst='172.16.40.40')", 
-                    "tcp(dst_port=4444, option='\\x00\\x00\\x00\\x00', src_port=3333)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20')", 
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
@@ -140,6 +165,16 @@
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "vlan_pcp", 
+                                                    "value": 7
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
                                             "port": 2
@@ -155,13 +190,28 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_vid", 
+                                        "mask": null, 
+                                        "value": 4128
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "vlan_pcp", 
+                                        "value": 3
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
@@ -170,10 +220,10 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
-                    "vlan(pcp=7, cfi=0, vid=304, ethertype=2054)", 
-                    "ipv6(dst='40::40', flow_label=304, src='30::30')", 
-                    "tcp(dst_port=4444, option='\\x00\\x00\\x00\\x00', src_port=3333)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 

@@ -68,10 +68,10 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
-                    "vlan(pcp=7, cfi=0, vid=304, ethertype=2054)", 
-                    "ipv4(tos=127, proto=6, src='172.16.30.30', dst='172.16.40.40')", 
-                    "icmp(code=10,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=0)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20')", 
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
@@ -92,6 +92,16 @@
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "icmpv4_type", 
+                                                    "value": 0
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
                                             "port": 2
@@ -107,13 +117,32 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type", 
+                                        "value": 2048
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv4_type", 
+                                        "value": 8
                                     }
                                 }
                             ]
                         }
                     }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
@@ -122,10 +151,10 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
-                    "mpls(label=304, exp=7)", 
-                    "ipv4(tos=127, proto=6, src='172.16.30.30', dst='172.16.40.40')", 
-                    "icmp(code=10,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=0)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20')", 
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
@@ -146,6 +175,16 @@
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "icmpv4_type", 
+                                                    "value": 0
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
                                             "port": 2
@@ -161,13 +200,32 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type", 
+                                        "value": 2048
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv4_type", 
+                                        "value": 8
                                     }
                                 }
                             ]
                         }
                     }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
@@ -176,9 +234,9 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
-                    "ipv4(tos=127, proto=6, src='172.16.30.30', dst='172.16.40.40')", 
-                    "icmp(code=10,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=0)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20')", 
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
@@ -198,6 +256,16 @@
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "icmpv4_type", 
+                                                    "value": 0
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
                                             "port": 2
@@ -213,13 +281,32 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type", 
+                                        "value": 2048
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv4_type", 
+                                        "value": 8
                                     }
                                 }
                             ]
                         }
                     }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
@@ -228,14 +315,14 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
-                    "itag(sid=304)", 
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
+                    "itag(sid=100)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=7, cfi=0, vid=304, ethertype=2054)", 
-                    "ipv4(tos=127, proto=6, src='172.16.30.30', dst='172.16.40.40')", 
-                    "icmp(code=10,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=0)"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20')", 
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 

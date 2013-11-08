@@ -11,7 +11,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 0, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -70,7 +70,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 0, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -128,8 +128,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -142,14 +142,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 
@@ -175,8 +182,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -189,14 +196,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 
@@ -227,8 +241,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -241,14 +255,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 
@@ -279,8 +300,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -293,14 +314,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 
@@ -326,8 +354,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -340,14 +368,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 
@@ -376,8 +411,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -390,14 +425,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 
@@ -426,8 +468,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -440,14 +482,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 
@@ -472,8 +521,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -486,14 +535,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 
@@ -532,8 +588,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -546,14 +602,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 
@@ -592,8 +655,8 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                            "max_len": 0, 
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -606,14 +669,21 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 1
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 1
                 }
             }
         ], 

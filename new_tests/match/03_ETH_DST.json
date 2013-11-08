@@ -11,7 +11,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -62,7 +62,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -113,7 +113,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -130,10 +130,11 @@
                                         "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 32768
                 }
             }
         ], 
@@ -159,7 +160,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -176,10 +177,11 @@
                                         "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 32768
                 }
             }
         ], 
@@ -211,7 +213,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -228,10 +230,11 @@
                                         "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 32768
                 }
             }
         ], 
@@ -263,7 +266,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -280,10 +283,11 @@
                                         "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 32768
                 }
             }
         ], 
@@ -310,7 +314,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -327,10 +331,11 @@
                                         "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 32768
                 }
             }
         ], 
@@ -362,7 +367,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -379,10 +384,11 @@
                                         "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 32768
                 }
             }
         ], 
@@ -414,7 +420,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -431,10 +437,11 @@
                                         "value": "aa:aa:aa:aa:aa:aa"
                                     }
                                 }
-                            ]
+                            ], 
+                            "type": 1
                         }
                     }, 
-                    "table_id": 0
+                    "priority": 32768
                 }
             }
         ], 

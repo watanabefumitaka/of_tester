@@ -74,10 +74,10 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
-                    "vlan(pcp=7, cfi=0, vid=304, ethertype=2054)", 
-                    "ipv6(dst='40::40', flow_label=304, src='30::30')", 
-                    "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='33:33:33:33:33:33'),dst='40::40',length=1,res=0,type_=1),type_=135)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
@@ -98,6 +98,16 @@
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "ipv6_nd_target", 
+                                                    "value": "3ffe:507:0:1:200:86ff:1234:5678"
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
                                             "port": 2
@@ -113,13 +123,38 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
                     }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
@@ -128,10 +163,10 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
-                    "mpls(label=304, exp=7)", 
-                    "ipv6(dst='40::40', flow_label=304, src='30::30')", 
-                    "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='33:33:33:33:33:33'),dst='40::40',length=1,res=0,type_=1),type_=135)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "mpls(label=100, exp=3)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
@@ -152,6 +187,16 @@
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "ipv6_nd_target", 
+                                                    "value": "3ffe:507:0:1:200:86ff:1234:5678"
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
                                             "port": 2
@@ -167,13 +212,38 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
                     }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
@@ -182,9 +252,9 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
-                    "ipv6(dst='40::40', flow_label=304, src='30::30')", 
-                    "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='33:33:33:33:33:33'),dst='40::40',length=1,res=0,type_=1),type_=135)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
@@ -204,6 +274,16 @@
                             "OFPInstructionActions": {
                                 "actions": [
                                     {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "ipv6_nd_target", 
+                                                    "value": "3ffe:507:0:1:200:86ff:1234:5678"
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
                                             "port": 2
@@ -219,13 +299,38 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
                     }, 
+                    "priority": 32768, 
                     "table_id": 0
                 }
             }
@@ -234,14 +339,14 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
-                    "itag(sid=304)", 
-                    "ethernet(dst='44:44:44:44:44:44', src='33:33:33:33:33:33', ethertype=33024)", 
+                    "itag(sid=100)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
                     "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=7, cfi=0, vid=304, ethertype=2054)", 
-                    "ipv6(dst='40::40', flow_label=304, src='30::30')", 
-                    "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='33:33:33:33:33:33'),dst='40::40',length=1,res=0,type_=1),type_=135)"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                    "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 

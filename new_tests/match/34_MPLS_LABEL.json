@@ -11,7 +11,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -68,7 +68,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -125,7 +125,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -138,14 +138,19 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34887
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label", 
+                                        "value": 100
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -172,7 +177,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -185,14 +190,19 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34887
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label", 
+                                        "value": 100
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -226,7 +236,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -239,14 +249,19 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34887
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label", 
+                                        "value": 100
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -280,7 +295,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -293,14 +308,19 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34887
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label", 
+                                        "value": 100
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -328,7 +348,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -341,14 +361,19 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34887
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label", 
+                                        "value": 100
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -382,7 +407,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -395,14 +420,19 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34887
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label", 
+                                        "value": 100
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -436,7 +466,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -449,14 +479,19 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34887
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label", 
+                                        "value": 100
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 

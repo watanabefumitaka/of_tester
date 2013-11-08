@@ -11,7 +11,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -82,7 +82,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -93,12 +93,6 @@
                     "match": {
                         "OFPMatch": {
                             "oxm_fields": [
-                                {
-                                    "OXMTlv": {
-                                        "field": "in_port", 
-                                        "value": 1
-                                    }
-                                }, 
                                 {
                                     "OXMTlv": {
                                         "field": "eth_type", 
@@ -159,7 +153,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -172,14 +166,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -207,7 +218,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -220,14 +231,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -261,7 +289,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -274,14 +302,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -315,7 +360,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -328,14 +373,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -363,7 +425,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -376,14 +438,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -415,7 +494,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -428,14 +507,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -467,7 +563,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -480,14 +576,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -514,7 +627,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -527,14 +640,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -576,7 +706,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -589,14 +719,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
@@ -638,7 +785,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 2
+                                            "port": 4294967293
                                         }
                                     }
                                 ], 
@@ -651,14 +798,31 @@
                             "oxm_fields": [
                                 {
                                     "OXMTlv": {
-                                        "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "field": "eth_type", 
+                                        "value": 34525
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ip_proto", 
+                                        "value": 58
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "icmpv6_type", 
+                                        "value": 135
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "ipv6_nd_target", 
+                                        "value": "3ffe:507:0:1:200:86ff:fe05:80da"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "table_id": 0
+                    }
                 }
             }
         ], 
