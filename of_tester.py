@@ -158,20 +158,20 @@ def coloring(msg, color):
 class TestFailure(RyuException):
     def __init__(self, state, **argv):
         msg = NG % {'detail': (MSG[state][FAILURE] % argv)}
-        super(TestFailure, self).__init__(msg)
+        super(TestFailure, self).__init__(msg=msg)
 
 
 class TestTimeout(RyuException):
     def __init__(self, state):
         msg = NG % {'detail': MSG[state][TIMEOUT]}
-        super(TestTimeout, self).__init__(msg)
+        super(TestTimeout, self).__init__(msg=msg)
 
 
 class TestReceiveError(RyuException):
     def __init__(self, state, err_msg):
         msg = NG % {'detail': MSG[state][RCV_ERR] % {'err_msg': ERR_MSG % (
             err_msg.type, err_msg.code, repr(err_msg.data))}}
-        super(TestReceiveError, self).__init__(msg)
+        super(TestReceiveError, self).__init__(msg=msg)
 
 
 def main():
@@ -391,12 +391,12 @@ class OfTester(app_manager.RyuApp):
                 self.logger.debug(unicode(test.description))
             if result == RYU_INTERNAL_ERROR:
                 self.logger.error(traceback.format_exc())
-            if result != OK and self.state == STATE_INIT:
-                break  # Terminate tests.
 
             #TODO: for debug
             #print raw_input("> Enter")
 
+            if result != OK and self.state == STATE_INIT:
+                break  # Terminate tests.
             hub.sleep(0)
 
         self.test_thread = None
