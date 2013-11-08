@@ -11,7 +11,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 4294967293
+                                            "port": 2
                                         }
                                     }
                                 ], 
@@ -31,7 +31,8 @@
                             ], 
                             "type": 1
                         }
-                    }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -71,7 +72,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 4294967293
+                                            "port": 2
                                         }
                                     }
                                 ], 
@@ -91,7 +92,8 @@
                             ], 
                             "type": 1
                         }
-                    }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -133,7 +135,7 @@
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535, 
-                                            "port": 4294967293
+                                            "port": 2
                                         }
                                     }
                                 ], 
@@ -153,7 +155,8 @@
                             ], 
                             "type": 1
                         }
-                    }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 

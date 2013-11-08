@@ -31,16 +31,48 @@
                                 {
                                     "OXMTlv": {
                                         "field": "mpls_bos", 
-                                        "value": 0
+                                        "value": 1
                                     }
                                 }
                             ]
                         }
-                    }
+                    }, 
+                    "table_id": 1
+                }
+            }, 
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionPopMpls": {
+                                            "ethertype": "2048"
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }, 
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 1
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [], 
+                            "type": 1
+                        }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
-        "description": "test0: match[eth_type=34887/mpls_bos=0] packet=ethernet/mpls/ipv4/tcp", 
+        "description": "test0: match[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/ipv4/tcp", 
         "packets": [
             {
                 "egress": [
@@ -90,16 +122,48 @@
                                 {
                                     "OXMTlv": {
                                         "field": "mpls_bos", 
-                                        "value": 0
+                                        "value": 1
                                     }
                                 }
                             ]
                         }
-                    }
+                    }, 
+                    "table_id": 1
+                }
+            }, 
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionPopMpls": {
+                                            "ethertype": "2048"
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }, 
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 1
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [], 
+                            "type": 1
+                        }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
-        "description": "test1: match(PACKET_IN)[eth_type=34887/mpls_bos=0] packet=ethernet/mpls/ipv4/tcp", 
+        "description": "test1: match(PACKET_IN)[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/ipv4/tcp", 
         "packets": [
             {
                 "PACKET_IN": [
@@ -149,16 +213,48 @@
                                 {
                                     "OXMTlv": {
                                         "field": "mpls_bos", 
-                                        "value": 0
+                                        "value": 1
                                     }
                                 }
                             ]
                         }
-                    }
+                    }, 
+                    "table_id": 1
+                }
+            }, 
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionPopMpls": {
+                                            "ethertype": "2048"
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }, 
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 1
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [], 
+                            "type": 1
+                        }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
-        "description": "test2: unmatch[eth_type=34887/mpls_bos=0] packet=ethernet/mpls/ipv4/tcp", 
+        "description": "test2: unmatch[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/ipv4/tcp", 
         "packets": [
             {
                 "ingress": [

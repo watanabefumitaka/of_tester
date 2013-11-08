@@ -32,7 +32,8 @@
                             "type": 1
                         }
                     }, 
-                    "priority": 1
+                    "priority": 1, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -61,7 +62,7 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0, 
+                                            "max_len": 65535, 
                                             "port": 4294967293
                                         }
                                     }
@@ -83,7 +84,8 @@
                             "type": 1
                         }
                     }, 
-                    "priority": 1
+                    "priority": 1, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -134,7 +136,8 @@
                             "type": 1
                         }
                     }, 
-                    "priority": 1
+                    "priority": 1, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -181,7 +184,8 @@
                             "type": 1
                         }
                     }, 
-                    "priority": 1
+                    "priority": 1, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -212,7 +216,7 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0, 
+                                            "max_len": 65535, 
                                             "port": 4294967293
                                         }
                                     }
@@ -234,7 +238,8 @@
                             "type": 1
                         }
                     }, 
-                    "priority": 1
+                    "priority": 1, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -287,7 +292,8 @@
                             "type": 1
                         }
                     }, 
-                    "priority": 1
+                    "priority": 1, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -335,7 +341,8 @@
                             "type": 1
                         }
                     }, 
-                    "priority": 1
+                    "priority": 1, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -366,7 +373,7 @@
                                 "actions": [
                                     {
                                         "OFPActionOutput": {
-                                            "max_len": 0, 
+                                            "max_len": 65535, 
                                             "port": 4294967293
                                         }
                                     }
@@ -388,7 +395,8 @@
                             "type": 1
                         }
                     }, 
-                    "priority": 1
+                    "priority": 1, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -441,7 +449,8 @@
                             "type": 1
                         }
                     }, 
-                    "priority": 1
+                    "priority": 1, 
+                    "table_id": 0
                 }
             }
         ], 

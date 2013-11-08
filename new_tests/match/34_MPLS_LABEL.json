@@ -36,7 +36,39 @@
                                 }
                             ]
                         }
-                    }
+                    }, 
+                    "table_id": 1
+                }
+            }, 
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionPopMpls": {
+                                            "ethertype": "2048"
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }, 
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 1
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [], 
+                            "type": 1
+                        }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -95,7 +127,39 @@
                                 }
                             ]
                         }
-                    }
+                    }, 
+                    "table_id": 1
+                }
+            }, 
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionPopMpls": {
+                                            "ethertype": "2048"
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }, 
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 1
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [], 
+                            "type": 1
+                        }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
@@ -154,7 +218,39 @@
                                 }
                             ]
                         }
-                    }
+                    }, 
+                    "table_id": 1
+                }
+            }, 
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionPopMpls": {
+                                            "ethertype": "2048"
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }, 
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 1
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [], 
+                            "type": 1
+                        }
+                    }, 
+                    "table_id": 0
                 }
             }
         ], 
