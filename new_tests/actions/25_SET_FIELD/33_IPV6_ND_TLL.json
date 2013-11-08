@@ -75,13 +75,13 @@
             {
                 "egress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=136)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=136)"
                 ]
@@ -163,12 +163,12 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=136)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=136)"
                 ]
@@ -250,22 +250,22 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=33024, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=136)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=33024, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=136)"
                 ]

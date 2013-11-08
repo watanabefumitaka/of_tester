@@ -25,7 +25,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "value": "22:22:22:22:22:22"
                                     }
                                 }
                             ], 
@@ -36,15 +36,15 @@
                 }
             }
         ], 
-        "description": "test0: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/arp", 
+        "description": "test0: match[eth_dst=22:22:22:22:22:22] packet=ethernet/arp", 
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)", 
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)", 
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ]
             }
@@ -76,7 +76,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "value": "22:22:22:22:22:22"
                                     }
                                 }
                             ], 
@@ -87,15 +87,15 @@
                 }
             }
         ], 
-        "description": "test1: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/arp", 
+        "description": "test1: match(PACKET_IN)[eth_dst=22:22:22:22:22:22] packet=ethernet/arp", 
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)", 
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)", 
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ]
             }
@@ -127,7 +127,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "value": "22:22:22:22:22:22"
                                     }
                                 }
                             ], 
@@ -138,11 +138,11 @@
                 }
             }
         ], 
-        "description": "test2: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/arp", 
+        "description": "test2: unmatch[eth_dst=22:22:22:22:22:22] packet=ethernet/arp", 
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2054)", 
                     "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
                 ]
             }
@@ -174,7 +174,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "value": "22:22:22:22:22:22"
                                     }
                                 }
                             ], 
@@ -185,16 +185,16 @@
                 }
             }
         ], 
-        "description": "test3: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp", 
+        "description": "test3: match[eth_dst=22:22:22:22:22:22] packet=ethernet/ipv4/tcp", 
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)", 
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)", 
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -227,7 +227,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "value": "22:22:22:22:22:22"
                                     }
                                 }
                             ], 
@@ -238,16 +238,16 @@
                 }
             }
         ], 
-        "description": "test4: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp", 
+        "description": "test4: match(PACKET_IN)[eth_dst=22:22:22:22:22:22] packet=ethernet/ipv4/tcp", 
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)", 
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)", 
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -280,7 +280,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "value": "22:22:22:22:22:22"
                                     }
                                 }
                             ], 
@@ -291,11 +291,11 @@
                 }
             }
         ], 
-        "description": "test5: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp", 
+        "description": "test5: unmatch[eth_dst=22:22:22:22:22:22] packet=ethernet/ipv4/tcp", 
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2048)", 
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)", 
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
@@ -328,7 +328,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "value": "22:22:22:22:22:22"
                                     }
                                 }
                             ], 
@@ -339,16 +339,16 @@
                 }
             }
         ], 
-        "description": "test6: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp", 
+        "description": "test6: match[eth_dst=22:22:22:22:22:22] packet=ethernet/ipv6/tcp", 
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -381,7 +381,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "value": "22:22:22:22:22:22"
                                     }
                                 }
                             ], 
@@ -392,16 +392,16 @@
                 }
             }
         ], 
-        "description": "test7: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp", 
+        "description": "test7: match(PACKET_IN)[eth_dst=22:22:22:22:22:22] packet=ethernet/ipv6/tcp", 
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -434,7 +434,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "eth_dst", 
-                                        "value": "aa:aa:aa:aa:aa:aa"
+                                        "value": "22:22:22:22:22:22"
                                     }
                                 }
                             ], 
@@ -445,11 +445,11 @@
                 }
             }
         ], 
-        "description": "test8: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp", 
+        "description": "test8: unmatch[eth_dst=22:22:22:22:22:22] packet=ethernet/ipv6/tcp", 
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34525)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]

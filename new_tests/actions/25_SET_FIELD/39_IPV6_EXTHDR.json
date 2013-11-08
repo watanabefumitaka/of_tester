@@ -63,13 +63,13 @@
             {
                 "egress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20',ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)],nxt=51,size=0), auth(data='\\xa0\\xe7\\xf8\\xab\\xf9i\\x1a\\x8b\\xf3\\x9f|\\xae',nxt=58,seq=1,size=4,spi=256)],flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20',ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)],nxt=51,size=0), auth(data='\\xa0\\xe7\\xf8\\xab\\xf9i\\x1a\\x8b\\xf3\\x9f|\\xae',nxt=58,seq=1,size=4,spi=256)],flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -139,12 +139,12 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20',ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)],nxt=51,size=0), auth(data='\\xa0\\xe7\\xf8\\xab\\xf9i\\x1a\\x8b\\xf3\\x9f|\\xae',nxt=58,seq=1,size=4,spi=256)],flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20',ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)],nxt=51,size=0), auth(data='\\xa0\\xe7\\xf8\\xab\\xf9i\\x1a\\x8b\\xf3\\x9f|\\xae',nxt=58,seq=1,size=4,spi=256)],flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -214,22 +214,22 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=33024, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20',ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)],nxt=51,size=0), auth(data='\\xa0\\xe7\\xf8\\xab\\xf9i\\x1a\\x8b\\xf3\\x9f|\\xae',nxt=58,seq=1,size=4,spi=256)],flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=33024, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20',ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)],nxt=51,size=0), auth(data='\\xa0\\xe7\\xf8\\xab\\xf9i\\x1a\\x8b\\xf3\\x9f|\\xae',nxt=58,seq=1,size=4,spi=256)],flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]

@@ -46,13 +46,13 @@
             {
                 "egress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -106,13 +106,13 @@
             {
                 "PACKET_IN": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -166,7 +166,7 @@
             {
                 "ingress": [
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
-                    "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)", 
+                    "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
@@ -219,12 +219,12 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -277,12 +277,12 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -335,7 +335,7 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34525)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
@@ -388,22 +388,22 @@
         "packets": [
             {
                 "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=33024, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=33024, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -456,22 +456,22 @@
         "packets": [
             {
                 "PACKET_IN": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=33024, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ], 
                 "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)", 
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
+                    "svlan(ethertype=33024, vid=10)", 
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
                     "ipv6(dst='20::20', flow_label=100, src='10::10')", 
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
@@ -524,12 +524,12 @@
         "packets": [
             {
                 "ingress": [
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
                     "svlan(ethertype=35047, vid=10)", 
                     "itag(sid=203)", 
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)", 
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)", 
+                    "svlan(ethertype=33024, vid=10)", 
+                    "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)", 
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')", 
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
