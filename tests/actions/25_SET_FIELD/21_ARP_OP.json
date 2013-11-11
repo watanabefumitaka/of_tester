@@ -1,0 +1,77 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionSetField": {
+                                            "field": {
+                                                "OXMTlv": {
+                                                    "field": "arp_op", 
+                                                    "value": 20
+                                                }
+                                            }
+                                        }
+                                    }, 
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535, 
+                                            "port": 2
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port", 
+                                        "value": 1
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type", 
+                                        "value": 2054
+                                    }
+                                }, 
+                                {
+                                    "OXMTlv": {
+                                        "field": "arp_op", 
+                                        "value": 2
+                                    }
+                                }
+                            ]
+                        }
+                    }, 
+                    "priority": 32768, 
+                    "table_id": 0
+                }
+            }
+        ], 
+        "description": "テスト0: arp_op=2のパケットを印加し、arp_op=20に書き換える", 
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')", 
+                    "arp(dst_ip='0.0.0.0',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=20,plen=4,proto=2048,src_ip='0.0.0.0',src_mac='aa:aa:aa:aa:aa:aa')", 
+                    "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
+                ], 
+                "ingress": [
+                    "ethernet(dst='ff:ff:ff:ff:ff:ff',ethertype=2054,src='aa:aa:aa:aa:aa:aa')", 
+                    "arp(dst_ip='0.0.0.0',dst_mac='00:00:00:00:00:00',hlen=6,hwtype=1,opcode=2,plen=4,proto=2048,src_ip='0.0.0.0',src_mac='aa:aa:aa:aa:aa:aa')", 
+                    "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
+                ]
+            }
+        ]
+    }
+]

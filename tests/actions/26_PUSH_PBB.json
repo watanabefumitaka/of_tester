@@ -1,0 +1,70 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionPushPbb": {
+                                            "ethertype": 35047
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "in_port",
+                                        "value": 1
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 2048
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority": 32768,
+                    "table_id": 0
+                }
+            }
+        ],
+        "description": "テスト0: PBBタグなしのパケットを印加し、PBBタグを付与する",
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=35047,src='00:bb:bb:bb:bb:bb')",
+                    "itag(dei=0,pcp=0,sid=0,uca=0)",
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,ttl=63,version=4)",
+                    "tcp(ack=0,bits=48,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n'"
+                ],
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=2048,src='00:bb:bb:bb:bb:bb')",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=0,ttl=63,version=4)",
+                    "tcp(ack=0,bits=48,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n'"
+                ]
+            }
+        ]
+    }
+]

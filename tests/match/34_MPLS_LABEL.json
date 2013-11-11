@@ -1,0 +1,117 @@
+[
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34887
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label",
+                                        "value": 100
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "description": "テスト0: match:mpls_lavel=100のフローにマッチするパケットを印加",
+        "packets": [
+            {
+                "egress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34887,src='bb:bb:bb:bb:bb:bb')",
+                    "mpls(bsb=1,exp=6,label=100,ttl=64)",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=1,ttl=64,version=4)",
+                    "tcp(ack=1,bits=1,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
+                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
+                ],
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34887,src='bb:bb:bb:bb:bb:bb')",
+                    "mpls(bsb=1,exp=6,label=100,ttl=64)",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=1,ttl=64,version=4)",
+                    "tcp(ack=1,bits=1,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
+                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD": [
+            {
+                "OFPFlowMod": {
+                    "command": 0,
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionOutput": {
+                                            "max_len": 65535,
+                                            "port": 2
+                                        }
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        }
+                    ],
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": [
+                                {
+                                    "OXMTlv": {
+                                        "field": "eth_type",
+                                        "value": 34887
+                                    }
+                                },
+                                {
+                                    "OXMTlv": {
+                                        "field": "mpls_label",
+                                        "value": 100
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "description": "テスト1: match:mpls_lavel=100のフローにマッチしないパケットを印加",
+        "packets": [
+            {
+                "ingress": [
+                    "ethernet(dst='aa:aa:aa:aa:aa:aa',ethertype=34887,src='bb:bb:bb:bb:bb:bb')",
+                    "mpls(bsb=1,exp=6,label=200,ttl=64)",
+                    "ipv4(dst='192.168.1.2',flags=2,header_length=5,identification=0,offset=0,option=None,proto=6,src='192.168.1.5',tos=1,ttl=64,version=4)",
+                    "tcp(ack=1,bits=1,csum=0,dst_port=11111,offset=6,option='\\x00\\x00\\x00\\x00',seq=123,src_port=6789,urgent=111,window_size=2048)",
+                    "str('0123456789abcdefghijklmnopqrstuvwxyz')"
+                ]
+            }
+        ]
+    }
+]
