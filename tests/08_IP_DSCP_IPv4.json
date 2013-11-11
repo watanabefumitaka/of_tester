@@ -79,12 +79,6 @@
                     "instructions": [
                         {
                             "OFPInstructionActions": {
-                                "actions": [],
-                                "type": 5
-                            }
-                        },
-                        {
-                            "OFPInstructionActions": {
                                 "actions": [
                                     {
                                         "OFPActionSetField": {
@@ -95,7 +89,20 @@
                                                 }
                                             }
                                         }
-                                    },
+                                    }
+                                ],
+                                "type": 4
+                            }
+                        },
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [],
+                                "type": 5
+                            }
+                        },
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
                                     {
                                         "OFPActionOutput": {
                                             "max_len": 65535,
