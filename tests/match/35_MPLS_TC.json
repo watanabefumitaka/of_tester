@@ -31,7 +31,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "mpls_tc",
-                                        "value": 6
+                                        "value": 3
                                     }
                                 }
                             ]

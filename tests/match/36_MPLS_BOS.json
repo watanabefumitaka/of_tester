@@ -31,7 +31,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "mpls_bos",
-                                        "value": 0
+                                        "value": 1
                                     }
                                 }
                             ]

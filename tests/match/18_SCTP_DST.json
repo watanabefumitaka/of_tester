@@ -37,7 +37,7 @@
                                 {
                                     "OXMTlv": {
                                         "field": "sctp_dst",
-                                        "value": 6789
+                                        "value": 2222
                                     }
                                 }
                             ],

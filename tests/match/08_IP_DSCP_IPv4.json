@@ -10,7 +10,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
+                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -25,17 +25,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -43,18 +42,22 @@
                 }
             }
         ],
-        "description":"test0: match[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/vlan/arp",
+        "description":"test0: match[eth_type=2048/ip_dscp=8] packet=ethernet/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -85,17 +88,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -103,18 +105,22 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/vlan/arp",
+        "description":"test1: match(PACKET_IN)[eth_type=2048/ip_dscp=8] packet=ethernet/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -130,7 +136,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
+                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -145,17 +151,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -163,13 +168,15 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/vlan/arp",
+        "description":"test2: unmatch[eth_type=2048/ip_dscp=8] packet=ethernet/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
-                    "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)",
-                    "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                    "vlan(pcp=5, cfi=0, vid=203, ethertype=2048)",
+                    "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
+                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -185,7 +192,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
+                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -200,17 +207,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -226,7 +232,7 @@
                                 "actions":[
                                     {
                                         "OFPActionPopMpls":{
-                                            "ethertype":2054
+                                            "ethertype":2048
                                         }
                                     }
                                 ],
@@ -257,17 +263,21 @@
                 }
             }
         ],
-        "description":"test3: match[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/mpls/arp",
+        "description":"test3: match[eth_type=2048/ip_dscp=8] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -298,17 +308,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -324,7 +333,7 @@
                                 "actions":[
                                     {
                                         "OFPActionPopMpls":{
-                                            "ethertype":2054
+                                            "ethertype":2048
                                         }
                                     }
                                 ],
@@ -355,17 +364,21 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/mpls/arp",
+        "description":"test4: match(PACKET_IN)[eth_type=2048/ip_dscp=8] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -381,7 +394,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
+                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -396,17 +409,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -422,7 +434,7 @@
                                 "actions":[
                                     {
                                         "OFPActionPopMpls":{
-                                            "ethertype":2054
+                                            "ethertype":2048
                                         }
                                     }
                                 ],
@@ -453,13 +465,15 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/mpls/arp",
+        "description":"test5: unmatch[eth_type=2048/ip_dscp=8] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34887)",
                     "mpls(bsb=1, label=203, exp=5, ttl=127)",
-                    "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                    "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
+                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -475,7 +489,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
+                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -490,17 +504,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -508,16 +521,20 @@
                 }
             }
         ],
-        "description":"test6: match[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/arp",
+        "description":"test6: match[eth_type=2048/ip_dscp=8] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -548,17 +565,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -566,16 +582,20 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/arp",
+        "description":"test7: match(PACKET_IN)[eth_type=2048/ip_dscp=8] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -591,7 +611,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
+                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -606,17 +626,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -624,12 +643,14 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/arp",
+        "description":"test8: unmatch[eth_type=2048/ip_dscp=8] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2054)",
-                    "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2048)",
+                    "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
+                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -645,7 +666,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
+                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -660,17 +681,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -678,7 +698,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test9: match[eth_type=2048/ip_dscp=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
@@ -687,8 +707,10 @@
                     "itag(sid=100)",
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -696,8 +718,10 @@
                     "itag(sid=100)",
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -728,17 +752,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -746,7 +769,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test10: match(PACKET_IN)[eth_type=2048/ip_dscp=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "PACKET_IN":[
@@ -755,8 +778,10 @@
                     "itag(sid=100)",
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -764,8 +789,10 @@
                     "itag(sid=100)",
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -781,7 +808,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
+                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -796,17 +823,16 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"arp_tpa",
-                                        "value":"192.168.20.20"
+                                        "field":"ip_dscp",
+                                        "value":8
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -814,7 +840,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=2054/arp_tpa=192.168.20.20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test11: unmatch[eth_type=2048/ip_dscp=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
@@ -823,8 +849,10 @@
                     "itag(sid=203)",
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
-                    "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)",
-                    "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                    "vlan(pcp=5, cfi=0, vid=203, ethertype=2048)",
+                    "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
+                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
