@@ -332,6 +332,9 @@ class OfTester(app_manager.RyuApp):
         if not tests:
             msg = coloring(NO_TEST_FILE, YELLOW)
             self.logger.warning(msg)
+            self.test_thread = None
+            if self.ctlr_thread is not None:
+                hub.kill(self.ctlr_thread)
             return
 
         test_keys = tests.keys()
