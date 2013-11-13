@@ -1,236 +1,342 @@
 [
     {
-        "FLOW_MOD": [
+        "FLOW_MOD":[
             {
-                "OFPFlowMod": {
-                    "command": 0, 
-                    "instructions": [
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
                         {
-                            "OFPInstructionActions": {
-                                "actions": [
+                            "OFPInstructionActions":{
+                                "actions":[
                                     {
-                                        "OFPActionSetField": {
-                                            "field": {
-                                                "OXMTlv": {
-                                                    "field": "ipv6_src", 
-                                                    "value": "2001:db8:0:12::10"
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"ipv6_src",
+                                                    "value":"2001:db8:0:12::10"
                                                 }
                                             }
                                         }
-                                    }, 
+                                    },
                                     {
-                                        "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                        "OFPActionOutput":{
+                                            "max_len":65535,
+                                            "port":2
                                         }
                                     }
-                                ], 
-                                "type": 4
+                                ],
+                                "type":4
                             }
                         }
-                    ], 
-                    "match": {
-                        "OFPMatch": {
-                            "oxm_fields": [
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
                                 {
-                                    "OXMTlv": {
-                                        "field": "in_port", 
-                                        "value": 1
+                                    "OXMTlv":{
+                                        "field":"in_port",
+                                        "value":1
                                     }
-                                }, 
+                                },
                                 {
-                                    "OXMTlv": {
-                                        "field": "eth_type", 
-                                        "value": 34525
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34525
                                     }
-                                }, 
+                                },
                                 {
-                                    "OXMTlv": {
-                                        "field": "ipv6_src", 
-                                        "value": "2001:db8:0:12::1"
+                                    "OXMTlv":{
+                                        "field":"ipv6_src",
+                                        "value":"2001:db8:0:12::1"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "priority": 32768, 
-                    "table_id": 0
+                    },
+                    "priority":32768,
+                    "table_id":0
                 }
             }
-        ], 
-        "description": "test0: actions[OFPActionSetField[ipv6_src=2001:db8:0:12::10]] packet=ethernet/vlan/ipv6/tcp", 
-        "packets": [
+        ],
+        "description":"test0: actions[OFPActionSetField[ipv6_src=2001:db8:0:12::10]] packet=ethernet/vlan/ipv6/tcp",
+        "packets":[
             {
-                "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
-                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
-                ], 
-                "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
-                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
         ]
-    }, 
+    },
     {
-        "FLOW_MOD": [
+        "FLOW_MOD":[
             {
-                "OFPFlowMod": {
-                    "command": 0, 
-                    "instructions": [
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
                         {
-                            "OFPInstructionActions": {
-                                "actions": [
+                            "OFPInstructionActions":{
+                                "actions":[
                                     {
-                                        "OFPActionSetField": {
-                                            "field": {
-                                                "OXMTlv": {
-                                                    "field": "ipv6_src", 
-                                                    "value": "2001:db8:0:12::10"
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"ipv6_src",
+                                                    "value":"2001:db8:0:12::10"
                                                 }
                                             }
                                         }
-                                    }, 
+                                    },
                                     {
-                                        "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                        "OFPActionOutput":{
+                                            "max_len":65535,
+                                            "port":2
                                         }
                                     }
-                                ], 
-                                "type": 4
+                                ],
+                                "type":4
                             }
                         }
-                    ], 
-                    "match": {
-                        "OFPMatch": {
-                            "oxm_fields": [
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
                                 {
-                                    "OXMTlv": {
-                                        "field": "in_port", 
-                                        "value": 1
+                                    "OXMTlv":{
+                                        "field":"in_port",
+                                        "value":1
                                     }
-                                }, 
+                                },
                                 {
-                                    "OXMTlv": {
-                                        "field": "eth_type", 
-                                        "value": 34525
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34525
                                     }
-                                }, 
+                                },
                                 {
-                                    "OXMTlv": {
-                                        "field": "ipv6_src", 
-                                        "value": "2001:db8:0:12::1"
+                                    "OXMTlv":{
+                                        "field":"ipv6_src",
+                                        "value":"2001:db8:0:12::1"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "priority": 32768, 
-                    "table_id": 0
+                    },
+                    "priority":32768,
+                    "table_id":1
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionPopMpls":{
+                                            "ethertype":34525
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "table_id":0
                 }
             }
-        ], 
-        "description": "test1: actions[OFPActionSetField[ipv6_src=2001:db8:0:12::10]] packet=ethernet/ipv6/tcp", 
-        "packets": [
+        ],
+        "description":"test1: actions[OFPActionSetField[ipv6_src=2001:db8:0:12::10]] packet=ethernet/mpls/ipv6/tcp",
+        "packets":[
             {
-                "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
-                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
-                ], 
-                "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)", 
-                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
+                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
         ]
-    }, 
+    },
     {
-        "FLOW_MOD": [
+        "FLOW_MOD":[
             {
-                "OFPFlowMod": {
-                    "command": 0, 
-                    "instructions": [
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
                         {
-                            "OFPInstructionActions": {
-                                "actions": [
+                            "OFPInstructionActions":{
+                                "actions":[
                                     {
-                                        "OFPActionSetField": {
-                                            "field": {
-                                                "OXMTlv": {
-                                                    "field": "ipv6_src", 
-                                                    "value": "2001:db8:0:12::10"
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"ipv6_src",
+                                                    "value":"2001:db8:0:12::10"
                                                 }
                                             }
                                         }
-                                    }, 
+                                    },
                                     {
-                                        "OFPActionOutput": {
-                                            "max_len": 65535, 
-                                            "port": 2
+                                        "OFPActionOutput":{
+                                            "max_len":65535,
+                                            "port":2
                                         }
                                     }
-                                ], 
-                                "type": 4
+                                ],
+                                "type":4
                             }
                         }
-                    ], 
-                    "match": {
-                        "OFPMatch": {
-                            "oxm_fields": [
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
                                 {
-                                    "OXMTlv": {
-                                        "field": "in_port", 
-                                        "value": 1
+                                    "OXMTlv":{
+                                        "field":"in_port",
+                                        "value":1
                                     }
-                                }, 
+                                },
                                 {
-                                    "OXMTlv": {
-                                        "field": "eth_type", 
-                                        "value": 34525
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34525
                                     }
-                                }, 
+                                },
                                 {
-                                    "OXMTlv": {
-                                        "field": "ipv6_src", 
-                                        "value": "2001:db8:0:12::1"
+                                    "OXMTlv":{
+                                        "field":"ipv6_src",
+                                        "value":"2001:db8:0:12::1"
                                     }
                                 }
                             ]
                         }
-                    }, 
-                    "priority": 32768, 
-                    "table_id": 0
+                    },
+                    "priority":32768,
+                    "table_id":0
                 }
             }
-        ], 
-        "description": "test2: actions[OFPActionSetField[ipv6_src=2001:db8:0:12::10]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp", 
-        "packets": [
+        ],
+        "description":"test2: actions[OFPActionSetField[ipv6_src=2001:db8:0:12::10]] packet=ethernet/ipv6/tcp",
+        "packets":[
             {
-                "egress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "svlan(ethertype=33024, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
-                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
-                ], 
-                "ingress": [
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "svlan(ethertype=35047, vid=10)", 
-                    "itag(sid=100)", 
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)", 
-                    "svlan(ethertype=33024, vid=10)", 
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)", 
-                    "ipv6(dst='20::20', flow_label=100, src='10::10')", 
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD":[
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"ipv6_src",
+                                                    "value":"2001:db8:0:12::10"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput":{
+                                            "max_len":65535,
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_src",
+                                        "value":"2001:db8:0:12::1"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
+            }
+        ],
+        "description":"test3: actions[OFPActionSetField[ipv6_src=2001:db8:0:12::10]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "packets":[
+            {
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
+                    "svlan(ethertype=35047, vid=10)",
+                    "itag(sid=100)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
+                    "svlan(ethertype=33024, vid=10)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
+                    "svlan(ethertype=35047, vid=10)",
+                    "itag(sid=100)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
+                    "svlan(ethertype=33024, vid=10)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
