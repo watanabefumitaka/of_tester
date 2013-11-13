@@ -24,8 +24,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
                                     }
                                 }
                             ],
@@ -35,9 +36,34 @@
                     "priority":32768,
                     "table_id":0
                 }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
             }
         ],
-        "description":"test0: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/arp",
+        "description":"test0: match[metadata=240(mask=fffffff0)] packet=ethernet/arp",
         "packets":[
             {
                 "egress":[
@@ -76,8 +102,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
                                     }
                                 }
                             ],
@@ -87,9 +114,34 @@
                     "priority":32768,
                     "table_id":0
                 }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/arp",
+        "description":"test1: match(PACKET_IN)[metadata=240(mask=fffffff0)] packet=ethernet/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -128,8 +180,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
                                     }
                                 }
                             ],
@@ -139,9 +192,34 @@
                     "priority":32768,
                     "table_id":0
                 }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
             }
         ],
-        "description":"test2: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/arp",
+        "description":"test2: unmatch[metadata=240(mask=fffffff0)] packet=ethernet/arp",
         "packets":[
             {
                 "ingress":[
@@ -176,8 +254,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
                                     }
                                 }
                             ],
@@ -187,9 +266,34 @@
                     "priority":32768,
                     "table_id":0
                 }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
             }
         ],
-        "description":"test3: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp",
+        "description":"test3: match[metadata=240(mask=fffffff0)] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -230,8 +334,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
                                     }
                                 }
                             ],
@@ -241,9 +346,34 @@
                     "priority":32768,
                     "table_id":0
                 }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[metadata=240(mask=fffffff0)] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -284,8 +414,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
                                     }
                                 }
                             ],
@@ -295,9 +426,34 @@
                     "priority":32768,
                     "table_id":0
                 }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
             }
         ],
-        "description":"test5: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp",
+        "description":"test5: unmatch[metadata=240(mask=fffffff0)] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -333,8 +489,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
                                     }
                                 }
                             ],
@@ -344,9 +501,34 @@
                     "priority":32768,
                     "table_id":0
                 }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
             }
         ],
-        "description":"test6: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp",
+        "description":"test6: match[metadata=240(mask=fffffff0)] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -387,8 +569,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
                                     }
                                 }
                             ],
@@ -398,9 +581,34 @@
                     "priority":32768,
                     "table_id":0
                 }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[metadata=240(mask=fffffff0)] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -441,8 +649,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
                                     }
                                 }
                             ],
@@ -452,9 +661,34 @@
                     "priority":32768,
                     "table_id":0
                 }
+            },
+            {
+                "OFPFlowMod":{
+                    "command":0,
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "priority":32768,
+                    "table_id":0
+                }
             }
         ],
-        "description":"test8: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp",
+        "description":"test8: unmatch[metadata=240(mask=fffffff0)] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "ingress":[

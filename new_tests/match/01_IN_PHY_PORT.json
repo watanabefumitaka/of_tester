@@ -24,8 +24,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_phy_port",
+                                        "value":1
                                     }
                                 }
                             ],
@@ -37,7 +43,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/arp",
+        "description":"test0: match[in_port=1/in_phy_port=1] packet=ethernet/arp",
         "packets":[
             {
                 "egress":[
@@ -76,8 +82,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_phy_port",
+                                        "value":1
                                     }
                                 }
                             ],
@@ -89,7 +101,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/arp",
+        "description":"test1: match(PACKET_IN)[in_port=1/in_phy_port=1] packet=ethernet/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -128,8 +140,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_phy_port",
+                                        "value":1
                                     }
                                 }
                             ],
@@ -141,7 +159,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/arp",
+        "description":"test2: unmatch[in_port=1/in_phy_port=1] packet=ethernet/arp",
         "packets":[
             {
                 "ingress":[
@@ -176,8 +194,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_phy_port",
+                                        "value":1
                                     }
                                 }
                             ],
@@ -189,7 +213,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp",
+        "description":"test3: match[in_port=1/in_phy_port=1] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -230,8 +254,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_phy_port",
+                                        "value":1
                                     }
                                 }
                             ],
@@ -243,7 +273,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[in_port=1/in_phy_port=1] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -284,8 +314,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_phy_port",
+                                        "value":1
                                     }
                                 }
                             ],
@@ -297,7 +333,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp",
+        "description":"test5: unmatch[in_port=1/in_phy_port=1] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -333,8 +369,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_phy_port",
+                                        "value":1
                                     }
                                 }
                             ],
@@ -346,7 +388,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp",
+        "description":"test6: match[in_port=1/in_phy_port=1] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -387,8 +429,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_phy_port",
+                                        "value":1
                                     }
                                 }
                             ],
@@ -400,7 +448,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[in_port=1/in_phy_port=1] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -441,8 +489,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_phy_port",
+                                        "value":1
                                     }
                                 }
                             ],
@@ -454,7 +508,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp",
+        "description":"test8: unmatch[in_port=1/in_phy_port=1] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "ingress":[

@@ -31,7 +31,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"pbb_isid",
-                                        "value":100
+                                        "mask":240,
+                                        "value":96
                                     }
                                 }
                             ]
@@ -42,7 +43,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test0: match[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "egress":[
@@ -98,7 +99,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"pbb_isid",
-                                        "value":100
+                                        "mask":240,
+                                        "value":96
                                     }
                                 }
                             ]
@@ -109,7 +111,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test1: match(PACKET_IN)[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -165,7 +167,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"pbb_isid",
-                                        "value":100
+                                        "mask":240,
+                                        "value":96
                                     }
                                 }
                             ]
@@ -176,7 +179,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test2: unmatch[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "ingress":[
@@ -223,7 +226,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"pbb_isid",
-                                        "value":100
+                                        "mask":240,
+                                        "value":96
                                     }
                                 }
                             ]
@@ -234,7 +238,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test3: match[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -292,7 +296,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"pbb_isid",
-                                        "value":100
+                                        "mask":240,
+                                        "value":96
                                     }
                                 }
                             ]
@@ -303,7 +308,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -361,7 +366,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"pbb_isid",
-                                        "value":100
+                                        "mask":240,
+                                        "value":96
                                     }
                                 }
                             ]
@@ -372,7 +378,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test5: unmatch[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -420,7 +426,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"pbb_isid",
-                                        "value":100
+                                        "mask":240,
+                                        "value":96
                                     }
                                 }
                             ]
@@ -431,7 +438,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test6: match[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -489,7 +496,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"pbb_isid",
-                                        "value":100
+                                        "mask":240,
+                                        "value":96
                                     }
                                 }
                             ]
@@ -500,7 +508,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -558,7 +566,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"pbb_isid",
-                                        "value":100
+                                        "mask":240,
+                                        "value":96
                                     }
                                 }
                             ]
@@ -569,7 +578,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test8: unmatch[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[

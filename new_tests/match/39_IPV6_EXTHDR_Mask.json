@@ -31,6 +31,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -42,7 +43,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test0: match[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -92,6 +93,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -103,7 +105,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test1: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -153,6 +155,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -164,7 +167,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test2: unmatch[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -208,6 +211,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -249,7 +253,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test3: match[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -298,6 +302,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -339,7 +344,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test4: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -388,6 +393,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -429,7 +435,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test5: unmatch[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -473,6 +479,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -484,7 +491,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp",
+        "description":"test6: match[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -532,6 +539,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -543,7 +551,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -591,6 +599,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -602,7 +611,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp",
+        "description":"test8: unmatch[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -645,6 +654,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -656,7 +666,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test9: match[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -714,6 +724,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -725,7 +736,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test10: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -783,6 +794,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_exthdr",
+                                        "mask":496,
                                         "value":64
                                     }
                                 }
@@ -794,7 +806,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test11: unmatch[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
