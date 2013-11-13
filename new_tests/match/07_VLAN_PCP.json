@@ -44,7 +44,7 @@
                 }
             }
         ],
-        "description":"test0: match[vlan_vid=100/vlan_pcp=3] packet=ethernet/vlan/arp",
+        "description":"test0: match[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "egress":[
@@ -105,7 +105,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[vlan_vid=100/vlan_pcp=3] packet=ethernet/vlan/arp",
+        "description":"test1: match(PACKET_IN)[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -166,7 +166,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[vlan_vid=100/vlan_pcp=3] packet=ethernet/vlan/arp",
+        "description":"test2: unmatch[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "ingress":[
@@ -222,7 +222,7 @@
                 }
             }
         ],
-        "description":"test3: match[vlan_vid=100/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test3: match[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -285,7 +285,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[vlan_vid=100/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -348,7 +348,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[vlan_vid=100/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test5: unmatch[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -405,7 +405,7 @@
                 }
             }
         ],
-        "description":"test6: match[vlan_vid=100/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test6: match[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -468,7 +468,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[vlan_vid=100/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -531,7 +531,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[vlan_vid=100/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test8: unmatch[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
