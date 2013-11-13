@@ -31,7 +31,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -43,7 +44,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/vlan/arp",
+        "description":"test0: match[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "egress":[
@@ -91,7 +92,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -103,7 +105,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/vlan/arp",
+        "description":"test1: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -151,7 +153,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -163,7 +166,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/vlan/arp",
+        "description":"test2: unmatch[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "ingress":[
@@ -206,7 +209,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -248,7 +252,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/mpls/arp",
+        "description":"test3: match[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/arp",
         "packets":[
             {
                 "egress":[
@@ -295,7 +299,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -337,7 +342,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/mpls/arp",
+        "description":"test4: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -384,7 +389,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -426,7 +432,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/mpls/arp",
+        "description":"test5: unmatch[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/arp",
         "packets":[
             {
                 "ingress":[
@@ -469,7 +475,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -481,7 +488,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/arp",
+        "description":"test6: match[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/arp",
         "packets":[
             {
                 "egress":[
@@ -527,7 +534,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -539,7 +547,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/arp",
+        "description":"test7: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -585,7 +593,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -597,7 +606,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/arp",
+        "description":"test8: unmatch[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/arp",
         "packets":[
             {
                 "ingress":[
@@ -639,7 +648,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -651,7 +661,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test9: match[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "egress":[
@@ -707,7 +717,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -719,7 +730,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test10: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -775,7 +786,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"arp_spa",
-                                        "value":"192.168.10.10"
+                                        "mask":4294967040,
+                                        "value":"192.168.10.0"
                                     }
                                 }
                             ],
@@ -787,7 +799,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test11: unmatch[eth_type=2054/arp_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "ingress":[

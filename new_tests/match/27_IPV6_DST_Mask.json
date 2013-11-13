@@ -31,7 +31,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -43,7 +44,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_type=34525/ipv6_dst=20::20] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test0: match[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -93,7 +94,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -105,7 +107,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=34525/ipv6_dst=20::20] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test1: match(PACKET_IN)[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -155,7 +157,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -167,7 +170,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=34525/ipv6_dst=20::20] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test2: unmatch[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -211,7 +214,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -253,7 +257,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_type=34525/ipv6_dst=20::20] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test3: match[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -302,7 +306,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -344,7 +349,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=34525/ipv6_dst=20::20] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test4: match(PACKET_IN)[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -393,7 +398,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -435,7 +441,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=34525/ipv6_dst=20::20] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test5: unmatch[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -479,7 +485,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -491,7 +498,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_type=34525/ipv6_dst=20::20] packet=ethernet/ipv6/tcp",
+        "description":"test6: match[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -539,7 +546,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -551,7 +559,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=34525/ipv6_dst=20::20] packet=ethernet/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -599,7 +607,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -611,7 +620,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=34525/ipv6_dst=20::20] packet=ethernet/ipv6/tcp",
+        "description":"test8: unmatch[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -654,7 +663,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -666,7 +676,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_type=34525/ipv6_dst=20::20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test9: match[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -724,7 +734,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -736,7 +747,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=34525/ipv6_dst=20::20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test10: match(PACKET_IN)[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -794,7 +805,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ipv6_dst",
-                                        "value":"20::20"
+                                        "mask":5192296858534827628530496329220095,
+                                        "value":"0::20"
                                     }
                                 }
                             ],
@@ -806,7 +818,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=34525/ipv6_dst=20::20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test11: unmatch[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
