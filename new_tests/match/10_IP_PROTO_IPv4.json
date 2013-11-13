@@ -246,7 +246,14 @@
                     ],
                     "match":{
                         "OFPMatch":{
-                            "oxm_fields":[]
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34887
+                                    }
+                                }
+                            ]
                         }
                     },
                     "table_id":0
@@ -337,7 +344,14 @@
                     ],
                     "match":{
                         "OFPMatch":{
-                            "oxm_fields":[]
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34887
+                                    }
+                                }
+                            ]
                         }
                     },
                     "table_id":0
@@ -428,7 +442,14 @@
                     ],
                     "match":{
                         "OFPMatch":{
-                            "oxm_fields":[]
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34887
+                                    }
+                                }
+                            ]
                         }
                     },
                     "table_id":0
