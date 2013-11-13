@@ -43,15 +43,20 @@ ITAG = ["itag(sid=100)",
 IPV4 = ["ipv4(tos=32, proto=%s, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
         "ipv4(tos=65, proto=%s, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
         '2048']
-IPV4_0 = ["ipv4(tos=32, proto=0, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-          "ipv4(tos=65, proto=0, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
+IPV4_0 = ["ipv4(tos=32, proto=4, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+          "ipv4(tos=65, proto=4, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
           '2048']
-IPV6 = ["ipv6(dst='20::20', flow_label=100, src='10::10')",
-        "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')",
+
+IPV6 = ["ipv6(dst='20::20', flow_label=100, src='10::10', nxt=%s, hop_limit=64)",
+        "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=%s, hop_limit=127)",
         '34525']
-IPV6_EXT = ["ipv6(dst='20::20',ext_hdrs=[hop_opts(data=[option(data='\\x00\\x00',len_=2,type_=5), option(data=None,len_=0,type_=1)],nxt=51,size=0), auth(data='\\xa0\\xe7\\xf8\\xab\\xf9i\\x1a\\x8b\\xf3\\x9f|\\xae',nxt=58,seq=1,size=4,spi=256)],flow_label=100, src='10::10')",
-            "ipv6(dst='b0::b0', flow_label=203, src='a0::a0')",
+IPV6_0 = ["ipv6(dst='20::20', flow_label=100, src='10::10', nxt=41, hop_limit=64)",
+          "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=41, hop_limit=127)",
+          '34525']
+IPV6_EXT = ["ipv6(dst='20::20',ext_hdrs=[hop_opts(nxt=51), auth(nxt=%s)],flow_label=100, src='10::10', nxt=0, hop_limit=64)",
+            "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=%s, hop_limit=127)",
             '34525']
+
 TCP = ["tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
        "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
        '6']
@@ -64,17 +69,17 @@ ARP = ["arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip
 SCTP = ["sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)",
         "sctp(chunks=[chunk_data(payload_data='abcdefghijklmnopqrstuvwxyz0123456789')], dst_port=6789, src_port=12345)",
         '132']
-ICMP = ["icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL',id_=1,seq=1),type_=8)",
-        "icmp(code=1,csum=0,data=dest_unreach(data='\\xd3]\\xb7\\xe3\\x9e\\xbb\\xf3\\xd6\\x9bq\\xd7\\x9f\\x82\\x18\\xa3\\x92Y\\xa7\\xa2\\x9a\\xab\\xb2\\xdb\\xaf\\xc3\\x1c\\xb3\\x00\\x10\\x83\\x10Q\\x87 \\x92\\x8b',data_len=1,mtu=1),type_=3)",
+ICMP = ["icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=8)",
+        "icmp(code=1,csum=0,data=dest_unreach(data='\\xd3]\\xb7\\xe3\\x9e\\xbb\\xf3\\xd6\\x9bq\\xd7\\x9f\\x82\\x18\\xa3\\x92Y\\xa7\\xa2\\x9a\\xab\\xb2\\xdb\\xaf\\xc3\\x1c\\xb3\\x00\\x10\\x83\\x10Q\\x87 \\x92\\x8b'),type_=3)",
         '1']
-ICMPV6 = ["icmpv6(code=0,csum=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123',id_=30240,seq=0),type_=128)",
-          "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='aa:aa:aa:aa:aa:aa'),dst='a0::a0',length=1,res=0,type_=1),type_=135)",
+ICMPV6 = ["icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)",
+          "icmpv6(code=1,data=nd_neighbor(option=nd_option_sla(hw_src='aa:aa:aa:aa:aa:aa'),dst='a0::a0'),type_=135)",
          '58']
-ICMPV6_NDSLL = ["icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=135)",
-                "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='aa:aa:aa:aa:aa:aa'),dst='b0::b0',length=1,res=0,type_=1),type_=135)",
+ICMPV6_NDSLL = ["icmpv6(code=1,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=135)",
+                "icmpv6(code=1,data=nd_neighbor(option=nd_option_sla(hw_src='aa:aa:aa:aa:aa:aa'),dst='b0::b0'),type_=135)",
                 '58']
-ICMPV6_NDTLL = ["icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='11:11:11:11:11:11'),dst='20::20',length=1,res=0,type_=1),type_=136)",
-                "icmpv6(code=1,csum=0,data=nd_neighbor(data=nd_option_la(data=None,hw_src='aa:aa:aa:aa:aa:aa'),dst='b0::b0',length=1,res=0,type_=1),type_=136)",
+ICMPV6_NDTLL = ["icmpv6(code=1,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=136)",
+                "icmpv6(code=1,data=nd_neighbor(option=nd_option_sla(hw_src='aa:aa:aa:aa:aa:aa'),dst='b0::b0'),type_=136)",
                 '58']
 DATA = ["'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"]
@@ -100,8 +105,12 @@ L3_STACK_2 = {'ipv4_udp': [IPV4, UDP, DATA],
 
 # for copy ttl
 STACK_CPY_TTL = {'mpls_ipv4': [ETHER, MPLS, IPV4, TCP],
-                 'mpls_mpls': [ETHER, MPLS_0, MPLS, IPV4, TCP],
-                 'ipv4_ipv4': [ETHER, MPLS, IPV4_0, IPV4, TCP]}
+                 'mpls_ipv6': [ETHER, MPLS, IPV6, TCP]}
+
+STACK_CPY_TTL_OPT = {'mpls_mpls_ipv4': [ETHER, MPLS_0, MPLS, IPV4, TCP],
+                     'mpls_mpls_ipv6': [ETHER, MPLS_0, MPLS, IPV6, TCP],
+                     'ipv4_ipv4': [ETHER, IPV4_0, IPV4, TCP],
+                     'ipv6_ipv6': [ETHER, IPV6_0, IPV6, TCP]}
 
 # Default json data.
 JSON_DATA = {
@@ -136,18 +145,51 @@ JSON_DATA = {
                                     ], 
                                     "type": 1
                                 }
-                            }
+                            },
+                            "priority": 32768
                         }
                     }
                 ], 
              "description": "test%(num)d: %(type)s[%(flow)s] packet=%(pkt)s",
              "packets": []}
 
+POP_MPLS = {
+                "OFPFlowMod": {
+                    "command": 0, 
+                    "instructions": [
+                        {
+                            "OFPInstructionActions": {
+                                "actions": [
+                                    {
+                                        "OFPActionPopMpls": {
+                                            "ethertype": 1, 
+                                        }
+                                    }
+                                ], 
+                                "type": 4
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable": {
+                                "table_id": 1,
+                            }
+                        }
+                    ], 
+                    "match": {
+                        "OFPMatch": {
+                            "oxm_fields": []
+                        }
+                    },
+                    "table_id": 1
+                }
+            }
+
 
 # Test files.
 MATCH_PATH = 'match/'
 ACTIONS_PATH = 'actions/'
 SET_FIELD_PATH = 'actions/25_SET_FIELD/'
+OPTION_PATH = 'actions/optional/'
 
 #MATCH_SET_FIELD_TESTS = {'ether': ['03_ETH_DST']}
 
@@ -207,7 +249,8 @@ SET_FIELD_IGNORE_TESTS = ['00_IN_PORT',
 SET_FIELD_IGNORE_TEST = '_Mask'
 
 
-ACTIONS_TESTS = {'ether': ['17_PUSH_VLAN',
+ACTIONS_TESTS = {'ether': ['00_OUTPUT',
+                           '17_PUSH_VLAN',
                            '19_PUSH_MPLS',
                            '26_PUSH_PBB'],
                  'vlan': ['17_PUSH_VLAN_multiple',
@@ -225,6 +268,9 @@ ACTIONS_TESTS = {'ether': ['17_PUSH_VLAN',
                  'ipv6_tcp': ['23_SET_NW_TTL_IPv6',
                               '24_DEC_NW_TTL_IPv6']}
 
+OPTION_TESTS = {'copy_ttl_opt': ['11_COPY_TTL_OUT',
+                                 '12_COPY_TTL_IN']}
+
 
 def convert_files(test_type, tests):
     for proto_type, tests in tests.items():        
@@ -234,15 +280,18 @@ def convert_files(test_type, tests):
                         or SET_FIELD_IGNORE_TEST in test):
                     continue
 
-            in_path = '%s%s%s.json' % (IN_DIR, test_type, test)
+            test_path = (ACTIONS_PATH if test_type == OPTION_PATH
+                         else test_type)
+            in_path = '%s%s%s.json' % (IN_DIR, test_path, test)
             if os.path.isfile(in_path):
                 json_buf = convert_file(proto_type, test_type, in_path)
             else:
                 json_buf = convert_file(proto_type, test_type)
 
-            out_path = OUT_DIR + in_path[len(IN_DIR):]
+            out_path = '%s%s%s.json' % (OUT_DIR, test_type, test)
             with codecs.open(out_path, 'w', "utf-8") as f:
-                json.dump(json_buf, f, sort_keys=True, indent=4, ensure_ascii=False)
+                json.dump(json_buf, f, sort_keys=True, indent=4,
+                          ensure_ascii=False, separators=(',',':'))
 
 
 def convert_file(proto_type, test_type, in_path=None):
@@ -250,59 +299,120 @@ def convert_file(proto_type, test_type, in_path=None):
                 if in_path else [])
     json_buf = []
     flow_mod = (base_json[0]['FLOW_MOD'] if base_json else None)
-    if proto_type == 'copy_ttl':
-        for stack in STACK_CPY_TTL.values():
+    if 'copy_ttl' in proto_type:
+        stack_ = (STACK_CPY_TTL if proto_type == 'copy_ttl'
+                 else STACK_CPY_TTL_OPT)
+        for stack in stack_.values():
             protocols = copy.copy(stack)
             json_buf = set_patckets(test_type, flow_mod, json_buf,
-                                    protocols)
+                                    protocols, proto_type)
     elif proto_type in L2_STACK:
         l2 = L2_STACK[proto_type]
         for l3_type, l3 in L3_STACK_1.items():
-            if (proto_type == 'mpls' and
-                    ('arp' in l3_type or 'ipv6' in l3_type)):
-                continue
+            #if (proto_type == 'mpls' and
+            #        ('arp' in l3_type or 'ipv6' in l3_type)):
+            #    continue
             protocols = copy.copy(l2)
             protocols.extend(copy.copy(l3))
             json_buf = set_patckets(test_type, flow_mod, json_buf,
-                                    protocols)
+                                    protocols, proto_type)
     else:
         l3 = (L3_STACK_1[proto_type] if proto_type in L3_STACK_1
               else L3_STACK_2[proto_type])
         for l2_type, l2 in L2_STACK.items():
-            if (l2_type == 'mpls' and
-                    ('arp' in proto_type or 'ipv6' in proto_type)):
-                continue
+            #if (l2_type == 'mpls' and
+            #        ('arp' in proto_type or 'ipv6' in proto_type)):
+            #   continue
             protocols = copy.copy(l2)
             protocols.extend(copy.copy(l3))
             json_bu = set_patckets(test_type, flow_mod, json_buf,
-                                   protocols)
+                                   protocols, proto_type)
 
     return json_buf
 
 
-def set_patckets(test_type, flow_mod, json_buf, protocols):
-    ok_pkt = []
+EGRESS = 0
+PKT_IN = 1
+TBL_MISS = 2
+
+
+def set_patckets(test_type, flow_mod, json_buf, protocols, proto_type):
+    in_pkt = []
+    out_pkt = []
     ng_pkt = []
     pkt_name = []
 
     for i, protocol in enumerate(protocols):
+        protocol_ = copy.deepcopy(protocol)
         for j in range(0, 2):
-            if '%s' in protocol[j]:
-                protocol[j] %= protocols[i+1][2]
-        ok_pkt.append(protocol[0])
-        ng_pkt.append(protocol[1])
-        pkt_name.append(protocol[0].split('(')[0])
+            if '%s' in protocol_[j]:
+                protocol_[j] %= protocols[i+1][2]
+        in_pkt.append(protocol_[0])
+        ng_pkt.append(protocol_[1])
+        pkt_name.append(protocol_[0].split('(')[0])
+
+
+    out_protocols_ = copy.deepcopy(protocols)
+    out_protocols = []
+    for i, protocol in enumerate(out_protocols_):
+        if not 'mpls' in protocol[0]:
+            protocol_ = copy.deepcopy(protocol)
+            out_protocols.append(protocol_)
+        
+    for i, protocol in enumerate(out_protocols):
+        protocol_ = copy.deepcopy(protocol)
+        for j in range(0, 2):
+            if '%s' in protocol_[j]:
+                protocol_[j] %= out_protocols[i+1][2]
+        out_pkt.append(protocol_[0])
+    
+
 
     # for "egress".
-    json_buf.append(copy.copy(JSON_DATA))
+    json_buf = set_patcket(EGRESS, test_type, flow_mod, json_buf, pkt_name,
+                           protocols, proto_type, in_pkt=in_pkt, out_pkt=out_pkt)
+
+    if MATCH_PATH == test_type:
+        # for "PACKET_IN".
+        json_buf = set_patcket(PKT_IN, test_type, flow_mod, json_buf,
+                               pkt_name, protocols, proto_type,
+                               in_pkt=in_pkt, out_pkt=out_pkt)
+        # for "table-miss".
+        json_buf = set_patcket(TBL_MISS, test_type, flow_mod, json_buf,
+                               pkt_name, protocols, proto_type, in_pkt=ng_pkt)
+
+    return json_buf
+
+
+def set_patcket(test_type1, test_type2, flow_mod, json_buf, pkt_name,
+                protocols, proto_type, in_pkt=None, out_pkt=None):
+    json_buf.append(copy.deepcopy(JSON_DATA))
     num = len(json_buf) - 1
-    json_buf[num]['packets'] = [{'ingress': ok_pkt,
-                                 'egress': ok_pkt}]    
     if flow_mod:
         json_buf[num]['FLOW_MOD'] = copy.deepcopy(flow_mod)
+    for i, mod in enumerate(json_buf[num]['FLOW_MOD']):
+        json_buf[num]['FLOW_MOD'][i]['OFPFlowMod']['priority'] = 32768
+
+    in_protocols = copy.deepcopy(protocols)
+
+    # mpls pop and goto-table
+    if ('copy_ttl' not in proto_type or
+        (test_type2 == ACTIONS_PATH and proto_type == 'mpls')):
+        mpls_count = 0
+        for i, protocol in enumerate(protocols):
+            if protocol[0].split('(')[0] == 'mpls':
+                pop_mpls = copy.deepcopy(POP_MPLS)
+                pop_mpls['OFPFlowMod']['table_id'] = mpls_count
+                mpls_count += 1
+                pop_mpls['OFPFlowMod']['instructions'][0]['OFPInstructionActions']['actions'][0]['OFPActionPopMpls']['ethertype'] = int(protocols[i+1][2])
+                pop_mpls['OFPFlowMod']['instructions'][1]['OFPInstructionGotoTable']['table_id'] = mpls_count
+                json_buf[num]['FLOW_MOD'].append(pop_mpls)
+        json_buf[num]['FLOW_MOD'][0]['OFPFlowMod']['table_id'] = mpls_count
+
+
 
     flows = []
-    if MATCH_PATH == test_type:
+    if MATCH_PATH == test_type2:
         for match in json_buf[num]['FLOW_MOD'][0]['OFPFlowMod']['match']['OFPMatch']['oxm_fields']:
             flows.append('%s=%s' % (match['OXMTlv']['field'], match['OXMTlv']['value']))
     else:
@@ -318,36 +428,24 @@ def set_patckets(test_type, flow_mod, json_buf, protocols):
                 flows.append(action.keys()[0])
 
     flow = '/'.join(flows)
+
+    if test_type1 == EGRESS:
+        flow_type = 'match' if MATCH_PATH == test_type2 else 'actions'
+        pkts = [{'ingress': in_pkt, 'egress': out_pkt}]
+    elif test_type1 == PKT_IN:
+        flow_type = 'match(PACKET_IN)'
+        pkts = [{'ingress': in_pkt, 'PACKET_IN': out_pkt}]
+        json_buf[num]['FLOW_MOD'][0]['OFPFlowMod']['instructions'][0]['OFPInstructionActions']['actions'][0]['OFPActionOutput']['max_len'] = 65535
+        json_buf[num]['FLOW_MOD'][0]['OFPFlowMod']['instructions'][0]['OFPInstructionActions']['actions'][0]['OFPActionOutput']['port'] = 4294967293
+    else:
+        flow_type = 'unmatch'
+        pkts = [{'ingress': in_pkt}]
+    json_buf[num]['packets'] =  pkts
     json_buf[num]['description'] %= {'num': num,
-                                     'type': ('match' if MATCH_PATH == test_type
-                                              else 'actions'),
+                                     'type': flow_type,
                                      'flow': flow,
                                      'pkt': '/'.join(pkt_name)}
 
-    if MATCH_PATH == test_type:
-        # for "PACKET_IN".
-        json_buf.append(copy.copy(JSON_DATA))
-        num = len(json_buf) - 1
-        json_buf[num]['packets'] = [{'ingress': ok_pkt,
-                                     'PACKET_IN': ok_pkt}]
-        if flow_mod:
-            json_buf[num]['FLOW_MOD'] = copy.deepcopy(flow_mod)
-        json_buf[num]['FLOW_MOD'][0]['OFPFlowMod']['instructions'][0]['OFPInstructionActions']['actions'][0]['OFPActionOutput']['port'] = 4294967293
-        json_buf[num]['description'] %= {'num': num,
-                                         'type': 'match(PACKET_IN)',
-                                         'flow': flow,
-                                         'pkt': '/'.join(pkt_name)}
-
-        # for "table-miss".
-        json_buf.append(copy.copy(JSON_DATA))
-        num = len(json_buf) - 1
-        json_buf[num]['packets'] = [{'ingress': ng_pkt}]
-        if flow_mod:
-            json_buf[num]['FLOW_MOD'] = copy.deepcopy(flow_mod)
-        json_buf[num]['description'] %= {'num': num,
-                                         'type': 'unmatch',
-                                         'flow': flow,
-                                         'pkt': '/'.join(pkt_name)}
 
     return json_buf
 
@@ -368,6 +466,11 @@ test_dir = OUT_DIR + SET_FIELD_PATH
 if not os.path.isdir(test_dir):
     os.system('mkdir %s' % test_dir)
 
+test_dir = OUT_DIR + OPTION_PATH
+if not os.path.isdir(test_dir):
+    os.system('mkdir %s' % test_dir)
+
 convert_files(MATCH_PATH, MATCH_SET_FIELD_TESTS)
 convert_files(ACTIONS_PATH, ACTIONS_TESTS)
 convert_files(SET_FIELD_PATH, MATCH_SET_FIELD_TESTS)
+convert_files(OPTION_PATH, OPTION_TESTS)
