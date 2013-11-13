@@ -31,7 +31,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -43,7 +43,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_type=2048/ip_proto=1] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test0: match[eth_type=2048/ip_proto=6] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -93,7 +93,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -105,7 +105,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=2048/ip_proto=1] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test1: match(PACKET_IN)[eth_type=2048/ip_proto=6] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -155,7 +155,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -167,7 +167,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=2048/ip_proto=1] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test2: unmatch[eth_type=2048/ip_proto=6] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -211,7 +211,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -253,7 +253,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_type=2048/ip_proto=1] packet=ethernet/mpls/ipv4/tcp",
+        "description":"test3: match[eth_type=2048/ip_proto=6] packet=ethernet/mpls/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -302,7 +302,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -344,7 +344,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=2048/ip_proto=1] packet=ethernet/mpls/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[eth_type=2048/ip_proto=6] packet=ethernet/mpls/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -393,7 +393,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -435,7 +435,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=2048/ip_proto=1] packet=ethernet/mpls/ipv4/tcp",
+        "description":"test5: unmatch[eth_type=2048/ip_proto=6] packet=ethernet/mpls/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -479,7 +479,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -491,7 +491,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_type=2048/ip_proto=1] packet=ethernet/ipv4/tcp",
+        "description":"test6: match[eth_type=2048/ip_proto=6] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -539,7 +539,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -551,7 +551,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=2048/ip_proto=1] packet=ethernet/ipv4/tcp",
+        "description":"test7: match(PACKET_IN)[eth_type=2048/ip_proto=6] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -599,7 +599,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -611,7 +611,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=2048/ip_proto=1] packet=ethernet/ipv4/tcp",
+        "description":"test8: unmatch[eth_type=2048/ip_proto=6] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -654,7 +654,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -666,7 +666,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_type=2048/ip_proto=1] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test9: match[eth_type=2048/ip_proto=6] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -724,7 +724,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -736,7 +736,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=2048/ip_proto=1] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test10: match(PACKET_IN)[eth_type=2048/ip_proto=6] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -794,7 +794,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":1
+                                        "value":6
                                     }
                                 }
                             ],
@@ -806,7 +806,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=2048/ip_proto=1] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test11: unmatch[eth_type=2048/ip_proto=6] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "ingress":[

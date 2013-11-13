@@ -25,7 +25,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -42,19 +42,19 @@
                 }
             }
         ],
-        "description":"test0: match[eth_type=2048/ip_dscp=8] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test0: match[eth_type=34525/ip_dscp=8] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -86,7 +86,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -103,19 +103,19 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=2048/ip_dscp=8] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test1: match(PACKET_IN)[eth_type=34525/ip_dscp=8] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -147,7 +147,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -164,13 +164,13 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=2048/ip_dscp=8] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test2: unmatch[eth_type=34525/ip_dscp=8] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)",
-                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127)",
+                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127, traffic_class=65)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
             }
@@ -202,7 +202,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -249,18 +249,18 @@
                 }
             }
         ],
-        "description":"test3: match[eth_type=2048/ip_dscp=8] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test3: match[eth_type=34525/ip_dscp=8] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -292,7 +292,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -339,18 +339,18 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=2048/ip_dscp=8] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test4: match(PACKET_IN)[eth_type=34525/ip_dscp=8] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -382,7 +382,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -429,13 +429,13 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=2048/ip_dscp=8] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test5: unmatch[eth_type=34525/ip_dscp=8] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34887)",
                     "mpls(bsb=1, label=203, exp=5, ttl=127)",
-                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127)",
+                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127, traffic_class=65)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
             }
@@ -467,7 +467,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -484,17 +484,17 @@
                 }
             }
         ],
-        "description":"test6: match[eth_type=2048/ip_dscp=8] packet=ethernet/ipv6/tcp",
+        "description":"test6: match[eth_type=34525/ip_dscp=8] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -526,7 +526,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -543,17 +543,17 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=2048/ip_dscp=8] packet=ethernet/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[eth_type=34525/ip_dscp=8] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -585,7 +585,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -602,12 +602,12 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=2048/ip_dscp=8] packet=ethernet/ipv6/tcp",
+        "description":"test8: unmatch[eth_type=34525/ip_dscp=8] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34525)",
-                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127)",
+                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127, traffic_class=65)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
             }
@@ -639,7 +639,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -656,7 +656,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_type=2048/ip_dscp=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test9: match[eth_type=34525/ip_dscp=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -666,7 +666,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
@@ -676,7 +676,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -708,7 +708,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -725,7 +725,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=2048/ip_dscp=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test10: match(PACKET_IN)[eth_type=34525/ip_dscp=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -735,7 +735,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
@@ -745,7 +745,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -777,7 +777,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":34525
                                     }
                                 },
                                 {
@@ -794,7 +794,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=2048/ip_dscp=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test11: unmatch[eth_type=34525/ip_dscp=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -804,7 +804,7 @@
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)",
-                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127)",
+                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127, traffic_class=65)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
             }

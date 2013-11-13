@@ -55,13 +55,13 @@
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ]
             }
@@ -123,13 +123,13 @@
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ]
             }
@@ -191,7 +191,7 @@
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)",
-                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=58, hop_limit=127)",
+                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=58, hop_limit=127, traffic_class=65)",
                     "icmpv6(code=1,data=nd_neighbor(option=nd_option_sla(hw_src='aa:aa:aa:aa:aa:aa'),dst='a0::a0'),type_=135)"
                 ]
             }
@@ -282,13 +282,13 @@
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ]
             }
@@ -379,13 +379,13 @@
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ]
             }
@@ -477,7 +477,7 @@
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34887)",
                     "mpls(bsb=1, label=203, exp=5, ttl=127)",
-                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=58, hop_limit=127)",
+                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=58, hop_limit=127, traffic_class=65)",
                     "icmpv6(code=1,data=nd_neighbor(option=nd_option_sla(hw_src='aa:aa:aa:aa:aa:aa'),dst='a0::a0'),type_=135)"
                 ]
             }
@@ -538,12 +538,12 @@
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ]
             }
@@ -604,12 +604,12 @@
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ]
             }
@@ -670,7 +670,7 @@
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34525)",
-                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=58, hop_limit=127)",
+                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=58, hop_limit=127, traffic_class=65)",
                     "icmpv6(code=1,data=nd_neighbor(option=nd_option_sla(hw_src='aa:aa:aa:aa:aa:aa'),dst='a0::a0'),type_=135)"
                 ]
             }
@@ -736,7 +736,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ],
                 "ingress":[
@@ -746,7 +746,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ]
             }
@@ -812,7 +812,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ],
                 "ingress":[
@@ -822,7 +822,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
                     "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
                 ]
             }
@@ -888,7 +888,7 @@
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)",
-                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=58, hop_limit=127)",
+                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=58, hop_limit=127, traffic_class=65)",
                     "icmpv6(code=1,data=nd_neighbor(option=nd_option_sla(hw_src='aa:aa:aa:aa:aa:aa'),dst='a0::a0'),type_=135)"
                 ]
             }

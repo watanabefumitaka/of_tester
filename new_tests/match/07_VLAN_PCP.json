@@ -25,8 +25,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":100
+                                        "mask":null,
+                                        "value":4196
                                     }
                                 },
                                 {
@@ -44,7 +44,7 @@
                 }
             }
         ],
-        "description":"test0: match[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/arp",
+        "description":"test0: match[vlan_vid=4196/vlan_pcp=3] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "egress":[
@@ -86,8 +86,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":100
+                                        "mask":null,
+                                        "value":4196
                                     }
                                 },
                                 {
@@ -105,7 +105,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/arp",
+        "description":"test1: match(PACKET_IN)[vlan_vid=4196/vlan_pcp=3] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -147,8 +147,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":100
+                                        "mask":null,
+                                        "value":4196
                                     }
                                 },
                                 {
@@ -166,7 +166,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/arp",
+        "description":"test2: unmatch[vlan_vid=4196/vlan_pcp=3] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "ingress":[
@@ -203,8 +203,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":100
+                                        "mask":null,
+                                        "value":4196
                                     }
                                 },
                                 {
@@ -222,7 +222,7 @@
                 }
             }
         ],
-        "description":"test3: match[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test3: match[vlan_vid=4196/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -266,8 +266,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":100
+                                        "mask":null,
+                                        "value":4196
                                     }
                                 },
                                 {
@@ -285,7 +285,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[vlan_vid=4196/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -329,8 +329,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":100
+                                        "mask":null,
+                                        "value":4196
                                     }
                                 },
                                 {
@@ -348,7 +348,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test5: unmatch[vlan_vid=4196/vlan_pcp=3] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -386,8 +386,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":100
+                                        "mask":null,
+                                        "value":4196
                                     }
                                 },
                                 {
@@ -405,19 +405,19 @@
                 }
             }
         ],
-        "description":"test6: match[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test6: match[vlan_vid=4196/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -449,8 +449,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":100
+                                        "mask":null,
+                                        "value":4196
                                     }
                                 },
                                 {
@@ -468,19 +468,19 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[vlan_vid=4196/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
                 ]
             }
@@ -512,8 +512,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":100
+                                        "mask":null,
+                                        "value":4196
                                     }
                                 },
                                 {
@@ -531,13 +531,13 @@
                 }
             }
         ],
-        "description":"test8: unmatch[vlan_vid=100(mask=fff)/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test8: unmatch[vlan_vid=4196/vlan_pcp=3] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)",
-                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127)",
+                    "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127, traffic_class=65)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
                 ]
             }

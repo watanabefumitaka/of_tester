@@ -70,13 +70,13 @@
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64, traffic_class=32)",
                     "udp(dst_port=2222, src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64, traffic_class=32)",
                     "udp(dst_port=2222, src_port=11111)"
                 ]
             }
@@ -182,13 +182,13 @@
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64, traffic_class=32)",
                     "udp(dst_port=2222, src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64, traffic_class=32)",
                     "udp(dst_port=2222, src_port=11111)"
                 ]
             }
@@ -264,12 +264,12 @@
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64, traffic_class=32)",
                     "udp(dst_port=2222, src_port=11111)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64, traffic_class=32)",
                     "udp(dst_port=2222, src_port=11111)"
                 ]
             }
@@ -350,7 +350,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64, traffic_class=32)",
                     "udp(dst_port=2222, src_port=11111)"
                 ],
                 "ingress":[
@@ -360,7 +360,7 @@
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=17, hop_limit=64, traffic_class=32)",
                     "udp(dst_port=2222, src_port=11111)"
                 ]
             }
