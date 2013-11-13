@@ -44,20 +44,22 @@
                 }
             }
         ],
-        "description":"test0: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test0: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -107,20 +109,22 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test1: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -170,14 +174,15 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test2: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2048)",
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
-                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
+                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -260,23 +265,26 @@
                             ]
                         }
                     },
+                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test3: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/ipv4/tcp",
+        "description":"test3: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -359,23 +367,26 @@
                             ]
                         }
                     },
+                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -458,18 +469,20 @@
                             ]
                         }
                     },
+                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/ipv4/tcp",
+        "description":"test5: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34887)",
                     "mpls(bsb=1, label=203, exp=5, ttl=127)",
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
-                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
+                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -519,18 +532,20 @@
                 }
             }
         ],
-        "description":"test6: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/ipv4/tcp",
+        "description":"test6: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -580,18 +595,20 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/ipv4/tcp",
+        "description":"test7: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -641,13 +658,14 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/ipv4/tcp",
+        "description":"test8: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2048)",
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
-                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
+                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -697,7 +715,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test9: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
@@ -708,7 +726,8 @@
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -718,7 +737,8 @@
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -768,7 +788,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test10: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "PACKET_IN":[
@@ -779,7 +799,8 @@
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -789,7 +810,8 @@
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)"
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -839,7 +861,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test11: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
@@ -850,7 +872,8 @@
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2048)",
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
-                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)"
+                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
