@@ -286,7 +286,12 @@ def convert_files(test_type, tests):
             if os.path.isfile(in_path):
                 json_buf = convert_file(proto_type, test_type, in_path)
             else:
-                json_buf = convert_file(proto_type, test_type)
+                test_ = test.rsplit('_', 1)
+                in_path = '%s%s%s.json' % (IN_DIR, test_path, test_[0])
+                if os.path.isfile(in_path):
+                    json_buf = convert_file(proto_type, test_type, in_path)
+                else:
+                    json_buf = convert_file(proto_type, test_type)
 
             out_path = '%s%s%s.json' % (OUT_DIR, test_type, test)
             with codecs.open(out_path, 'w', "utf-8") as f:
@@ -414,7 +419,13 @@ def set_patcket(test_type1, test_type2, flow_mod, json_buf, pkt_name,
     flows = []
     if MATCH_PATH == test_type2:
         for match in json_buf[num]['FLOW_MOD'][0]['OFPFlowMod']['match']['OFPMatch']['oxm_fields']:
-            flows.append('%s=%s' % (match['OXMTlv']['field'], match['OXMTlv']['value']))
+            if 'mask' in match['OXMTlv']:
+                flows.append('%s=%s(mask=%x)' % (match['OXMTlv']['field'],
+                                                 match['OXMTlv']['value'],
+                                                 match['OXMTlv']['mask']))
+            else:
+                flows.append('%s=%s' % (match['OXMTlv']['field'],
+                                        match['OXMTlv']['value']))
     else:
         actions = copy.deepcopy(json_buf[num]['FLOW_MOD'][0]['OFPFlowMod']['instructions'][0]['OFPInstructionActions']['actions'])
         for action in actions:
