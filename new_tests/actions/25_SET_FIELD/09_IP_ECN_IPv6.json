@@ -9,6 +9,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"ip_ecn",
+                                                    "value":3
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -24,12 +34,23 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -37,7 +58,7 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionOutput] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test0: actions[OFPActionSetField[ip_ecn=3]] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -65,6 +86,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"ip_ecn",
+                                                    "value":3
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -80,12 +111,23 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -123,7 +165,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionOutput] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test1: actions[OFPActionSetField[ip_ecn=3]] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -150,6 +192,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"ip_ecn",
+                                                    "value":3
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -165,12 +217,23 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -178,7 +241,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionOutput] packet=ethernet/ipv6/tcp",
+        "description":"test2: actions[OFPActionSetField[ip_ecn=3]] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -204,6 +267,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"ip_ecn",
+                                                    "value":3
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -219,12 +292,23 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -232,7 +316,7 @@
                 }
             }
         ],
-        "description":"test3: actions[OFPActionOutput] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test3: actions[OFPActionSetField[ip_ecn=3]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[

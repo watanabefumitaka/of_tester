@@ -24,8 +24,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"vlan_vid",
+                                        "mask":3,
+                                        "value":0
                                     }
                                 }
                             ],
@@ -37,7 +38,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/arp",
+        "description":"test0: match[vlan_vid=0] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "egress":[
@@ -78,8 +79,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"vlan_vid",
+                                        "mask":3,
+                                        "value":0
                                     }
                                 }
                             ],
@@ -91,7 +93,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/arp",
+        "description":"test1: match(PACKET_IN)[vlan_vid=0] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -132,8 +134,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"vlan_vid",
+                                        "mask":3,
+                                        "value":0
                                     }
                                 }
                             ],
@@ -145,7 +148,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/arp",
+        "description":"test2: unmatch[vlan_vid=0] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "ingress":[
@@ -181,8 +184,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"vlan_vid",
+                                        "mask":3,
+                                        "value":0
                                     }
                                 }
                             ],
@@ -194,7 +198,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test3: match[vlan_vid=0] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -237,8 +241,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"vlan_vid",
+                                        "mask":3,
+                                        "value":0
                                     }
                                 }
                             ],
@@ -250,7 +255,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[vlan_vid=0] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -293,8 +298,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"vlan_vid",
+                                        "mask":3,
+                                        "value":0
                                     }
                                 }
                             ],
@@ -306,7 +312,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test5: unmatch[vlan_vid=0] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -343,8 +349,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"vlan_vid",
+                                        "mask":3,
+                                        "value":0
                                     }
                                 }
                             ],
@@ -356,7 +363,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test6: match[vlan_vid=0] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -399,8 +406,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"vlan_vid",
+                                        "mask":3,
+                                        "value":0
                                     }
                                 }
                             ],
@@ -412,7 +420,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[vlan_vid=0] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -455,8 +463,9 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"vlan_vid",
+                                        "mask":3,
+                                        "value":0
                                     }
                                 }
                             ],
@@ -468,7 +477,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test8: unmatch[vlan_vid=0] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[

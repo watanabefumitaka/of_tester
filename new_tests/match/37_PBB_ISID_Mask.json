@@ -24,12 +24,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":35047
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"pbb_isid",
+                                        "value":100
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -37,7 +42,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test0: match[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "egress":[
@@ -86,12 +91,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":35047
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"pbb_isid",
+                                        "value":100
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -99,7 +109,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test1: match(PACKET_IN)[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -148,12 +158,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":35047
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"pbb_isid",
+                                        "value":100
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -161,7 +176,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test2: unmatch[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "ingress":[
@@ -201,12 +216,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":35047
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"pbb_isid",
+                                        "value":100
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -214,7 +234,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test3: match[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -265,12 +285,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":35047
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"pbb_isid",
+                                        "value":100
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -278,7 +303,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -329,12 +354,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":35047
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"pbb_isid",
+                                        "value":100
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -342,7 +372,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test5: unmatch[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -383,12 +413,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":35047
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"pbb_isid",
+                                        "value":100
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -396,7 +431,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test6: match[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -447,12 +482,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":35047
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"pbb_isid",
+                                        "value":100
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -460,7 +500,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -511,12 +551,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":35047
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"pbb_isid",
+                                        "value":100
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -524,7 +569,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test8: unmatch[eth_type=35047/pbb_isid=100] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[

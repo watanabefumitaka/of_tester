@@ -24,12 +24,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -37,7 +42,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test0: match[eth_type=2048/ip_ecn=0] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -80,12 +85,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -93,7 +103,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test1: match(PACKET_IN)[eth_type=2048/ip_ecn=0] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -136,12 +146,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -149,7 +164,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test2: unmatch[eth_type=2048/ip_ecn=0] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -186,12 +201,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -229,7 +249,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/mpls/ipv4/tcp",
+        "description":"test3: match[eth_type=2048/ip_ecn=0] packet=ethernet/mpls/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -271,12 +291,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -314,7 +339,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/mpls/ipv4/tcp",
+        "description":"test4: match(PACKET_IN)[eth_type=2048/ip_ecn=0] packet=ethernet/mpls/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -356,12 +381,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -399,7 +429,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/mpls/ipv4/tcp",
+        "description":"test5: unmatch[eth_type=2048/ip_ecn=0] packet=ethernet/mpls/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -436,12 +466,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -449,7 +484,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp",
+        "description":"test6: match[eth_type=2048/ip_ecn=0] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -490,12 +525,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -503,7 +543,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp",
+        "description":"test7: match(PACKET_IN)[eth_type=2048/ip_ecn=0] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -544,12 +584,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -557,7 +602,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv4/tcp",
+        "description":"test8: unmatch[eth_type=2048/ip_ecn=0] packet=ethernet/ipv4/tcp",
         "packets":[
             {
                 "ingress":[
@@ -593,12 +638,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -606,7 +656,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test9: match[eth_type=2048/ip_ecn=0] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -657,12 +707,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -670,7 +725,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test10: match(PACKET_IN)[eth_type=2048/ip_ecn=0] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -721,12 +776,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_ecn",
+                                        "value":0
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -734,7 +794,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
+        "description":"test11: unmatch[eth_type=2048/ip_ecn=0] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp",
         "packets":[
             {
                 "ingress":[

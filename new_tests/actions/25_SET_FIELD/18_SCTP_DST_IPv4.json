@@ -9,6 +9,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"sctp_dst",
+                                                    "value":22222
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -24,12 +34,29 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":132
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"sctp_dst",
+                                        "value":6789
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -37,7 +64,7 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionOutput] packet=ethernet/vlan/ipv4/sctp",
+        "description":"test0: actions[OFPActionSetField[sctp_dst=22222]] packet=ethernet/vlan/ipv4/sctp",
         "packets":[
             {
                 "egress":[
@@ -65,6 +92,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"sctp_dst",
+                                                    "value":22222
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -80,12 +117,29 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":132
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"sctp_dst",
+                                        "value":6789
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -123,7 +177,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionOutput] packet=ethernet/mpls/ipv4/sctp",
+        "description":"test1: actions[OFPActionSetField[sctp_dst=22222]] packet=ethernet/mpls/ipv4/sctp",
         "packets":[
             {
                 "egress":[
@@ -150,6 +204,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"sctp_dst",
+                                                    "value":22222
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -165,12 +229,29 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":132
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"sctp_dst",
+                                        "value":6789
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -178,7 +259,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionOutput] packet=ethernet/ipv4/sctp",
+        "description":"test2: actions[OFPActionSetField[sctp_dst=22222]] packet=ethernet/ipv4/sctp",
         "packets":[
             {
                 "egress":[
@@ -204,6 +285,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"sctp_dst",
+                                                    "value":22222
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -219,12 +310,29 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":132
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"sctp_dst",
+                                        "value":6789
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -232,7 +340,7 @@
                 }
             }
         ],
-        "description":"test3: actions[OFPActionOutput] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/sctp",
+        "description":"test3: actions[OFPActionSetField[sctp_dst=22222]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/sctp",
         "packets":[
             {
                 "egress":[

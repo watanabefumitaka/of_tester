@@ -9,6 +9,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"udp_dst",
+                                                    "value":22222
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -24,12 +34,29 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":17
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"udp_dst",
+                                        "value":11111
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -37,7 +64,7 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionOutput] packet=ethernet/vlan/ipv4/udp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test0: actions[OFPActionSetField[udp_dst=22222]] packet=ethernet/vlan/ipv4/udp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
@@ -67,6 +94,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"udp_dst",
+                                                    "value":22222
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -82,12 +119,29 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":17
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"udp_dst",
+                                        "value":11111
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -125,7 +179,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionOutput] packet=ethernet/mpls/ipv4/udp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test1: actions[OFPActionSetField[udp_dst=22222]] packet=ethernet/mpls/ipv4/udp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
@@ -154,6 +208,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"udp_dst",
+                                                    "value":22222
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -169,12 +233,29 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":17
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"udp_dst",
+                                        "value":11111
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -182,7 +263,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionOutput] packet=ethernet/ipv4/udp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test2: actions[OFPActionSetField[udp_dst=22222]] packet=ethernet/ipv4/udp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[
@@ -210,6 +291,16 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"udp_dst",
+                                                    "value":22222
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -225,12 +316,29 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":17
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"udp_dst",
+                                        "value":11111
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -238,7 +346,7 @@
                 }
             }
         ],
-        "description":"test3: actions[OFPActionOutput] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/udp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test3: actions[OFPActionSetField[udp_dst=22222]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/udp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "egress":[

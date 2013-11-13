@@ -9,6 +9,11 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionPushVlan":{
+                                            "ethertype":33024
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -24,12 +29,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -37,7 +47,7 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionOutput] packet=ethernet/vlan/arp",
+        "description":"test0: actions[OFPActionPushVlan] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "egress":[
@@ -63,6 +73,11 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionPushVlan":{
+                                            "ethertype":33024
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -78,12 +93,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -91,7 +111,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionOutput] packet=ethernet/vlan/ipv4/tcp",
+        "description":"test1: actions[OFPActionPushVlan] packet=ethernet/vlan/ipv4/tcp",
         "packets":[
             {
                 "egress":[
@@ -119,6 +139,11 @@
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
+                                        "OFPActionPushVlan":{
+                                            "ethertype":33024
+                                        }
+                                    },
+                                    {
                                         "OFPActionOutput":{
                                             "max_len":65535,
                                             "port":2
@@ -134,12 +159,17 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
                     "priority":32768,
@@ -147,7 +177,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionOutput] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test2: actions[OFPActionPushVlan] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[

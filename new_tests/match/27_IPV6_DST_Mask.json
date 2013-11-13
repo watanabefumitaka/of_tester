@@ -10,7 +10,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
+                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -24,8 +24,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -37,7 +43,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test0: match[eth_type=34525/ipv6_dst=20::20] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -80,8 +86,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -93,7 +105,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test1: match(PACKET_IN)[eth_type=34525/ipv6_dst=20::20] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -122,7 +134,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
+                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -136,8 +148,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -149,7 +167,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/vlan/ipv6/tcp",
+        "description":"test2: unmatch[eth_type=34525/ipv6_dst=20::20] packet=ethernet/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -172,7 +190,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
+                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -186,8 +204,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -229,7 +253,7 @@
                 }
             }
         ],
-        "description":"test3: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test3: match[eth_type=34525/ipv6_dst=20::20] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -271,8 +295,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -314,7 +344,7 @@
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test4: match(PACKET_IN)[eth_type=34525/ipv6_dst=20::20] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -342,7 +372,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
+                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -356,8 +386,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -399,7 +435,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/mpls/ipv6/tcp",
+        "description":"test5: unmatch[eth_type=34525/ipv6_dst=20::20] packet=ethernet/mpls/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -422,7 +458,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
+                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -436,8 +472,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -449,7 +491,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp",
+        "description":"test6: match[eth_type=34525/ipv6_dst=20::20] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -490,8 +532,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -503,7 +551,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp",
+        "description":"test7: match(PACKET_IN)[eth_type=34525/ipv6_dst=20::20] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -530,7 +578,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
+                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -544,8 +592,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -557,7 +611,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/ipv6/tcp",
+        "description":"test8: unmatch[eth_type=34525/ipv6_dst=20::20] packet=ethernet/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
@@ -579,7 +633,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
+                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -593,8 +647,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -606,7 +666,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test9: match[eth_type=34525/ipv6_dst=20::20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "egress":[
@@ -657,8 +717,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -670,7 +736,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test10: match(PACKET_IN)[eth_type=34525/ipv6_dst=20::20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -707,7 +773,7 @@
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
+                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -721,8 +787,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_dst",
+                                        "value":"20::20"
                                     }
                                 }
                             ],
@@ -734,7 +806,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_dst=aa:aa:aa:aa:aa:aa] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
+        "description":"test11: unmatch[eth_type=34525/ipv6_dst=20::20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp",
         "packets":[
             {
                 "ingress":[
