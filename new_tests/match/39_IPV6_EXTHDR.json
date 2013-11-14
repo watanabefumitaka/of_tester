@@ -42,7 +42,7 @@
                 }
             }
         ],
-        "description":"test0: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test0: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -105,7 +105,7 @@
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test1: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -168,7 +168,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test2: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "ingress":[
@@ -257,12 +257,13 @@
                             ]
                         }
                     },
+                    "out_port":4294967295,
                     "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test3: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test3: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -357,12 +358,13 @@
                             ]
                         }
                     },
+                    "out_port":4294967295,
                     "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test4: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -457,12 +459,13 @@
                             ]
                         }
                     },
+                    "out_port":4294967295,
                     "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test5: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp/str",
         "packets":[
             {
                 "ingress":[
@@ -518,7 +521,7 @@
                 }
             }
         ],
-        "description":"test6: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test6: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -579,7 +582,7 @@
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test7: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -640,7 +643,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test8: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "ingress":[
@@ -695,7 +698,7 @@
                 }
             }
         ],
-        "description":"test9: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test9: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -766,7 +769,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test10: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -837,7 +840,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test11: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "ingress":[

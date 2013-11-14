@@ -10,7 +10,7 @@
                                 "actions":[
                                     {
                                         "OFPActionPopMpls":{
-                                            "ethertype":2048
+                                            "ethertype":2054
                                         }
                                     },
                                     {
@@ -29,8 +29,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34887
                                     }
                                 }
                             ]
@@ -69,7 +75,7 @@
                                 "actions":[
                                     {
                                         "OFPActionPopMpls":{
-                                            "ethertype":2048
+                                            "ethertype":2054
                                         }
                                     },
                                     {
@@ -88,8 +94,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34887
                                     }
                                 }
                             ]
@@ -101,7 +113,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionPopMpls] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test1: actions[OFPActionPopMpls] packet=ethernet/mpls/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -132,7 +144,7 @@
                                 "actions":[
                                     {
                                         "OFPActionPopMpls":{
-                                            "ethertype":2048
+                                            "ethertype":2054
                                         }
                                     },
                                     {
@@ -151,8 +163,14 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"eth_dst",
-                                        "value":"aa:aa:aa:aa:aa:aa"
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34887
                                     }
                                 }
                             ]
@@ -164,7 +182,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionPopMpls] packet=ethernet/mpls/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test2: actions[OFPActionPopMpls] packet=ethernet/mpls/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
