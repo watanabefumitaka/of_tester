@@ -371,7 +371,8 @@ class OfTester(app_manager.RyuApp):
                         else:
                             before_stats = self._test(STATE_GET_MATCH_COUNT)
                             self._test(STATE_UNMATCH_PKT_SEND, pkt)
-                            self._test(STATE_FLOW_UNMATCH_CHK, before_stats)
+                            self._test(STATE_FLOW_UNMATCH_CHK,
+                                       before_stats, test.target_tbls)
                 else:
                     # 1. Install invalid flows.
                     self._test(STATE_NG_FLOW_INSTALL, test.flows, test.error)
@@ -580,15 +581,16 @@ class OfTester(app_manager.RyuApp):
         msg = self.rcv_msgs[0]
         assert isinstance(msg, ofproto_v1_3_parser.OFPBarrierReply)
 
-    def _test_flow_unmatching_check(self, before_stats):
+    def _test_flow_unmatching_check(self, before_stats, target_tbls):
         # check match packet count
         xid = self.target_sw.send_table_stats()
         self.send_msg_xids.append(xid)
         self._wait()
         rcv_msgs = {stats.table_id: stats.matched_count
                     for msg in self.rcv_msgs for stats in msg.body}
-        if before_stats != rcv_msgs:
-            raise TestFailure(self.state)
+        for target_tbl_id in target_tbls:
+            if before_stats[target_tbl_id] != rcv_msgs[target_tbl_id]:
+                raise TestFailure(self.state)
 
     def _test_invalid_flow_install(self, flows, error):
         def __compare_error(msg, pattern):
@@ -865,7 +867,8 @@ class Test(object):
         (self.description,
          self.flows,
          self.error,
-         self.packets) = self._parse_test(test_json)
+         self.packets,
+         self.target_tbls) = self._parse_test(test_json)
 
     def _parse_test(self, buf):
         def __ofp_from_json(key, buf, field):
@@ -888,6 +891,15 @@ class Test(object):
         for flow in buf['FLOW_MOD']:
             msg = __ofp_from_json('OFPFlowMod', flow, 'FLOW_MOD')
             flows.append(msg)
+
+        table_chain = {}
+        for flow_mod in flows:
+            for inst in flow_mod.instructions:
+                table_chain.setdefault(flow_mod.table_id, [])
+                if ofproto_v1_3_parser.OFPInstructionGotoTable == inst.__class__:
+                    table_chain[flow_mod.table_id].append(inst.table_id)
+        target_tbls = [tbl_id for tbl_id, nxt_tbls in table_chain.items()
+                       if not nxt_tbls]
 
         # parse 'ERROR'
         error = None
@@ -931,7 +943,7 @@ class Test(object):
                         ' field when an "ERROR" block does not exist.')
                 packets.append(pkt_data)
 
-        return (description, flows, error, packets)
+        return (description, flows, error, packets, target_tbls)
 
 
 class DummyDatapath(object):
