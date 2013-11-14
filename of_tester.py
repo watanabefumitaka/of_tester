@@ -464,8 +464,9 @@ class OfTester(app_manager.RyuApp):
             msg = []
             for rcv_p in rcv_pkt.protocols:
                 if type(rcv_p) != str:
-                    model_p = model_pkt.get_protocol(type(rcv_p))
-                    if model_p:
+                    model_protocols = model_pkt.get_protocols(type(rcv_p))
+                    if len(model_protocols) == 1:
+                        model_p = model_protocols[0]
                         diff = []
                         for attr in rcv_p.__dict__:
                             if attr.startswith('_'):
@@ -483,7 +484,10 @@ class OfTester(app_manager.RyuApp):
                                        (rcv_p.__class__.__name__,
                                         ','.join(diff)))
                     else:
-                        msg.append(str(rcv_p))
+                        if (not model_protocols or
+                                not str(rcv_p) in str(model_protocols)):
+                            msg.append(str(rcv_p))
+
                 else:
                     model_p = ''
                     for p in model_pkt.protocols:
