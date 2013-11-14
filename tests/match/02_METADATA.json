@@ -196,7 +196,7 @@
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
-                                "metadata":255,
+                                "metadata":155,
                                 "metadata_mask":4294967295
                             }
                         },
@@ -216,7 +216,7 @@
                 }
             }
         ],
-        "description":"test2: unmatch[metadata=255] packet=ethernet/arp",
+        "description":"test2: unmatch[metadata=155] packet=ethernet/arp",
         "packets":[
             {
                 "ingress":[
@@ -431,7 +431,7 @@
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
-                                "metadata":255,
+                                "metadata":155,
                                 "metadata_mask":4294967295
                             }
                         },
@@ -451,7 +451,7 @@
                 }
             }
         ],
-        "description":"test5: unmatch[metadata=255] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test5: unmatch[metadata=155] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
@@ -668,7 +668,7 @@
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
-                                "metadata":255,
+                                "metadata":155,
                                 "metadata_mask":4294967295
                             }
                         },
@@ -688,7 +688,7 @@
                 }
             }
         ],
-        "description":"test8: unmatch[metadata=255] packet=ethernet/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test8: unmatch[metadata=155] packet=ethernet/ipv6/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
         "packets":[
             {
                 "ingress":[
