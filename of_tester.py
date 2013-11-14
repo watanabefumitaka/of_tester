@@ -485,10 +485,10 @@ class OfTester(app_manager.RyuApp):
                     else:
                         msg.append(str(rcv_p))
                 else:
-                    rcv_p = ''
-                    for p in rcv_pkt.protocols:
+                    model_p = ''
+                    for p in model_pkt.protocols:
                         if type(p) == str:
-                            rcv_p = p
+                            model_p = p
                             break
                     if model_p != rcv_p:
                         msg.append('str(%s)' % repr(rcv_p))
