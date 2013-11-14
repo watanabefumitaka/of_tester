@@ -110,8 +110,9 @@ INVALID_PATH = '%(path)s : No such file or directory.'
 
 # Test result details.
 FAILURE = 0
-TIMEOUT = 1
-RCV_ERR = 2
+ERROR = 1
+TIMEOUT = 2
+RCV_ERR = 3
 
 MSG = {STATE_INIT:
        {TIMEOUT: 'initialize is failure. no OFPBarrierReply.',
@@ -135,7 +136,8 @@ MSG = {STATE_INIT:
        {TIMEOUT: 'unmatch packet sending is failure. no OFPBarrierReply.',
         RCV_ERR: 'unmatch packet sending is failure. %(err_msg)s'},
        STATE_FLOW_UNMATCH_CHK:
-       {FAILURE: 'send packet was matched with the flow.',
+       {FAILURE: 'send packet matched with the flow.',
+        ERROR: 'send packet did not look up at target tables.',
         TIMEOUT: 'flow unmatching check is failure. no OFPTableStatsReply.',
         RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
        STATE_NG_FLOW_INSTALL:
@@ -172,6 +174,12 @@ class TestReceiveError(RyuException):
         msg = NG % {'detail': MSG[state][RCV_ERR] % {'err_msg': ERR_MSG % (
             err_msg.type, err_msg.code, repr(err_msg.data))}}
         super(TestReceiveError, self).__init__(msg=msg)
+
+
+class TestError(RyuException):
+    def __init__(self, state, **argv):
+        msg = NG % {'detail': (MSG[state][ERROR] % argv)}
+        super(TestError, self).__init__(msg=msg)
 
 
 def main():
@@ -378,7 +386,8 @@ class OfTester(app_manager.RyuApp):
                     self._test(STATE_NG_FLOW_INSTALL, test.flows, test.error)
 
                 result = OK
-            except (TestFailure, TestTimeout, TestReceiveError) as err:
+            except (TestFailure, TestError,
+                    TestTimeout, TestReceiveError) as err:
                 result = str(err)
             except Exception:
                 result = RYU_INTERNAL_ERROR
@@ -569,7 +578,8 @@ class OfTester(app_manager.RyuApp):
         xid = self.target_sw.send_table_stats()
         self.send_msg_xids.append(xid)
         self._wait()
-        return {stats.table_id: stats.matched_count
+        return {stats.table_id: {'lookup': stats.lookup_count,
+                                 'matched': stats.matched_count}
                 for msg in self.rcv_msgs for stats in msg.body}
 
     def _test_unmatch_packet_send(self, pkt):
@@ -590,11 +600,19 @@ class OfTester(app_manager.RyuApp):
         xid = self.target_sw.send_table_stats()
         self.send_msg_xids.append(xid)
         self._wait()
-        rcv_msgs = {stats.table_id: stats.matched_count
+        rcv_msgs = {stats.table_id: {'lookup': stats.lookup_count,
+                                     'matched': stats.matched_count}
                     for msg in self.rcv_msgs for stats in msg.body}
+        lookup = False
         for target_tbl_id in target_tbls:
-            if before_stats[target_tbl_id] != rcv_msgs[target_tbl_id]:
-                raise TestFailure(self.state)
+            before = before_stats[target_tbl_id]
+            after = rcv_msgs[target_tbl_id]
+            if before['lookup'] < after['lookup']:
+                lookup = True
+                if before['matched'] < after['matched']:
+                    raise TestFailure(self.state)
+        if not lookup:
+            raise TestError(self.state)
 
     def _test_invalid_flow_install(self, flows, error):
         def __compare_error(msg, pattern):
@@ -897,10 +915,11 @@ class Test(object):
             flows.append(msg)
 
         table_chain = {}
+        goto_table = ofproto_v1_3_parser.OFPInstructionGotoTable
         for flow_mod in flows:
             for inst in flow_mod.instructions:
                 table_chain.setdefault(flow_mod.table_id, [])
-                if ofproto_v1_3_parser.OFPInstructionGotoTable == inst.__class__:
+                if goto_table == inst.__class__:
                     table_chain[flow_mod.table_id].append(inst.table_id)
         target_tbls = [tbl_id for tbl_id, nxt_tbls in table_chain.items()
                        if not nxt_tbls]
