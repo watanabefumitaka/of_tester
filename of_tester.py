@@ -144,7 +144,7 @@ MSG = {STATE_INIT:
        {FAILURE: 'invalid flows install is failure. no expected OFPErrorMsg.',
         TIMEOUT: 'invalid flows install is failure. no OFPBarrierReply.'}}
 
-ERR_MSG = 'OFPErrorMsg received. type=0x%02x code=0x%02x'
+ERR_MSG = 'OFPErrorMsg[type=0x%02x, code=0x%02x] received.'
 
 
 GREEN = '\033[32m'
