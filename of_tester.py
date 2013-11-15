@@ -121,7 +121,7 @@ MSG = {STATE_INIT:
        {TIMEOUT: 'flows install is failure. no OFPBarrierReply.',
         RCV_ERR: 'flows install is failure. %(err_msg)s'},
        STATE_FLOW_EXIST_CHK:
-       {FAILURE: 'expected flow was not installed.',
+       {FAILURE: 'expected flow was not installed. %(flows)s',
         TIMEOUT: 'flow existence check is failure. no OFPFlowStatsReply.',
         RCV_ERR: 'flow existence check is failure. %(err_msg)s'},
        STATE_FLOW_MATCH_CHK:
@@ -171,8 +171,8 @@ class TestTimeout(RyuException):
 
 class TestReceiveError(RyuException):
     def __init__(self, state, err_msg):
-        msg = NG % {'detail': MSG[state][RCV_ERR] % 
-            {'err_msg': ERR_MSG % (err_msg.type, err_msg.code)}}
+        msg = NG % {'detail': MSG[state][RCV_ERR] %
+                   {'err_msg': ERR_MSG % (err_msg.type, err_msg.code)}}
         super(TestReceiveError, self).__init__(msg=msg)
 
 
@@ -402,7 +402,8 @@ class OfTester(app_manager.RyuApp):
             self.logger.info('%s : %s', test_name, msg)
             if test.description:
                 self.logger.debug(unicode(test.description))
-            if result == RYU_INTERNAL_ERROR:
+            if (result == RYU_INTERNAL_ERROR
+                    or result == 'An unknown exception'):
                 self.logger.error(traceback.format_exc())
 
             #TODO: for debug
@@ -461,12 +462,17 @@ class OfTester(app_manager.RyuApp):
         xid = self.target_sw.send_flow_stats()
         self.send_msg_xids.append(xid)
         self._wait()
+
+        ng_stats = []
         for msg in self.rcv_msgs:
             assert isinstance(msg, ofproto_v1_3_parser.OFPFlowStatsReply)
             for stats in msg.body:
-                if self._compare_flow(stats, flow_mod):
+                result, stats = self._compare_flow(stats, flow_mod)
+                if result:
                     return
-        raise TestFailure(self.state)
+                else:
+                    ng_stats.append(stats)
+        raise TestFailure(self.state, flows=', '.join(ng_stats))
 
     def _test_flow_matching_check(self, pkt):
         def __diff_packets(model_pkt, rcv_pkt):
@@ -654,8 +660,11 @@ class OfTester(app_manager.RyuApp):
             value1 = getattr(stats1, attr)
             value2 = getattr(stats2, attr)
             if str(value1) != str(value2):
-                return False
-        return True
+                flow_stats = []
+                for attr in attr_list:
+                    flow_stats.append('%s=%s' % (attr, getattr(stats1, attr)))
+                return False, 'flow_stats(%s)' % ','.join(flow_stats)
+        return True, None
 
     def _wait(self, timer=True):
         """ Wait until specific OFP message received
