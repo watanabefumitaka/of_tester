@@ -874,7 +874,7 @@ class TestPatterns(dict):
                     for i, test_json in enumerate(json_list):
                         test_name = path.rstrip('.json')
                         key = (test_name if len(json_list) == 1
-                               else test_name + ('_%d' % i))
+                               else test_name + ('_%02d' % i))
                         self[key] = Test(test_json)
                 except (ValueError, TypeError) as e:
                     result = (TEST_FILE_ERROR %
