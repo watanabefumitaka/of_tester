@@ -144,7 +144,7 @@ MSG = {STATE_INIT:
        {FAILURE: 'invalid flows install is failure. no expected OFPErrorMsg.',
         TIMEOUT: 'invalid flows install is failure. no OFPBarrierReply.'}}
 
-ERR_MSG = 'OFPErrorMsg received. type=0x%02x code=0x%02x data=%s'
+ERR_MSG = 'OFPErrorMsg received. type=0x%02x code=0x%02x'
 
 
 GREEN = '\033[32m'
@@ -171,8 +171,8 @@ class TestTimeout(RyuException):
 
 class TestReceiveError(RyuException):
     def __init__(self, state, err_msg):
-        msg = NG % {'detail': MSG[state][RCV_ERR] % {'err_msg': ERR_MSG % (
-            err_msg.type, err_msg.code, repr(err_msg.data))}}
+        msg = NG % {'detail': MSG[state][RCV_ERR] % 
+            {'err_msg': ERR_MSG % (err_msg.type, err_msg.code)}}
         super(TestReceiveError, self).__init__(msg=msg)
 
 
