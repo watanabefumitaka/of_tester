@@ -11,8 +11,8 @@
                                         "OFPActionSetField":{
                                             "field":{
                                                 "OXMTlv":{
-                                                    "field":"icmpv6_code",
-                                                    "value":1
+                                                    "field":"tcp_src",
+                                                    "value":12345
                                                 }
                                             }
                                         }
@@ -39,19 +39,19 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":34525
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":58
+                                        "value":6
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"icmpv6_code",
-                                        "value":0
+                                        "field":"tcp_src",
+                                        "value":11111
                                     }
                                 }
                             ]
@@ -60,18 +60,20 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionSetField[icmpv6_code=1]] packet=ethernet/ipv6/icmpv6",
+        "description":"test0: actions[OFPActionSetField[tcp_src=12345]] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=1,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -88,8 +90,8 @@
                                         "OFPActionSetField":{
                                             "field":{
                                                 "OXMTlv":{
-                                                    "field":"icmpv6_code",
-                                                    "value":1
+                                                    "field":"tcp_src",
+                                                    "value":12345
                                                 }
                                             }
                                         }
@@ -116,19 +118,19 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":34525
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":58
+                                        "value":6
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"icmpv6_code",
-                                        "value":0
+                                        "field":"tcp_src",
+                                        "value":11111
                                     }
                                 }
                             ]
@@ -137,20 +139,22 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionSetField[icmpv6_code=1]] packet=ethernet/vlan/ipv6/icmpv6",
+        "description":"test1: actions[OFPActionSetField[tcp_src=12345]] packet=ethernet/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=1,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -167,8 +171,8 @@
                                         "OFPActionSetField":{
                                             "field":{
                                                 "OXMTlv":{
-                                                    "field":"icmpv6_code",
-                                                    "value":1
+                                                    "field":"tcp_src",
+                                                    "value":12345
                                                 }
                                             }
                                         }
@@ -189,19 +193,19 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":34525
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":58
+                                        "value":6
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"icmpv6_code",
-                                        "value":0
+                                        "field":"tcp_src",
+                                        "value":11111
                                     }
                                 }
                             ]
@@ -218,7 +222,7 @@
                                 "actions":[
                                     {
                                         "OFPActionPopMpls":{
-                                            "ethertype":34525
+                                            "ethertype":2048
                                         }
                                     }
                                 ],
@@ -254,19 +258,21 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionSetField[icmpv6_code=1]] packet=ethernet/mpls/ipv6/icmpv6",
+        "description":"test2: actions[OFPActionSetField[tcp_src=12345]] packet=ethernet/mpls/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=1,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
@@ -283,8 +289,8 @@
                                         "OFPActionSetField":{
                                             "field":{
                                                 "OXMTlv":{
-                                                    "field":"icmpv6_code",
-                                                    "value":1
+                                                    "field":"tcp_src",
+                                                    "value":12345
                                                 }
                                             }
                                         }
@@ -311,19 +317,19 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":34525
+                                        "value":2048
                                     }
                                 },
                                 {
                                     "OXMTlv":{
                                         "field":"ip_proto",
-                                        "value":58
+                                        "value":6
                                     }
                                 },
                                 {
                                     "OXMTlv":{
-                                        "field":"icmpv6_code",
-                                        "value":0
+                                        "field":"tcp_src",
+                                        "value":11111
                                     }
                                 }
                             ]
@@ -332,7 +338,7 @@
                 }
             }
         ],
-        "description":"test3: actions[OFPActionSetField[icmpv6_code=1]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6",
+        "description":"test3: actions[OFPActionSetField[tcp_src=12345]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -341,9 +347,10 @@
                     "itag(sid=100)",
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=1,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -351,9 +358,10 @@
                     "itag(sid=100)",
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=33024, vid=10)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=echo(data='\\x00\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f !\"#$%&\\'()*+,-./0123'),type_=128)"
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ]
             }
         ]
