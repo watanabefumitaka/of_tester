@@ -24,12 +24,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
@@ -80,12 +74,6 @@
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
                                 {
                                     "OXMTlv":{
                                         "field":"in_phy_port",
@@ -140,12 +128,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
@@ -192,12 +174,6 @@
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
                                 {
                                     "OXMTlv":{
                                         "field":"in_phy_port",
@@ -256,12 +232,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
@@ -318,12 +288,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
@@ -372,12 +336,6 @@
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
                                 {
                                     "OXMTlv":{
                                         "field":"in_phy_port",
@@ -436,12 +394,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
@@ -496,12 +448,6 @@
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
                                 {
                                     "OXMTlv":{
                                         "field":"in_phy_port",
