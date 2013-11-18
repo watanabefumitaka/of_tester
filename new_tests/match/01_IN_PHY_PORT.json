@@ -3,14 +3,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -24,26 +22,18 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test0: match[in_port=1/in_phy_port=1] packet=ethernet/arp",
+        "description":"test00: match[in_port=1/in_phy_port=1] packet=ethernet/arp ※ovsではin_phy_portに未対応のためエラーとなる",
         "packets":[
             {
                 "egress":[
@@ -61,7 +51,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -82,26 +71,18 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[in_port=1/in_phy_port=1] packet=ethernet/arp",
+        "description":"test01: match(PACKET_IN)[in_port=1/in_phy_port=1] packet=ethernet/arp ※ovsではin_phy_portに未対応のためエラーとなる",
         "packets":[
             {
                 "PACKET_IN":[
@@ -119,14 +100,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -140,26 +119,18 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test2: unmatch[in_port=1/in_phy_port=1] packet=ethernet/arp",
+        "description":"test02: unmatch[in_port=1/in_phy_port=1] packet=ethernet/arp ※ovsではin_phy_portに未対応のためエラーとなる",
         "packets":[
             {
                 "ingress":[
@@ -173,14 +144,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -194,26 +163,18 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test3: match[in_port=1/in_phy_port=1] packet=ethernet/ipv4/tcp/str",
+        "description":"test03: match[in_port=1/in_phy_port=1] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -235,7 +196,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -256,26 +216,18 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[in_port=1/in_phy_port=1] packet=ethernet/ipv4/tcp/str",
+        "description":"test04: match(PACKET_IN)[in_port=1/in_phy_port=1] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -297,14 +249,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -318,26 +268,18 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test5: unmatch[in_port=1/in_phy_port=1] packet=ethernet/ipv4/tcp/str",
+        "description":"test05: unmatch[in_port=1/in_phy_port=1] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "ingress":[
@@ -353,14 +295,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -374,26 +314,18 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test6: match[in_port=1/in_phy_port=1] packet=ethernet/ipv6/tcp/str",
+        "description":"test06: match[in_port=1/in_phy_port=1] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -415,7 +347,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -436,26 +367,18 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[in_port=1/in_phy_port=1] packet=ethernet/ipv6/tcp/str",
+        "description":"test07: match(PACKET_IN)[in_port=1/in_phy_port=1] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -477,14 +400,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -498,26 +419,18 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"in_phy_port",
                                         "value":1
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test8: unmatch[in_port=1/in_phy_port=1] packet=ethernet/ipv6/tcp/str",
+        "description":"test08: unmatch[in_port=1/in_phy_port=1] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "ingress":[

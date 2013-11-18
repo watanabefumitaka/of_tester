@@ -3,14 +3,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -38,12 +36,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test0: match[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test00: match[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "egress":[
@@ -71,7 +68,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -106,12 +102,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test01: match(PACKET_IN)[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -139,14 +134,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -174,12 +167,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test02: unmatch[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "ingress":[
@@ -198,14 +190,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -233,12 +223,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test3: match[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "description":"test03: match[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -270,7 +259,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -305,12 +293,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "description":"test04: match(PACKET_IN)[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -342,14 +329,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -377,12 +362,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "description":"test05: unmatch[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "ingress":[
@@ -403,14 +387,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -438,12 +420,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test6: match[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description":"test06: match[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -475,7 +456,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -510,12 +490,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description":"test07: match(PACKET_IN)[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -547,14 +526,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -582,12 +559,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test8: unmatch[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description":"test08: unmatch[eth_type=35047/pbb_isid=96(mask=f0)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "ingress":[

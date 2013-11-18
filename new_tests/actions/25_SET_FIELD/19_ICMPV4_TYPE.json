@@ -3,7 +3,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -20,7 +19,6 @@
                                     },
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -58,20 +56,95 @@
                                 }
                             ]
                         }
-                    },
-                    "priority":32768,
-                    "table_id":0
+                    }
                 }
             }
         ],
-        "description":"test0: actions[OFPActionSetField[icmpv4_type=0]] packet=ethernet/vlan/ipv4/icmp",
+        "description":"test00: actions[OFPActionSetField[icmpv4_type=0]] packet=ethernet/ipv4/icmp",
+        "packets":[
+            {
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=1, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=0)"
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=1, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=8)"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD":[
+            {
+                "OFPFlowMod":{
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"icmpv4_type",
+                                                    "value":0
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"icmpv4_type",
+                                        "value":8
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "description":"test01: actions[OFPActionSetField[icmpv4_type=0]] packet=ethernet/vlan/ipv4/icmp",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=1, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=8)"
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=0)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -86,7 +159,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -103,7 +175,6 @@
                                     },
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -115,12 +186,6 @@
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
@@ -142,13 +207,11 @@
                             ]
                         }
                     },
-                    "priority":32768,
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -173,6 +236,12 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
+                                        "field":"in_port",
+                                        "value":1
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":34887
                                     }
@@ -181,18 +250,17 @@
                         }
                     },
                     "out_port":4294967295,
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test1: actions[OFPActionSetField[icmpv4_type=0]] packet=ethernet/mpls/ipv4/icmp",
+        "description":"test02: actions[OFPActionSetField[icmpv4_type=0]] packet=ethernet/mpls/ipv4/icmp",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=1, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=8)"
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=0)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
@@ -207,7 +275,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -224,7 +291,6 @@
                                     },
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -262,94 +328,11 @@
                                 }
                             ]
                         }
-                    },
-                    "priority":32768,
-                    "table_id":0
+                    }
                 }
             }
         ],
-        "description":"test2: actions[OFPActionSetField[icmpv4_type=0]] packet=ethernet/ipv4/icmp",
-        "packets":[
-            {
-                "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=1, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=8)"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=1, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=8)"
-                ]
-            }
-        ]
-    },
-    {
-        "FLOW_MOD":[
-            {
-                "OFPFlowMod":{
-                    "command":0,
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionSetField":{
-                                            "field":{
-                                                "OXMTlv":{
-                                                    "field":"icmpv4_type",
-                                                    "value":0
-                                                }
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "OFPActionOutput":{
-                                            "max_len":65535,
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2048
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ip_proto",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"icmpv4_type",
-                                        "value":8
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "priority":32768,
-                    "table_id":0
-                }
-            }
-        ],
-        "description":"test3: actions[OFPActionSetField[icmpv4_type=0]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp",
+        "description":"test03: actions[OFPActionSetField[icmpv4_type=0]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp",
         "packets":[
             {
                 "egress":[
@@ -360,7 +343,7 @@
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=1, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=8)"
+                    "icmp(code=0,csum=0,data=echo(data='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKL'),type_=0)"
                 ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",

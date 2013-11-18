@@ -3,7 +3,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -15,7 +14,6 @@
                                     },
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -41,16 +39,16 @@
                                 }
                             ]
                         }
-                    },
-                    "priority":32768,
-                    "table_id":0
+                    }
                 }
             }
         ],
-        "description":"test0: actions[OFPActionPushPbb] packet=ethernet/arp",
+        "description":"test00: actions[OFPActionPushPbb] packet=ethernet/arp",
         "packets":[
             {
                 "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=35047)",
+                    "itag()",
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ],
@@ -65,7 +63,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -77,7 +74,6 @@
                                     },
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -98,21 +94,21 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":2048
                                     }
                                 }
                             ]
                         }
-                    },
-                    "priority":32768,
-                    "table_id":0
+                    }
                 }
             }
         ],
-        "description":"test1: actions[OFPActionPushPbb] packet=ethernet/ipv4/tcp/str",
+        "description":"test01: actions[OFPActionPushPbb] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=35047)",
+                    "itag()",
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
@@ -131,7 +127,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -143,7 +138,6 @@
                                     },
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -164,21 +158,21 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":34525
                                     }
                                 }
                             ]
                         }
-                    },
-                    "priority":32768,
-                    "table_id":0
+                    }
                 }
             }
         ],
-        "description":"test2: actions[OFPActionPushPbb] packet=ethernet/ipv6/tcp/str",
+        "description":"test02: actions[OFPActionPushPbb] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=35047)",
+                    "itag()",
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
                     "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",

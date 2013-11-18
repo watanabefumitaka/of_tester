@@ -3,14 +3,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -28,17 +26,14 @@
                                         "value":255
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
+                    "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -57,12 +52,11 @@
                             "oxm_fields":[]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test0: match[metadata=255] packet=ethernet/arp",
+        "description":"test00: match[metadata=255] packet=ethernet/arp",
         "packets":[
             {
                 "egress":[
@@ -80,7 +74,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -105,17 +98,14 @@
                                         "value":255
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
+                    "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -134,12 +124,11 @@
                             "oxm_fields":[]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[metadata=255] packet=ethernet/arp",
+        "description":"test01: match(PACKET_IN)[metadata=255] packet=ethernet/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -157,14 +146,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -182,17 +169,14 @@
                                         "value":255
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
+                    "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -211,12 +195,11 @@
                             "oxm_fields":[]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test2: unmatch[metadata=255] packet=ethernet/arp",
+        "description":"test02: unmatch[metadata=155] packet=ethernet/arp",
         "packets":[
             {
                 "ingress":[
@@ -230,14 +213,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -255,17 +236,14 @@
                                         "value":255
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
+                    "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -284,12 +262,11 @@
                             "oxm_fields":[]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test3: match[metadata=255] packet=ethernet/ipv4/tcp/str",
+        "description":"test03: match[metadata=255] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -311,7 +288,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -336,17 +312,14 @@
                                         "value":255
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
+                    "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -365,12 +338,11 @@
                             "oxm_fields":[]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[metadata=255] packet=ethernet/ipv4/tcp/str",
+        "description":"test04: match(PACKET_IN)[metadata=255] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -392,14 +364,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -417,21 +387,18 @@
                                         "value":255
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
+                    "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
-                                "metadata":255,
+                                "metadata":155,
                                 "metadata_mask":4294967295
                             }
                         },
@@ -446,12 +413,11 @@
                             "oxm_fields":[]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test5: unmatch[metadata=255] packet=ethernet/ipv4/tcp/str",
+        "description":"test05: unmatch[metadata=155] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "ingress":[
@@ -467,14 +433,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -492,17 +456,14 @@
                                         "value":255
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
+                    "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -521,12 +482,11 @@
                             "oxm_fields":[]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test6: match[metadata=255] packet=ethernet/ipv6/tcp/str",
+        "description":"test06: match[metadata=255] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -548,7 +508,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -573,17 +532,14 @@
                                         "value":255
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
+                    "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -602,12 +558,11 @@
                             "oxm_fields":[]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[metadata=255] packet=ethernet/ipv6/tcp/str",
+        "description":"test07: match(PACKET_IN)[metadata=255] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -629,14 +584,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -654,21 +607,18 @@
                                         "value":255
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
+                    "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
-                                "metadata":255,
+                                "metadata":155,
                                 "metadata_mask":4294967295
                             }
                         },
@@ -683,12 +633,11 @@
                             "oxm_fields":[]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test8: unmatch[metadata=255] packet=ethernet/ipv6/tcp/str",
+        "description":"test08: unmatch[metadata=155] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "ingress":[

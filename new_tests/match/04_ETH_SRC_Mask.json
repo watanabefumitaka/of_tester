@@ -3,14 +3,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -29,16 +27,14 @@
                                         "value":"00:11:11:11:11:11"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test0: match[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/arp",
+        "description":"test00: match[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/arp",
         "packets":[
             {
                 "egress":[
@@ -56,7 +52,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -82,16 +77,14 @@
                                         "value":"00:11:11:11:11:11"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/arp",
+        "description":"test01: match(PACKET_IN)[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -109,14 +102,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -135,16 +126,14 @@
                                         "value":"00:11:11:11:11:11"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test2: unmatch[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/arp",
+        "description":"test02: unmatch[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/arp",
         "packets":[
             {
                 "ingress":[
@@ -158,14 +147,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -184,16 +171,14 @@
                                         "value":"00:11:11:11:11:11"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test3: match[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv4/tcp/str",
+        "description":"test03: match[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -215,7 +200,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -241,16 +225,14 @@
                                         "value":"00:11:11:11:11:11"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv4/tcp/str",
+        "description":"test04: match(PACKET_IN)[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -272,14 +254,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -298,16 +278,14 @@
                                         "value":"00:11:11:11:11:11"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test5: unmatch[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv4/tcp/str",
+        "description":"test05: unmatch[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "ingress":[
@@ -323,14 +301,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -349,16 +325,14 @@
                                         "value":"00:11:11:11:11:11"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test6: match[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv6/tcp/str",
+        "description":"test06: match[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -380,7 +354,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -406,16 +379,14 @@
                                         "value":"00:11:11:11:11:11"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test7: match(PACKET_IN)[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv6/tcp/str",
+        "description":"test07: match(PACKET_IN)[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -437,14 +408,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -463,16 +432,14 @@
                                         "value":"00:11:11:11:11:11"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test8: unmatch[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv6/tcp/str",
+        "description":"test08: unmatch[eth_src=00:11:11:11:11:11(mask=ffffffffff)] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "ingress":[

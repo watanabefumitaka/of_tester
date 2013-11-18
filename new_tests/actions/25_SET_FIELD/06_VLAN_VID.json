@@ -3,7 +3,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -13,14 +12,13 @@
                                             "field":{
                                                 "OXMTlv":{
                                                     "field":"vlan_vid",
-                                                    "value":2
+                                                    "value":4299
                                                 }
                                             }
                                         }
                                     },
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -41,25 +39,21 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":32
+                                        "value":4196
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
-                    },
-                    "priority":32768,
-                    "table_id":0
+                    }
                 }
             }
         ],
-        "description":"test0: actions[OFPActionSetField[vlan_vid=2]] packet=ethernet/vlan/arp",
+        "description":"test00: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
+                    "vlan(pcp=3, cfi=0, vid=203, ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ],
                 "ingress":[
@@ -74,7 +68,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -84,14 +77,13 @@
                                             "field":{
                                                 "OXMTlv":{
                                                     "field":"vlan_vid",
-                                                    "value":2
+                                                    "value":4299
                                                 }
                                             }
                                         }
                                     },
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -112,25 +104,21 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":32
+                                        "value":4196
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
-                    },
-                    "priority":32768,
-                    "table_id":0
+                    }
                 }
             }
         ],
-        "description":"test1: actions[OFPActionSetField[vlan_vid=2]] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"test01: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "vlan(pcp=3, cfi=0, vid=203, ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
@@ -149,7 +137,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -159,14 +146,13 @@
                                             "field":{
                                                 "OXMTlv":{
                                                     "field":"vlan_vid",
-                                                    "value":2
+                                                    "value":4299
                                                 }
                                             }
                                         }
                                     },
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":65535,
                                             "port":2
                                         }
                                     }
@@ -187,25 +173,21 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":4095,
-                                        "value":32
+                                        "value":4196
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
-                    },
-                    "priority":32768,
-                    "table_id":0
+                    }
                 }
             }
         ],
-        "description":"test2: actions[OFPActionSetField[vlan_vid=2]] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"test02: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=34525)",
+                    "vlan(pcp=3, cfi=0, vid=203, ethertype=34525)",
                     "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
