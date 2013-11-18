@@ -3,14 +3,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -35,26 +33,22 @@
                                         "value":"22:22:00:22:22:22"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test0: match[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/vlan/arp",
+        "description":"test00: match[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/arp",
         "packets":[
             {
                 "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ],
                 "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ]
             }
@@ -64,7 +58,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -96,26 +89,22 @@
                                         "value":"22:22:00:22:22:22"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/vlan/arp",
+        "description":"test01: match(PACKET_IN)[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/arp",
         "packets":[
             {
                 "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ],
                 "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ]
             }
@@ -125,14 +114,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -157,16 +144,180 @@
                                         "value":"22:22:00:22:22:22"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/vlan/arp",
+        "description":"test02: unmatch[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/arp",
+        "packets":[
+            {
+                "ingress":[
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2054)",
+                    "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD":[
+            {
+                "OFPFlowMod":{
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"arp_tha",
+                                        "mask":281470698520575,
+                                        "value":"22:22:00:22:22:22"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "table_id":0
+                }
+            }
+        ],
+        "description":"test03: match[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/vlan/arp",
+        "packets":[
+            {
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD":[
+            {
+                "OFPFlowMod":{
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "max_len":65535,
+                                            "port":4294967293
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"arp_tha",
+                                        "mask":281470698520575,
+                                        "value":"22:22:00:22:22:22"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "table_id":0
+                }
+            }
+        ],
+        "description":"test04: match(PACKET_IN)[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/vlan/arp",
+        "packets":[
+            {
+                "PACKET_IN":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD":[
+            {
+                "OFPFlowMod":{
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2054
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"arp_tha",
+                                        "mask":281470698520575,
+                                        "value":"22:22:00:22:22:22"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "table_id":0
+                }
+            }
+        ],
+        "description":"test05: unmatch[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "ingress":[
@@ -181,14 +332,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -213,17 +362,14 @@
                                         "value":"22:22:00:22:22:22"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -256,12 +402,11 @@
                         }
                     },
                     "out_port":4294967295,
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test3: match[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/mpls/arp",
+        "description":"test06: match[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/mpls/arp",
         "packets":[
             {
                 "egress":[
@@ -280,7 +425,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -312,17 +456,14 @@
                                         "value":"22:22:00:22:22:22"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -355,12 +496,11 @@
                         }
                     },
                     "out_port":4294967295,
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/mpls/arp",
+        "description":"test07: match(PACKET_IN)[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/mpls/arp",
         "packets":[
             {
                 "PACKET_IN":[
@@ -379,14 +519,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -411,17 +549,14 @@
                                         "value":"22:22:00:22:22:22"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -454,12 +589,11 @@
                         }
                     },
                     "out_port":4294967295,
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/mpls/arp",
+        "description":"test08: unmatch[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/mpls/arp",
         "packets":[
             {
                 "ingress":[
@@ -474,14 +608,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -506,24 +638,32 @@
                                         "value":"22:22:00:22:22:22"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test6: match[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/arp",
+        "description":"test09: match[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
+                    "svlan(ethertype=35047, vid=10)",
+                    "itag(sid=100)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
+                    "svlan(ethertype=33024, vid=10)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ],
                 "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
+                    "svlan(ethertype=35047, vid=10)",
+                    "itag(sid=100)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
+                    "svlan(ethertype=33024, vid=10)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ]
             }
@@ -533,7 +673,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -565,194 +704,9 @@
                                         "value":"22:22:00:22:22:22"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
-                    "table_id":0
-                }
-            }
-        ],
-        "description":"test7: match(PACKET_IN)[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/arp",
-        "packets":[
-            {
-                "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ]
-            }
-        ]
-    },
-    {
-        "FLOW_MOD":[
-            {
-                "OFPFlowMod":{
-                    "command":0,
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "max_len":0,
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2054
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"arp_tha",
-                                        "mask":281470698520575,
-                                        "value":"22:22:00:22:22:22"
-                                    }
-                                }
-                            ],
-                            "type":1
-                        }
-                    },
-                    "priority":32768,
-                    "table_id":0
-                }
-            }
-        ],
-        "description":"test8: unmatch[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/arp",
-        "packets":[
-            {
-                "ingress":[
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2054)",
-                    "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
-                ]
-            }
-        ]
-    },
-    {
-        "FLOW_MOD":[
-            {
-                "OFPFlowMod":{
-                    "command":0,
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "max_len":0,
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2054
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"arp_tha",
-                                        "mask":281470698520575,
-                                        "value":"22:22:00:22:22:22"
-                                    }
-                                }
-                            ],
-                            "type":1
-                        }
-                    },
-                    "priority":32768,
-                    "table_id":0
-                }
-            }
-        ],
-        "description":"test9: match[eth_type=2054/arp_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
-        "packets":[
-            {
-                "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
-                    "svlan(ethertype=35047, vid=10)",
-                    "itag(sid=100)",
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
-                    "svlan(ethertype=33024, vid=10)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
-                    "svlan(ethertype=35047, vid=10)",
-                    "itag(sid=100)",
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
-                    "svlan(ethertype=33024, vid=10)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ]
-            }
-        ]
-    },
-    {
-        "FLOW_MOD":[
-            {
-                "OFPFlowMod":{
-                    "command":0,
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "max_len":65535,
-                                            "port":4294967293
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2054
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"arp_tha",
-                                        "mask":281470698520575,
-                                        "value":"22:22:00:22:22:22"
-                                    }
-                                }
-                            ],
-                            "type":1
-                        }
-                    },
-                    "priority":32768,
                     "table_id":0
                 }
             }
@@ -785,14 +739,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -817,11 +769,9 @@
                                         "value":"22:22:00:22:22:22"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }

@@ -3,14 +3,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -35,28 +33,24 @@
                                         "value":"192.168.0.20"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test0: match[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test00: match[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
@@ -68,7 +62,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -100,28 +93,24 @@
                                         "value":"192.168.0.20"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test1: match(PACKET_IN)[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test01: match(PACKET_IN)[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
                 "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
@@ -133,14 +122,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -165,16 +152,190 @@
                                         "value":"192.168.0.20"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test2: unmatch[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test02: unmatch[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/ipv4/tcp/str",
+        "packets":[
+            {
+                "ingress":[
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2048)",
+                    "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
+                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD":[
+            {
+                "OFPFlowMod":{
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv4_dst",
+                                        "mask":4294902015,
+                                        "value":"192.168.0.20"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "table_id":0
+                }
+            }
+        ],
+        "description":"test03: match[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/ipv4/tcp/str",
+        "packets":[
+            {
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD":[
+            {
+                "OFPFlowMod":{
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "max_len":65535,
+                                            "port":4294967293
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv4_dst",
+                                        "mask":4294902015,
+                                        "value":"192.168.0.20"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "table_id":0
+                }
+            }
+        ],
+        "description":"test04: match(PACKET_IN)[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/ipv4/tcp/str",
+        "packets":[
+            {
+                "PACKET_IN":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
+                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ]
+            }
+        ]
+    },
+    {
+        "FLOW_MOD":[
+            {
+                "OFPFlowMod":{
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv4_dst",
+                                        "mask":4294902015,
+                                        "value":"192.168.0.20"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "table_id":0
+                }
+            }
+        ],
+        "description":"test05: unmatch[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "ingress":[
@@ -191,14 +352,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -223,17 +382,14 @@
                                         "value":"192.168.0.20"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -266,12 +422,11 @@
                         }
                     },
                     "out_port":4294967295,
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test3: match[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test06: match[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -294,7 +449,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -326,17 +480,14 @@
                                         "value":"192.168.0.20"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -369,12 +520,11 @@
                         }
                     },
                     "out_port":4294967295,
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test4: match(PACKET_IN)[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test07: match(PACKET_IN)[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/ipv4/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -397,14 +547,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -429,17 +577,14 @@
                                         "value":"192.168.0.20"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -472,12 +617,11 @@
                         }
                     },
                     "out_port":4294967295,
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test5: unmatch[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test08: unmatch[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/ipv4/tcp/str",
         "packets":[
             {
                 "ingress":[
@@ -494,14 +638,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -526,199 +668,14 @@
                                         "value":"192.168.0.20"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test6: match[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
-        "packets":[
-            {
-                "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
-                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
-                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
-                ]
-            }
-        ]
-    },
-    {
-        "FLOW_MOD":[
-            {
-                "OFPFlowMod":{
-                    "command":0,
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "max_len":65535,
-                                            "port":4294967293
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2048
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ipv4_dst",
-                                        "mask":4294902015,
-                                        "value":"192.168.0.20"
-                                    }
-                                }
-                            ],
-                            "type":1
-                        }
-                    },
-                    "priority":32768,
-                    "table_id":0
-                }
-            }
-        ],
-        "description":"test7: match(PACKET_IN)[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
-        "packets":[
-            {
-                "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
-                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
-                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
-                ]
-            }
-        ]
-    },
-    {
-        "FLOW_MOD":[
-            {
-                "OFPFlowMod":{
-                    "command":0,
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "max_len":0,
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2048
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ipv4_dst",
-                                        "mask":4294902015,
-                                        "value":"192.168.0.20"
-                                    }
-                                }
-                            ],
-                            "type":1
-                        }
-                    },
-                    "priority":32768,
-                    "table_id":0
-                }
-            }
-        ],
-        "description":"test8: unmatch[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
-        "packets":[
-            {
-                "ingress":[
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2048)",
-                    "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
-                    "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
-                    "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
-                ]
-            }
-        ]
-    },
-    {
-        "FLOW_MOD":[
-            {
-                "OFPFlowMod":{
-                    "command":0,
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "max_len":0,
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2048
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ipv4_dst",
-                                        "mask":4294902015,
-                                        "value":"192.168.0.20"
-                                    }
-                                }
-                            ],
-                            "type":1
-                        }
-                    },
-                    "priority":32768,
-                    "table_id":0
-                }
-            }
-        ],
-        "description":"test9: match[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test09: match[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -750,7 +707,6 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -782,16 +738,14 @@
                                         "value":"192.168.0.20"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test10: match(PACKET_IN)[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "PACKET_IN":[
@@ -823,14 +777,12 @@
         "FLOW_MOD":[
             {
                 "OFPFlowMod":{
-                    "command":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
                                 "actions":[
                                     {
                                         "OFPActionOutput":{
-                                            "max_len":0,
                                             "port":2
                                         }
                                     }
@@ -855,16 +807,14 @@
                                         "value":"192.168.0.20"
                                     }
                                 }
-                            ],
-                            "type":1
+                            ]
                         }
                     },
-                    "priority":32768,
                     "table_id":0
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'",
+        "description":"test11: unmatch[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "ingress":[
