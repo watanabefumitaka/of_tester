@@ -75,7 +75,7 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionSetField[tunnel_id=12345]] packet=ethernet/ipv4/tcp/str",
+        "description":"test00: actions[OFPActionSetField[tunnel_id=12345]] packet=ethernet/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -169,7 +169,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionSetField[tunnel_id=12345]] packet=ethernet/ipv6/tcp/str",
+        "description":"test01: actions[OFPActionSetField[tunnel_id=12345]] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -263,7 +263,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionSetField[tunnel_id=12345]] packet=ethernet/arp",
+        "description":"test02: actions[OFPActionSetField[tunnel_id=12345]] packet=ethernet/arp",
         "packets":[
             {
                 "egress":[
