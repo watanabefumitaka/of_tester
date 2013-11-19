@@ -32,12 +32,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"vlan_vid",
                                         "value":4196
                                     }
@@ -54,7 +48,7 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"test00: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -107,12 +101,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"vlan_vid",
                                         "value":4196
                                     }
@@ -129,7 +117,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"test01: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -182,12 +170,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"vlan_vid",
                                         "value":4196
                                     }
@@ -204,7 +186,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/arp",
+        "description":"test02: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/arp",
         "packets":[
             {
                 "egress":[

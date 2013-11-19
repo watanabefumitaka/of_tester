@@ -32,12 +32,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":35047
                                     }
@@ -54,7 +48,7 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "description":"test00: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -115,12 +109,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":35047
                                     }
@@ -137,7 +125,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description":"test01: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -198,12 +186,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":35047
                                     }
@@ -220,7 +202,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "description":"test02: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
         "packets":[
             {
                 "egress":[

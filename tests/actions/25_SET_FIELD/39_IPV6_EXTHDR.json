@@ -32,12 +32,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":34525
                                     }
@@ -54,7 +48,7 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionSetField[ipv6_exthdr=0]] packet=ethernet/ipv6/tcp/str",
+        "description":"test00: actions[OFPActionSetField[ipv6_exthdr=0]] packet=ethernet/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -105,12 +99,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":34525
                                     }
@@ -127,7 +115,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionSetField[ipv6_exthdr=0]] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"test01: actions[OFPActionSetField[ipv6_exthdr=0]] packet=ethernet/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -222,12 +210,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":34887
                                     }
@@ -240,7 +222,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionSetField[ipv6_exthdr=0]] packet=ethernet/mpls/ipv6/tcp/str",
+        "description":"test02: actions[OFPActionSetField[ipv6_exthdr=0]] packet=ethernet/mpls/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -292,12 +274,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":34525
                                     }
@@ -314,7 +290,7 @@
                 }
             }
         ],
-        "description":"test3: actions[OFPActionSetField[ipv6_exthdr=0]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description":"test03: actions[OFPActionSetField[ipv6_exthdr=0]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[

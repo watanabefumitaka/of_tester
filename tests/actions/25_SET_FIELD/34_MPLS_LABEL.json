@@ -32,12 +32,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":34887
                                     }
@@ -54,7 +48,7 @@
                 }
             }
         ],
-        "description":"test0: actions[OFPActionSetField[mpls_label=203]] packet=ethernet/mpls/ipv4/tcp/str",
+        "description":"test00: actions[OFPActionSetField[mpls_label=203]] packet=ethernet/mpls/ipv4/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -107,12 +101,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":34887
                                     }
@@ -129,7 +117,7 @@
                 }
             }
         ],
-        "description":"test1: actions[OFPActionSetField[mpls_label=203]] packet=ethernet/mpls/ipv6/tcp/str",
+        "description":"test01: actions[OFPActionSetField[mpls_label=203]] packet=ethernet/mpls/ipv6/tcp/str",
         "packets":[
             {
                 "egress":[
@@ -182,12 +170,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"in_port",
-                                        "value":1
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
                                         "field":"eth_type",
                                         "value":34887
                                     }
@@ -204,7 +186,7 @@
                 }
             }
         ],
-        "description":"test2: actions[OFPActionSetField[mpls_label=203]] packet=ethernet/mpls/arp",
+        "description":"test02: actions[OFPActionSetField[mpls_label=203]] packet=ethernet/mpls/arp",
         "packets":[
             {
                 "egress":[
