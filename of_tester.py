@@ -88,6 +88,7 @@ DEFAULT_TARGET_DPID = dpid_lib.str_to_dpid('0000000000000001')
 DEFAULT_TESTER_DPID = dpid_lib.str_to_dpid('0000000000000002')
 TESTER_SENDER_PORT = 1
 TESTER_RECEIVE_PORT = 2
+DEFAULT_TARGET_TABLES = [0]  # target table_id for table-miss test.
 CAP_LOG_DIRECTORY = '/tmp/of_tester_logs/'  #TODO: for capture log
 
 WAIT_TIMER = 3  # sec
@@ -936,16 +937,6 @@ class Test(object):
             msg = __ofp_from_json('OFPFlowMod', flow, 'FLOW_MOD')
             flows.append(msg)
 
-        table_chain = {}
-        goto_table = ofproto_v1_3_parser.OFPInstructionGotoTable
-        for flow_mod in flows:
-            for inst in flow_mod.instructions:
-                table_chain.setdefault(flow_mod.table_id, [])
-                if goto_table == inst.__class__:
-                    table_chain[flow_mod.table_id].append(inst.table_id)
-        target_tbls = [tbl_id for tbl_id, nxt_tbls in table_chain.items()
-                       if not nxt_tbls]
-
         # parse 'ERROR'
         error = None
         if 'ERROR' in buf:
@@ -958,6 +949,8 @@ class Test(object):
                 raise ValueError('a test requires "packet" block '
                                  'when an "ERROR" block does not exist.')
         elif not error:
+            table_miss_flg = False
+
             for pkt in buf['packets']:
                 pkt_data = {}
                 # parse 'ingress'
@@ -986,7 +979,15 @@ class Test(object):
                     raise ValueError(
                         'There must not be both "egress" and "PACKET_IN"'
                         ' field when an "ERROR" block does not exist.')
+                if not out_pkt and not pkt_in_pkt:
+                    table_miss_flg = True
+
                 packets.append(pkt_data)
+
+            # parse 'target_tables'
+            if table_miss_flg:
+                target_tbls = ([0] if not 'target_tables' in buf
+                               else buf['target_tables'])
 
         return (description, flows, error, packets, target_tbls)
 

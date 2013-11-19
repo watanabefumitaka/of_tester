@@ -716,6 +716,9 @@
                     "icmpv6(code=0,data=nd_neighbor(option=nd_option_sla(hw_src='aa:aa:aa:aa:aa:aa'),dst='b0::b0'),type_=135)"
                 ]
             }
+        ],
+        "target_tables":[
+            1
         ]
     },
     {

@@ -593,6 +593,9 @@
                     "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
                 ]
             }
+        ],
+        "target_tables":[
+            1
         ]
     },
     {

@@ -662,6 +662,9 @@
                     "sctp(chunks=[chunk_data(payload_data='abcdefghijklmnopqrstuvwxyz0123456789')], dst_port=6789, src_port=12345)"
                 ]
             }
+        ],
+        "target_tables":[
+            1
         ]
     },
     {
