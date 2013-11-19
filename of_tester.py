@@ -74,6 +74,8 @@ from ryu.ofproto import ofproto_v1_3_parser
 
 """
 
+# Log file path.
+LOG_FILENAME = './tester.log'
 
 # Command line parameters.
 DEBUG_MODE = '--verbose'
@@ -278,10 +280,13 @@ class OfTester(app_manager.RyuApp):
 
     def _set_logger(self, debug_mode):
         self.logger.propagate = False
-        hdlr = logging.StreamHandler()
+        s_hdlr = logging.StreamHandler()
+        f_hdlr = logging.FileHandler(filename=LOG_FILENAME, mode='w')
         fmt_str = '%(asctime)s [%(levelname)s] %(message)s'
-        hdlr.setFormatter(logging.Formatter(fmt_str))
-        self.logger.addHandler(hdlr)
+        s_hdlr.setFormatter(logging.Formatter(fmt_str))
+        f_hdlr.setFormatter(logging.Formatter(fmt_str))
+        self.logger.addHandler(s_hdlr)
+        self.logger.addHandler(f_hdlr)
         if debug_mode:
             self.logger.setLevel(logging.DEBUG)
 
