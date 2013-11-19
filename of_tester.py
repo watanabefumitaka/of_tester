@@ -86,7 +86,8 @@ ARG_CAP_IF = '--cap-if='  #TODO: for capture log
 DEFAULT_DIRECTORY = './tests'
 DEFAULT_TARGET_DPID = dpid_lib.str_to_dpid('0000000000000001')
 DEFAULT_TESTER_DPID = dpid_lib.str_to_dpid('0000000000000002')
-SUB_SW_SENDER_PORT = 1
+TESTER_SENDER_PORT = 1
+TESTER_RECEIVE_PORT = 2
 CAP_LOG_DIRECTORY = '/tmp/of_tester_logs/'  #TODO: for capture log
 
 WAIT_TIMER = 3  # sec
@@ -127,7 +128,7 @@ MSG = {STATE_INIT:
         TIMEOUT: 'flow existence check is failure. no OFPFlowStatsReply.',
         RCV_ERR: 'flow existence check is failure. %(err_msg)s'},
        STATE_FLOW_MATCH_CHK:
-       {FAILURE: 'failed to validate egress packet. %(rcv_pkt)s',
+       {FAILURE: 'failed to validate packet. %(rcv_pkt)s',
         TIMEOUT: 'flow matching is failure. no OFPPacketIn.',
         RCV_ERR: 'flow matching is failure. tester SW error. %(err_msg)s'},
        STATE_GET_MATCH_COUNT:
@@ -548,13 +549,19 @@ class OfTester(app_manager.RyuApp):
                 assert len(self.rcv_msgs) == 1
                 msg = self.rcv_msgs[0]
                 assert isinstance(msg, ofproto_v1_3_parser.OFPPacketIn)
+                self.logger.debug("dpid=%s : receive_packet[%s]",
+                                  dpid_lib.dpid_to_str(msg.datapath.id),
+                                  packet.Packet(msg.data))
 
                 # 3. confirm which switch sent the message.
-                if msg.datapath.id != pkt_in_src_model.dp.id:
-                    self.logger.debug("received PacketIn from unsuitable SW.")
+                if msg.reason != ofproto_v1_3.OFPR_ACTION:
+                    log_msg.append('invalid OFPPacketIn[reason=%d]'
+                                   % msg.reason)
                     continue
-                self.logger.debug("receive_packet:[%s]",
-                                  packet.Packet(msg.data))
+                if msg.datapath.id != pkt_in_src_model.dp.id:
+                    log_msg.append('OFPPacketIn from unexpected SW[dpid=%s]'
+                                   % dpid_lib.dpid_to_str(msg.datapath.id))
+                    continue
                 rcv_pkt_model = repr(model_pkt)[1:-1]
                 msg_data = repr(msg.data)[1:-1]
                 rcv_pkt = msg_data[:len(rcv_pkt_model)]
@@ -781,7 +788,7 @@ class OpenFlowSw(object):
         self.dp.send_msg(msg)
         return msg.xid
 
-    def add_flow(self, flow_mod=None, out_port=None):
+    def add_flow(self, flow_mod=None, in_port=None, out_port=None):
         """ Add flow. """
         ofp = self.dp.ofproto
         parser = self.dp.ofproto_parser
@@ -789,7 +796,7 @@ class OpenFlowSw(object):
         if flow_mod:
             mod = flow_mod
         else:
-            match = parser.OFPMatch()
+            match = parser.OFPMatch(in_port=in_port)
             max_len = (0 if out_port != ofp.OFPP_CONTROLLER
                        else ofp.OFPCML_MAX)
             actions = [parser.OFPActionOutput(out_port, max_len)]
@@ -844,13 +851,14 @@ class TesterSw(OpenFlowSw):
         super(TesterSw, self).__init__(dp, logger)
         # Add packet in flow.
         ofp = self.dp.ofproto
-        self.add_flow(out_port=ofp.OFPP_CONTROLLER)
+        self.add_flow(in_port=TESTER_RECEIVE_PORT,
+                      out_port=ofp.OFPP_CONTROLLER)
 
     def send_packet_out(self, data):
         """ send a PacketOut message."""
         ofp = self.dp.ofproto
         parser = self.dp.ofproto_parser
-        actions = [parser.OFPActionOutput(SUB_SW_SENDER_PORT)]
+        actions = [parser.OFPActionOutput(TESTER_SENDER_PORT)]
         out = parser.OFPPacketOut(
             datapath=self.dp, buffer_id=ofp.OFP_NO_BUFFER,
             data=data, in_port=ofp.OFPP_CONTROLLER, actions=actions)
