@@ -4,6 +4,19 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -18,24 +31,16 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"metadata",
-                                        "mask":4294967280,
-                                        "value":240
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -49,24 +54,19 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "egress":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
-                "ingress":[
+                "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
@@ -80,6 +80,19 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -95,24 +108,16 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"metadata",
-                                        "mask":4294967280,
-                                        "value":240
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -126,24 +131,19 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "PACKET_IN":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
-                "ingress":[
+                "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=6, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
@@ -157,6 +157,19 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -171,24 +184,16 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"metadata",
-                                        "mask":4294967280,
-                                        "value":240
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -202,11 +207,6 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
                     "table_id":0
                 }
             }
@@ -230,6 +230,19 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -244,24 +257,16 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"metadata",
-                                        "mask":4294967280,
-                                        "value":240
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -275,24 +280,19 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "egress":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
                     "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
-                "ingress":[
+                "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
                     "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
@@ -306,6 +306,19 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -321,24 +334,16 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"metadata",
-                                        "mask":4294967280,
-                                        "value":240
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -352,24 +357,19 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "PACKET_IN":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
                     "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
                 ],
-                "ingress":[
+                "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
                     "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=6, hop_limit=64, traffic_class=32)",
                     "tcp(dst_port=2222, option='\\x00\\x00\\x00\\x00', src_port=11111)",
@@ -383,6 +383,19 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -397,24 +410,16 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"metadata",
-                                        "mask":4294967280,
-                                        "value":240
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -428,11 +433,6 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
                     "table_id":0
                 }
             }
@@ -456,6 +456,19 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -470,24 +483,16 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"metadata",
-                                        "mask":4294967280,
-                                        "value":240
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -501,22 +506,17 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "egress":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ],
-                "ingress":[
+                "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ]
@@ -528,6 +528,19 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -543,24 +556,16 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"metadata",
-                                        "mask":4294967280,
-                                        "value":240
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -574,22 +579,17 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "PACKET_IN":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ],
-                "ingress":[
+                "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
                     "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
                 ]
@@ -601,6 +601,19 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"metadata",
+                                        "mask":4294967280,
+                                        "value":240
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -615,24 +628,16 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"metadata",
-                                        "mask":4294967280,
-                                        "value":240
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionWriteMetadata":{
@@ -646,11 +651,6 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
                     "table_id":0
                 }
             }

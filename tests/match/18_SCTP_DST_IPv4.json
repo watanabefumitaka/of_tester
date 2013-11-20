@@ -4,20 +4,6 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -42,18 +28,32 @@
                             ]
                         }
                     },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "egress":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
                 ],
-                "ingress":[
+                "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
@@ -66,6 +66,30 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":132
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"sctp_dst",
+                                        "value":2222
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -81,6 +105,30 @@
                             }
                         }
                     ],
+                    "table_id":0
+                }
+            }
+        ],
+        "tests":[
+            {
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
+                ],
+                "PACKET_IN":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
+                ]
+            }
+        ]
+    },
+    {
+        "description":"test02: unmatch[eth_type=2048/ip_proto=132/sctp_dst=2222] packet=ethernet/ipv4/sctp",
+        "prerequisite":[
+            {
+                "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -105,30 +153,6 @@
                             ]
                         }
                     },
-                    "table_id":0
-                }
-            }
-        ],
-        "tests":[
-            {
-                "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
-                ]
-            }
-        ]
-    },
-    {
-        "description":"test02: unmatch[eth_type=2048/ip_proto=132/sctp_dst=2222] packet=ethernet/ipv4/sctp",
-        "prerequisite":[
-            {
-                "OFPFlowMod":{
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -143,30 +167,6 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2048
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ip_proto",
-                                        "value":132
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"sctp_dst",
-                                        "value":2222
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":0
                 }
             }
@@ -189,20 +189,6 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -227,19 +213,33 @@
                             ]
                         }
                     },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "egress":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
                 ],
-                "ingress":[
+                "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
                     "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
                     "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
@@ -253,6 +253,30 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":132
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"sctp_dst",
+                                        "value":2222
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -268,6 +292,32 @@
                             }
                         }
                     ],
+                    "table_id":0
+                }
+            }
+        ],
+        "tests":[
+            {
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
+                ],
+                "PACKET_IN":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
+                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
+                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
+                ]
+            }
+        ]
+    },
+    {
+        "description":"test05: unmatch[eth_type=2048/ip_proto=132/sctp_dst=2222] packet=ethernet/vlan/ipv4/sctp",
+        "prerequisite":[
+            {
+                "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -292,32 +342,6 @@
                             ]
                         }
                     },
-                    "table_id":0
-                }
-            }
-        ],
-        "tests":[
-            {
-                "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
-                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
-                    "vlan(pcp=3, cfi=0, vid=100, ethertype=2048)",
-                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
-                ]
-            }
-        ]
-    },
-    {
-        "description":"test05: unmatch[eth_type=2048/ip_proto=132/sctp_dst=2222] packet=ethernet/vlan/ipv4/sctp",
-        "prerequisite":[
-            {
-                "OFPFlowMod":{
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -332,30 +356,6 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2048
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ip_proto",
-                                        "value":132
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"sctp_dst",
-                                        "value":2222
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "table_id":0
                 }
             }
@@ -379,20 +379,6 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -417,11 +403,37 @@
                             ]
                         }
                     },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
                     "table_id":1
                 }
             },
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34887
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -441,18 +453,6 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":34887
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "out_port":4294967295,
                     "table_id":0
                 }
@@ -460,14 +460,14 @@
         ],
         "tests":[
             {
-                "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
-                ],
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
+                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
+                ],
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
                     "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
                 ]
@@ -479,6 +479,30 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":132
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"sctp_dst",
+                                        "value":2222
+                                    }
+                                }
+                            ]
+                        }
+                    },
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -494,6 +518,68 @@
                             }
                         }
                     ],
+                    "table_id":1
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34887
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionPopMpls":{
+                                            "ethertype":2048
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "out_port":4294967295,
+                    "table_id":0
+                }
+            }
+        ],
+        "tests":[
+            {
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
+                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
+                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
+                ],
+                "PACKET_IN":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
+                ]
+            }
+        ]
+    },
+    {
+        "description":"test08: unmatch[eth_type=2048/ip_proto=132/sctp_dst=2222] packet=ethernet/mpls/ipv4/sctp",
+        "prerequisite":[
+            {
+                "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -518,68 +604,6 @@
                             ]
                         }
                     },
-                    "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionPopMpls":{
-                                            "ethertype":2048
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":34887
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "out_port":4294967295,
-                    "table_id":0
-                }
-            }
-        ],
-        "tests":[
-            {
-                "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
-                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
-                ]
-            }
-        ]
-    },
-    {
-        "description":"test08: unmatch[eth_type=2048/ip_proto=132/sctp_dst=2222] packet=ethernet/mpls/ipv4/sctp",
-        "prerequisite":[
-            {
-                "OFPFlowMod":{
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -594,35 +618,23 @@
                             }
                         }
                     ],
+                    "table_id":1
+                }
+            },
+            {
+                "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ip_proto",
-                                        "value":132
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"sctp_dst",
-                                        "value":2222
+                                        "value":34887
                                     }
                                 }
                             ]
                         }
                     },
-                    "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -642,18 +654,6 @@
                             }
                         }
                     ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":34887
-                                    }
-                                }
-                            ]
-                        }
-                    },
                     "out_port":4294967295,
                     "table_id":0
                 }
@@ -678,20 +678,6 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -716,13 +702,27 @@
                             ]
                         }
                     },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "egress":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=35047, vid=10)",
                     "itag(sid=100)",
@@ -732,7 +732,7 @@
                     "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
                 ],
-                "ingress":[
+                "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=35047, vid=10)",
                     "itag(sid=100)",
@@ -750,21 +750,6 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "max_len":65535,
-                                            "port":4294967293
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -789,13 +774,28 @@
                             ]
                         }
                     },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "max_len":65535,
+                                            "port":4294967293
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
                     "table_id":0
                 }
             }
         ],
         "tests":[
             {
-                "PACKET_IN":[
+                "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=35047, vid=10)",
                     "itag(sid=100)",
@@ -805,7 +805,7 @@
                     "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
                     "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
                 ],
-                "ingress":[
+                "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
                     "svlan(ethertype=35047, vid=10)",
                     "itag(sid=100)",
@@ -823,20 +823,6 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -861,6 +847,20 @@
                             ]
                         }
                     },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
                     "table_id":0
                 }
             }
