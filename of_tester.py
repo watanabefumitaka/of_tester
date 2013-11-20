@@ -99,7 +99,6 @@ STATE_FLOW_MATCH_CHK = 3
 STATE_GET_MATCH_COUNT = 4
 STATE_UNMATCH_PKT_SEND = 5
 STATE_FLOW_UNMATCH_CHK = 6
-STATE_NG_FLOW_INSTALL = 7
 
 # Test result.
 OK = 'OK'
@@ -140,10 +139,7 @@ MSG = {STATE_INIT:
        {FAILURE: 'send packet matched with the flow.',
         ERROR: 'send packet did not look up at target tables.',
         TIMEOUT: 'flow unmatching check is failure. no OFPTableStatsReply.',
-        RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'},
-       STATE_NG_FLOW_INSTALL:
-       {FAILURE: 'invalid flows install is failure. no expected OFPErrorMsg.',
-        TIMEOUT: 'invalid flows install is failure. no OFPBarrierReply.'}}
+        RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'}}
 
 ERR_MSG = 'OFPErrorMsg[type=0x%02x, code=0x%02x] received.'
 
@@ -339,25 +335,19 @@ class OfTester(app_manager.RyuApp):
             try:
                 # 0. Initialize.
                 self._test(STATE_INIT)
-
-                if not test.error:
-                    # 1. Install flows.
-                    for flow in test.flows:
-                        self._test(STATE_FLOW_INSTALL, flow)
-                        self._test(STATE_FLOW_EXIST_CHK, flow)
-                    # 2. Check flow matching.
-                    for pkt in test.packets:
-                        if 'egress' in pkt or 'PACKET_IN' in pkt:
-                            self._test(STATE_FLOW_MATCH_CHK, pkt)
-                        else:
-                            before_stats = self._test(STATE_GET_MATCH_COUNT)
-                            self._test(STATE_UNMATCH_PKT_SEND, pkt)
-                            self._test(STATE_FLOW_UNMATCH_CHK,
-                                       before_stats, test.target_tbls)
-                else:
-                    # 1. Install invalid flows.
-                    self._test(STATE_NG_FLOW_INSTALL, test.flows, test.error)
-
+                # 1. Install flows.
+                for flow in test.flows:
+                    self._test(STATE_FLOW_INSTALL, flow)
+                    self._test(STATE_FLOW_EXIST_CHK, flow)
+                # 2. Check flow matching.
+                for pkt in test.packets:
+                    if 'egress' in pkt or 'PACKET_IN' in pkt:
+                        self._test(STATE_FLOW_MATCH_CHK, pkt)
+                    else:
+                        before_stats = self._test(STATE_GET_MATCH_COUNT)
+                        self._test(STATE_UNMATCH_PKT_SEND, pkt)
+                        self._test(STATE_FLOW_UNMATCH_CHK,
+                                   before_stats, test.target_tbls)
                 result = OK
             except (TestFailure, TestError,
                     TestTimeout, TestReceiveError) as err:
@@ -394,8 +384,7 @@ class OfTester(app_manager.RyuApp):
                 STATE_FLOW_MATCH_CHK: self._test_flow_matching_check,
                 STATE_GET_MATCH_COUNT: self._test_get_match_count,
                 STATE_UNMATCH_PKT_SEND: self._test_unmatch_packet_send,
-                STATE_FLOW_UNMATCH_CHK: self._test_flow_unmatching_check,
-                STATE_NG_FLOW_INSTALL: self._test_invalid_flow_install}
+                STATE_FLOW_UNMATCH_CHK: self._test_flow_unmatching_check}
 
         self.send_msg_xids = []
         self.rcv_msgs = []
@@ -595,39 +584,6 @@ class OfTester(app_manager.RyuApp):
         if not lookup:
             raise TestError(self.state)
 
-    def _test_invalid_flow_install(self, flows, error):
-        def __compare_error(msg, pattern):
-            compare_list = [[msg.version, pattern.version],
-                            [msg.msg_type, pattern.msg_type],
-                            [msg.type, pattern.type],
-                            [msg.code, pattern.code]]
-            for value in compare_list:
-                if value[0] != value[1]:
-                    return False
-            head_len = struct.calcsize('!BBHI')
-            msg_data = msg.data[head_len:64]
-            error_data = pattern.data[head_len:64]
-            if msg_data != error_data:
-                return False
-            return True
-
-        # Install test flow.
-        for flow in flows:
-            xid = self.target_sw.add_flow(flow_mod=flow)
-            self.send_msg_xids.append(xid)
-        if not self.rcv_msgs:
-            xid = self.target_sw.send_barrier_request()
-            self.send_msg_xids.append(xid)
-            self._wait()
-
-        # Compare error message.
-        for err_msg in self.rcv_msgs:
-            if not isinstance(err_msg, ofproto_v1_3_parser.OFPErrorMsg):
-                continue
-            if __compare_error(err_msg, error):
-                return
-        raise TestFailure(self.state)
-
     def _compare_flow(self, stats1, stats2):
         attr_list = ['cookie', 'priority', 'flags', 'hard_timeout',
                      'idle_timeout', 'table_id', 'instructions', 'match']
@@ -647,8 +603,7 @@ class OfTester(app_manager.RyuApp):
         assert self.waiter is None
 
         self.waiter = hub.Event()
-        if self.state != STATE_NG_FLOW_INSTALL:
-            self.rcv_msgs = []
+        self.rcv_msgs = []
         timeout = False
 
         if timer:
@@ -668,9 +623,8 @@ class OfTester(app_manager.RyuApp):
 
         if timeout:
             raise TestTimeout(self.state)
-        if (self.state != STATE_NG_FLOW_INSTALL and
-                self.rcv_msgs and isinstance(
-                    self.rcv_msgs[0], ofproto_v1_3_parser.OFPErrorMsg)):
+        if (self.rcv_msgs and isinstance(
+                self.rcv_msgs[0], ofproto_v1_3_parser.OFPErrorMsg)):
             raise TestReceiveError(self.state, self.rcv_msgs[0])
 
     @set_ev_cls(ofp_event.EventOFPFlowStatsReply, handler.MAIN_DISPATCHER)
@@ -698,7 +652,6 @@ class OfTester(app_manager.RyuApp):
     def barrier_reply_handler(self, ev):
         state_list = [STATE_INIT,
                       STATE_FLOW_INSTALL,
-                      STATE_NG_FLOW_INSTALL,
                       STATE_UNMATCH_PKT_SEND]
         if self.state in state_list:
             if self.waiter and ev.msg.xid in self.send_msg_xids:
@@ -860,7 +813,6 @@ class Test(object):
         super(Test, self).__init__()
         (self.description,
          self.flows,
-         self.error,
          self.packets,
          self.target_tbls) = self._parse_test(test_json)
 
@@ -886,26 +838,18 @@ class Test(object):
             msg = __ofp_from_json('OFPFlowMod', flow, 'FLOW_MOD')
             flows.append(msg)
 
-        # parse 'ERROR'
-        error = None
-        if 'ERROR' in buf:
-            error = __ofp_from_json('OFPErrorMsg', buf['ERROR'], 'ERROR')
-
         # parse 'packets'
         packets = []
         if not 'packets' in buf:
-            if not error:
-                raise ValueError('a test requires "packet" block '
-                                 'when an "ERROR" block does not exist.')
-        elif not error:
+            raise ValueError('a test requires "packet" block.')
+        else:
             table_miss_flg = False
 
             for pkt in buf['packets']:
                 pkt_data = {}
                 # parse 'ingress'
                 if not 'ingress' in pkt:
-                    raise ValueError('a test requires "ingress" field '
-                                     'when an "ERROR" block does not exist.')
+                    raise ValueError('a test requires "ingress" field.')
                 data = eval('/'.join(pkt['ingress']))
                 data.serialize()
                 pkt_data['ingress'] = str(data.data)
@@ -926,8 +870,7 @@ class Test(object):
 
                 if out_pkt and pkt_in_pkt:
                     raise ValueError(
-                        'There must not be both "egress" and "PACKET_IN"'
-                        ' field when an "ERROR" block does not exist.')
+                        'There must not be both "egress" and "PACKET_IN".')
                 if not out_pkt and not pkt_in_pkt:
                     table_miss_flg = True
 
@@ -938,7 +881,7 @@ class Test(object):
                 target_tbls = ([0] if not 'target_tables' in buf
                                else buf['target_tables'])
 
-        return (description, flows, error, packets, target_tbls)
+        return (description, flows, packets, target_tbls)
 
 
 class DummyDatapath(object):
