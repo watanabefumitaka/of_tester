@@ -6,6 +6,29 @@
                 "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
@@ -31,29 +54,6 @@
                         }
                     ],
                     "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionWriteMetadata":{
-                                "metadata":255,
-                                "metadata_mask":4294967295
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "table_id":0
                 }
             }
         ],
@@ -81,6 +81,29 @@
                 "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
@@ -107,29 +130,6 @@
                         }
                     ],
                     "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionWriteMetadata":{
-                                "metadata":255,
-                                "metadata_mask":4294967295
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "table_id":0
                 }
             }
         ],
@@ -157,6 +157,29 @@
                 "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":155,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
@@ -182,29 +205,6 @@
                         }
                     ],
                     "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionWriteMetadata":{
-                                "metadata":155,
-                                "metadata_mask":4294967295
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "table_id":0
                 }
             }
         ],
@@ -229,6 +229,29 @@
                 "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
@@ -254,29 +277,6 @@
                         }
                     ],
                     "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionWriteMetadata":{
-                                "metadata":255,
-                                "metadata_mask":4294967295
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "table_id":0
                 }
             }
         ],
@@ -304,6 +304,29 @@
                 "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
@@ -330,29 +353,6 @@
                         }
                     ],
                     "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionWriteMetadata":{
-                                "metadata":255,
-                                "metadata_mask":4294967295
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "table_id":0
                 }
             }
         ],
@@ -380,6 +380,29 @@
                 "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":155,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
@@ -405,29 +428,6 @@
                         }
                     ],
                     "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionWriteMetadata":{
-                                "metadata":155,
-                                "metadata_mask":4294967295
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "table_id":0
                 }
             }
         ],
@@ -452,6 +452,29 @@
                 "OFPFlowMod":{
                     "match":{
                         "OFPMatch":{
+                            "oxm_fields":[]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionWriteMetadata":{
+                                "metadata":255,
+                                "metadata_mask":4294967295
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
@@ -478,7 +501,24 @@
                     ],
                     "table_id":1
                 }
-            },
+            }
+        ],
+        "tests":[
+            {
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ],
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    },
+    {
+        "description":"test07: match(PACKET_IN)[metadata=255] packet=ethernet/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "match":{
@@ -501,24 +541,7 @@
                     ],
                     "table_id":0
                 }
-            }
-        ],
-        "tests":[
-            {
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ],
-                "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ]
-            }
-        ]
-    },
-    {
-        "description":"test07: match(PACKET_IN)[metadata=255] packet=ethernet/arp",
-        "prerequisite":[
+            },
             {
                 "OFPFlowMod":{
                     "match":{
@@ -550,7 +573,24 @@
                     ],
                     "table_id":1
                 }
-            },
+            }
+        ],
+        "tests":[
+            {
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ],
+                "PACKET_IN":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    },
+    {
+        "description":"test08: unmatch[metadata=155] packet=ethernet/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "match":{
@@ -573,24 +613,7 @@
                     ],
                     "table_id":0
                 }
-            }
-        ],
-        "tests":[
-            {
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ],
-                "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ]
-            }
-        ]
-    },
-    {
-        "description":"test08: unmatch[metadata=155] packet=ethernet/arp",
-        "prerequisite":[
+            },
             {
                 "OFPFlowMod":{
                     "match":{
@@ -620,29 +643,6 @@
                         }
                     ],
                     "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionWriteMetadata":{
-                                "metadata":255,
-                                "metadata_mask":4294967295
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "table_id":0
                 }
             }
         ],

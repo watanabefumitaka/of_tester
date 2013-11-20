@@ -421,6 +421,43 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
+                                        "value":34887
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionPopMpls":{
+                                            "ethertype":34525
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "out_port":4294967295,
+                    "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
                                         "value":34525
                                     }
                                 },
@@ -461,7 +498,27 @@
                     ],
                     "table_id":1
                 }
-            },
+            }
+        ],
+        "tests":[
+            {
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
+                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
+                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=135)"
+                ],
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
+                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=135)"
+                ]
+            }
+        ]
+    },
+    {
+        "description":"test07: match(PACKET_IN)[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/mpls/ipv6/icmpv6",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "match":{
@@ -498,27 +555,7 @@
                     "out_port":4294967295,
                     "table_id":0
                 }
-            }
-        ],
-        "tests":[
-            {
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
-                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=135)"
-                ],
-                "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=135)"
-                ]
-            }
-        ]
-    },
-    {
-        "description":"test07: match(PACKET_IN)[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/mpls/ipv6/icmpv6",
-        "prerequisite":[
+            },
             {
                 "OFPFlowMod":{
                     "match":{
@@ -568,7 +605,27 @@
                     ],
                     "table_id":1
                 }
-            },
+            }
+        ],
+        "tests":[
+            {
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
+                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
+                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=135)"
+                ],
+                "PACKET_IN":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
+                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=135)"
+                ]
+            }
+        ]
+    },
+    {
+        "description":"test08: unmatch[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/mpls/ipv6/icmpv6",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "match":{
@@ -605,27 +662,7 @@
                     "out_port":4294967295,
                     "table_id":0
                 }
-            }
-        ],
-        "tests":[
-            {
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
-                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=135)"
-                ],
-                "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_sla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=135)"
-                ]
-            }
-        ]
-    },
-    {
-        "description":"test08: unmatch[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/mpls/ipv6/icmpv6",
-        "prerequisite":[
+            },
             {
                 "OFPFlowMod":{
                     "match":{
@@ -673,43 +710,6 @@
                         }
                     ],
                     "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":34887
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionPopMpls":{
-                                            "ethertype":34525
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "out_port":4294967295,
-                    "table_id":0
                 }
             }
         ],

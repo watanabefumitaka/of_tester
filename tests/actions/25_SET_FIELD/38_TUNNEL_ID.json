@@ -9,37 +9,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"tunnel_id",
-                                        "value":12345
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
                                         "field":"in_port",
                                         "value":1
                                     }
@@ -73,6 +42,37 @@
                     ],
                     "out_port":4294967295,
                     "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"tunnel_id",
+                                        "value":12345
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "table_id":1
                 }
             }
         ],
@@ -103,37 +103,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"tunnel_id",
-                                        "value":12345
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
                                         "field":"in_port",
                                         "value":1
                                     }
@@ -167,6 +136,37 @@
                     ],
                     "out_port":4294967295,
                     "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"tunnel_id",
+                                        "value":12345
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "table_id":1
                 }
             }
         ],
@@ -197,37 +197,6 @@
                             "oxm_fields":[
                                 {
                                     "OXMTlv":{
-                                        "field":"tunnel_id",
-                                        "value":12345
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
                                         "field":"in_port",
                                         "value":1
                                     }
@@ -261,6 +230,37 @@
                     ],
                     "out_port":4294967295,
                     "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"tunnel_id",
+                                        "value":12345
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "table_id":1
                 }
             }
         ],

@@ -339,6 +339,43 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
+                                        "value":34887
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionPopMpls":{
+                                            "ethertype":2054
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        },
+                        {
+                            "OFPInstructionGotoTable":{
+                                "table_id":1
+                            }
+                        }
+                    ],
+                    "out_port":4294967295,
+                    "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
                                         "value":2054
                                     }
                                 },
@@ -367,7 +404,25 @@
                     ],
                     "table_id":1
                 }
-            },
+            }
+        ],
+        "tests":[
+            {
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
+                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ],
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    },
+    {
+        "description":"test07: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/mpls/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "match":{
@@ -404,25 +459,7 @@
                     "out_port":4294967295,
                     "table_id":0
                 }
-            }
-        ],
-        "tests":[
-            {
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
-                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ],
-                "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ]
-            }
-        ]
-    },
-    {
-        "description":"test07: match(PACKET_IN)[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/mpls/arp",
-        "prerequisite":[
+            },
             {
                 "OFPFlowMod":{
                     "match":{
@@ -460,7 +497,25 @@
                     ],
                     "table_id":1
                 }
-            },
+            }
+        ],
+        "tests":[
+            {
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
+                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ],
+                "PACKET_IN":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                ]
+            }
+        ]
+    },
+    {
+        "description":"test08: unmatch[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/mpls/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "match":{
@@ -497,25 +552,7 @@
                     "out_port":4294967295,
                     "table_id":0
                 }
-            }
-        ],
-        "tests":[
-            {
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
-                    "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ],
-                "PACKET_IN":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
-                ]
-            }
-        ]
-    },
-    {
-        "description":"test08: unmatch[eth_type=2054/arp_spa=192.168.10.10] packet=ethernet/mpls/arp",
-        "prerequisite":[
+            },
             {
                 "OFPFlowMod":{
                     "match":{
@@ -551,43 +588,6 @@
                         }
                     ],
                     "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":34887
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionPopMpls":{
-                                            "ethertype":2054
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        },
-                        {
-                            "OFPInstructionGotoTable":{
-                                "table_id":1
-                            }
-                        }
-                    ],
-                    "out_port":4294967295,
-                    "table_id":0
                 }
             }
         ],

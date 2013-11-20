@@ -126,42 +126,6 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":34525
-                                    }
-                                }
-                            ]
-                        }
-                    },
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionSetNwTtl":{
-                                            "nw_ttl":32
-                                        }
-                                    },
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "table_id":1
-                }
-            },
-            {
-                "OFPFlowMod":{
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
                                         "value":34887
                                     }
                                 }
@@ -189,6 +153,42 @@
                     ],
                     "out_port":4294967295,
                     "table_id":0
+                }
+            },
+            {
+                "OFPFlowMod":{
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionSetNwTtl":{
+                                            "nw_ttl":32
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "table_id":1
                 }
             }
         ],
