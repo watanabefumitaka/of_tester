@@ -4,6 +4,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -36,8 +37,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -73,6 +73,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -106,8 +107,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -143,6 +143,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -175,8 +176,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -204,6 +204,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -236,8 +237,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -273,6 +273,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -306,8 +307,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -343,6 +343,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -375,8 +376,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -404,6 +404,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -436,8 +437,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -469,6 +469,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -502,8 +503,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -535,6 +535,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -567,8 +568,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],

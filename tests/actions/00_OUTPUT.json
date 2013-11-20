@@ -4,6 +4,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -17,8 +18,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -45,6 +45,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -58,8 +59,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],
@@ -85,6 +85,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "instructions":[
                         {
                             "OFPInstructionActions":{
@@ -98,8 +99,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             }
         ],

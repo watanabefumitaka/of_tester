@@ -4,6 +4,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -40,12 +41,12 @@
                             }
                         }
                     ],
-                    "out_port":4294967295,
-                    "table_id":0
+                    "out_port":4294967295
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -71,8 +72,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -98,6 +98,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -134,12 +135,12 @@
                             }
                         }
                     ],
-                    "out_port":4294967295,
-                    "table_id":0
+                    "out_port":4294967295
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -165,8 +166,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -192,6 +192,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -228,12 +229,12 @@
                             }
                         }
                     ],
-                    "out_port":4294967295,
-                    "table_id":0
+                    "out_port":4294967295
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -259,8 +260,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],

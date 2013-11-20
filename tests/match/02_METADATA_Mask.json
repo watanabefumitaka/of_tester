@@ -4,6 +4,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[]
@@ -21,12 +22,12 @@
                                 "table_id":1
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -53,8 +54,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -80,6 +80,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[]
@@ -97,12 +98,12 @@
                                 "table_id":1
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -130,8 +131,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -157,6 +157,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[]
@@ -174,12 +175,12 @@
                                 "table_id":1
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -206,8 +207,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -230,6 +230,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[]
@@ -247,12 +248,12 @@
                                 "table_id":1
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -279,8 +280,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -306,6 +306,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[]
@@ -323,12 +324,12 @@
                                 "table_id":1
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -356,8 +357,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -383,6 +383,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[]
@@ -400,12 +401,12 @@
                                 "table_id":1
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -432,8 +433,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -456,6 +456,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[]
@@ -473,12 +474,12 @@
                                 "table_id":1
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -505,8 +506,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -528,6 +528,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[]
@@ -545,12 +546,12 @@
                                 "table_id":1
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -578,8 +579,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
@@ -601,6 +601,7 @@
         "prerequisite":[
             {
                 "OFPFlowMod":{
+                    "table_id":0,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[]
@@ -618,12 +619,12 @@
                                 "table_id":1
                             }
                         }
-                    ],
-                    "table_id":0
+                    ]
                 }
             },
             {
                 "OFPFlowMod":{
+                    "table_id":1,
                     "match":{
                         "OFPMatch":{
                             "oxm_fields":[
@@ -650,8 +651,7 @@
                                 "type":4
                             }
                         }
-                    ],
-                    "table_id":1
+                    ]
                 }
             }
         ],
