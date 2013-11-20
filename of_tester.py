@@ -86,10 +86,18 @@ DEFAULT_TARGET_DPID = dpid_lib.str_to_dpid('0000000000000001')
 DEFAULT_TESTER_DPID = dpid_lib.str_to_dpid('0000000000000002')
 TESTER_SENDER_PORT = 1
 TESTER_RECEIVE_PORT = 2
-DEFAULT_TARGET_TABLES = [0]  # target table_id for table-miss test.
 
 WAIT_TIMER = 3  # sec
 
+# Test file format.
+KEY_DESC = 'description'
+KEY_PREREQ = 'prerequisite'
+KEY_FLOW = 'OFPFlowMod'
+KEY_TESTS = 'tests'
+KEY_INGRESS = 'ingress'
+KEY_EGRESS = 'egress'
+KEY_PKT_IN = 'PACKET_IN'
+KEY_TBL_MISS = 'table-miss'
 
 # Test state.
 STATE_INIT = 0
@@ -336,18 +344,17 @@ class OfTester(app_manager.RyuApp):
                 # 0. Initialize.
                 self._test(STATE_INIT)
                 # 1. Install flows.
-                for flow in test.flows:
+                for flow in test.prerequisite:
                     self._test(STATE_FLOW_INSTALL, flow)
                     self._test(STATE_FLOW_EXIST_CHK, flow)
                 # 2. Check flow matching.
-                for pkt in test.packets:
-                    if 'egress' in pkt or 'PACKET_IN' in pkt:
+                for pkt in test.tests:
+                    if KEY_EGRESS in pkt or KEY_PKT_IN in pkt:
                         self._test(STATE_FLOW_MATCH_CHK, pkt)
                     else:
                         before_stats = self._test(STATE_GET_MATCH_COUNT)
                         self._test(STATE_UNMATCH_PKT_SEND, pkt)
-                        self._test(STATE_FLOW_UNMATCH_CHK,
-                                   before_stats, test.target_tbls)
+                        self._test(STATE_FLOW_UNMATCH_CHK, before_stats, pkt)
                 result = OK
             except (TestFailure, TestError,
                     TestTimeout, TestReceiveError) as err:
@@ -477,18 +484,18 @@ class OfTester(app_manager.RyuApp):
                                    ' receive packet is matching.')
 
         pad_zero = repr('\x00')[1:-1]
-        self.logger.debug("send_packet:[%s]", packet.Packet(pkt['ingress']))
-        self.logger.debug("egress:[%s]", packet.Packet(pkt.get('egress')))
+        self.logger.debug("send_packet:[%s]", packet.Packet(pkt[KEY_INGRESS]))
+        self.logger.debug("egress:[%s]", packet.Packet(pkt.get(KEY_EGRESS)))
         self.logger.debug("packet_in:[%s]",
-                          packet.Packet(pkt.get('PACKET_IN')))
+                          packet.Packet(pkt.get(KEY_PKT_IN)))
 
         # 1. send a packet from the Open vSwitch.
-        xid = self.tester_sw.send_packet_out(pkt['ingress'])
+        xid = self.tester_sw.send_packet_out(pkt[KEY_INGRESS])
         self.send_msg_xids.append(xid)
 
         # 2. receive a PacketIn message.
-        model_pkt = pkt['egress'] if 'egress' in pkt else pkt['PACKET_IN']
-        pkt_in_src_model = (self.tester_sw if 'egress' in pkt
+        model_pkt = pkt[KEY_EGRESS] if KEY_EGRESS in pkt else pkt[KEY_PKT_IN]
+        pkt_in_src_model = (self.tester_sw if KEY_EGRESS in pkt
                             else self.target_sw)
 
         timer = hub.Timeout(WAIT_TIMER)
@@ -554,8 +561,8 @@ class OfTester(app_manager.RyuApp):
 
     def _test_unmatch_packet_send(self, pkt):
         # Send a packet from the Open vSwitch.
-        self.logger.debug("send_packet:[%s]", packet.Packet(pkt['ingress']))
-        self.tester_sw.send_packet_out(pkt['ingress'])
+        self.logger.debug("send_packet:[%s]", packet.Packet(pkt[KEY_INGRESS]))
+        self.tester_sw.send_packet_out(pkt[KEY_INGRESS])
 
         # Wait OFPBarrierReply.
         xid = self.tester_sw.send_barrier_request()
@@ -565,7 +572,7 @@ class OfTester(app_manager.RyuApp):
         msg = self.rcv_msgs[0]
         assert isinstance(msg, ofproto_v1_3_parser.OFPBarrierReply)
 
-    def _test_flow_unmatching_check(self, before_stats, target_tbls):
+    def _test_flow_unmatching_check(self, before_stats, pkt):
         # Check matched packet count.
         xid = self.target_sw.send_table_stats()
         self.send_msg_xids.append(xid)
@@ -574,7 +581,7 @@ class OfTester(app_manager.RyuApp):
                                      'matched': stats.matched_count}
                     for msg in self.rcv_msgs for stats in msg.body}
         lookup = False
-        for target_tbl_id in target_tbls:
+        for target_tbl_id in pkt[KEY_TBL_MISS]:
             before = before_stats[target_tbl_id]
             after = rcv_msgs[target_tbl_id]
             if before['lookup'] < after['lookup']:
@@ -812,76 +819,57 @@ class Test(object):
     def __init__(self, test_json):
         super(Test, self).__init__()
         (self.description,
-         self.flows,
-         self.packets,
-         self.target_tbls) = self._parse_test(test_json)
+         self.prerequisite,
+         self.tests) = self._parse_test(test_json)
 
     def _parse_test(self, buf):
-        def __ofp_from_json(key, buf, field):
-            if key in buf:
-                cls = getattr(ofproto_v1_3_parser, key)
-                msg = cls.from_jsondict(buf[key], datapath=DummyDatapath())
-                msg.version = ofproto_v1_3.OFP_VERSION
-                msg.msg_type = msg.cls_msg_type
-                msg.xid = 0
-                return msg
-            else:
-                raise ValueError('"%s" field requires "%s."' % (field, key))
+        def __test_pkt_from_json(test):
+            data = eval('/'.join(test))
+            data.serialize()
+            return str(data.data)
 
-        description = buf.get('description')
+        # parse 'description'
+        description = buf.get(KEY_DESC)
 
-        # parse 'FLOW_MOD'
-        flows = []
-        if not 'FLOW_MOD' in buf:
-            raise ValueError('a test requires a "FLOW_MOD" block')
-        for flow in buf['FLOW_MOD']:
-            msg = __ofp_from_json('OFPFlowMod', flow, 'FLOW_MOD')
-            flows.append(msg)
+        # parse 'prerequisite'
+        prerequisite = []
+        if not KEY_PREREQ in buf:
+            raise ValueError('a test requires a "%s" block' % KEY_PREREQ)
+        for flow in buf[KEY_PREREQ]:
+            cls = getattr(ofproto_v1_3_parser, KEY_FLOW)
+            msg = cls.from_jsondict(flow[KEY_FLOW], datapath=DummyDatapath())
+            msg.version = ofproto_v1_3.OFP_VERSION
+            msg.msg_type = msg.cls_msg_type
+            msg.xid = 0
+            prerequisite.append(msg)
 
-        # parse 'packets'
-        packets = []
-        if not 'packets' in buf:
-            raise ValueError('a test requires "packet" block.')
-        else:
-            table_miss_flg = False
+        # parse 'tests'
+        tests = []
+        if not KEY_TESTS in buf:
+            raise ValueError('a test requires a "%s" block.' % KEY_TESTS)
 
-            for pkt in buf['packets']:
-                pkt_data = {}
-                # parse 'ingress'
-                if not 'ingress' in pkt:
-                    raise ValueError('a test requires "ingress" field.')
-                data = eval('/'.join(pkt['ingress']))
-                data.serialize()
-                pkt_data['ingress'] = str(data.data)
+        for test in buf[KEY_TESTS]:
+            if len(test) != 2:
+                raise ValueError(
+                    '"%s" block requires "%s" field and one of "%s" or "%s"'
+                    ' or "%s" field.' % (KEY_TESTS, KEY_INGRESS, KEY_EGRESS,
+                    KEY_PKT_IN, KEY_TBL_MISS))
+            test_pkt = {}
+            # parse 'ingress'
+            if not KEY_INGRESS in test:
+                raise ValueError('a test requires "%s" field.' % KEY_INGRESS)
+            test_pkt[KEY_INGRESS] = __test_pkt_from_json(test[KEY_INGRESS])
+            # parse 'egress' or 'PACKET_IN' or 'table-miss'
+            if KEY_EGRESS in test:
+                test_pkt[KEY_EGRESS] = __test_pkt_from_json(test[KEY_EGRESS])
+            elif KEY_PKT_IN in test:
+                test_pkt[KEY_PKT_IN] = __test_pkt_from_json(test[KEY_PKT_IN])
+            elif KEY_TBL_MISS in test:
+                test_pkt[KEY_TBL_MISS] = test[KEY_TBL_MISS]
 
-                # parse 'egress'
-                out_pkt = None
-                if 'egress' in pkt:
-                    data = eval('/'.join(pkt['egress']))
-                    data.serialize()
-                    pkt_data['egress'] = str(data.data)
+            tests.append(test_pkt)
 
-                # parse 'PACKET_IN'
-                pkt_in_pkt = None
-                if 'PACKET_IN' in pkt:
-                    data = eval('/'.join(pkt['PACKET_IN']))
-                    data.serialize()
-                    pkt_data['PACKET_IN'] = str(data.data)
-
-                if out_pkt and pkt_in_pkt:
-                    raise ValueError(
-                        'There must not be both "egress" and "PACKET_IN".')
-                if not out_pkt and not pkt_in_pkt:
-                    table_miss_flg = True
-
-                packets.append(pkt_data)
-
-            # parse 'target_tables'
-            if table_miss_flg:
-                target_tbls = ([0] if not 'target_tables' in buf
-                               else buf['target_tables'])
-
-        return (description, flows, packets, target_tbls)
+        return (description, prerequisite, tests)
 
 
 class DummyDatapath(object):

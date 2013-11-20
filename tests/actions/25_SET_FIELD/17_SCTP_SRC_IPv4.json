@@ -1,77 +1,7 @@
 [
     {
-        "FLOW_MOD":[
-            {
-                "OFPFlowMod":{
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionSetField":{
-                                            "field":{
-                                                "OXMTlv":{
-                                                    "field":"sctp_src",
-                                                    "value":12345
-                                                }
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":2048
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ip_proto",
-                                        "value":132
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"sctp_src",
-                                        "value":11111
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            }
-        ],
         "description":"test00: actions[OFPActionSetField[sctp_src=12345]] packet=ethernet/ipv4/sctp",
-        "packets":[
-            {
-                "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=12345)"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
-                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
-                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
-                ]
-            }
-        ]
-    },
-    {
-        "FLOW_MOD":[
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -125,8 +55,78 @@
                 }
             }
         ],
+        "tests":[
+            {
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=12345)"
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
+                    "ipv4(tos=32, proto=132, src='192.168.10.10', dst='192.168.20.20', ttl=64)",
+                    "sctp(chunks=[chunk_data(payload_data='0123456789abcdefghijklmnopqrstuvwxyz')], dst_port=2222, src_port=11111)"
+                ]
+            }
+        ]
+    },
+    {
         "description":"test01: actions[OFPActionSetField[sctp_src=12345]] packet=ethernet/vlan/ipv4/sctp",
-        "packets":[
+        "prerequisite":[
+            {
+                "OFPFlowMod":{
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"sctp_src",
+                                                    "value":12345
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":2048
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":132
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"sctp_src",
+                                        "value":11111
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -144,7 +144,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test02: actions[OFPActionSetField[sctp_src=12345]] packet=ethernet/mpls/ipv4/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -236,8 +237,7 @@
                 }
             }
         ],
-        "description":"test02: actions[OFPActionSetField[sctp_src=12345]] packet=ethernet/mpls/ipv4/sctp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -254,7 +254,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test03: actions[OFPActionSetField[sctp_src=12345]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -308,8 +309,7 @@
                 }
             }
         ],
-        "description":"test03: actions[OFPActionSetField[sctp_src=12345]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/sctp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",

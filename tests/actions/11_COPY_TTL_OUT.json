@@ -1,6 +1,7 @@
 [
     {
-        "FLOW_MOD":[
+        "description":"test00: actions[OFPActionCopyTtlOut] packet=ethernet/mpls/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -35,8 +36,7 @@
                 }
             }
         ],
-        "description":"test00: actions[OFPActionCopyTtlOut] packet=ethernet/mpls/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
@@ -56,7 +56,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test01: actions[OFPActionCopyTtlOut] packet=ethernet/mpls/ipv6/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -91,8 +92,7 @@
                 }
             }
         ],
-        "description":"test01: actions[OFPActionCopyTtlOut] packet=ethernet/mpls/ipv6/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",

@@ -1,6 +1,7 @@
 [
     {
-        "FLOW_MOD":[
+        "description":"test00: match[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -40,8 +41,7 @@
                 }
             }
         ],
-        "description":"test00: match[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/arp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
@@ -55,7 +55,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test01: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -96,8 +97,7 @@
                 }
             }
         ],
-        "description":"test01: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/arp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
@@ -111,7 +111,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test02: unmatch[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -151,18 +152,21 @@
                 }
             }
         ],
-        "description":"test02: unmatch[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/arp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2054)",
                     "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test03: match[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -202,8 +206,7 @@
                 }
             }
         ],
-        "description":"test03: match[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/arp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -219,7 +222,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test04: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -260,8 +264,7 @@
                 }
             }
         ],
-        "description":"test04: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/arp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -277,7 +280,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test05: unmatch[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -317,19 +321,22 @@
                 }
             }
         ],
-        "description":"test05: unmatch[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/vlan/arp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)",
                     "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test06: match[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -406,8 +413,7 @@
                 }
             }
         ],
-        "description":"test06: match[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/arp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
@@ -422,7 +428,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test07: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -500,8 +507,7 @@
                 }
             }
         ],
-        "description":"test07: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/arp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
@@ -516,7 +522,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test08: unmatch[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -593,22 +600,22 @@
                 }
             }
         ],
-        "description":"test08: unmatch[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/mpls/arp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34887)",
                     "mpls(bsb=1, label=203, exp=5, ttl=127)",
                     "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                ],
+                "table-miss":[
+                    1
                 ]
             }
-        ],
-        "target_tables":[
-            1
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test09: match[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -648,8 +655,7 @@
                 }
             }
         ],
-        "description":"test09: match[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -673,7 +679,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test10: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -714,8 +721,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -739,7 +745,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test11: unmatch[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -779,8 +786,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=2054/arp_tpa=192.168.0.20(mask=ffff00ff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)",
@@ -790,6 +796,9 @@
                     "svlan(ethertype=33024, vid=10)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)",
                     "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]

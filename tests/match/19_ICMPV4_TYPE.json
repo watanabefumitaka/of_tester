@@ -1,6 +1,7 @@
 [
     {
-        "FLOW_MOD":[
+        "description":"test00: match[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -45,8 +46,7 @@
                 }
             }
         ],
-        "description":"test00: match[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -62,7 +62,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test01: match(PACKET_IN)[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -108,8 +109,7 @@
                 }
             }
         ],
-        "description":"test01: match(PACKET_IN)[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -125,7 +125,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test02: unmatch[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -170,19 +171,22 @@
                 }
             }
         ],
-        "description":"test02: unmatch[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2048)",
                     "ipv4(tos=65, proto=1, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "icmp(code=1,csum=0,data=dest_unreach(data='\\xd3]\\xb7\\xe3\\x9e\\xbb\\xf3\\xd6\\x9bq\\xd7\\x9f\\x82\\x18\\xa3\\x92Y\\xa7\\xa2\\x9a\\xab\\xb2\\xdb\\xaf\\xc3\\x1c\\xb3\\x00\\x10\\x83\\x10Q\\x87 \\x92\\x8b'),type_=3)"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test03: match[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/vlan/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -227,8 +231,7 @@
                 }
             }
         ],
-        "description":"test03: match[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/vlan/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -246,7 +249,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test04: match(PACKET_IN)[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/vlan/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -292,8 +296,7 @@
                 }
             }
         ],
-        "description":"test04: match(PACKET_IN)[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/vlan/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -311,7 +314,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test05: unmatch[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/vlan/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -356,20 +360,23 @@
                 }
             }
         ],
-        "description":"test05: unmatch[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/vlan/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2048)",
                     "ipv4(tos=65, proto=1, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "icmp(code=1,csum=0,data=dest_unreach(data='\\xd3]\\xb7\\xe3\\x9e\\xbb\\xf3\\xd6\\x9bq\\xd7\\x9f\\x82\\x18\\xa3\\x92Y\\xa7\\xa2\\x9a\\xab\\xb2\\xdb\\xaf\\xc3\\x1c\\xb3\\x00\\x10\\x83\\x10Q\\x87 \\x92\\x8b'),type_=3)"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test06: match[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/mpls/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -451,8 +458,7 @@
                 }
             }
         ],
-        "description":"test06: match[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/mpls/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -469,7 +475,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test07: match(PACKET_IN)[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/mpls/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -552,8 +559,7 @@
                 }
             }
         ],
-        "description":"test07: match(PACKET_IN)[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/mpls/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -570,7 +576,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test08: unmatch[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/mpls/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -652,23 +659,23 @@
                 }
             }
         ],
-        "description":"test08: unmatch[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/mpls/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34887)",
                     "mpls(bsb=1, label=203, exp=5, ttl=127)",
                     "ipv4(tos=65, proto=1, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "icmp(code=1,csum=0,data=dest_unreach(data='\\xd3]\\xb7\\xe3\\x9e\\xbb\\xf3\\xd6\\x9bq\\xd7\\x9f\\x82\\x18\\xa3\\x92Y\\xa7\\xa2\\x9a\\xab\\xb2\\xdb\\xaf\\xc3\\x1c\\xb3\\x00\\x10\\x83\\x10Q\\x87 \\x92\\x8b'),type_=3)"
+                ],
+                "table-miss":[
+                    1
                 ]
             }
-        ],
-        "target_tables":[
-            1
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test09: match[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -713,8 +720,7 @@
                 }
             }
         ],
-        "description":"test09: match[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -740,7 +746,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test10: match(PACKET_IN)[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -786,8 +793,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -813,7 +819,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test11: unmatch[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -858,8 +865,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)",
@@ -870,6 +876,9 @@
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=2048)",
                     "ipv4(tos=65, proto=1, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "icmp(code=1,csum=0,data=dest_unreach(data='\\xd3]\\xb7\\xe3\\x9e\\xbb\\xf3\\xd6\\x9bq\\xd7\\x9f\\x82\\x18\\xa3\\x92Y\\xa7\\xa2\\x9a\\xab\\xb2\\xdb\\xaf\\xc3\\x1c\\xb3\\x00\\x10\\x83\\x10Q\\x87 \\x92\\x8b'),type_=3)"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]

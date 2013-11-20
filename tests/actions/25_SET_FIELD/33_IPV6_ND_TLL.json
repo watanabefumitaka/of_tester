@@ -1,83 +1,7 @@
 [
     {
-        "FLOW_MOD":[
-            {
-                "OFPFlowMod":{
-                    "instructions":[
-                        {
-                            "OFPInstructionActions":{
-                                "actions":[
-                                    {
-                                        "OFPActionSetField":{
-                                            "field":{
-                                                "OXMTlv":{
-                                                    "field":"ipv6_nd_tll",
-                                                    "value":"aa:aa:aa:aa:aa:aa"
-                                                }
-                                            }
-                                        }
-                                    },
-                                    {
-                                        "OFPActionOutput":{
-                                            "port":2
-                                        }
-                                    }
-                                ],
-                                "type":4
-                            }
-                        }
-                    ],
-                    "match":{
-                        "OFPMatch":{
-                            "oxm_fields":[
-                                {
-                                    "OXMTlv":{
-                                        "field":"eth_type",
-                                        "value":34525
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ip_proto",
-                                        "value":58
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"icmpv6_type",
-                                        "value":136
-                                    }
-                                },
-                                {
-                                    "OXMTlv":{
-                                        "field":"ipv6_nd_tll",
-                                        "value":"11:11:11:11:11:11"
-                                    }
-                                }
-                            ]
-                        }
-                    }
-                }
-            }
-        ],
         "description":"test00: actions[OFPActionSetField[ipv6_nd_tll=aa:aa:aa:aa:aa:aa]] packet=ethernet/ipv6/icmpv6",
-        "packets":[
-            {
-                "egress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_tla(hw_src='aa:aa:aa:aa:aa:aa'),dst='20::20'),type_=136)"
-                ],
-                "ingress":[
-                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
-                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
-                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_tla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=136)"
-                ]
-            }
-        ]
-    },
-    {
-        "FLOW_MOD":[
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -137,8 +61,84 @@
                 }
             }
         ],
+        "tests":[
+            {
+                "egress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
+                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_tla(hw_src='aa:aa:aa:aa:aa:aa'),dst='20::20'),type_=136)"
+                ],
+                "ingress":[
+                    "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
+                    "ipv6(dst='20::20', flow_label=100, src='10::10', nxt=58, hop_limit=64, traffic_class=32)",
+                    "icmpv6(code=0,data=nd_neighbor(option=nd_option_tla(hw_src='11:11:11:11:11:11'),dst='20::20'),type_=136)"
+                ]
+            }
+        ]
+    },
+    {
         "description":"test01: actions[OFPActionSetField[ipv6_nd_tll=aa:aa:aa:aa:aa:aa]] packet=ethernet/vlan/ipv6/icmpv6",
-        "packets":[
+        "prerequisite":[
+            {
+                "OFPFlowMod":{
+                    "instructions":[
+                        {
+                            "OFPInstructionActions":{
+                                "actions":[
+                                    {
+                                        "OFPActionSetField":{
+                                            "field":{
+                                                "OXMTlv":{
+                                                    "field":"ipv6_nd_tll",
+                                                    "value":"aa:aa:aa:aa:aa:aa"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "OFPActionOutput":{
+                                            "port":2
+                                        }
+                                    }
+                                ],
+                                "type":4
+                            }
+                        }
+                    ],
+                    "match":{
+                        "OFPMatch":{
+                            "oxm_fields":[
+                                {
+                                    "OXMTlv":{
+                                        "field":"eth_type",
+                                        "value":34525
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ip_proto",
+                                        "value":58
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"icmpv6_type",
+                                        "value":136
+                                    }
+                                },
+                                {
+                                    "OXMTlv":{
+                                        "field":"ipv6_nd_tll",
+                                        "value":"11:11:11:11:11:11"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        ],
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -156,7 +156,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test02: actions[OFPActionSetField[ipv6_nd_tll=aa:aa:aa:aa:aa:aa]] packet=ethernet/mpls/ipv6/icmpv6",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -254,8 +255,7 @@
                 }
             }
         ],
-        "description":"test02: actions[OFPActionSetField[ipv6_nd_tll=aa:aa:aa:aa:aa:aa]] packet=ethernet/mpls/ipv6/icmpv6",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
@@ -272,7 +272,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test03: actions[OFPActionSetField[ipv6_nd_tll=aa:aa:aa:aa:aa:aa]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -332,8 +333,7 @@
                 }
             }
         ],
-        "description":"test03: actions[OFPActionSetField[ipv6_nd_tll=aa:aa:aa:aa:aa:aa]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",

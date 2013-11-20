@@ -1,6 +1,7 @@
 [
     {
-        "FLOW_MOD":[
+        "description":"test00: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -42,8 +43,7 @@
                 }
             }
         ],
-        "description":"test00: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -63,7 +63,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test01: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/ipv6/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -105,8 +106,7 @@
                 }
             }
         ],
-        "description":"test01: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/ipv6/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -126,7 +126,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test02: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -168,8 +169,7 @@
                 }
             }
         ],
-        "description":"test02: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/arp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",

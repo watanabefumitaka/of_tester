@@ -1,6 +1,7 @@
 [
     {
-        "FLOW_MOD":[
+        "description":"test00: match[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -45,8 +46,7 @@
                 }
             }
         ],
-        "description":"test00: match[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -64,7 +64,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test01: match(PACKET_IN)[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -110,8 +111,7 @@
                 }
             }
         ],
-        "description":"test01: match(PACKET_IN)[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -129,7 +129,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test02: unmatch[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -174,20 +175,23 @@
                 }
             }
         ],
-        "description":"test02: unmatch[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2048)",
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test03: match[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/vlan/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -232,8 +236,7 @@
                 }
             }
         ],
-        "description":"test03: match[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/vlan/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -253,7 +256,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test04: match(PACKET_IN)[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/vlan/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -299,8 +303,7 @@
                 }
             }
         ],
-        "description":"test04: match(PACKET_IN)[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/vlan/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -320,7 +323,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test05: unmatch[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/vlan/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -365,8 +369,7 @@
                 }
             }
         ],
-        "description":"test05: unmatch[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/vlan/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
@@ -374,12 +377,16 @@
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test06: match[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/mpls/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -461,8 +468,7 @@
                 }
             }
         ],
-        "description":"test06: match[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/mpls/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -481,7 +487,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test07: match(PACKET_IN)[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/mpls/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -564,8 +571,7 @@
                 }
             }
         ],
-        "description":"test07: match(PACKET_IN)[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/mpls/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -584,7 +590,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test08: unmatch[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/mpls/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -666,8 +673,7 @@
                 }
             }
         ],
-        "description":"test08: unmatch[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/mpls/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34887)",
@@ -675,15 +681,16 @@
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ],
+                "table-miss":[
+                    1
                 ]
             }
-        ],
-        "target_tables":[
-            1
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test09: match[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -728,8 +735,7 @@
                 }
             }
         ],
-        "description":"test09: match[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -757,7 +763,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test10: match(PACKET_IN)[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -803,8 +810,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -832,7 +838,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test11: unmatch[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -877,8 +884,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)",
@@ -890,6 +896,9 @@
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]

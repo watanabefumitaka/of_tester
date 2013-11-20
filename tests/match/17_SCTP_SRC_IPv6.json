@@ -1,6 +1,7 @@
 [
     {
-        "FLOW_MOD":[
+        "description":"test00: match[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -45,8 +46,7 @@
                 }
             }
         ],
-        "description":"test00: match[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
@@ -62,7 +62,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test01: match(PACKET_IN)[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -108,8 +109,7 @@
                 }
             }
         ],
-        "description":"test01: match(PACKET_IN)[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
@@ -125,7 +125,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test02: unmatch[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -170,19 +171,22 @@
                 }
             }
         ],
-        "description":"test02: unmatch[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34525)",
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=132, hop_limit=127, traffic_class=65)",
                     "sctp(chunks=[chunk_data(payload_data='abcdefghijklmnopqrstuvwxyz0123456789')], dst_port=6789, src_port=12345)"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test03: match[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/vlan/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -227,8 +231,7 @@
                 }
             }
         ],
-        "description":"test03: match[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/vlan/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -246,7 +249,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test04: match(PACKET_IN)[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/vlan/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -292,8 +296,7 @@
                 }
             }
         ],
-        "description":"test04: match(PACKET_IN)[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/vlan/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=33024)",
@@ -311,7 +314,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test05: unmatch[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/vlan/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -356,20 +360,23 @@
                 }
             }
         ],
-        "description":"test05: unmatch[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/vlan/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)",
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=132, hop_limit=127, traffic_class=65)",
                     "sctp(chunks=[chunk_data(payload_data='abcdefghijklmnopqrstuvwxyz0123456789')], dst_port=6789, src_port=12345)"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test06: match[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/mpls/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -451,8 +458,7 @@
                 }
             }
         ],
-        "description":"test06: match[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/mpls/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
@@ -469,7 +475,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test07: match(PACKET_IN)[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/mpls/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -552,8 +559,7 @@
                 }
             }
         ],
-        "description":"test07: match(PACKET_IN)[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/mpls/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
@@ -570,7 +576,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test08: unmatch[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/mpls/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -652,23 +659,23 @@
                 }
             }
         ],
-        "description":"test08: unmatch[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/mpls/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34887)",
                     "mpls(bsb=1, label=203, exp=5, ttl=127)",
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=132, hop_limit=127, traffic_class=65)",
                     "sctp(chunks=[chunk_data(payload_data='abcdefghijklmnopqrstuvwxyz0123456789')], dst_port=6789, src_port=12345)"
+                ],
+                "table-miss":[
+                    1
                 ]
             }
-        ],
-        "target_tables":[
-            1
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test09: match[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -713,8 +720,7 @@
                 }
             }
         ],
-        "description":"test09: match[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -740,7 +746,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test10: match(PACKET_IN)[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -786,8 +793,7 @@
                 }
             }
         ],
-        "description":"test10: match(PACKET_IN)[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34984)",
@@ -813,7 +819,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test11: unmatch[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/sctp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -858,8 +865,7 @@
                 }
             }
         ],
-        "description":"test11: unmatch[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/sctp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34984)",
@@ -870,6 +876,9 @@
                     "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)",
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=132, hop_limit=127, traffic_class=65)",
                     "sctp(chunks=[chunk_data(payload_data='abcdefghijklmnopqrstuvwxyz0123456789')], dst_port=6789, src_port=12345)"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]

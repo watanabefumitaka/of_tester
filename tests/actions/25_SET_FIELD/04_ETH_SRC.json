@@ -1,6 +1,7 @@
 [
     {
-        "FLOW_MOD":[
+        "description":"test00: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -42,8 +43,7 @@
                 }
             }
         ],
-        "description":"test00: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='aa:aa:aa:aa:aa:aa', ethertype=2048)",
@@ -61,7 +61,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test01: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/ipv6/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -103,8 +104,7 @@
                 }
             }
         ],
-        "description":"test01: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/ipv6/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='aa:aa:aa:aa:aa:aa', ethertype=34525)",
@@ -122,7 +122,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test02: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -164,8 +165,7 @@
                 }
             }
         ],
-        "description":"test02: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/arp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='aa:aa:aa:aa:aa:aa', ethertype=2054)",

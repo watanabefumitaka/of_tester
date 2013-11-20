@@ -1,6 +1,7 @@
 [
     {
-        "FLOW_MOD":[
+        "description":"test00: match[eth_type=2048] packet=ethernet/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -33,8 +34,7 @@
                 }
             }
         ],
-        "description":"test00: match[eth_type=2048] packet=ethernet/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -52,7 +52,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test01: match(PACKET_IN)[eth_type=2048] packet=ethernet/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -86,8 +87,7 @@
                 }
             }
         ],
-        "description":"test01: match(PACKET_IN)[eth_type=2048] packet=ethernet/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2048)",
@@ -105,7 +105,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test02: unmatch[eth_type=2054] packet=ethernet/ipv4/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -138,20 +139,23 @@
                 }
             }
         ],
-        "description":"test02: unmatch[eth_type=2054] packet=ethernet/ipv4/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2048)",
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test03: match[eth_type=34525] packet=ethernet/ipv6/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -184,8 +188,7 @@
                 }
             }
         ],
-        "description":"test03: match[eth_type=34525] packet=ethernet/ipv6/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
@@ -203,7 +206,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test04: match(PACKET_IN)[eth_type=34525] packet=ethernet/ipv6/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -237,8 +241,7 @@
                 }
             }
         ],
-        "description":"test04: match(PACKET_IN)[eth_type=34525] packet=ethernet/ipv6/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34525)",
@@ -256,7 +259,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test05: unmatch[eth_type=2054] packet=ethernet/ipv6/tcp/str",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -289,20 +293,23 @@
                 }
             }
         ],
-        "description":"test05: unmatch[eth_type=2054] packet=ethernet/ipv6/tcp/str",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34525)",
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127, traffic_class=65)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test06: match[eth_type=2054] packet=ethernet/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -335,8 +342,7 @@
                 }
             }
         ],
-        "description":"test06: match[eth_type=2054] packet=ethernet/arp",
-        "packets":[
+        "tests":[
             {
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
@@ -350,7 +356,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test07: match(PACKET_IN)[eth_type=2054] packet=ethernet/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -384,8 +391,7 @@
                 }
             }
         ],
-        "description":"test07: match(PACKET_IN)[eth_type=2054] packet=ethernet/arp",
-        "packets":[
+        "tests":[
             {
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=2054)",
@@ -399,7 +405,8 @@
         ]
     },
     {
-        "FLOW_MOD":[
+        "description":"test08: unmatch[eth_type=2048] packet=ethernet/arp",
+        "prerequisite":[
             {
                 "OFPFlowMod":{
                     "instructions":[
@@ -432,12 +439,14 @@
                 }
             }
         ],
-        "description":"test08: unmatch[eth_type=2048] packet=ethernet/arp",
-        "packets":[
+        "tests":[
             {
                 "ingress":[
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2054)",
                     "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                ],
+                "table-miss":[
+                    0
                 ]
             }
         ]
