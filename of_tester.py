@@ -73,7 +73,7 @@ from ryu.ofproto import ofproto_v1_3_parser
 """
 
 # Log file path.
-LOG_FILENAME = './tester.log'
+LOG_FILENAME = './tester.log'  #TODO: output log file.
 
 # Command line parameters.
 DEBUG_MODE = '--verbose'
@@ -259,6 +259,7 @@ class OfTester(app_manager.RyuApp):
     def _set_logger(self, debug_mode):
         self.logger.propagate = False
         s_hdlr = logging.StreamHandler()
+        #TODO: output log file.
         f_hdlr = logging.FileHandler(filename=LOG_FILENAME, mode='w')
         fmt_str = '%(asctime)s [%(levelname)s] %(message)s'
         s_hdlr.setFormatter(logging.Formatter(fmt_str))
@@ -511,6 +512,10 @@ class OfTester(app_manager.RyuApp):
                 self.logger.debug("dpid=%s : receive_packet[%s]",
                                   dpid_lib.dpid_to_str(msg.datapath.id),
                                   packet.Packet(msg.data))
+                #TODO: debug
+                pkt = packet.Packet(msg.data)
+                if arp in pkt:
+                    self.logger.info('receive packet[%s]', pkt)
 
                 # 3. confirm which switch sent the message.
                 if msg.reason != ofproto_v1_3.OFPR_ACTION:
@@ -859,6 +864,8 @@ class Test(object):
             if not KEY_INGRESS in test:
                 raise ValueError('a test requires "%s" field.' % KEY_INGRESS)
             test_pkt[KEY_INGRESS] = __test_pkt_from_json(test[KEY_INGRESS])
+            if len(test_pkt[KEY_INGRESS]) < 64:
+                print 'NG!!!'
             # parse 'egress' or 'PACKET_IN' or 'table-miss'
             if KEY_EGRESS in test:
                 test_pkt[KEY_EGRESS] = __test_pkt_from_json(test[KEY_EGRESS])
