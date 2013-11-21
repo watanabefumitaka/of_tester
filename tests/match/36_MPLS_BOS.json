@@ -356,7 +356,7 @@
         ]
     },
     {
-        "description":"test06: match[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/arp",
+        "description":"test06: match[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/arp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -401,18 +401,20 @@
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')",
+                    "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
                 ],
                 "egress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')",
+                    "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
                 ]
             }
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/arp",
+        "description":"test07: match(PACKET_IN)[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/arp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -458,18 +460,20 @@
                 "ingress":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')",
+                    "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
                 ],
                 "PACKET_IN":[
                     "ethernet(dst='22:22:22:22:22:22', src='11:11:11:11:11:11', ethertype=34887)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')"
+                    "arp(dst_ip='192.168.20.20',dst_mac='22:22:22:22:22:22', opcode=1, src_ip='192.168.10.10',src_mac='11:11:11:11:11:11')",
+                    "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
                 ]
             }
         ]
     },
     {
-        "description":"test08: unmatch[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/mpls/arp",
+        "description":"test08: unmatch[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/mpls/arp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -515,7 +519,8 @@
                     "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34887)",
                     "mpls(bsb=0, label=203, exp=5, ttl=127)",
                     "mpls(bsb=1, label=100, exp=3, ttl=64)",
-                    "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')"
+                    "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')",
+                    "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
                 ],
                 "table-miss":[
                     0
