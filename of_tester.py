@@ -86,6 +86,8 @@ DEFAULT_TARGET_DPID = dpid_lib.str_to_dpid('0000000000000001')
 DEFAULT_TESTER_DPID = dpid_lib.str_to_dpid('0000000000000002')
 TESTER_SENDER_PORT = 1
 TESTER_RECEIVE_PORT = 2
+TARGET_SENDER_PORT = 2
+TARGET_RECEIVE_PORT = 1
 
 WAIT_TIMER = 3  # sec
 
@@ -103,10 +105,13 @@ KEY_TBL_MISS = 'table-miss'
 STATE_INIT = 0
 STATE_FLOW_INSTALL = 1
 STATE_FLOW_EXIST_CHK = 2
-STATE_FLOW_MATCH_CHK = 3
-STATE_GET_MATCH_COUNT = 4
-STATE_UNMATCH_PKT_SEND = 5
-STATE_FLOW_UNMATCH_CHK = 6
+STATE_TARGET_PKT_COUNT = 3
+STATE_TESTER_PKT_COUNT = 4
+STATE_FLOW_MATCH_CHK = 5
+STATE_NO_PKTIN_REASON = 6
+STATE_GET_MATCH_COUNT = 7
+STATE_UNMATCH_PKT_SEND = 8
+STATE_FLOW_UNMATCH_CHK = 9
 
 # Test result.
 OK = 'OK'
@@ -132,10 +137,19 @@ MSG = {STATE_INIT:
        {FAILURE: 'expected flow was not installed. %(flows)s',
         TIMEOUT: 'flow existence check is failure. no OFPFlowStatsReply.',
         RCV_ERR: 'flow existence check is failure. %(err_msg)s'},
+       STATE_TARGET_PKT_COUNT:
+       {TIMEOUT: 'get before target SW packet count is failure.'
+                 ' no OFPPortStatsReply.',
+        RCV_ERR: 'get before target SW packet count is failure. %(err_msg)s'},
+       STATE_TESTER_PKT_COUNT:
+       {TIMEOUT: 'get before tester SW packet count is failure.'
+                 ' no OFPPortStatsReply.',
+        RCV_ERR: 'get before tester SW packet count is failure. %(err_msg)s'},
        STATE_FLOW_MATCH_CHK:
        {FAILURE: 'failed to validate packet. %(rcv_pkt)s',
-        TIMEOUT: 'flow matching is failure. no OFPPacketIn.',
         RCV_ERR: 'flow matching is failure. tester SW error. %(err_msg)s'},
+       STATE_NO_PKTIN_REASON:
+       {FAILURE: 'flow matching is failure. %(detail)s'},
        STATE_GET_MATCH_COUNT:
        {TIMEOUT: 'get before table matched count is failure.'
                  ' no OFPTableStatsReply.',
@@ -162,29 +176,31 @@ def coloring(msg, color):
     return color + msg + END_TAG
 
 
-class TestFailure(RyuException):
+class TestMessageBase(RyuException):
+    def __init__(self, state, message_type, **argv):
+        msg = NG % {'detail': (MSG[state][message_type] % argv)}
+        super(TestMessageBase, self).__init__(msg=msg)
+
+
+class TestFailure(TestMessageBase):
     def __init__(self, state, **argv):
-        msg = NG % {'detail': (MSG[state][FAILURE] % argv)}
-        super(TestFailure, self).__init__(msg=msg)
+        super(TestFailure, self).__init__(state, FAILURE, **argv)
 
 
-class TestTimeout(RyuException):
+class TestTimeout(TestMessageBase):
     def __init__(self, state):
-        msg = NG % {'detail': MSG[state][TIMEOUT]}
-        super(TestTimeout, self).__init__(msg=msg)
+        super(TestTimeout, self).__init__(state, TIMEOUT)
 
 
-class TestReceiveError(RyuException):
+class TestReceiveError(TestMessageBase):
     def __init__(self, state, err_msg):
-        msg = NG % {'detail': MSG[state][RCV_ERR] %
-                   {'err_msg': ERR_MSG % (err_msg.type, err_msg.code)}}
-        super(TestReceiveError, self).__init__(msg=msg)
+        argv = {'err_msg': ERR_MSG % (err_msg.type, err_msg.code)}
+        super(TestReceiveError, self).__init__(state, RCV_ERR, **argv)
 
 
-class TestError(RyuException):
+class TestError(TestMessageBase):
     def __init__(self, state, **argv):
-        msg = NG % {'detail': (MSG[state][ERROR] % argv)}
-        super(TestError, self).__init__(msg=msg)
+        super(TestError, self).__init__(state, ERROR, **argv)
 
 
 def main():
@@ -351,7 +367,20 @@ class OfTester(app_manager.RyuApp):
                 # 2. Check flow matching.
                 for pkt in test.tests:
                     if KEY_EGRESS in pkt or KEY_PKT_IN in pkt:
-                        self._test(STATE_FLOW_MATCH_CHK, pkt)
+                        target_pkt_count = [self._test(STATE_TARGET_PKT_COUNT,
+                                                       True)]
+                        tester_pkt_count = [self._test(STATE_TESTER_PKT_COUNT,
+                                                       False)]
+                        result = self._test(STATE_FLOW_MATCH_CHK, pkt)
+                        if result == TIMEOUT:
+                            target_pkt_count.append(self._test(
+                                STATE_TARGET_PKT_COUNT, True))
+                            tester_pkt_count.append(self._test(
+                                STATE_TESTER_PKT_COUNT, False))
+                            test_type = (KEY_EGRESS if KEY_EGRESS in pkt
+                                         else KEY_PKT_IN)
+                            self._test(STATE_NO_PKTIN_REASON, test_type,
+                                       target_pkt_count, tester_pkt_count)
                     else:
                         before_stats = self._test(STATE_GET_MATCH_COUNT)
                         self._test(STATE_UNMATCH_PKT_SEND, pkt)
@@ -389,7 +418,10 @@ class OfTester(app_manager.RyuApp):
         test = {STATE_INIT: self._test_initialize,
                 STATE_FLOW_INSTALL: self._test_flow_install,
                 STATE_FLOW_EXIST_CHK: self._test_flow_exist_check,
+                STATE_TARGET_PKT_COUNT: self._test_get_packet_count,
+                STATE_TESTER_PKT_COUNT: self._test_get_packet_count,
                 STATE_FLOW_MATCH_CHK: self._test_flow_matching_check,
+                STATE_NO_PKTIN_REASON: self._test_no_pktin_reason_check,
                 STATE_GET_MATCH_COUNT: self._test_get_match_count,
                 STATE_UNMATCH_PKT_SEND: self._test_unmatch_packet_send,
                 STATE_FLOW_UNMATCH_CHK: self._test_flow_unmatching_check}
@@ -440,6 +472,15 @@ class OfTester(app_manager.RyuApp):
                     ng_stats.append(stats)
         raise TestFailure(self.state, flows=', '.join(ng_stats))
 
+    def _test_get_packet_count(self, is_target):
+        sw = self.target_sw if is_target else self.tester_sw
+        xid = sw.send_port_stats()
+        self.send_msg_xids.append(xid)
+        self._wait()
+        return {stats.port_no: {'rx': stats.rx_packets,
+                                 'tx': stats.tx_packets}
+                for msg in self.rcv_msgs for stats in msg.body}
+
     def _test_flow_matching_check(self, pkt):
         def __diff_packets(model_pkt, rcv_pkt):
             msg = []
@@ -468,7 +509,6 @@ class OfTester(app_manager.RyuApp):
                         if (not model_protocols or
                                 not str(rcv_p) in str(model_protocols)):
                             msg.append(str(rcv_p))
-
                 else:
                     model_p = ''
                     for p in model_pkt.protocols:
@@ -477,7 +517,6 @@ class OfTester(app_manager.RyuApp):
                             break
                     if model_p != rcv_p:
                         msg.append('str(%s)' % repr(rcv_p))
-
             if msg:
                 return '/'.join(msg)
             else:
@@ -554,7 +593,34 @@ class OfTester(app_manager.RyuApp):
                 raise TestFailure(self.state,
                                   rcv_pkt=', '.join(log_msg))
             else:
-                raise TestTimeout(self.state)
+                return TIMEOUT
+        return OK
+
+    def _test_no_pktin_reason_check(self, test_type,
+                                    target_pkt_count, tester_pkt_count):
+        before_target_receive = target_pkt_count[0][TARGET_RECEIVE_PORT]['rx']
+        before_target_send = target_pkt_count[0][TARGET_SENDER_PORT]['tx']
+        before_tester_receive = tester_pkt_count[0][TESTER_RECEIVE_PORT]['rx']
+        before_tester_send = tester_pkt_count[0][TESTER_SENDER_PORT]['tx']
+        after_target_receive = target_pkt_count[1][TARGET_RECEIVE_PORT]['rx']
+        after_target_send = target_pkt_count[1][TARGET_SENDER_PORT]['tx']
+        after_tester_receive = tester_pkt_count[1][TESTER_RECEIVE_PORT]['rx']
+        after_tester_send = tester_pkt_count[1][TESTER_SENDER_PORT]['tx']
+
+        if after_tester_send == before_tester_send:
+            log_msg = 'tester SW send error.'
+        elif after_target_receive == before_target_receive:
+            log_msg = 'target SW receive error.'
+        elif (test_type == KEY_EGRESS and
+                    after_target_send == before_target_send):
+            log_msg = 'target SW send error.'
+        elif (test_type == KEY_EGRESS and
+                    after_tester_receive == before_tester_receive):
+            log_msg = 'tester SW receive error.'
+        else:
+            log_msg = 'no OFPPacketIn.'
+
+        raise TestFailure(self.state, detail=log_msg)
 
     def _test_get_match_count(self):
         xid = self.target_sw.send_table_stats()
@@ -579,12 +645,8 @@ class OfTester(app_manager.RyuApp):
 
     def _test_flow_unmatching_check(self, before_stats, pkt):
         # Check matched packet count.
-        xid = self.target_sw.send_table_stats()
-        self.send_msg_xids.append(xid)
-        self._wait()
-        rcv_msgs = {stats.table_id: {'lookup': stats.lookup_count,
-                                     'matched': stats.matched_count}
-                    for msg in self.rcv_msgs for stats in msg.body}
+        rcv_msgs = self._test_get_match_count()
+
         lookup = False
         for target_tbl_id in pkt[KEY_TBL_MISS]:
             before = before_stats[target_tbl_id]
@@ -660,6 +722,17 @@ class OfTester(app_manager.RyuApp):
                     self.waiter.set()
                     hub.sleep(0)
 
+    @set_ev_cls(ofp_event.EventOFPPortStatsReply, handler.MAIN_DISPATCHER)
+    def port_stats_reply_handler(self, ev):
+        state_list = [STATE_TARGET_PKT_COUNT,
+                      STATE_TESTER_PKT_COUNT]
+        if self.state in state_list:
+            if self.waiter and ev.msg.xid in self.send_msg_xids:
+                self.rcv_msgs.append(ev.msg)
+                if not ev.msg.flags & ofproto_v1_3.OFPMPF_REPLY_MORE:
+                    self.waiter.set()
+                    hub.sleep(0)
+
     @set_ev_cls(ofp_event.EventOFPBarrierReply, handler.MAIN_DISPATCHER)
     def barrier_reply_handler(self, ev):
         state_list = [STATE_INIT,
@@ -726,6 +799,14 @@ class OpenFlowSw(object):
         """ send a BARRIER_REQUEST message."""
         parser = self.dp.ofproto_parser
         req = parser.OFPBarrierRequest(self.dp)
+        return self._send_msg(req)
+
+    def send_port_stats(self):
+        """ Get port stats."""
+        ofp = self.dp.ofproto
+        parser = self.dp.ofproto_parser
+        flags = 0
+        req = parser.OFPPortStatsRequest(self.dp, flags, ofp.OFPP_ANY)
         return self._send_msg(req)
 
 
