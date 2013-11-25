@@ -523,7 +523,6 @@ class OfTester(app_manager.RyuApp):
                 raise RyuException('Internal error.'
                                    ' receive packet is matching.')
 
-        pad_zero = repr('\x00')[1:-1]
         self.logger.debug("send_packet:[%s]", packet.Packet(pkt[KEY_INGRESS]))
         self.logger.debug("egress:[%s]", packet.Packet(pkt.get(KEY_EGRESS)))
         self.logger.debug("packet_in:[%s]",
@@ -561,13 +560,8 @@ class OfTester(app_manager.RyuApp):
                     log_msg.append('OFPPacketIn from unexpected SW[dpid=%s]'
                                    % dpid_lib.dpid_to_str(msg.datapath.id))
                     continue
-                rcv_pkt_model = repr(model_pkt)[1:-1]
-                msg_data = repr(msg.data)[1:-1]
-                rcv_pkt = msg_data[:len(rcv_pkt_model)]
-                padding = msg_data[len(rcv_pkt_model):]
-                padding_model = (pad_zero * ((len(msg_data)
-                                 - len(rcv_pkt_model))/len(pad_zero)))
-                if rcv_pkt != rcv_pkt_model or padding != padding_model:
+
+                if repr(msg.data) != repr(model_pkt):
                     err_msg = __diff_packets(packet.Packet(model_pkt),
                                              packet.Packet(msg.data))
                     log_msg.append(err_msg)
