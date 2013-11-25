@@ -551,10 +551,6 @@ class OfTester(app_manager.RyuApp):
                 self.logger.debug("dpid=%s : receive_packet[%s]",
                                   dpid_lib.dpid_to_str(msg.datapath.id),
                                   packet.Packet(msg.data))
-                #TODO: debug
-                pkt = packet.Packet(msg.data)
-                if arp in pkt:
-                    self.logger.info('receive packet[%s]', pkt)
 
                 # 3. confirm which switch sent the message.
                 if msg.reason != ofproto_v1_3.OFPR_ACTION:
