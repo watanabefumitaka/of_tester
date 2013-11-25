@@ -215,7 +215,7 @@ def main():
     app_mgr.instantiate_apps(**contexts)
 
     ctlr = controller.OpenFlowController()
-    of_tester = app_mgr.applications['of_tester']
+    of_tester = app_mgr.applications['OfTester']
     of_tester.ctlr_thread = hub.spawn(ctlr)
     try:
         hub.joinall([of_tester.ctlr_thread])
