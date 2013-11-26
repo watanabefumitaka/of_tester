@@ -17,6 +17,7 @@ import inspect
 import json
 import logging
 import os
+import signal
 import sys
 import traceback
 
@@ -235,8 +236,7 @@ class OfTester(app_manager.RyuApp):
         if self.test_thread is not None:
             hub.kill(self.test_thread)
             hub.joinall([self.test_thread])
-            self.test_thread = None
-            self.logger.info('--- Test terminated ---')
+        self._test_end('--- Test terminated ---')
 
     @set_ev_cls(ofp_event.EventOFPStateChange,
                 [handler.MAIN_DISPATCHER, handler.DEAD_DISPATCHER])
@@ -286,8 +286,7 @@ class OfTester(app_manager.RyuApp):
         if not tests:
             msg = coloring(NO_TEST_FILE, YELLOW)
             self.logger.warning(msg)
-            self.test_thread = None
-            return
+            self._test_end()
 
         self.logger.info('--- Test start ---')
         test_keys = tests.keys()
@@ -350,11 +349,17 @@ class OfTester(app_manager.RyuApp):
             #print raw_input("> Enter")
 
             if result != OK and self.state == STATE_INIT:
-                break  # Terminate tests.
+                self._test_end('--- Test terminated ---')
             hub.sleep(0)
 
+        self._test_end(msg='---  Test end  ---')
+
+    def _test_end(self, msg=None):
         self.test_thread = None
-        self.logger.info('---  Test end  ---')
+        if msg:
+            self.logger.info(msg)
+        pid = os.getpid()
+        os.kill(pid, signal.SIGTERM)
 
     def _test(self, state, *args):
         test = {STATE_INIT: self._test_initialize,
