@@ -73,6 +73,7 @@ from ryu.ofproto import ofproto_v1_3_parser
 
 """
 
+
 CONF = cfg.CONF
 
 
@@ -207,8 +208,12 @@ class OfTester(app_manager.RyuApp):
         super(OfTester, self).__init__()
         self._set_logger()
 
-        self.target_dpid = CONF.tester.target
-        self.tester_dpid = CONF.tester.tester
+        self.target_dpid = self._convert_dpid(CONF.tester.target)
+        self.tester_dpid = self._convert_dpid(CONF.tester.tester)
+        self.logger.info('target_dpid=%s',
+                         dpid_lib.dpid_to_str(self.target_dpid))
+        self.logger.info('tester_dpid=%s',
+                         dpid_lib.dpid_to_str(self.tester_dpid))
         test_dir = CONF.tester.directory
         self.logger.info('Test files directory = %s', test_dir)
 
@@ -228,9 +233,17 @@ class OfTester(app_manager.RyuApp):
         s_hdlr.setFormatter(logging.Formatter(fmt_str))
         self.logger.addHandler(s_hdlr)
         if CONF.log_file:
-            f_hdlr = logging.FileHandler(filename=CONF.log_file, mode='w')
+            f_hdlr = logging.handlers.WatchedFileHandler(CONF.log_file)
             f_hdlr.setFormatter(logging.Formatter(fmt_str))
             self.logger.addHandler(f_hdlr)
+
+    def _convert_dpid(self, dpid_str):
+        try:
+            dpid = int(dpid_str, 16)
+        except ValueError as err:
+            self.logger.error('Invarid dpid parameter. %s', err)
+            self._test_end()
+        return dpid
 
     def close(self):
         if self.test_thread is not None:
