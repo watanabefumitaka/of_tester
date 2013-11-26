@@ -651,8 +651,8 @@ class OfTester(app_manager.RyuApp):
             raise TestError(self.state)
 
     def _compare_flow(self, stats1, stats2):
-        attr_list = ['cookie', 'priority', 'flags', 'hard_timeout',
-                     'idle_timeout', 'table_id', 'instructions', 'match']
+        attr_list = ['cookie', 'priority', 'hard_timeout', 'idle_timeout',
+                     'table_id', 'instructions', 'match']
         for attr in attr_list:
             value1 = getattr(stats1, attr)
             value2 = getattr(stats2, attr)
