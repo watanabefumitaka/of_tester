@@ -74,9 +74,6 @@ from ryu.ofproto import ofproto_v1_3_parser
 
 CONF = cfg.CONF
 
-# Log file path. TODO: output log file.
-LOG_FILENAME = './tester.log'
-
 
 # Default settings.
 TESTER_SENDER_PORT = 1
