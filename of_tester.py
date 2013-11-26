@@ -13,12 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import base64
 import inspect
 import json
 import logging
 import os
-import struct
 import sys
 import traceback
 
@@ -26,11 +24,11 @@ from oslo.config import cfg
 
 # import all packet libraries.
 PKT_LIB_PATH = 'ryu.lib.packet'
-for modname, mod in sys.modules.iteritems():
-    if not modname.startswith(PKT_LIB_PATH) or not mod:
+for modname, moddef in sys.modules.iteritems():
+    if not modname.startswith(PKT_LIB_PATH) or not moddef:
         continue
-    for (clsname, cls, ) in inspect.getmembers(mod):
-        if not inspect.isclass(cls):
+    for (clsname, clsdef, ) in inspect.getmembers(moddef):
+        if not inspect.isclass(clsdef):
             continue
         exec 'from %s import %s' % (modname, clsname)
 
@@ -75,6 +73,9 @@ from ryu.ofproto import ofproto_v1_3_parser
 """
 
 CONF = cfg.CONF
+
+# Log file path. TODO: output log file.
+LOG_FILENAME = './tester.log'
 
 
 # Default settings.
@@ -422,7 +423,7 @@ class OfTester(app_manager.RyuApp):
         self.send_msg_xids.append(xid)
         self._wait()
         return {stats.port_no: {'rx': stats.rx_packets,
-                                 'tx': stats.tx_packets}
+                                'tx': stats.tx_packets}
                 for msg in self.rcv_msgs for stats in msg.body}
 
     def _test_flow_matching_check(self, pkt):
@@ -546,10 +547,10 @@ class OfTester(app_manager.RyuApp):
         elif after_target_receive == before_target_receive:
             log_msg = 'target SW receive error.'
         elif (test_type == KEY_EGRESS and
-                    after_target_send == before_target_send):
+              after_target_send == before_target_send):
             log_msg = 'target SW send error.'
         elif (test_type == KEY_EGRESS and
-                    after_tester_receive == before_tester_receive):
+              after_tester_receive == before_tester_receive):
             log_msg = 'tester SW receive error.'
         else:
             log_msg = 'no OFPPacketIn.'
@@ -770,7 +771,6 @@ class TargetSw(OpenFlowSw):
 
     def send_table_stats(self):
         """ Get table stats. """
-        ofp = self.dp.ofproto
         parser = self.dp.ofproto_parser
         req = parser.OFPTableStatsRequest(self.dp, 0)
         return self._send_msg(req)
@@ -873,7 +873,7 @@ class Test(object):
                 raise ValueError(
                     '"%s" block requires "%s" field and one of "%s" or "%s"'
                     ' or "%s" field.' % (KEY_TESTS, KEY_INGRESS, KEY_EGRESS,
-                    KEY_PKT_IN, KEY_TBL_MISS))
+                                         KEY_PKT_IN, KEY_TBL_MISS))
             test_pkt = {}
             # parse 'ingress'
             if not KEY_INGRESS in test:
