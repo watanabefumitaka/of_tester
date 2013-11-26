@@ -22,6 +22,8 @@ import struct
 import sys
 import traceback
 
+from oslo.config import cfg
+
 # import all packet libraries.
 PKT_LIB_PATH = 'ryu.lib.packet'
 for modname, mod in sys.modules.iteritems():
@@ -72,18 +74,10 @@ from ryu.ofproto import ofproto_v1_3_parser
 
 """
 
-# Log file path.
-LOG_FILENAME = './tester.log'  #TODO: output log file.
+CONF = cfg.CONF
 
-# Command line parameters.
-DEBUG_MODE = '--verbose'
-ARG_TARGET = '--target='
-ARG_TESTER = '--tester='
 
 # Default settings.
-DEFAULT_DIRECTORY = './tests'
-DEFAULT_TARGET_DPID = dpid_lib.str_to_dpid('0000000000000001')
-DEFAULT_TESTER_DPID = dpid_lib.str_to_dpid('0000000000000002')
 TESTER_SENDER_PORT = 1
 TESTER_RECEIVE_PORT = 2
 TARGET_SENDER_PORT = 2
@@ -205,30 +199,6 @@ class TestError(TestMessageBase):
         super(TestError, self).__init__(state, ERROR, **argv)
 
 
-def main():
-    """ main function. start OpenFlowSwitch Tester. """
-    log.init_log()
-
-    app_lists = ['of_tester',
-                 'ryu.controller.ofp_handler']
-    app_mgr = app_manager.AppManager()
-    app_mgr.load_apps(app_lists)
-    contexts = app_mgr.create_contexts()
-    app_mgr.instantiate_apps(**contexts)
-
-    ctlr = controller.OpenFlowController()
-    of_tester = app_mgr.applications['OfTester']
-    of_tester.ctlr_thread = hub.spawn(ctlr)
-    try:
-        hub.joinall([of_tester.ctlr_thread])
-    finally:
-        app_mgr.close()
-
-
-if __name__ == "__main__":
-    main()
-
-
 class OfTester(app_manager.RyuApp):
     """ OpenFlowSwitch Tester. """
 
@@ -236,16 +206,11 @@ class OfTester(app_manager.RyuApp):
 
     def __init__(self):
         super(OfTester, self).__init__()
-        params = sys.argv
-        debug_mode = bool(DEBUG_MODE in params)
-        if debug_mode:
-            params.remove(DEBUG_MODE)
-        self._set_logger(debug_mode)
+        self._set_logger()
 
-        self.target_dpid = self._get_dpid(params, ARG_TARGET)
-        self.tester_dpid = self._get_dpid(params, ARG_TESTER)
-        self.test_files = (params[1:] if len(params) > 1
-                           else [DEFAULT_DIRECTORY])
+        self.target_dpid = CONF.tester.target
+        self.tester_dpid = CONF.tester.tester
+        self.test_files = [CONF.tester.directory]
         self.logger.info('Test files or directory = %s', self.test_files)
 
         self.target_sw = None
@@ -255,37 +220,18 @@ class OfTester(app_manager.RyuApp):
         self.waiter = None
         self.send_msg_xids = []
         self.rcv_msgs = []
-        self.ctlr_thread = None
         self.test_thread = hub.spawn(self._test_execute)
 
-    def _get_dpid(self, params, arg_type):
-        dpid = (DEFAULT_TARGET_DPID if arg_type == ARG_TARGET
-                else DEFAULT_TESTER_DPID)
-        for param in params:
-            if param.find(arg_type) == 0:
-                try:
-                    dpid = int(param[len(arg_type):], 16)
-                except ValueError as err:
-                    self.logger.error('Invarid %s(dpid) parameter. %s',
-                                      arg_type, err)
-                    sys.exit()
-                params.remove(param)
-                break
-        self.logger.info('%s%s', arg_type, dpid_lib.dpid_to_str(dpid))
-        return dpid
-
-    def _set_logger(self, debug_mode):
+    def _set_logger(self):
         self.logger.propagate = False
-        s_hdlr = logging.StreamHandler()
-        #TODO: output log file.
-        f_hdlr = logging.FileHandler(filename=LOG_FILENAME, mode='w')
         fmt_str = '%(asctime)s [%(levelname)s] %(message)s'
+        s_hdlr = logging.StreamHandler()
         s_hdlr.setFormatter(logging.Formatter(fmt_str))
-        f_hdlr.setFormatter(logging.Formatter(fmt_str))
         self.logger.addHandler(s_hdlr)
-        self.logger.addHandler(f_hdlr)
-        if debug_mode:
-            self.logger.setLevel(logging.DEBUG)
+        if CONF.log_file:
+            f_hdlr = logging.FileHandler(filename=CONF.log_file, mode='w')
+            f_hdlr.setFormatter(logging.Formatter(fmt_str))
+            self.logger.addHandler(f_hdlr)
 
     def close(self):
         if self.test_thread is not None:
@@ -343,8 +289,6 @@ class OfTester(app_manager.RyuApp):
             msg = coloring(NO_TEST_FILE, YELLOW)
             self.logger.warning(msg)
             self.test_thread = None
-            if self.ctlr_thread is not None:
-                hub.kill(self.ctlr_thread)
             return
 
         self.logger.info('--- Test start ---')
@@ -412,8 +356,6 @@ class OfTester(app_manager.RyuApp):
             hub.sleep(0)
 
         self.test_thread = None
-        if self.ctlr_thread is not None:
-            hub.kill(self.ctlr_thread)
         self.logger.info('---  Test end  ---')
 
     def _test(self, state, *args):
