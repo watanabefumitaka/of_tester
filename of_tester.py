@@ -13,22 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import base64
 import inspect
 import json
 import logging
 import os
-import struct
 import sys
 import traceback
 
 # import all packet libraries.
 PKT_LIB_PATH = 'ryu.lib.packet'
-for modname, mod in sys.modules.iteritems():
-    if not modname.startswith(PKT_LIB_PATH) or not mod:
+for modname, moddef in sys.modules.iteritems():
+    if not modname.startswith(PKT_LIB_PATH) or not moddef:
         continue
-    for (clsname, cls, ) in inspect.getmembers(mod):
-        if not inspect.isclass(cls):
+    for (clsname, clsdef, ) in inspect.getmembers(moddef):
+        if not inspect.isclass(clsdef):
             continue
         exec 'from %s import %s' % (modname, clsname)
 
@@ -828,7 +826,6 @@ class TargetSw(OpenFlowSw):
 
     def send_table_stats(self):
         """ Get table stats. """
-        ofp = self.dp.ofproto
         parser = self.dp.ofproto_parser
         req = parser.OFPTableStatsRequest(self.dp, 0)
         return self._send_msg(req)
