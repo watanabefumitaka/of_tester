@@ -1,6 +1,6 @@
 [
     {
-        "description":"test00: match[vlan_vid=0(mask=3)] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"test00: match[vlan_vid=0x1000(mask=0x1000)] packet=ethernet/vlan/ipv4/tcp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -11,8 +11,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":3,
-                                        "value":0
+                                        "mask":4096,
+                                        "value":4096
                                     }
                                 }
                             ]
@@ -55,7 +55,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[vlan_vid=0(mask=3)] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"test01: match(PACKET_IN)[vlan_vid=0x1000(mask=0x1000)] packet=ethernet/vlan/ipv4/tcp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -66,8 +66,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":3,
-                                        "value":0
+                                        "mask":4096,
+                                        "value":4096
                                     }
                                 }
                             ]
@@ -111,7 +111,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[vlan_vid=0(mask=3)] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"test02: unmatch[vlan_vid=0x1000(mask=0x1000)] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -122,8 +122,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":3,
-                                        "value":0
+                                        "mask":4096,
+                                        "value":4096
                                     }
                                 }
                             ]
@@ -149,8 +149,7 @@
         "tests":[
             {
                 "ingress":[
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
-                    "vlan(pcp=5, cfi=0, vid=203, ethertype=2048)",
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2048)",
                     "ipv4(tos=65, proto=6, src='10.10.10.10', dst='10.10.20.20', ttl=127)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
@@ -162,7 +161,7 @@
         ]
     },
     {
-        "description":"test03: match[vlan_vid=0(mask=3)] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"test03: match[vlan_vid=0x1000(mask=0x1000)] packet=ethernet/vlan/ipv6/tcp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -173,8 +172,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":3,
-                                        "value":0
+                                        "mask":4096,
+                                        "value":4096
                                     }
                                 }
                             ]
@@ -217,7 +216,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[vlan_vid=0(mask=3)] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"test04: match(PACKET_IN)[vlan_vid=0x1000(mask=0x1000)] packet=ethernet/vlan/ipv6/tcp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -228,8 +227,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":3,
-                                        "value":0
+                                        "mask":4096,
+                                        "value":4096
                                     }
                                 }
                             ]
@@ -273,7 +272,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[vlan_vid=0(mask=3)] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"test05: unmatch[vlan_vid=0x1000(mask=0x1000)] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -284,8 +283,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":3,
-                                        "value":0
+                                        "mask":4096,
+                                        "value":4096
                                     }
                                 }
                             ]
@@ -311,8 +310,7 @@
         "tests":[
             {
                 "ingress":[
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
-                    "vlan(pcp=5, cfi=0, vid=203, ethertype=34525)",
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=34525)",
                     "ipv6(dst='b0::b0', flow_label=203, src='a0::a0', nxt=6, hop_limit=127, traffic_class=65)",
                     "tcp(dst_port=6789, option='\\x11\\x11\\x11\\x11', src_port=12345)",
                     "'\\x01\\x02\\x03\\x04\\x05\\x06\\x07\\x08\\t\\n\\x0b\\x0c\\r\\x0e\\x0f\\x10\\x11\\x12\\x13\\x14\\x15\\x16\\x17\\x18\\x19\\x1a\\x1b\\x1c\\x1d\\x1e\\x1f'"
@@ -324,7 +322,7 @@
         ]
     },
     {
-        "description":"test06: match[vlan_vid=0(mask=3)] packet=ethernet/vlan/arp/str",
+        "description":"test06: match[vlan_vid=0x1000(mask=0x1000)] packet=ethernet/vlan/arp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -335,8 +333,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":3,
-                                        "value":0
+                                        "mask":4096,
+                                        "value":4096
                                     }
                                 }
                             ]
@@ -377,7 +375,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[vlan_vid=0(mask=3)] packet=ethernet/vlan/arp/str",
+        "description":"test07: match(PACKET_IN)[vlan_vid=0x1000(mask=0x1000)] packet=ethernet/vlan/arp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -388,8 +386,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":3,
-                                        "value":0
+                                        "mask":4096,
+                                        "value":4096
                                     }
                                 }
                             ]
@@ -431,7 +429,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[vlan_vid=0(mask=3)] packet=ethernet/vlan/arp/str",
+        "description":"test08: unmatch[vlan_vid=0x1000(mask=0x1000)] packet=ethernet/arp/str",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -442,8 +440,8 @@
                                 {
                                     "OXMTlv":{
                                         "field":"vlan_vid",
-                                        "mask":3,
-                                        "value":0
+                                        "mask":4096,
+                                        "value":4096
                                     }
                                 }
                             ]
@@ -469,8 +467,7 @@
         "tests":[
             {
                 "ingress":[
-                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=33024)",
-                    "vlan(pcp=5, cfi=0, vid=203, ethertype=2054)",
+                    "ethernet(dst='bb:bb:bb:bb:bb:bb', src='aa:aa:aa:aa:aa:aa', ethertype=2054)",
                     "arp(dst_ip='10.10.20.20',dst_mac='bb:bb:bb:bb:bb:bb', opcode=2, src_ip='10.10.10.10',src_mac='aa:aa:aa:aa:aa:aa')",
                     "'\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00'"
                 ],
