@@ -208,8 +208,8 @@ class OfTester(app_manager.RyuApp):
 
         self.target_dpid = CONF.tester.target
         self.tester_dpid = CONF.tester.tester
-        self.test_files = [CONF.tester.directory]
-        self.logger.info('Test files or directory = %s', self.test_files)
+        test_dir = CONF.tester.directory
+        self.logger.info('Test files directory = %s', test_dir)
 
         self.target_sw = None
         self.tester_sw = None
@@ -218,7 +218,7 @@ class OfTester(app_manager.RyuApp):
         self.waiter = None
         self.send_msg_xids = []
         self.rcv_msgs = []
-        self.test_thread = hub.spawn(self._test_execute)
+        self.test_thread = hub.spawn(self._test_execute, test_dir)
 
     def _set_logger(self):
         self.logger.propagate = False
@@ -279,10 +279,10 @@ class OfTester(app_manager.RyuApp):
             self.logger.info('dpid=%s : %s',
                              dpid_lib.dpid_to_str(dp.id), msg)
 
-    def _test_execute(self):
+    def _test_execute(self, test_dir):
         """ Execute OpenFlowSwitch test. """
         # Parse test pattern from test files.
-        tests = TestPatterns(self.test_files, self.logger)
+        tests = TestPatterns(test_dir, self.logger)
         if not tests:
             msg = coloring(NO_TEST_FILE, YELLOW)
             self.logger.warning(msg)
@@ -794,13 +794,11 @@ class TesterSw(OpenFlowSw):
 
 class TestPatterns(dict):
     """ List of Test class objects. """
-    def __init__(self, test_files, logger):
+    def __init__(self, test_dir, logger):
         super(TestPatterns, self).__init__()
         self.logger = logger
-
         # Parse test pattern from test files.
-        for path in test_files:
-            self._get_tests(path)
+        self._get_tests(test_dir)
 
     def _get_tests(self, path):
         if not os.path.exists(path):
