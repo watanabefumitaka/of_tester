@@ -54,7 +54,7 @@ CONF.register_cli_opts([
 CONF.register_cli_opts([
     #TODO: change directory
     # app/tester
-    cfg.IntOpt('target', default=1, help='target sw dp-id'),
-    cfg.IntOpt('tester', default=2, help='tester sw dp-id'),
+    cfg.StrOpt('target', default='0000000000000001', help='target sw dp-id'),
+    cfg.StrOpt('tester', default='0000000000000002', help='tester sw dp-id'),
     cfg.StrOpt('directory', default='./tests', help='test files directory')
 ], group='tester')
