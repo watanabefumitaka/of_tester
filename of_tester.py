@@ -17,6 +17,7 @@ import inspect
 import json
 import logging
 import os
+import re
 import signal
 import sys
 import traceback
@@ -42,6 +43,7 @@ from ryu.controller.handler import set_ev_cls
 from ryu.exception import RyuException
 from ryu.lib import dpid as dpid_lib
 from ryu.lib import hub
+from ryu.lib import stringify
 from ryu.lib.packet import packet
 from ryu.ofproto import ofproto_v1_3
 from ryu.ofproto import ofproto_v1_3_parser
@@ -199,6 +201,17 @@ class TestError(TestMessageBase):
         super(TestError, self).__init__(state, ERROR, **argv)
 
 
+class UncoloredFormatter(logging.Formatter):
+    def __init__(self, msg):
+        # logging.Formatter is an old-style class in python 2.6.
+        logging.Formatter.__init__(self, msg)
+
+    def format(self, record):
+        message = logging.Formatter.format(self, record)
+        message = re.sub(r'\033\[[0-9]{1,2}m', '', message)
+        return message
+
+
 class OfTester(app_manager.RyuApp):
     """ OpenFlowSwitch Tester. """
 
@@ -224,17 +237,17 @@ class OfTester(app_manager.RyuApp):
         self.waiter = None
         self.send_msg_xids = []
         self.rcv_msgs = []
-        self.test_thread = hub.spawn(self._test_execute, test_dir)
+        self.test_thread = hub.spawn(
+            self._test_sequential_execute, test_dir)
 
     def _set_logger(self):
         self.logger.propagate = False
-        fmt_str = '%(asctime)s [%(levelname)s] %(message)s'
         s_hdlr = logging.StreamHandler()
-        s_hdlr.setFormatter(logging.Formatter(fmt_str))
         self.logger.addHandler(s_hdlr)
         if CONF.log_file:
+            fmt_str = '%(asctime)s [%(levelname)s] %(message)s'
             f_hdlr = logging.handlers.WatchedFileHandler(CONF.log_file)
-            f_hdlr.setFormatter(logging.Formatter(fmt_str))
+            f_hdlr.setFormatter(UncoloredFormatter(fmt_str))
             self.logger.addHandler(f_hdlr)
 
     def _convert_dpid(self, dpid_str):
@@ -292,7 +305,7 @@ class OfTester(app_manager.RyuApp):
             self.logger.info('dpid=%s : %s',
                              dpid_lib.dpid_to_str(dp.id), msg)
 
-    def _test_execute(self, test_dir):
+    def _test_sequential_execute(self, test_dir):
         """ Execute OpenFlowSwitch test. """
         # Parse test pattern from test files.
         tests = TestPatterns(test_dir, self.logger)
@@ -304,68 +317,74 @@ class OfTester(app_manager.RyuApp):
         self.logger.info('--- Test start ---')
         test_keys = tests.keys()
         test_keys.sort()
-        for test_name in test_keys:
-            if not self.target_sw or not self.tester_sw:
-                self.logger.info('waiting for switches connection...')
-                self.sw_waiter = hub.Event()
-                self.sw_waiter.wait()
-                self.sw_waiter = None
-
-            test = tests[test_name]
-            # Test execute.
-            try:
-                # 0. Initialize.
-                self._test(STATE_INIT)
-                # 1. Install flows.
-                for flow in test.prerequisite:
-                    self._test(STATE_FLOW_INSTALL, flow)
-                    self._test(STATE_FLOW_EXIST_CHK, flow)
-                # 2. Check flow matching.
-                for pkt in test.tests:
-                    if KEY_EGRESS in pkt or KEY_PKT_IN in pkt:
-                        target_pkt_count = [self._test(STATE_TARGET_PKT_COUNT,
-                                                       True)]
-                        tester_pkt_count = [self._test(STATE_TESTER_PKT_COUNT,
-                                                       False)]
-                        result = self._test(STATE_FLOW_MATCH_CHK, pkt)
-                        if result == TIMEOUT:
-                            target_pkt_count.append(self._test(
-                                STATE_TARGET_PKT_COUNT, True))
-                            tester_pkt_count.append(self._test(
-                                STATE_TESTER_PKT_COUNT, False))
-                            test_type = (KEY_EGRESS if KEY_EGRESS in pkt
-                                         else KEY_PKT_IN)
-                            self._test(STATE_NO_PKTIN_REASON, test_type,
-                                       target_pkt_count, tester_pkt_count)
-                    else:
-                        before_stats = self._test(STATE_GET_MATCH_COUNT)
-                        self._test(STATE_UNMATCH_PKT_SEND, pkt)
-                        self._test(STATE_FLOW_UNMATCH_CHK, before_stats, pkt)
-                result = OK
-            except (TestFailure, TestError,
-                    TestTimeout, TestReceiveError) as err:
-                result = str(err)
-            except Exception:
-                result = RYU_INTERNAL_ERROR
-
-            # Output test result.
-            msg = (coloring(result, GREEN) if result == OK
-                   else coloring(result, RED))
-            self.logger.info('%s : %s', test_name, msg)
-            if test.description:
-                self.logger.debug(unicode(test.description))
-            if (result == RYU_INTERNAL_ERROR
-                    or result == 'An unknown exception'):
-                self.logger.error(traceback.format_exc())
-
-            #TODO: for debug
-            #print raw_input("> Enter")
-
-            if result != OK and self.state == STATE_INIT:
-                self._test_end('--- Test terminated ---')
-            hub.sleep(0)
-
+        for file_name in test_keys:
+            self._test_file_execute(tests[file_name])
         self._test_end(msg='---  Test end  ---')
+
+    def _test_file_execute(self, testfile):
+        self.logger.info('%s', testfile.test_name)
+        for test in testfile.tests:
+            self._test_execute(test)
+
+    def _test_execute(self, test):
+        if not self.target_sw or not self.tester_sw:
+            self.logger.info('waiting for switches connection...')
+            self.sw_waiter = hub.Event()
+            self.sw_waiter.wait()
+            self.sw_waiter = None
+
+        # Test execute.
+        try:
+            # 0. Initialize.
+            self._test(STATE_INIT)
+            # 1. Install flows.
+            for flow in test.prerequisite:
+                self._test(STATE_FLOW_INSTALL, flow)
+                self._test(STATE_FLOW_EXIST_CHK, flow)
+            # 2. Check flow matching.
+            for pkt in test.tests:
+                if KEY_EGRESS in pkt or KEY_PKT_IN in pkt:
+                    target_pkt_count = [self._test(STATE_TARGET_PKT_COUNT,
+                                                   True)]
+                    tester_pkt_count = [self._test(STATE_TESTER_PKT_COUNT,
+                                                   False)]
+                    result = self._test(STATE_FLOW_MATCH_CHK, pkt)
+                    if result == TIMEOUT:
+                        target_pkt_count.append(self._test(
+                            STATE_TARGET_PKT_COUNT, True))
+                        tester_pkt_count.append(self._test(
+                            STATE_TESTER_PKT_COUNT, False))
+                        test_type = (KEY_EGRESS if KEY_EGRESS in pkt
+                                     else KEY_PKT_IN)
+                        self._test(STATE_NO_PKTIN_REASON, test_type,
+                                   target_pkt_count, tester_pkt_count)
+                else:
+                    before_stats = self._test(STATE_GET_MATCH_COUNT)
+                    self._test(STATE_UNMATCH_PKT_SEND, pkt)
+                    self._test(STATE_FLOW_UNMATCH_CHK, before_stats, pkt)
+            result = OK
+        except (TestFailure, TestError,
+                TestTimeout, TestReceiveError) as err:
+            result = str(err)
+        except Exception:
+            result = RYU_INTERNAL_ERROR
+
+        # Output test result.
+        msg = (coloring(result, GREEN) if result == OK
+               else coloring(result, RED))
+        self.logger.info('        %s : %s', test.description, msg)
+        if test.description:
+            self.logger.debug(unicode(test.description))
+        if (result == RYU_INTERNAL_ERROR
+                or result == 'An unknown exception'):
+            self.logger.error(traceback.format_exc())
+
+        #TODO: for debug
+        #print raw_input("> Enter")
+
+        if result != OK and self.state == STATE_INIT:
+            self._test_end('--- Test terminated ---')
+        hub.sleep(0)
 
     def _test_end(self, msg=None):
         self.test_thread = None
@@ -437,9 +456,12 @@ class OfTester(app_manager.RyuApp):
         xid = sw.send_port_stats()
         self.send_msg_xids.append(xid)
         self._wait()
-        return {stats.port_no: {'rx': stats.rx_packets,
-                                'tx': stats.tx_packets}
-                for msg in self.rcv_msgs for stats in msg.body}
+        result = {}
+        for msg in self.rcv_msgs:
+            for stats in msg.body:
+                result[stats.port_no] = {'rx': stats.rx_packets,
+                                         'tx': stats.tx_packets}
+        return result
 
     def _test_flow_matching_check(self, pkt):
         def __diff_packets(model_pkt, rcv_pkt):
@@ -576,9 +598,12 @@ class OfTester(app_manager.RyuApp):
         xid = self.target_sw.send_table_stats()
         self.send_msg_xids.append(xid)
         self._wait()
-        return {stats.table_id: {'lookup': stats.lookup_count,
-                                 'matched': stats.matched_count}
-                for msg in self.rcv_msgs for stats in msg.body}
+        result = {}
+        for msg in self.rcv_msgs:
+            for stats in msg.body:
+                result[stats.table_id] = {'lookup': stats.lookup_count,
+                                          'matched': stats.matched_count}
+        return result
 
     def _test_unmatch_packet_send(self, pkt):
         # Send a packet from the Open vSwitch.
@@ -833,22 +858,35 @@ class TestPatterns(dict):
         elif os.path.isfile(path):  # File
             (dummy, ext) = os.path.splitext(path)
             if ext == '.json':
-                buf = open(path, 'rb').read()
-                try:
-                    json_list = json.loads(buf)
-                    for i, test_json in enumerate(json_list):
-                        test_name = path.rstrip('.json')
-                        key = (test_name if len(json_list) == 1
-                               else test_name + ('_%02d' % i))
-                        self[key] = Test(test_json)
-                except (ValueError, TypeError) as e:
-                    result = (TEST_FILE_ERROR %
-                              {'file': path, 'detail': e.message})
-                    msg = coloring(result, YELLOW)
-                    self.logger.warning(msg)
+                test = TestFile(path, self.logger)
+                self[test.test_name] = test
 
 
-class Test(object):
+class TestFile(stringify.StringifyMixin):
+    """Test File object include Test objects."""
+    def __init__(self, path, logger):
+        super(TestFile, self).__init__()
+        self.logger = logger
+        self.test_name = path.rstrip('.json').replace('../', '').replace(
+            './', '').replace('/', ': ')
+        self.tests = []
+        self._get_tests(path)
+
+    def _get_tests(self, path):
+        with open(path, 'rb') as fhandle:
+            buf = fhandle.read()
+            try:
+                json_list = json.loads(buf)
+                for test_json in json_list:
+                    self.tests.append(Test(test_json))
+            except (ValueError, TypeError) as e:
+                result = (TEST_FILE_ERROR %
+                          {'file': path, 'detail': e.message})
+                msg = coloring(result, YELLOW)
+                self.logger.warning(msg)
+
+
+class Test(stringify.StringifyMixin):
     def __init__(self, test_json):
         super(Test, self).__init__()
         (self.description,
