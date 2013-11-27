@@ -3,7 +3,7 @@
         "description": "action: 00_OUTPUT"
     },
     {
-        "description":"test00: actions[OFPActionOutput] packet=ethernet/ipv4/tcp/str",
+        "description": "ethernet/ipv4/tcp-->\"actions=output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -44,7 +44,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionOutput] packet=ethernet/ipv6/tcp/str",
+        "description": "ethernet/ipv6/tcp-->\"actions=output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -84,7 +84,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionOutput] packet=ethernet/arp/str",
+        "description": "ethernet/arp-->\"actions=output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{

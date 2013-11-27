@@ -3,7 +3,7 @@
         "description": "action: 24_DEC_NW_TTL (IPv6)"
     },
     {
-        "description":"test00: actions[OFPActionDecNwTtl] packet=ethernet/ipv6/tcp/str",
+        "description": "ethernet/ipv6(hop_limit=64)/tcp-->\"dl_type=0x86dd, actions=dec_nw_ttl:32, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -58,7 +58,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionDecNwTtl] packet=ethernet/vlan/ipv6/tcp/str",
+        "description": "ethernet/vlan/ipv6(hop_limit=64)/tcp-->\"dl_type=0x86dd, actions=dec_nw_ttl, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -115,7 +115,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionDecNwTtl] packet=ethernet/mpls/ipv6/tcp/str",
+        "description": "ethernet/mpls/ipv6(hop_limit=64)/tcp-->\"dl_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1\", \"table_id:1, dl_type=0x86dd, actions=dec_nw_ttl, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -207,7 +207,7 @@
         ]
     },
     {
-        "description":"test03: actions[OFPActionDecNwTtl] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(hop_limit=64)/tcp-->\"dl_type=0x88e7, actions=dec_nw_ttl, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{

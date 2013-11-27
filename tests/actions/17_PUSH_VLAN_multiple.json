@@ -3,7 +3,7 @@
         "description": "action: 17_PUSH_VLAN (multiple)"
     },
     {
-        "description":"test00: actions[OFPActionPushVlan] packet=ethernet/vlan/ipv4/tcp/str",
+        "description": "ethernet/vlan/ipv4/tcp-->\"ip, actions=push_vlan:0x88a8, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -63,7 +63,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionPushVlan] packet=ethernet/vlan/ipv6/tcp/str",
+        "description": "ethernet/vlan/ipv6/tcp-->\"dl_type=0x86dd, actions=push_vlan:0x88a8, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -123,7 +123,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionPushVlan] packet=ethernet/vlan/arp/str",
+        "description": "ethernet/vlan/arp-->\"arp, actions=push_vlan:0x88a8, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{

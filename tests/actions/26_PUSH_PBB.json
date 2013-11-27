@@ -3,7 +3,7 @@
         "description": "action: 26_PUSH_PBB"
     },
     {
-        "description":"test00: actions[OFPActionPushPbb] packet=ethernet/ipv4/tcp/str",
+        "description": "ethernet/ipv4/tcp-->\"ip, actions=push_pbb:0x88e7, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -62,7 +62,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionPushPbb] packet=ethernet/ipv6/tcp/str",
+        "description": "ethernet/ipv6/tcp-->\"dl_type=0x86dd, actions=push_pbb:0x88e7, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -121,7 +121,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionPushPbb] packet=ethernet/arp/str",
+        "description": "ethernet/arp-->\"arp, actions=push_pbb:0x88e7, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{

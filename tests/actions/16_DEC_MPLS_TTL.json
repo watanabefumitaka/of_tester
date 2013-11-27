@@ -3,7 +3,7 @@
         "description": "action: 16_DEC_MPLS_TTL"
     },
     {
-        "description":"test00: actions[OFPActionDecMplsTtl] packet=ethernet/mpls/ipv4/tcp/str",
+        "description": "ethernet/mpls(ttl=64)/ipv4/tcp-->\"dl_type=0x8847, actions=dec_mpls_ttl, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -60,7 +60,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionDecMplsTtl] packet=ethernet/mpls/ipv6/tcp/str",
+        "description": "ethernet/mpls(ttl=64)/ipv6/tcp-->\"dl_type=0x8847, actions=dec_mpls_ttl, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -117,7 +117,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionDecMplsTtl] packet=ethernet/mpls/arp/str",
+        "description": "ethernet/mpls(ttl=64)/arp-->\"dl_type=0x8847, actions=dec_mpls_ttl, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{

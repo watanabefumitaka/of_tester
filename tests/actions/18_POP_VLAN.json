@@ -3,7 +3,7 @@
         "description": "action: 18_POP_VLAN"
     },
     {
-        "description":"test00: actions[OFPActionPopVlan] packet=ethernet/vlan/ipv4/tcp/str",
+        "description": "ethernet/vlan(vid=100)/ipv4/tcp-->\"ip, dl_vlan=0, actions=pop_vlan, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -66,7 +66,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionPopVlan] packet=ethernet/vlan/ipv6/tcp/str",
+        "description": "ethernet/vlan(vid=100)/ipv6/tcp-->\"dl_type=0x86dd, dl_vlan=0, actions=pop_vlan, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -129,7 +129,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionPopVlan] packet=ethernet/vlan/arp/str",
+        "description": "ethernet/vlan(vid=100)/arp-->\"arp, dl_vlan=0, actions=pop_vlan, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{

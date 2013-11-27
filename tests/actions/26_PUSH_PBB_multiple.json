@@ -3,7 +3,7 @@
         "description": "action: 26_PUSH_PBB (multiple)"
     },
     {
-        "description":"test00: actions[OFPActionPushPbb] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp-->\"dl_type=0x88e7, actions=push_pbb:0x88e7, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -72,7 +72,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionPushPbb] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp-->\"dl_type=0x88e7, actions=push_pbb:0x88e7, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -141,7 +141,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionPushPbb] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp/str",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp-->\"dl_type=0x88e7, actions=push_pbb:0x88e7, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -3,7 +3,7 @@
         "description": "action: 19_PUSH_MPLS (multiple)"
     },
     {
-        "description":"test00: actions[OFPActionPushMpls] packet=ethernet/mpls/ipv4/tcp/str",
+        "description": "ethernet/mpls/ipv4/tcp-->\"dl_type=0x8847, actions=push_mpls:0x8847, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -63,7 +63,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionPushMpls] packet=ethernet/mpls/ipv6/tcp/str",
+        "description": "ethernet/mpls/ipv6/tcp-->\"dl_type=0x8847, actions=push_mpls:0x8847, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -123,7 +123,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionPushMpls] packet=ethernet/mpls/arp/str",
+        "description": "ethernet/mpls/arp-->\"dl_type=0x8847, actions=push_mpls:0x8847, output:2\"",
         "prerequisite":[
             {
                 "OFPFlowMod":{
