@@ -345,8 +345,6 @@ class OfTester(app_manager.RyuApp):
 
         # Output test result.
         self.logger.info('        %s : %s', test.description, result)
-        if test.description:
-            self.logger.debug(unicode(test.description))
         if (result == RYU_INTERNAL_ERROR
                 or result == 'An unknown exception'):
             self.logger.error(traceback.format_exc())
@@ -852,7 +850,7 @@ class TestFile(stringify.StringifyMixin):
                     if 'tests' in test_json:
                         self.tests.append(Test(test_json))
                     else:
-                        self.description = test_json['description']
+                        self.description = test_json[KEY_DESC]
             except (ValueError, TypeError) as e:
                 result = (TEST_FILE_ERROR %
                           {'file': path, 'detail': e.message})
