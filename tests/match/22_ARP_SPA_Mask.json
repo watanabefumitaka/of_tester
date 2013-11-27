@@ -1,5 +1,8 @@
 [
     {
+        "description": "match: 22_ARP_SPA (Mask)"
+    },
+    {
         "description":"test00: match[eth_type=2054/arp/str_spa=192.168.10.0(mask=ffffff00)] packet=ethernet/arp/str",
         "prerequisite":[
             {

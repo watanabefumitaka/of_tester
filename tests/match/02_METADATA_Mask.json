@@ -1,5 +1,8 @@
 [
     {
+        "description": "match: 02_METADATA (Mask)"
+    },
+    {
         "description":"test00: match[metadata=240(mask=fffffff0)] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[
             {

@@ -1,5 +1,8 @@
 [
     {
+        "description": "match: 17_SCTP_SRC (IPv6)"
+    },
+    {
         "description":"test00: match[eth_type=34525/ip_proto=132/sctp_src=11111] packet=ethernet/ipv6/sctp",
         "prerequisite":[
             {

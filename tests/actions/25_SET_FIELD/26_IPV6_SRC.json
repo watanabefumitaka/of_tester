@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 26_IPV6_SRC"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[ipv6_src=a0::a0]] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[
             {

@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 21_ARP_OP"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[arp_op=2]] packet=ethernet/arp/str",
         "prerequisite":[
             {

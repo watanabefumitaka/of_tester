@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 36_MPLS_BOS"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[mpls_bos=0]] packet=ethernet/mpls/ipv4/tcp/str",
         "prerequisite":[
             {

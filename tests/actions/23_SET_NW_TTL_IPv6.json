@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: 23_SET_NW_TTL (IPv6)"
+    },
+    {
         "description":"test00: actions[OFPActionSetNwTtl] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[
             {

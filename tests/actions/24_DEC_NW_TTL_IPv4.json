@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: 24_DEC_NW_TTL (IPv4)"
+    },
+    {
         "description":"test00: actions[OFPActionDecNwTtl] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[
             {

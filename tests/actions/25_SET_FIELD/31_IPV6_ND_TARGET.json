@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 31_IPV6_ND_TARGET"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[ipv6_nd_target=a0::a0]] packet=ethernet/ipv6/icmpv6",
         "prerequisite":[
             {

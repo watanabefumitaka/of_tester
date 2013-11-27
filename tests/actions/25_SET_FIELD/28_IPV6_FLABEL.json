@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 28_IPV6_FLABEL"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[ipv6_flabel=203]] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[
             {

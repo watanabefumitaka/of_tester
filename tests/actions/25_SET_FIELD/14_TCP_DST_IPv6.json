@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 14_TCP_DST (IPv6)"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[tcp_dst=6789]] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[
             {

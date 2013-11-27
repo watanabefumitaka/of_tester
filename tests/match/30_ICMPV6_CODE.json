@@ -1,5 +1,8 @@
 [
     {
+        "description": "match: 30_ICMPV6_CODE"
+    },
+    {
         "description":"test00: match[eth_type=34525/ip_proto=58/icmpv6_code=0] packet=ethernet/ipv6/icmpv6",
         "prerequisite":[
             {

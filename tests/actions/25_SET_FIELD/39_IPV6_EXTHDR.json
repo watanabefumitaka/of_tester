@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 39_IPV6_EXTHDR"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[ipv6_exthdr=0]] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[
             {

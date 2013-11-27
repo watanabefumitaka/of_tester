@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 18_SCTP_DST (IPv4)"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[sctp_dst=6789]] packet=ethernet/ipv4/sctp",
         "prerequisite":[
             {

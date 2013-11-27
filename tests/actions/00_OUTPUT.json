@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: 00_OUTPUT"
+    },
+    {
         "description":"test00: actions[OFPActionOutput] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[
             {

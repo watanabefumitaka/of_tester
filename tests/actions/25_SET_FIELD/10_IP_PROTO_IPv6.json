@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 10_IP_PROTO (IPv6)"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[ip_proto=17]] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[
             {

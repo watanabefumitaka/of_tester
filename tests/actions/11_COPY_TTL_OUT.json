@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: 11_COPY_TTL_OUT"
+    },
+    {
         "description":"test00: actions[OFPActionCopyTtlOut] packet=ethernet/mpls/ipv4/tcp/str",
         "prerequisite":[
             {

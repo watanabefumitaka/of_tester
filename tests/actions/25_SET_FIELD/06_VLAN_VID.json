@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 06_VLAN_VID"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[vlan_vid=203]] packet=ethernet/vlan/ipv4/tcp/str",
         "prerequisite":[
             {

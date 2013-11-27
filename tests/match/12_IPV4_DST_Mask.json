@@ -1,5 +1,8 @@
 [
     {
+        "description": "match: 12_IPV4_DST (Mask)"
+    },
+    {
         "description":"test00: match[eth_type=2048/ipv4_dst=192.168.0.20(mask=ffff00ff)] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[
             {

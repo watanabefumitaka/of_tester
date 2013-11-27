@@ -1,5 +1,8 @@
 [
     {
+        "description": "match: 39_IPV6_EXTHDR (Mask)"
+    },
+    {
         "description":"test00: match[eth_type=34525/ipv6_exthdr=64(mask=1f0)] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[
             {

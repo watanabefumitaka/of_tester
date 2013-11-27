@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 19_ICMPV4_TYPE"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[icmpv4_type=0]] packet=ethernet/ipv4/icmp",
         "prerequisite":[
             {

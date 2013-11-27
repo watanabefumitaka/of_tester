@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: 27_POP_PBB"
+    },
+    {
         "description":"test00: actions[OFPActionPopPbb] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "prerequisite":[
             {

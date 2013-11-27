@@ -162,18 +162,6 @@ MSG = {STATE_INIT:
 ERR_MSG = 'OFPErrorMsg[type=0x%02x, code=0x%02x] received.'
 
 
-GREEN = '\033[32m'
-RED = '\033[31m'
-YELLOW = '\033[33m'
-END_TAG = '\033[0m'
-
-
-def coloring(msg, color):
-    if sys.stdout.isatty():
-        msg = color + msg + END_TAG
-    return msg
-
-
 class TestMessageBase(RyuException):
     def __init__(self, state, message_type, **argv):
         msg = NG % {'detail': (MSG[state][message_type] % argv)}
@@ -199,17 +187,6 @@ class TestReceiveError(TestMessageBase):
 class TestError(TestMessageBase):
     def __init__(self, state, **argv):
         super(TestError, self).__init__(state, ERROR, **argv)
-
-
-class UncoloredFormatter(logging.Formatter):
-    def __init__(self, msg):
-        # logging.Formatter is an old-style class in python 2.6.
-        logging.Formatter.__init__(self, msg)
-
-    def format(self, record):
-        message = logging.Formatter.format(self, record)
-        message = re.sub(r'\033\[[0-9]{1,2}m', '', message)
-        return message
 
 
 class OfTester(app_manager.RyuApp):
@@ -245,9 +222,7 @@ class OfTester(app_manager.RyuApp):
         s_hdlr = logging.StreamHandler()
         self.logger.addHandler(s_hdlr)
         if CONF.log_file:
-            fmt_str = '%(asctime)s [%(levelname)s] %(message)s'
             f_hdlr = logging.handlers.WatchedFileHandler(CONF.log_file)
-            f_hdlr.setFormatter(UncoloredFormatter(fmt_str))
             self.logger.addHandler(f_hdlr)
 
     def _convert_dpid(self, dpid_str):
@@ -310,8 +285,7 @@ class OfTester(app_manager.RyuApp):
         # Parse test pattern from test files.
         tests = TestPatterns(test_dir, self.logger)
         if not tests:
-            msg = coloring(NO_TEST_FILE, YELLOW)
-            self.logger.warning(msg)
+            self.logger.warning(NO_TEST_FILE)
             self._test_end()
 
         self.logger.info('--- Test start ---')
@@ -322,7 +296,7 @@ class OfTester(app_manager.RyuApp):
         self._test_end(msg='---  Test end  ---')
 
     def _test_file_execute(self, testfile):
-        self.logger.info('%s', testfile.test_name)
+        self.logger.info('%s', testfile.description)
         for test in testfile.tests:
             self._test_execute(test)
 
@@ -370,9 +344,7 @@ class OfTester(app_manager.RyuApp):
             result = RYU_INTERNAL_ERROR
 
         # Output test result.
-        msg = (coloring(result, GREEN) if result == OK
-               else coloring(result, RED))
-        self.logger.info('        %s : %s', test.description, msg)
+        self.logger.info('        %s : %s', test.description, result)
         if test.description:
             self.logger.debug(unicode(test.description))
         if (result == RYU_INTERNAL_ERROR
@@ -845,7 +817,7 @@ class TestPatterns(dict):
 
     def _get_tests(self, path):
         if not os.path.exists(path):
-            msg = coloring(INVALID_PATH % {'path': path}, YELLOW)
+            msg = INVALID_PATH % {'path': path}
             self.logger.warning(msg)
             return
 
@@ -859,7 +831,7 @@ class TestPatterns(dict):
             (dummy, ext) = os.path.splitext(path)
             if ext == '.json':
                 test = TestFile(path, self.logger)
-                self[test.test_name] = test
+                self[test.description] = test
 
 
 class TestFile(stringify.StringifyMixin):
@@ -867,8 +839,7 @@ class TestFile(stringify.StringifyMixin):
     def __init__(self, path, logger):
         super(TestFile, self).__init__()
         self.logger = logger
-        self.test_name = path.rstrip('.json').replace('../', '').replace(
-            './', '').replace('/', ': ')
+        self.description = None
         self.tests = []
         self._get_tests(path)
 
@@ -878,12 +849,14 @@ class TestFile(stringify.StringifyMixin):
             try:
                 json_list = json.loads(buf)
                 for test_json in json_list:
-                    self.tests.append(Test(test_json))
+                    if 'tests' in test_json:
+                        self.tests.append(Test(test_json))
+                    else:
+                        self.description = test_json['description']
             except (ValueError, TypeError) as e:
                 result = (TEST_FILE_ERROR %
                           {'file': path, 'detail': e.message})
-                msg = coloring(result, YELLOW)
-                self.logger.warning(msg)
+                self.logger.warning(result)
 
 
 class Test(stringify.StringifyMixin):

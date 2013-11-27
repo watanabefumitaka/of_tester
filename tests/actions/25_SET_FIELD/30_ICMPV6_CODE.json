@@ -1,5 +1,8 @@
 [
     {
+        "description": "action: set_field: 30_ICMPV6_CODE"
+    },
+    {
         "description":"test00: actions[OFPActionSetField[icmpv6_code=1]] packet=ethernet/ipv6/icmpv6",
         "prerequisite":[
             {
