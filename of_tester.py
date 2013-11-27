@@ -169,7 +169,9 @@ END_TAG = '\033[0m'
 
 
 def coloring(msg, color):
-    return color + msg + END_TAG
+    if sys.stdout.isatty():
+        msg = color + msg + END_TAG
+    return msg
 
 
 class TestMessageBase(RyuException):
