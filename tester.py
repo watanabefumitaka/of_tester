@@ -294,16 +294,19 @@ class OfTester(app_manager.RyuApp):
         self._test_end(msg='---  Test end  ---')
 
     def _test_file_execute(self, testfile):
-        self.logger.info('%s', testfile.description)
-        for test in testfile.tests:
-            self._test_execute(test)
+        for i, test in enumerate(testfile.tests):
+            desc = testfile.description if i == 0 else None
+            self._test_execute(test, desc)
 
-    def _test_execute(self, test):
+    def _test_execute(self, test, description):
         if not self.target_sw or not self.tester_sw:
             self.logger.info('waiting for switches connection...')
             self.sw_waiter = hub.Event()
             self.sw_waiter.wait()
             self.sw_waiter = None
+
+        if description:
+            self.logger.info('%s', description)
 
         # Test execute.
         try:
