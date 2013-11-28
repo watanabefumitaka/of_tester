@@ -25,10 +25,12 @@ def get_data(path, json_buf):
     def __pkt_list_tostr(pkt, key):
         return '%s:\n ' % key + ',\n '.join(pkt[key])
 
-    data_key = path.rstrip('.json').replace('../', '')
-    data = {data_key: {}}
+    test_name = json_buf[0]
+    data = {test_name: []}
     for i, test in enumerate(json_buf):
-        desc = test['description'].split(':', 1)[1].rsplit(' packet=')[0]
+        if i == 0:
+            continue
+        desc = test['description']
         packets = []
         for pkt in test['tests']:
             if 'ingress' in pkt:
@@ -42,7 +44,7 @@ def get_data(path, json_buf):
                 p += ',\n '.join([str(a) for a in pkt['table-miss']])
                 packets.append(p)
 
-        data[data_key]['test%02d' % i] = {'desc': desc, 'pkts': packets}
+        data[test_name].append({'desc': desc, 'pkts': packets})
 
     return data
 
@@ -53,27 +55,22 @@ test_list = convert_files(IN_DIR, {})
 wb = Workbook()
 ws = wb.add_sheet( "test_list" )
 ws.write( 0, 0, "test file" )
-ws.write( 0, 1, "test number" )
-ws.write( 0, 2, "description" )
-ws.write( 0, 3, "test packets" )
+ws.write( 0, 1, "description" )
+ws.write( 0, 2, "test packets" )
 
 keys = test_list.keys()
 keys.sort()
 
 row = 1
 for key in keys:
-    test_data = test_list[key]
-    test_keys = test_data.keys()
-    test_keys.sort()
     flg = True
-    for test_key in test_keys:
+    for test_data in test_list[key]:
         if flg:
             ws.write(row, 0, key)
             flg = False
-        ws.write(row, 1, test_key)
-        ws.write(row, 2, test_data[test_key]['desc'])
-        column = 3
-        for pkt in test_data[test_key]['pkts']:
+        ws.write(row, 1, test_data['desc'])
+        column = 2
+        for pkt in test_data['pkts']:
             ws.write(row, column, pkt)
             column += 1
         row += 1
