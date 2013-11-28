@@ -17,7 +17,6 @@ import inspect
 import json
 import logging
 import os
-import re
 import signal
 import sys
 import traceback
@@ -34,9 +33,7 @@ for modname, moddef in sys.modules.iteritems():
             continue
         exec 'from %s import %s' % (modname, clsname)
 
-from ryu import log
 from ryu.base import app_manager
-from ryu.controller import controller
 from ryu.controller import handler
 from ryu.controller import ofp_event
 from ryu.controller.handler import set_ev_cls
