@@ -154,6 +154,7 @@ def make_description(json_buf):
                             tbl_match['value'] += ('(mask=0x%x)' % match_field['OXMTlv']['mask'])
             tbl_match_str = '%s' % tbl_match['value'] if tbl_match else ''
 
+            skip_match_flg = False
             # analyze Instructions
             instructions = []
             for inst in flow['OFPFlowMod']['instructions']:
@@ -161,13 +162,15 @@ def make_description(json_buf):
                     if key == 'OFPInstructionActions':
                         for action in value['actions']:
                             instructions.append(get_inst_str(action))
+                            if action.keys()[0] != 'OFPActionOutput':
+                                skip_match_flg = True
                     else:
                         instructions.append(get_inst_str(inst))
-
             action_str = 'actions=%s' % ', '.join(instructions)
 
             # flow description
-            flow_str = (action_str if tbl_match_str == ''
+            skip_match_flg = skip_match_flg or bool(tbl_match_str == '')
+            flow_str = (action_str if skip_match_flg
                         else '%s, %s' % (tbl_match_str, action_str))
             if flow['OFPFlowMod']['table_id'] != 0:
                 flow_str = 'table_id=%s, %s' % (flow['OFPFlowMod']['table_id'],
@@ -177,11 +180,14 @@ def make_description(json_buf):
 
         # Packet description
         pkts = []
+        if skip_match_flg:
+            match = {}
         for proto in buf['tests'][0]['ingress']:
-            p = ('str' if '\\' in proto 
-                    and (not 'tcp' in proto and not 'udp' in proto
-                          and not 'icmp' in proto)
-                else proto.split('(', 1)[0])
+            if ('\\' in proto and
+                    (not 'tcp' in proto and not 'udp' in proto
+                     and not 'icmp' in proto)):
+                continue
+            p = proto.split('(', 1)[0]
             if 'proto' in match:
                 match_proto = ([match['proto']]
                                if type(match['proto']) != list
@@ -206,7 +212,6 @@ def get_inst_str(inst):
         for i, value in enumerate(INSTRUCTION[key][1]):
             if i != 0:
                 sep = '/' if key != 'OFPActionSetField' else '->'
-                print sep
                 inst_str += sep
 
             if value == 'ethertype':

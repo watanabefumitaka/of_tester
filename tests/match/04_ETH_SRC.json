@@ -1,7 +1,7 @@
 [
     "match: 04_ETH_SRC",
     {
-        "description":"ethernet(src='11:11:11:11:11:11')/ipv4/tcp/str-->'eth_src=11:11:11:11:11:11, actions=output:2'",
+        "description":"ethernet(src='11:11:11:11:11:11')/ipv4/tcp-->'eth_src=11:11:11:11:11:11, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -53,7 +53,7 @@
         ]
     },
     {
-        "description":"ethernet(src='11:11:11:11:11:11')/ipv4/tcp/str-->'eth_src=11:11:11:11:11:11, actions=output:CONTROLLER'",
+        "description":"ethernet(src='11:11:11:11:11:11')/ipv4/tcp-->'eth_src=11:11:11:11:11:11, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -106,7 +106,7 @@
         ]
     },
     {
-        "description":"ethernet(src='aa:aa:aa:aa:aa:aa')/ipv4/tcp/str-->'eth_src=11:11:11:11:11:11, actions=output:2'",
+        "description":"ethernet(src='aa:aa:aa:aa:aa:aa')/ipv4/tcp-->'eth_src=11:11:11:11:11:11, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -155,7 +155,7 @@
         ]
     },
     {
-        "description":"ethernet(src='11:11:11:11:11:11')/ipv6/tcp/str-->'eth_src=11:11:11:11:11:11, actions=output:2'",
+        "description":"ethernet(src='11:11:11:11:11:11')/ipv6/tcp-->'eth_src=11:11:11:11:11:11, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -207,7 +207,7 @@
         ]
     },
     {
-        "description":"ethernet(src='11:11:11:11:11:11')/ipv6/tcp/str-->'eth_src=11:11:11:11:11:11, actions=output:CONTROLLER'",
+        "description":"ethernet(src='11:11:11:11:11:11')/ipv6/tcp-->'eth_src=11:11:11:11:11:11, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -260,7 +260,7 @@
         ]
     },
     {
-        "description":"ethernet(src='aa:aa:aa:aa:aa:aa')/ipv6/tcp/str-->'eth_src=11:11:11:11:11:11, actions=output:2'",
+        "description":"ethernet(src='aa:aa:aa:aa:aa:aa')/ipv6/tcp-->'eth_src=11:11:11:11:11:11, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -309,7 +309,7 @@
         ]
     },
     {
-        "description":"ethernet(src='11:11:11:11:11:11')/arp/str-->'eth_src=11:11:11:11:11:11, actions=output:2'",
+        "description":"ethernet(src='11:11:11:11:11:11')/arp-->'eth_src=11:11:11:11:11:11, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -359,7 +359,7 @@
         ]
     },
     {
-        "description":"ethernet(src='11:11:11:11:11:11')/arp/str-->'eth_src=11:11:11:11:11:11, actions=output:CONTROLLER'",
+        "description":"ethernet(src='11:11:11:11:11:11')/arp-->'eth_src=11:11:11:11:11:11, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -410,7 +410,7 @@
         ]
     },
     {
-        "description":"ethernet(src='aa:aa:aa:aa:aa:aa')/arp/str-->'eth_src=11:11:11:11:11:11, actions=output:2'",
+        "description":"ethernet(src='aa:aa:aa:aa:aa:aa')/arp-->'eth_src=11:11:11:11:11:11, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

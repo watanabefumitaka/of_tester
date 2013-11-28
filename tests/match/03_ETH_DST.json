@@ -1,7 +1,7 @@
 [
     "match: 03_ETH_DST",
     {
-        "description":"ethernet(dst='22:22:22:22:22:22')/ipv4/tcp/str-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
+        "description":"ethernet(dst='22:22:22:22:22:22')/ipv4/tcp-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -53,7 +53,7 @@
         ]
     },
     {
-        "description":"ethernet(dst='22:22:22:22:22:22')/ipv4/tcp/str-->'eth_dst=22:22:22:22:22:22, actions=output:CONTROLLER'",
+        "description":"ethernet(dst='22:22:22:22:22:22')/ipv4/tcp-->'eth_dst=22:22:22:22:22:22, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -106,7 +106,7 @@
         ]
     },
     {
-        "description":"ethernet(dst='bb:bb:bb:bb:bb:bb')/ipv4/tcp/str-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
+        "description":"ethernet(dst='bb:bb:bb:bb:bb:bb')/ipv4/tcp-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -155,7 +155,7 @@
         ]
     },
     {
-        "description":"ethernet(dst='22:22:22:22:22:22')/ipv6/tcp/str-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
+        "description":"ethernet(dst='22:22:22:22:22:22')/ipv6/tcp-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -207,7 +207,7 @@
         ]
     },
     {
-        "description":"ethernet(dst='22:22:22:22:22:22')/ipv6/tcp/str-->'eth_dst=22:22:22:22:22:22, actions=output:CONTROLLER'",
+        "description":"ethernet(dst='22:22:22:22:22:22')/ipv6/tcp-->'eth_dst=22:22:22:22:22:22, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -260,7 +260,7 @@
         ]
     },
     {
-        "description":"ethernet(dst='bb:bb:bb:bb:bb:bb')/ipv6/tcp/str-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
+        "description":"ethernet(dst='bb:bb:bb:bb:bb:bb')/ipv6/tcp-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -309,7 +309,7 @@
         ]
     },
     {
-        "description":"ethernet(dst='22:22:22:22:22:22')/arp/str-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
+        "description":"ethernet(dst='22:22:22:22:22:22')/arp-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -359,7 +359,7 @@
         ]
     },
     {
-        "description":"ethernet(dst='22:22:22:22:22:22')/arp/str-->'eth_dst=22:22:22:22:22:22, actions=output:CONTROLLER'",
+        "description":"ethernet(dst='22:22:22:22:22:22')/arp-->'eth_dst=22:22:22:22:22:22, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -410,7 +410,7 @@
         ]
     },
     {
-        "description":"ethernet(dst='bb:bb:bb:bb:bb:bb')/arp/str-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
+        "description":"ethernet(dst='bb:bb:bb:bb:bb:bb')/arp-->'eth_dst=22:22:22:22:22:22, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

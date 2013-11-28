@@ -1,7 +1,7 @@
 [
     "match: 06_VLAN_VID",
     {
-        "description":"ethernet/vlan(vid=100)/ipv4/tcp/str-->'vlan_vid=100, actions=output:2'",
+        "description":"ethernet/vlan(vid=100)/ipv4/tcp-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -55,7 +55,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan(vid=100)/ipv4/tcp/str-->'vlan_vid=100, actions=output:CONTROLLER'",
+        "description":"ethernet/vlan(vid=100)/ipv4/tcp-->'vlan_vid=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -110,7 +110,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan(vid=203)/ipv4/tcp/str-->'vlan_vid=100, actions=output:2'",
+        "description":"ethernet/vlan(vid=203)/ipv4/tcp-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -160,7 +160,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan(vid=100)/ipv6/tcp/str-->'vlan_vid=100, actions=output:2'",
+        "description":"ethernet/vlan(vid=100)/ipv6/tcp-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -214,7 +214,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan(vid=100)/ipv6/tcp/str-->'vlan_vid=100, actions=output:CONTROLLER'",
+        "description":"ethernet/vlan(vid=100)/ipv6/tcp-->'vlan_vid=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -269,7 +269,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan(vid=203)/ipv6/tcp/str-->'vlan_vid=100, actions=output:2'",
+        "description":"ethernet/vlan(vid=203)/ipv6/tcp-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -319,7 +319,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan(vid=100)/arp/str-->'vlan_vid=100, actions=output:2'",
+        "description":"ethernet/vlan(vid=100)/arp-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -371,7 +371,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan(vid=100)/arp/str-->'vlan_vid=100, actions=output:CONTROLLER'",
+        "description":"ethernet/vlan(vid=100)/arp-->'vlan_vid=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -424,7 +424,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan(vid=203)/arp/str-->'vlan_vid=100, actions=output:2'",
+        "description":"ethernet/vlan(vid=203)/arp-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

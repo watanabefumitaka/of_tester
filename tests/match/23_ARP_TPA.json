@@ -1,7 +1,7 @@
 [
     "match: 23_ARP_TPA",
     {
-        "description":"ethernet/arp(dst_ip='192.168.20.20')/str-->'arp_tpa=192.168.20.20, actions=output:2'",
+        "description":"ethernet/arp(dst_ip='192.168.20.20')-->'arp_tpa=192.168.20.20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -57,7 +57,7 @@
         ]
     },
     {
-        "description":"ethernet/arp(dst_ip='192.168.20.20')/str-->'arp_tpa=192.168.20.20, actions=output:CONTROLLER'",
+        "description":"ethernet/arp(dst_ip='192.168.20.20')-->'arp_tpa=192.168.20.20, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -114,7 +114,7 @@
         ]
     },
     {
-        "description":"ethernet/arp(dst_ip='10.10.20.20')/str-->'arp_tpa=192.168.20.20, actions=output:2'",
+        "description":"ethernet/arp(dst_ip='10.10.20.20')-->'arp_tpa=192.168.20.20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -168,7 +168,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/arp(dst_ip='192.168.20.20')/str-->'arp_tpa=192.168.20.20, actions=output:2'",
+        "description":"ethernet/vlan/arp(dst_ip='192.168.20.20')-->'arp_tpa=192.168.20.20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -226,7 +226,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/arp(dst_ip='192.168.20.20')/str-->'arp_tpa=192.168.20.20, actions=output:CONTROLLER'",
+        "description":"ethernet/vlan/arp(dst_ip='192.168.20.20')-->'arp_tpa=192.168.20.20, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -285,7 +285,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/arp(dst_ip='10.10.20.20')/str-->'arp_tpa=192.168.20.20, actions=output:2'",
+        "description":"ethernet/vlan/arp(dst_ip='10.10.20.20')-->'arp_tpa=192.168.20.20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -340,7 +340,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(dst_ip='192.168.20.20')/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, arp_tpa=192.168.20.20, actions=output:2'",
+        "description":"ethernet/mpls/arp(dst_ip='192.168.20.20')-->'actions=pop_mpls, goto_table:1', 'table_id=1, arp_tpa=192.168.20.20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -433,7 +433,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(dst_ip='192.168.20.20')/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, arp_tpa=192.168.20.20, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/arp(dst_ip='192.168.20.20')-->'actions=pop_mpls, goto_table:1', 'table_id=1, arp_tpa=192.168.20.20, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -527,7 +527,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(dst_ip='10.10.20.20')/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, arp_tpa=192.168.20.20, actions=output:2'",
+        "description":"ethernet/mpls/arp(dst_ip='10.10.20.20')-->'actions=pop_mpls, goto_table:1', 'table_id=1, arp_tpa=192.168.20.20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -618,7 +618,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_ip='192.168.20.20')/str-->'arp_tpa=192.168.20.20, actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_ip='192.168.20.20')-->'arp_tpa=192.168.20.20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -684,7 +684,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_ip='192.168.20.20')/str-->'arp_tpa=192.168.20.20, actions=output:CONTROLLER'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_ip='192.168.20.20')-->'arp_tpa=192.168.20.20, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -751,7 +751,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_ip='10.10.20.20')/str-->'arp_tpa=192.168.20.20, actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_ip='10.10.20.20')-->'arp_tpa=192.168.20.20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

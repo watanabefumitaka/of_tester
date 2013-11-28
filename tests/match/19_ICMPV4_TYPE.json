@@ -376,7 +376,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4/icmp(type_=8)-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, icmpv4_type=8, actions=output:2'",
+        "description":"ethernet/mpls/ipv4/icmp(type_=8)-->'actions=pop_mpls, goto_table:1', 'table_id=1, icmpv4_type=8, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -475,7 +475,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4/icmp(type_=8)-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, icmpv4_type=8, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/ipv4/icmp(type_=8)-->'actions=pop_mpls, goto_table:1', 'table_id=1, icmpv4_type=8, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -575,7 +575,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4/icmp(type_=3)-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, icmpv4_type=8, actions=output:2'",
+        "description":"ethernet/mpls/ipv4/icmp(type_=3)-->'actions=pop_mpls, goto_table:1', 'table_id=1, icmpv4_type=8, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -1,7 +1,7 @@
 [
     "match: 11_IPV4_SRC",
     {
-        "description":"ethernet/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.10, actions=output:2'",
+        "description":"ethernet/ipv4(src='192.168.10.10')/tcp-->'ipv4_src=192.168.10.10, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -59,7 +59,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.10, actions=output:CONTROLLER'",
+        "description":"ethernet/ipv4(src='192.168.10.10')/tcp-->'ipv4_src=192.168.10.10, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -118,7 +118,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv4(src='10.10.10.10')/tcp/str-->'ipv4_src=192.168.10.10, actions=output:2'",
+        "description":"ethernet/ipv4(src='10.10.10.10')/tcp-->'ipv4_src=192.168.10.10, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -173,7 +173,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.10, actions=output:2'",
+        "description":"ethernet/vlan/ipv4(src='192.168.10.10')/tcp-->'ipv4_src=192.168.10.10, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -233,7 +233,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.10, actions=output:CONTROLLER'",
+        "description":"ethernet/vlan/ipv4(src='192.168.10.10')/tcp-->'ipv4_src=192.168.10.10, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -294,7 +294,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/ipv4(src='10.10.10.10')/tcp/str-->'ipv4_src=192.168.10.10, actions=output:2'",
+        "description":"ethernet/vlan/ipv4(src='10.10.10.10')/tcp-->'ipv4_src=192.168.10.10, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -350,7 +350,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4(src='192.168.10.10')/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_src=192.168.10.10, actions=output:2'",
+        "description":"ethernet/mpls/ipv4(src='192.168.10.10')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_src=192.168.10.10, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -445,7 +445,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4(src='192.168.10.10')/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_src=192.168.10.10, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/ipv4(src='192.168.10.10')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_src=192.168.10.10, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -541,7 +541,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4(src='10.10.10.10')/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_src=192.168.10.10, actions=output:2'",
+        "description":"ethernet/mpls/ipv4(src='10.10.10.10')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_src=192.168.10.10, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -633,7 +633,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.10, actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(src='192.168.10.10')/tcp-->'ipv4_src=192.168.10.10, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -701,7 +701,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.10, actions=output:CONTROLLER'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(src='192.168.10.10')/tcp-->'ipv4_src=192.168.10.10, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -770,7 +770,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(src='10.10.10.10')/tcp/str-->'ipv4_src=192.168.10.10, actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(src='10.10.10.10')/tcp-->'ipv4_src=192.168.10.10, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -1,7 +1,7 @@
 [
     "match: 26_IPV6_SRC (Mask)",
     {
-        "description":"ethernet/ipv6(src='10::10')/tcp/str-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
+        "description":"ethernet/ipv6(src='10::10')/tcp-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -60,7 +60,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv6(src='10::10')/tcp/str-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:CONTROLLER'",
+        "description":"ethernet/ipv6(src='10::10')/tcp-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -120,7 +120,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv6(src='a0::a0')/tcp/str-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
+        "description":"ethernet/ipv6(src='a0::a0')/tcp-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -176,7 +176,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/ipv6(src='10::10')/tcp/str-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
+        "description":"ethernet/vlan/ipv6(src='10::10')/tcp-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -237,7 +237,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/ipv6(src='10::10')/tcp/str-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:CONTROLLER'",
+        "description":"ethernet/vlan/ipv6(src='10::10')/tcp-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -299,7 +299,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/ipv6(src='a0::a0')/tcp/str-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
+        "description":"ethernet/vlan/ipv6(src='a0::a0')/tcp-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -356,7 +356,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(src='10::10')/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
+        "description":"ethernet/mpls/ipv6(src='10::10')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -452,7 +452,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(src='10::10')/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/ipv6(src='10::10')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -549,7 +549,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(src='a0::a0')/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
+        "description":"ethernet/mpls/ipv6(src='a0::a0')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -642,7 +642,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(src='10::10')/tcp/str-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(src='10::10')/tcp-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -711,7 +711,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(src='10::10')/tcp/str-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:CONTROLLER'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(src='10::10')/tcp-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -781,7 +781,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(src='a0::a0')/tcp/str-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(src='a0::a0')/tcp-->'ipv6_src=10::0(mask=0xffffffffffffffffffffffffffff0000), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

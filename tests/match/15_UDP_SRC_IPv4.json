@@ -1,7 +1,7 @@
 [
     "match: 15_UDP_SRC (IPv4)",
     {
-        "description":"ethernet/ipv4/udp(src_port=11111)/str-->'udp_src=11111, actions=output:2'",
+        "description":"ethernet/ipv4/udp(src_port=11111)-->'udp_src=11111, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -65,7 +65,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv4/udp(src_port=11111)/str-->'udp_src=11111, actions=output:CONTROLLER'",
+        "description":"ethernet/ipv4/udp(src_port=11111)-->'udp_src=11111, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -130,7 +130,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv4/udp(src_port=12345)/str-->'udp_src=11111, actions=output:2'",
+        "description":"ethernet/ipv4/udp(src_port=12345)-->'udp_src=11111, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -191,7 +191,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/ipv4/udp(src_port=11111)/str-->'udp_src=11111, actions=output:2'",
+        "description":"ethernet/vlan/ipv4/udp(src_port=11111)-->'udp_src=11111, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -257,7 +257,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/ipv4/udp(src_port=11111)/str-->'udp_src=11111, actions=output:CONTROLLER'",
+        "description":"ethernet/vlan/ipv4/udp(src_port=11111)-->'udp_src=11111, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -324,7 +324,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/ipv4/udp(src_port=12345)/str-->'udp_src=11111, actions=output:2'",
+        "description":"ethernet/vlan/ipv4/udp(src_port=12345)-->'udp_src=11111, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -386,7 +386,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4/udp(src_port=11111)/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, udp_src=11111, actions=output:2'",
+        "description":"ethernet/mpls/ipv4/udp(src_port=11111)-->'actions=pop_mpls, goto_table:1', 'table_id=1, udp_src=11111, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -487,7 +487,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4/udp(src_port=11111)/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, udp_src=11111, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/ipv4/udp(src_port=11111)-->'actions=pop_mpls, goto_table:1', 'table_id=1, udp_src=11111, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -589,7 +589,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4/udp(src_port=12345)/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, udp_src=11111, actions=output:2'",
+        "description":"ethernet/mpls/ipv4/udp(src_port=12345)-->'actions=pop_mpls, goto_table:1', 'table_id=1, udp_src=11111, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -687,7 +687,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/udp(src_port=11111)/str-->'udp_src=11111, actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/udp(src_port=11111)-->'udp_src=11111, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -761,7 +761,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/udp(src_port=11111)/str-->'udp_src=11111, actions=output:CONTROLLER'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/udp(src_port=11111)-->'udp_src=11111, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -836,7 +836,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/udp(src_port=12345)/str-->'udp_src=11111, actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/udp(src_port=12345)-->'udp_src=11111, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

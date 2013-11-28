@@ -1,7 +1,7 @@
 [
     "match: 34_MPLS_LABEL",
     {
-        "description":"ethernet/mpls(label=100)/ipv4/tcp/str-->'mpls_label=100, actions=output:2'",
+        "description":"ethernet/mpls(label=100)/ipv4/tcp-->'mpls_label=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -61,7 +61,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(label=100)/ipv4/tcp/str-->'mpls_label=100, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls(label=100)/ipv4/tcp-->'mpls_label=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -122,7 +122,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(label=203)/ipv4/tcp/str-->'mpls_label=100, actions=output:2'",
+        "description":"ethernet/mpls(label=203)/ipv4/tcp-->'mpls_label=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -178,7 +178,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(label=100)/ipv6/tcp/str-->'mpls_label=100, actions=output:2'",
+        "description":"ethernet/mpls(label=100)/ipv6/tcp-->'mpls_label=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -238,7 +238,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(label=100)/ipv6/tcp/str-->'mpls_label=100, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls(label=100)/ipv6/tcp-->'mpls_label=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -299,7 +299,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(label=203)/ipv6/tcp/str-->'mpls_label=100, actions=output:2'",
+        "description":"ethernet/mpls(label=203)/ipv6/tcp-->'mpls_label=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -355,7 +355,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(label=100)/arp/str-->'mpls_label=100, actions=output:2'",
+        "description":"ethernet/mpls(label=100)/arp-->'mpls_label=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -413,7 +413,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(label=100)/arp/str-->'mpls_label=100, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls(label=100)/arp-->'mpls_label=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -472,7 +472,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(label=203)/arp/str-->'mpls_label=100, actions=output:2'",
+        "description":"ethernet/mpls(label=203)/arp-->'mpls_label=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

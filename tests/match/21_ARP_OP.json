@@ -1,7 +1,7 @@
 [
     "match: 21_ARP_OP",
     {
-        "description":"ethernet/arp(opcode=1)/str-->'arp_op=1, actions=output:2'",
+        "description":"ethernet/arp(opcode=1)-->'arp_op=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -57,7 +57,7 @@
         ]
     },
     {
-        "description":"ethernet/arp(opcode=1)/str-->'arp_op=1, actions=output:CONTROLLER'",
+        "description":"ethernet/arp(opcode=1)-->'arp_op=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -114,7 +114,7 @@
         ]
     },
     {
-        "description":"ethernet/arp(opcode=2)/str-->'arp_op=1, actions=output:2'",
+        "description":"ethernet/arp(opcode=2)-->'arp_op=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -168,7 +168,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/arp(opcode=1)/str-->'arp_op=1, actions=output:2'",
+        "description":"ethernet/vlan/arp(opcode=1)-->'arp_op=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -226,7 +226,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/arp(opcode=1)/str-->'arp_op=1, actions=output:CONTROLLER'",
+        "description":"ethernet/vlan/arp(opcode=1)-->'arp_op=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -285,7 +285,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/arp(opcode=2)/str-->'arp_op=1, actions=output:2'",
+        "description":"ethernet/vlan/arp(opcode=2)-->'arp_op=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -340,7 +340,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(opcode=1)/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, arp_op=1, actions=output:2'",
+        "description":"ethernet/mpls/arp(opcode=1)-->'actions=pop_mpls, goto_table:1', 'table_id=1, arp_op=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -433,7 +433,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(opcode=1)/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, arp_op=1, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/arp(opcode=1)-->'actions=pop_mpls, goto_table:1', 'table_id=1, arp_op=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -527,7 +527,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(opcode=2)/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, arp_op=1, actions=output:2'",
+        "description":"ethernet/mpls/arp(opcode=2)-->'actions=pop_mpls, goto_table:1', 'table_id=1, arp_op=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -618,7 +618,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(opcode=1)/str-->'arp_op=1, actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(opcode=1)-->'arp_op=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -684,7 +684,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(opcode=1)/str-->'arp_op=1, actions=output:CONTROLLER'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(opcode=1)-->'arp_op=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -751,7 +751,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(opcode=2)/str-->'arp_op=1, actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(opcode=2)-->'arp_op=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
