@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 21_ARP_OP"
-    },
+    "match: 21_ARP_OP",
     {
         "description":"test00: match[eth_type=2054/arp/str_op=1] packet=ethernet/arp/str",
         "prerequisite":[

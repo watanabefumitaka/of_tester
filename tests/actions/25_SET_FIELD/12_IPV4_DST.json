@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 12_IPV4_DST"
-    },
+    "action: set_field: 12_IPV4_DST",
     {
         "description":"test00: actions[OFPActionSetField[ipv4_dst=10.10.20.20]] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[

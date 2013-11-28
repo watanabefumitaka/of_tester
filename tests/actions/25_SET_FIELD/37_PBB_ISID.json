@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 37_PBB_ISID"
-    },
+    "action: set_field: 37_PBB_ISID",
     {
         "description":"test00: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
         "prerequisite":[

@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 19_PUSH_MPLS (multiple)"
-    },
+    "action: 19_PUSH_MPLS (multiple)",
     {
         "description": "ethernet/mpls/ipv4/tcp-->\"dl_type=0x8847, actions=push_mpls:0x8847, output:2\"",
         "prerequisite":[

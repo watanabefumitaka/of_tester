@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 17_PUSH_VLAN (multiple)"
-    },
+    "action: 17_PUSH_VLAN (multiple)",
     {
         "description": "ethernet/vlan/ipv4/tcp-->\"ip, actions=push_vlan:0x88a8, output:2\"",
         "prerequisite":[

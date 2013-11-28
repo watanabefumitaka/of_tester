@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 15_UDP_SRC (IPv4)"
-    },
+    "action: set_field: 15_UDP_SRC (IPv4)",
     {
         "description":"test00: actions[OFPActionSetField[udp_src=12345]] packet=ethernet/ipv4/udp/str",
         "prerequisite":[

@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 16_DEC_MPLS_TTL"
-    },
+    "action: 16_DEC_MPLS_TTL",
     {
         "description": "ethernet/mpls(ttl=64)/ipv4/tcp-->\"dl_type=0x8847, actions=dec_mpls_ttl, output:2\"",
         "prerequisite":[

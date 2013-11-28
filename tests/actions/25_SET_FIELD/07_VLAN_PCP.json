@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 07_VLAN_PCP"
-    },
+    "action: set_field: 07_VLAN_PCP",
     {
         "description":"test00: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/ipv4/tcp/str",
         "prerequisite":[

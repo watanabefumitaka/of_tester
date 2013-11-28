@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 20_POP_MPLS"
-    },
+    "action: 20_POP_MPLS",
     {
         "description": "ethernet/mpls/ipv4/tcp-->\"dl_type=0x8847, actions=pop_mpls:0x0800, output:2\"",
         "prerequisite":[

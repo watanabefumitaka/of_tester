@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 24_ARP_SHA"
-    },
+    "action: set_field: 24_ARP_SHA",
     {
         "description":"test00: actions[OFPActionSetField[arp_sha=aa:aa:aa:aa:aa:aa]] packet=ethernet/arp/str",
         "prerequisite":[

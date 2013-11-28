@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 23_SET_NW_TTL (IPv6)"
-    },
+    "action: 23_SET_NW_TTL (IPv6)",
     {
         "description": "ethernet/ipv6(hop_limit=64)/tcp-->\"dl_type=0x86dd, actions=set_nw_ttl:32, output:2\"",
         "prerequisite":[

@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 24_DEC_NW_TTL (IPv4)"
-    },
+    "action: 24_DEC_NW_TTL (IPv4)",
     {
         "description": "ethernet/ipv4(ttl=64)/tcp-->\"ip, actions=dec_nw_ttl, output:2\"",
         "prerequisite":[

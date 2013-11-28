@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 19_ICMPV4_TYPE"
-    },
+    "match: 19_ICMPV4_TYPE",
     {
         "description":"test00: match[eth_type=2048/ip_proto=1/icmpv4_type=8] packet=ethernet/ipv4/icmp",
         "prerequisite":[

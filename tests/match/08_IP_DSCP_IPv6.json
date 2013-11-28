@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 08_IP_DSCP (IPv6)"
-    },
+    "match: 08_IP_DSCP (IPv6)",
     {
         "description":"test00: match[eth_type=34525/ip_dscp=8] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[

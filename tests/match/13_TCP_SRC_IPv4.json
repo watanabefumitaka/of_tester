@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 13_TCP_SRC (IPv4)"
-    },
+    "match: 13_TCP_SRC (IPv4)",
     {
         "description":"test00: match[eth_type=2048/ip_proto=6/tcp_src=11111] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[

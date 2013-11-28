@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 27_POP_PBB"
-    },
+    "action: 27_POP_PBB",
     {
         "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp-->\"dl_type=0x88e7, actions=pop_pbb, output:2\"",
         "prerequisite":[

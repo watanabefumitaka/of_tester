@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 05_ETH_TYPE"
-    },
+    "action: set_field: 05_ETH_TYPE",
     {
         "description":"test00: actions[OFPActionSetField[eth_type=34888]] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[

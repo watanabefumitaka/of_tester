@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 16_UDP_DST (IPv4)"
-    },
+    "match: 16_UDP_DST (IPv4)",
     {
         "description":"test00: match[eth_type=2048/ip_proto=17/udp_dst=2222] packet=ethernet/ipv4/udp/str",
         "prerequisite":[

@@ -847,10 +847,10 @@ class TestFile(stringify.StringifyMixin):
             try:
                 json_list = json.loads(buf)
                 for test_json in json_list:
-                    if 'tests' in test_json:
-                        self.tests.append(Test(test_json))
+                    if isinstance(test_json, unicode):
+                        self.description = test_json
                     else:
-                        self.description = test_json[KEY_DESC]
+                        self.tests.append(Test(test_json))
             except (ValueError, TypeError) as e:
                 result = (TEST_FILE_ERROR %
                           {'file': path, 'detail': e.message})

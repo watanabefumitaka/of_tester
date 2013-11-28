@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 03_ETH_DST"
-    },
+    "action: set_field: 03_ETH_DST",
     {
         "description":"test00: actions[OFPActionSetField[eth_dst=bb:bb:bb:bb:bb:bb]] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[

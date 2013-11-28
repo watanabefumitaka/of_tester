@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 33_IPV6_ND_TLL"
-    },
+    "match: 33_IPV6_ND_TLL",
     {
         "description":"test00: match[eth_type=34525/ip_proto=58/icmpv6_type=136/ipv6_nd_tll=11:11:11:11:11:11] packet=ethernet/ipv6/icmpv6",
         "prerequisite":[

@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 18_POP_VLAN"
-    },
+    "action: 18_POP_VLAN",
     {
         "description": "ethernet/vlan(vid=100)/ipv4/tcp-->\"ip, dl_vlan=0, actions=pop_vlan, output:2\"",
         "prerequisite":[

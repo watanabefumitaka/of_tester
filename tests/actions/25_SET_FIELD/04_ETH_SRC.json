@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 04_ETH_SRC"
-    },
+    "action: set_field: 04_ETH_SRC",
     {
         "description":"test00: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[

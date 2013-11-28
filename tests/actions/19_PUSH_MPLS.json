@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 19_PUSH_MPLS"
-    },
+    "action: 19_PUSH_MPLS",
     {
         "description": "ethernet/ipv4/tcp-->\"ip, actions=push_mpls:0x8847, output:2\"",
         "prerequisite":[

@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 23_ARP_TPA"
-    },
+    "action: set_field: 23_ARP_TPA",
     {
         "description":"test00: actions[OFPActionSetField[arp_tpa=10.10.20.20]] packet=ethernet/arp/str",
         "prerequisite":[

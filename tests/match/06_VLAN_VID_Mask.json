@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 06_VLAN_VID (Mask)"
-    },
+    "match: 06_VLAN_VID (Mask)",
     {
         "description":"test00: match[vlan_vid=96(mask=0xf0)] packet=ethernet/vlan/ipv4/tcp/str",
         "prerequisite":[

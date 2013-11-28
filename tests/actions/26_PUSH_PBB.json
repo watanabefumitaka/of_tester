@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 26_PUSH_PBB"
-    },
+    "action: 26_PUSH_PBB",
     {
         "description": "ethernet/ipv4/tcp-->\"ip, actions=push_pbb:0x88e7, output:2\"",
         "prerequisite":[

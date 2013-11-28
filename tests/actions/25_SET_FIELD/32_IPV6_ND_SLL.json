@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 32_IPV6_ND_SLL"
-    },
+    "action: set_field: 32_IPV6_ND_SLL",
     {
         "description":"test00: actions[OFPActionSetField[ipv6_nd_sll=aa:aa:aa:aa:aa:aa]] packet=ethernet/ipv6/icmpv6",
         "prerequisite":[

@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 08_IP_DSCP (IPv4)"
-    },
+    "action: set_field: 08_IP_DSCP (IPv4)",
     {
         "description":"test00: actions[OFPActionSetField[ip_dscp=16]] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[

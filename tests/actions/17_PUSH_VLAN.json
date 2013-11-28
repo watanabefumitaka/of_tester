@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 17_PUSH_VLAN"
-    },
+    "action: 17_PUSH_VLAN",
     {
         "description": "ethernet/ipv4/tcp-->\"ip, actions=push_vlan:0x8100, output:2\"",
         "prerequisite":[

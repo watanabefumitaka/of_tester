@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 11_IPV4_SRC"
-    },
+    "action: set_field: 11_IPV4_SRC",
     {
         "description":"test00: actions[OFPActionSetField[ipv4_src=10.10.10.10]] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[

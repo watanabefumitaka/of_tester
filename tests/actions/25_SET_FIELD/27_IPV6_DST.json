@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 27_IPV6_DST"
-    },
+    "action: set_field: 27_IPV6_DST",
     {
         "description":"test00: actions[OFPActionSetField[ipv6_dst=b0::b0]] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[

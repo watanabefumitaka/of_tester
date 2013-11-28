@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: 00_OUTPUT"
-    },
+    "action: 00_OUTPUT",
     {
         "description": "ethernet/ipv4/tcp-->\"actions=output:2\"",
         "prerequisite":[

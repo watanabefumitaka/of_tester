@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 01_IN_PHY_PORT"
-    },
+    "match: 01_IN_PHY_PORT",
     {
         "description":"test00: match[in_phy_port=1] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[

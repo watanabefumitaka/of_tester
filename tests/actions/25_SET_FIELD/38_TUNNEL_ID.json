@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 38_TUNNEL_ID"
-    },
+    "action: set_field: 38_TUNNEL_ID",
     {
         "description":"test00: actions[OFPActionSetField[tunnel_id=12345]] packet=ethernet/ipv4/tcp/str",
         "prerequisite":[

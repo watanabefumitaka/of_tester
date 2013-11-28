@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 14_TCP_DST (IPv6)"
-    },
+    "match: 14_TCP_DST (IPv6)",
     {
         "description":"test00: match[eth_type=34525/ip_proto=6/tcp_dst=2222] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[

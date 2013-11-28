@@ -1,7 +1,5 @@
 [
-    {
-        "description": "match: 27_IPV6_DST (Mask)"
-    },
+    "match: 27_IPV6_DST (Mask)",
     {
         "description":"test00: match[eth_type=34525/ipv6_dst=0::20(mask=ffffffffffffffffffffffffffff)] packet=ethernet/ipv6/tcp/str",
         "prerequisite":[

@@ -1,7 +1,5 @@
 [
-    {
-        "description": "action: set_field: 29_ICMPV6_TYPE"
-    },
+    "action: set_field: 29_ICMPV6_TYPE",
     {
         "description":"test00: actions[OFPActionSetField[icmpv6_type=135]] packet=ethernet/ipv6/icmpv6",
         "prerequisite":[
