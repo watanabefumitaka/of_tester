@@ -147,7 +147,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv6/sctp(src_port=11111)-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, sctp_src=11111, actions=set_field:12345->sctp_src, output:2'",
+        "description": "ethernet/mpls/ipv6/sctp(src_port=11111)-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, sctp_src=11111, actions=set_field:12345->sctp_src, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

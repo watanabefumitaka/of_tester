@@ -147,7 +147,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv6/icmpv6(code=0)-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, icmpv6_code=0, actions=set_field:1->icmpv6_code, output:2'",
+        "description": "ethernet/mpls/ipv6/icmpv6(code=0)-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, icmpv6_code=0, actions=set_field:1->icmpv6_code, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

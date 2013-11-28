@@ -151,7 +151,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv4/tcp(src_port=11111)-->'eth_type=0x8847, actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, tcp_src=11111, actions=set_field:12345->tcp_src, output:2'",
+        "description": "ethernet/mpls/ipv4/tcp(src_port=11111)-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, tcp_src=11111, actions=set_field:12345->tcp_src, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

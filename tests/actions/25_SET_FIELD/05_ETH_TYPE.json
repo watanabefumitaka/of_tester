@@ -1,7 +1,7 @@
 [
     "action: set_field: 05_ETH_TYPE",
     {
-        "description": "ethernet(eth_type=0x0800)/ipv4/tcp-->'eth_type=0x0800, actions=set_field:0x8848->eth_type, output:2'",
+        "description": "ethernet(ethertype=0x0800)/ipv4/tcp-->'eth_type=0x0800, actions=set_field:0x8848->eth_type, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -63,7 +63,7 @@
         ]
     },
     {
-        "description": "ethernet(eth_type=0x86dd)/ipv6/tcp-->'eth_type=0x86dd, actions=set_field:0x8848->eth_type, output:2'",
+        "description": "ethernet(ethertype=0x86dd)/ipv6/tcp-->'eth_type=0x86dd, actions=set_field:0x8848->eth_type, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -125,7 +125,7 @@
         ]
     },
     {
-        "description": "ethernet(eth_type=0x0806)/arp-->'eth_type=0x0806, actions=set_field:0x8848->eth_type, output:2'",
+        "description": "ethernet(ethertype=0x0806)/arp-->'eth_type=0x0806, actions=set_field:0x8848->eth_type, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

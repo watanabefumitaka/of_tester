@@ -147,7 +147,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv4/icmp(type=8)-->'eth_type=0x8847, actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, icmpv4_type=8, actions=set_field:0->icmpv4_type, output:2'",
+        "description": "ethernet/mpls/ipv4/icmp(type=8)-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, icmpv4_type=8, actions=set_field:0->icmpv4_type, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

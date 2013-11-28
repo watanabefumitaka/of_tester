@@ -139,7 +139,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv6(flow_label=100)/tcp-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, ipv6_flabel=100, actions=set_field:203->ipv6_flabel, output:2'",
+        "description": "ethernet/mpls/ipv6(flow_label=100)/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, ipv6_flabel=100, actions=set_field:203->ipv6_flabel, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -151,7 +151,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv6/udp(dst_port=22222)-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, udp_dst=22222, actions=set_field:6789->udp_dst, output:2'",
+        "description": "ethernet/mpls/ipv6/udp(dst_port=22222)-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, udp_dst=22222, actions=set_field:6789->udp_dst, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

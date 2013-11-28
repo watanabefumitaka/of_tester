@@ -139,7 +139,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv4(tos=32)/tcp-->'eth_type=0x8847, actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, ip_ecn=0, actions=set_field:1->ip_ecn, output:2'",
+        "description": "ethernet/mpls/ipv4(tos=32)/tcp-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, ip_ecn=0, actions=set_field:1->ip_ecn, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

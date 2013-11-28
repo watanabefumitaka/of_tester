@@ -139,7 +139,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv6(traffic_class=32)/tcp-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, ip_dscp=8, actions=set_field:16->ip_dscp, output:2'",
+        "description": "ethernet/mpls/ipv6(traffic_class=32)/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, ip_dscp=8, actions=set_field:16->ip_dscp, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
