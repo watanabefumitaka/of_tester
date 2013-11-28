@@ -1,7 +1,7 @@
 [
     "action: set_field: 20_ICMPV4_CODE",
     {
-        "description":"test00: actions[OFPActionSetField[icmpv4_code=10]] packet=ethernet/ipv4/icmp",
+        "description": "ethernet/ipv4/icmp(code=0)-->'icmpv4_code=0, actions=set_field:10->icmpv4_code, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -73,7 +73,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[icmpv4_code=10]] packet=ethernet/vlan/ipv4/icmp",
+        "description": "ethernet/vlan/ipv4/icmp(code=0)-->'icmpv4_code=0, actions=set_field:10->icmpv4_code, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -147,7 +147,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[icmpv4_code=10]] packet=ethernet/mpls/ipv4/icmp",
+        "description": "ethernet/mpls/ipv4/icmp(code=0)-->'eth_type=0x8847, actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, icmpv4_code=0, actions=set_field:10->icmpv4_code, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -256,7 +256,7 @@
         ]
     },
     {
-        "description":"test03: actions[OFPActionSetField[icmpv4_code=10]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/icmp(code=0)-->'icmpv4_code=0, actions=set_field:10->icmpv4_code, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

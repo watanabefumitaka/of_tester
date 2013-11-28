@@ -1,7 +1,7 @@
 [
     "action: set_field: 16_UDP_DST (IPv6)",
     {
-        "description":"test00: actions[OFPActionSetField[udp_dst=6789]] packet=ethernet/ipv6/udp/str",
+        "description": "ethernet/ipv6/udp(dst_port=22222)-->'udp_dst=22222, actions=set_field:6789->udp_dst, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -75,7 +75,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[udp_dst=6789]] packet=ethernet/vlan/ipv6/udp/str",
+        "description": "ethernet/vlan/ipv6/udp(dst_port=22222)-->'udp_dst=22222, actions=set_field:6789->udp_dst, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -151,7 +151,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[udp_dst=6789]] packet=ethernet/mpls/ipv6/udp/str",
+        "description": "ethernet/mpls/ipv6/udp(dst_port=22222)-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, udp_dst=22222, actions=set_field:6789->udp_dst, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -262,7 +262,7 @@
         ]
     },
     {
-        "description":"test03: actions[OFPActionSetField[udp_dst=6789]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/udp/str",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/udp(dst_port=22222)-->'udp_dst=22222, actions=set_field:6789->udp_dst, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

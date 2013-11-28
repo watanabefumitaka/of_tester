@@ -1,7 +1,7 @@
 [
     "action: set_field: 31_IPV6_ND_TARGET",
     {
-        "description":"test00: actions[OFPActionSetField[ipv6_nd_target=a0::a0]] packet=ethernet/ipv6/icmpv6",
+        "description": "ethernet/ipv6/icmpv6(data=nd_neighbor(dst=20::20))-->'ipv6_nd_target=20::20, actions=set_field:a0::a0->ipv6_nd_target, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -79,7 +79,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[ipv6_nd_target=a0::a0]] packet=ethernet/vlan/ipv6/icmpv6",
+        "description": "ethernet/vlan/ipv6/icmpv6(data=nd_neighbor(dst=20::20))-->'ipv6_nd_target=20::20, actions=set_field:a0::a0->ipv6_nd_target, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -159,7 +159,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[ipv6_nd_target=a0::a0]] packet=ethernet/mpls/ipv6/icmpv6",
+        "description": "ethernet/mpls/ipv6/icmpv6(data=nd_neighbor(dst=20::20))-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, ipv6_nd_target=20::20, actions=set_field:a0::a0->ipv6_nd_target, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -274,7 +274,7 @@
         ]
     },
     {
-        "description":"test03: actions[OFPActionSetField[ipv6_nd_target=a0::a0]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6(data=nd_neighbor(dst=20::20))-->'ipv6_nd_target=20::20, actions=set_field:a0::a0->ipv6_nd_target, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

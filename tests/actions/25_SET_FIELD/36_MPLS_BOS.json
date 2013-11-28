@@ -1,7 +1,7 @@
 [
     "action: set_field: 36_MPLS_BOS",
     {
-        "description":"test00: actions[OFPActionSetField[mpls_bos=0]] packet=ethernet/mpls/ipv4/tcp/str",
+        "description": "ethernet/mpls(bsb=1)/ipv4/tcp-->'mpls_bos=1, actions=set_field:0->mpls_bos, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -71,7 +71,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[mpls_bos=0]] packet=ethernet/mpls/ipv6/tcp/str",
+        "description": "ethernet/mpls(bsb=1)/ipv6/tcp-->'mpls_bos=1, actions=set_field:0->mpls_bos, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -141,7 +141,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[mpls_bos=0]] packet=ethernet/mpls/arp/str",
+        "description": "ethernet/mpls(bsb=1)/arp-->'mpls_bos=1, actions=set_field:0->mpls_bos, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -1,7 +1,7 @@
 [
     "action: set_field: 28_IPV6_FLABEL",
     {
-        "description":"test00: actions[OFPActionSetField[ipv6_flabel=203]] packet=ethernet/ipv6/tcp/str",
+        "description": "ethernet/ipv6(flow_label=100)/tcp-->'ipv6_flabel=100, actions=set_field:203->ipv6_flabel, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -69,7 +69,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[ipv6_flabel=203]] packet=ethernet/vlan/ipv6/tcp/str",
+        "description": "ethernet/vlan/ipv6(flow_label=100)/tcp-->'ipv6_flabel=100, actions=set_field:203->ipv6_flabel, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -139,7 +139,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[ipv6_flabel=203]] packet=ethernet/mpls/ipv6/tcp/str",
+        "description": "ethernet/mpls/ipv6(flow_label=100)/tcp-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, ipv6_flabel=100, actions=set_field:203->ipv6_flabel, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -244,7 +244,7 @@
         ]
     },
     {
-        "description":"test03: actions[OFPActionSetField[ipv6_flabel=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(flow_label=100)/tcp-->'ipv6_flabel=100, actions=set_field:203->ipv6_flabel, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

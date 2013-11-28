@@ -1,7 +1,7 @@
 [
     "action: set_field: 04_ETH_SRC",
     {
-        "description":"test00: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/ipv4/tcp/str",
+        "description": "ethernet(src=22:22:22:22:22:22)/ipv4/tcp-->'eth_src=22:22:22:22:22:22, actions=set_field:bb:bb:bb:bb:bb:bb->eth_src, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -63,7 +63,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/ipv6/tcp/str",
+        "description": "ethernet(src=22:22:22:22:22:22)/ipv6/tcp-->'eth_src=22:22:22:22:22:22, actions=set_field:bb:bb:bb:bb:bb:bb->eth_src, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -125,7 +125,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[eth_src=aa:aa:aa:aa:aa:aa]] packet=ethernet/arp/str",
+        "description": "ethernet(src=22:22:22:22:22:22)/arp-->'eth_src=22:22:22:22:22:22, actions=set_field:bb:bb:bb:bb:bb:bb->eth_src, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

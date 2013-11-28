@@ -1,7 +1,7 @@
 [
     "action: set_field: 07_VLAN_PCP",
     {
-        "description":"test00: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/ipv4/tcp/str",
+        "description": "ethernet/vlan(pcp=3)/ipv4/tcp-->'vlan_pcp=3, actions=set_field:5->vlan_pcp, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -71,7 +71,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/ipv6/tcp/str",
+        "description": "ethernet/vlan(pcp=3)/ipv6/tcp-->'vlan_pcp=3, actions=set_field:5->vlan_pcp, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -141,7 +141,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[vlan_pcp=5]] packet=ethernet/vlan/arp/str",
+        "description": "ethernet/vlan(pcp=3)/arp-->'vlan_pcp=3, actions=set_field:5->vlan_pcp, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

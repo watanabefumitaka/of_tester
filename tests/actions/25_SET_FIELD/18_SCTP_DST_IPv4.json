@@ -1,7 +1,7 @@
 [
     "action: set_field: 18_SCTP_DST (IPv4)",
     {
-        "description":"test00: actions[OFPActionSetField[sctp_dst=6789]] packet=ethernet/ipv4/sctp",
+        "description": "ethernet/ipv4/sctp(dst_port=2222)-->'sctp_dst=2222, actions=set_field:6789->sctp_dst, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -73,7 +73,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[sctp_dst=6789]] packet=ethernet/vlan/ipv4/sctp",
+        "description": "ethernet/vlan/ipv4/sctp(dst_port=22222)-->'sctp_dst=22222, actions=set_field:6789->sctp_dst, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -147,7 +147,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[sctp_dst=6789]] packet=ethernet/mpls/ipv4/sctp",
+        "description": "ethernet/mpls/ipv4/sctp(dst_port=22222)-->'eth_type=0x8847, actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, sctp_dst=22222, actions=set_field:6789->sctp_dst, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -256,7 +256,7 @@
         ]
     },
     {
-        "description":"test03: actions[OFPActionSetField[sctp_dst=6789]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/sctp",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/sctp(dst_port=22222)-->'sctp_dst=22222, actions=set_field:6789->sctp_dst, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
