@@ -205,7 +205,9 @@ def get_inst_str(inst):
     if len(INSTRUCTION[key]) == 2:
         for i, value in enumerate(INSTRUCTION[key][1]):
             if i != 0:
-                inst_str += '/'
+                sep = '/' if key != 'OFPActionSetField' else '->'
+                print sep
+                inst_str += sep
 
             if value == 'ethertype':
                 str_tmp = '0x%04x'
