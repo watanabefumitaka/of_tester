@@ -85,6 +85,7 @@ TESTER_RECEIVE_PORT = 2
 TARGET_SENDER_PORT = 2
 TARGET_RECEIVE_PORT = 1
 
+INTERVAL = 1  # sec
 WAIT_TIMER = 3  # sec
 
 # Test file format.
@@ -198,13 +199,13 @@ class OfTester(app_manager.RyuApp):
         super(OfTester, self).__init__()
         self._set_logger()
 
-        self.target_dpid = self._convert_dpid(CONF.tester.target)
-        self.tester_dpid = self._convert_dpid(CONF.tester.tester)
+        self.target_dpid = self._convert_dpid(CONF['test-switch']['target'])
+        self.tester_dpid = self._convert_dpid(CONF['test-switch']['tester'])
         self.logger.info('target_dpid=%s',
                          dpid_lib.dpid_to_str(self.target_dpid))
         self.logger.info('tester_dpid=%s',
                          dpid_lib.dpid_to_str(self.tester_dpid))
-        test_dir = CONF.tester.directory
+        test_dir = CONF['test-switch']['dir']
         self.logger.info('Test files directory = %s', test_dir)
 
         self.target_sw = None
@@ -335,6 +336,7 @@ class OfTester(app_manager.RyuApp):
                 else:
                     before_stats = self._test(STATE_GET_MATCH_COUNT)
                     self._test(STATE_UNMATCH_PKT_SEND, pkt)
+                    hub.sleep(INTERVAL)
                     self._test(STATE_FLOW_UNMATCH_CHK, before_stats, pkt)
             result = OK
         except (TestFailure, TestError,
