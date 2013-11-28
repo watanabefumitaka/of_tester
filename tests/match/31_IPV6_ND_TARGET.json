@@ -1,7 +1,7 @@
 [
     "match: 31_IPV6_ND_TARGET",
     {
-        "description":"test00: match[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/ipv6/icmpv6",
+        "description":"ethernet/ipv6/icmpv6(dst='20::20')-->'ipv6_nd_target=20::20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -69,7 +69,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/ipv6/icmpv6",
+        "description":"ethernet/ipv6/icmpv6(dst='20::20')-->'ipv6_nd_target=20::20, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -138,7 +138,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/ipv6/icmpv6",
+        "description":"ethernet/ipv6/icmpv6(dst='b0::b0')-->'ipv6_nd_target=20::20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -204,7 +204,7 @@
         ]
     },
     {
-        "description":"test03: match[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/vlan/ipv6/icmpv6",
+        "description":"ethernet/vlan/ipv6/icmpv6(dst='20::20')-->'ipv6_nd_target=20::20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -274,7 +274,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/vlan/ipv6/icmpv6",
+        "description":"ethernet/vlan/ipv6/icmpv6(dst='20::20')-->'ipv6_nd_target=20::20, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -345,7 +345,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/vlan/ipv6/icmpv6",
+        "description":"ethernet/vlan/ipv6/icmpv6(dst='b0::b0')-->'ipv6_nd_target=20::20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -412,7 +412,7 @@
         ]
     },
     {
-        "description":"test06: match[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/mpls/ipv6/icmpv6",
+        "description":"ethernet/mpls/ipv6/icmpv6(dst='20::20')-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_nd_target=20::20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -517,7 +517,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/mpls/ipv6/icmpv6",
+        "description":"ethernet/mpls/ipv6/icmpv6(dst='20::20')-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_nd_target=20::20, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -623,7 +623,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/mpls/ipv6/icmpv6",
+        "description":"ethernet/mpls/ipv6/icmpv6(dst='b0::b0')-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_nd_target=20::20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -726,7 +726,7 @@
         ]
     },
     {
-        "description":"test09: match[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6(dst='20::20')-->'ipv6_nd_target=20::20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -804,7 +804,7 @@
         ]
     },
     {
-        "description":"test10: match(PACKET_IN)[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6(dst='20::20')-->'ipv6_nd_target=20::20, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -883,7 +883,7 @@
         ]
     },
     {
-        "description":"test11: unmatch[eth_type=34525/ip_proto=58/icmpv6_type=135/ipv6_nd_target=20::20] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6(dst='b0::b0')-->'ipv6_nd_target=20::20, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

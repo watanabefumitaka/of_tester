@@ -1,7 +1,7 @@
 [
     "match: 39_IPV6_EXTHDR",
     {
-        "description":"test00: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp/str-->'ipv6_exthdr=64, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -59,7 +59,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp/str-->'ipv6_exthdr=64, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -118,7 +118,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'ipv6_exthdr=64, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -173,7 +173,7 @@
         ]
     },
     {
-        "description":"test03: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"ethernet/vlan/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp/str-->'ipv6_exthdr=64, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -233,7 +233,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"ethernet/vlan/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp/str-->'ipv6_exthdr=64, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -294,7 +294,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"ethernet/vlan/ipv6/tcp/str-->'ipv6_exthdr=64, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -350,7 +350,7 @@
         ]
     },
     {
-        "description":"test06: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp/str",
+        "description":"ethernet/mpls/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_exthdr=64, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -445,7 +445,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp/str",
+        "description":"ethernet/mpls/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_exthdr=64, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -541,7 +541,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/mpls/ipv6/tcp/str",
+        "description":"ethernet/mpls/ipv6/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_exthdr=64, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -633,7 +633,7 @@
         ]
     },
     {
-        "description":"test09: match[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp/str-->'ipv6_exthdr=64, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -701,7 +701,7 @@
         ]
     },
     {
-        "description":"test10: match(PACKET_IN)[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp/str-->'ipv6_exthdr=64, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -770,7 +770,7 @@
         ]
     },
     {
-        "description":"test11: unmatch[eth_type=34525/ipv6_exthdr=64] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str-->'ipv6_exthdr=64, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

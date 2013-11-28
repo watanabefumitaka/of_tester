@@ -1,7 +1,7 @@
 [
     "match: 11_IPV4_SRC (Mask)",
     {
-        "description":"test00: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -60,7 +60,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -120,7 +120,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4(src='10.10.10.10')/tcp/str-->'ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -176,7 +176,7 @@
         ]
     },
     {
-        "description":"test03: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"ethernet/vlan/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -237,7 +237,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"ethernet/vlan/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -299,7 +299,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"ethernet/vlan/ipv4(src='10.10.10.10')/tcp/str-->'ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -356,7 +356,7 @@
         ]
     },
     {
-        "description":"test06: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/ipv4/tcp/str",
+        "description":"ethernet/mpls/ipv4(src='192.168.10.10')/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -452,7 +452,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/ipv4/tcp/str",
+        "description":"ethernet/mpls/ipv4(src='192.168.10.10')/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -549,7 +549,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/mpls/ipv4/tcp/str",
+        "description":"ethernet/mpls/ipv4(src='10.10.10.10')/tcp/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -642,7 +642,7 @@
         ]
     },
     {
-        "description":"test09: match[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -711,7 +711,7 @@
         ]
     },
     {
-        "description":"test10: match(PACKET_IN)[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(src='192.168.10.10')/tcp/str-->'ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -781,7 +781,7 @@
         ]
     },
     {
-        "description":"test11: unmatch[eth_type=2048/ipv4_src=192.168.10.0(mask=ffffff00)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(src='10.10.10.10')/tcp/str-->'ipv4_src=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

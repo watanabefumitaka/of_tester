@@ -1,7 +1,7 @@
 [
     "match: 06_VLAN_VID",
     {
-        "description":"test00: match[vlan_vid=100] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"ethernet/vlan(vid=100)/ipv4/tcp/str-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -55,7 +55,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[vlan_vid=100] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"ethernet/vlan(vid=100)/ipv4/tcp/str-->'vlan_vid=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -110,7 +110,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[vlan_vid=100] packet=ethernet/vlan/ipv4/tcp/str",
+        "description":"ethernet/vlan(vid=203)/ipv4/tcp/str-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -160,7 +160,7 @@
         ]
     },
     {
-        "description":"test03: match[vlan_vid=100] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"ethernet/vlan(vid=100)/ipv6/tcp/str-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -214,7 +214,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[vlan_vid=100] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"ethernet/vlan(vid=100)/ipv6/tcp/str-->'vlan_vid=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -269,7 +269,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[vlan_vid=100] packet=ethernet/vlan/ipv6/tcp/str",
+        "description":"ethernet/vlan(vid=203)/ipv6/tcp/str-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -319,7 +319,7 @@
         ]
     },
     {
-        "description":"test06: match[vlan_vid=100] packet=ethernet/vlan/arp/str",
+        "description":"ethernet/vlan(vid=100)/arp/str-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -371,7 +371,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[vlan_vid=100] packet=ethernet/vlan/arp/str",
+        "description":"ethernet/vlan(vid=100)/arp/str-->'vlan_vid=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -424,7 +424,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[vlan_vid=100] packet=ethernet/vlan/arp/str",
+        "description":"ethernet/vlan(vid=203)/arp/str-->'vlan_vid=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

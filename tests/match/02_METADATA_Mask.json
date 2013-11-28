@@ -1,7 +1,7 @@
 [
     "match: 02_METADATA (Mask)",
     {
-        "description":"test00: match[metadata=240(mask=fffffff0)] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4/tcp/str-->'actions=write_metadata:255/0xffffffff, goto_table:1', 'table_id=1, metadata=240(mask=0xfffffff0), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -77,7 +77,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[metadata=240(mask=fffffff0)] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4/tcp/str-->'actions=write_metadata:255/0xffffffff, goto_table:1', 'table_id=1, metadata=240(mask=0xfffffff0), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -154,7 +154,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[metadata=240(mask=fffffff0)] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4/tcp/str-->'actions=write_metadata:255/0xffffffff, goto_table:1', 'table_id=1, metadata=240(mask=0xfffffff0), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -227,7 +227,7 @@
         ]
     },
     {
-        "description":"test03: match[metadata=240(mask=fffffff0)] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'actions=write_metadata:255/0xffffffff, goto_table:1', 'table_id=1, metadata=240(mask=0xfffffff0), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -303,7 +303,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[metadata=240(mask=fffffff0)] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'actions=write_metadata:255/0xffffffff, goto_table:1', 'table_id=1, metadata=240(mask=0xfffffff0), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -380,7 +380,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[metadata=240(mask=fffffff0)] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'actions=write_metadata:255/0xffffffff, goto_table:1', 'table_id=1, metadata=240(mask=0xfffffff0), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -453,7 +453,7 @@
         ]
     },
     {
-        "description":"test06: match[metadata=240(mask=fffffff0)] packet=ethernet/arp/str",
+        "description":"ethernet/arp/str-->'actions=write_metadata:255/0xffffffff, goto_table:1', 'table_id=1, metadata=240(mask=0xfffffff0), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -527,7 +527,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[metadata=240(mask=fffffff0)] packet=ethernet/arp/str",
+        "description":"ethernet/arp/str-->'actions=write_metadata:255/0xffffffff, goto_table:1', 'table_id=1, metadata=240(mask=0xfffffff0), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -602,7 +602,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[metadata=240(mask=fffffff0)] packet=ethernet/arp/str",
+        "description":"ethernet/arp/str-->'actions=write_metadata:255/0xffffffff, goto_table:1', 'table_id=1, metadata=240(mask=0xfffffff0), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

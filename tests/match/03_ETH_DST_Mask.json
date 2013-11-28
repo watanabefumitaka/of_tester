@@ -1,7 +1,7 @@
 [
     "match: 03_ETH_DST (Mask)",
     {
-        "description":"test00: match[eth_dst=22:22:22:22:22:00(mask=ffffffffff00)] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet(dst='22:22:22:22:22:22')/ipv4/tcp/str-->'eth_dst=22:22:22:22:22:00(mask=0xffffffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -54,7 +54,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[eth_dst=22:22:22:22:22:00(mask=ffffffffff00)] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet(dst='22:22:22:22:22:22')/ipv4/tcp/str-->'eth_dst=22:22:22:22:22:00(mask=0xffffffffff00), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -108,7 +108,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[eth_dst=22:22:22:22:22:00(mask=ffffffffff00)] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet(dst='bb:bb:bb:bb:bb:bb')/ipv4/tcp/str-->'eth_dst=22:22:22:22:22:00(mask=0xffffffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -158,7 +158,7 @@
         ]
     },
     {
-        "description":"test03: match[eth_dst=22:22:22:22:22:00(mask=ffffffffff00)] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet(dst='22:22:22:22:22:22')/ipv6/tcp/str-->'eth_dst=22:22:22:22:22:00(mask=0xffffffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -211,7 +211,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[eth_dst=22:22:22:22:22:00(mask=ffffffffff00)] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet(dst='22:22:22:22:22:22')/ipv6/tcp/str-->'eth_dst=22:22:22:22:22:00(mask=0xffffffffff00), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -265,7 +265,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[eth_dst=22:22:22:22:22:00(mask=ffffffffff00)] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet(dst='bb:bb:bb:bb:bb:bb')/ipv6/tcp/str-->'eth_dst=22:22:22:22:22:00(mask=0xffffffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -315,7 +315,7 @@
         ]
     },
     {
-        "description":"test06: match[eth_dst=22:22:22:22:22:00(mask=ffffffffff00)] packet=ethernet/arp/str",
+        "description":"ethernet(dst='22:22:22:22:22:22')/arp/str-->'eth_dst=22:22:22:22:22:00(mask=0xffffffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -366,7 +366,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[eth_dst=22:22:22:22:22:00(mask=ffffffffff00)] packet=ethernet/arp/str",
+        "description":"ethernet(dst='22:22:22:22:22:22')/arp/str-->'eth_dst=22:22:22:22:22:00(mask=0xffffffffff00), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -418,7 +418,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[eth_dst=22:22:22:22:22:00(mask=ffffffffff00)] packet=ethernet/arp/str",
+        "description":"ethernet(dst='bb:bb:bb:bb:bb:bb')/arp/str-->'eth_dst=22:22:22:22:22:00(mask=0xffffffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

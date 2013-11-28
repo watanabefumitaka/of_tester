@@ -1,7 +1,7 @@
 [
     "match: 25_ARP_THA (Mask)",
     {
-        "description":"test00: match[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/arp/str",
+        "description":"ethernet/arp(dst_mac='22:22:22:22:22:22')/str-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -58,7 +58,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/arp/str",
+        "description":"ethernet/arp(dst_mac='22:22:22:22:22:22')/str-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -116,7 +116,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/arp/str",
+        "description":"ethernet/arp(dst_mac='bb:bb:bb:bb:bb:bb')/str-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -171,7 +171,7 @@
         ]
     },
     {
-        "description":"test03: match[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/vlan/arp/str",
+        "description":"ethernet/vlan/arp(dst_mac='22:22:22:22:22:22')/str-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -230,7 +230,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/vlan/arp/str",
+        "description":"ethernet/vlan/arp(dst_mac='22:22:22:22:22:22')/str-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -290,7 +290,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/vlan/arp/str",
+        "description":"ethernet/vlan/arp(dst_mac='bb:bb:bb:bb:bb:bb')/str-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -346,7 +346,7 @@
         ]
     },
     {
-        "description":"test06: match[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/mpls/arp/str",
+        "description":"ethernet/mpls/arp(dst_mac='22:22:22:22:22:22')/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -440,7 +440,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/mpls/arp/str",
+        "description":"ethernet/mpls/arp(dst_mac='22:22:22:22:22:22')/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -535,7 +535,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/mpls/arp/str",
+        "description":"ethernet/mpls/arp(dst_mac='bb:bb:bb:bb:bb:bb')/str-->'eth_type=0x8847, actions=pop_mpls, goto_table:1', 'table_id=1, arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -627,7 +627,7 @@
         ]
     },
     {
-        "description":"test09: match[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp/str",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_mac='22:22:22:22:22:22')/str-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -694,7 +694,7 @@
         ]
     },
     {
-        "description":"test10: match(PACKET_IN)[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp/str",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_mac='22:22:22:22:22:22')/str-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -762,7 +762,7 @@
         ]
     },
     {
-        "description":"test11: unmatch[eth_type=2054/arp/str_tha=22:22:00:22:22:22(mask=ffff00ffffff)] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp/str",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_mac='bb:bb:bb:bb:bb:bb')/str-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

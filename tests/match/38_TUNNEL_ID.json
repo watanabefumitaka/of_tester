@@ -1,7 +1,7 @@
 [
     "match: 38_TUNNEL_ID",
     {
-        "description":"test00: match[tunnel_id=12345] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4/tcp/str-->'in_port=1, actions=set_field:12345/tunnel_id, goto_table:1', 'table_id=1, tunnel_id=12345, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -94,7 +94,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[tunnel_id=12345] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4/tcp/str-->'in_port=1, actions=set_field:12345/tunnel_id, goto_table:1', 'table_id=1, tunnel_id=12345, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -188,7 +188,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[tunnel_id=12345]  packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4/tcp/str-->'in_port=1, actions=set_field:6666/tunnel_id, goto_table:1', 'table_id=1, tunnel_id=12345, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -278,7 +278,7 @@
         ]
     },
     {
-        "description":"test03: match[tunnel_id=12345] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'in_port=1, actions=set_field:12345/tunnel_id, goto_table:1', 'table_id=1, tunnel_id=12345, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -371,7 +371,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[tunnel_id=12345] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'in_port=1, actions=set_field:12345/tunnel_id, goto_table:1', 'table_id=1, tunnel_id=12345, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -465,7 +465,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[tunnel_id=12345] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'in_port=1, actions=set_field:6666/tunnel_id, goto_table:1', 'table_id=1, tunnel_id=12345, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -555,7 +555,7 @@
         ]
     },
     {
-        "description":"test06: match[tunnel_id=12345] packet=ethernet/arp/str",
+        "description":"ethernet/arp/str-->'in_port=1, actions=set_field:12345/tunnel_id, goto_table:1', 'table_id=1, tunnel_id=12345, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -646,7 +646,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[tunnel_id=12345] packet=ethernet/arp/str",
+        "description":"ethernet/arp/str-->'in_port=1, actions=set_field:12345/tunnel_id, goto_table:1', 'table_id=1, tunnel_id=12345, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -738,7 +738,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[tunnel_id=12345] packet=ethernet/arp/str",
+        "description":"ethernet/arp/str-->'in_port=1, actions=set_field:6666/tunnel_id, goto_table:1', 'table_id=1, tunnel_id=12345, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

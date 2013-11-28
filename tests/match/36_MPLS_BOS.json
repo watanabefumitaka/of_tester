@@ -1,7 +1,7 @@
 [
     "match: 36_MPLS_BOS",
     {
-        "description":"test00: match[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/ipv4/tcp/str",
+        "description":"ethernet/mpls(bsb=1)/ipv4/tcp/str-->'mpls_bos=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -61,7 +61,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/ipv4/tcp/str",
+        "description":"ethernet/mpls(bsb=1)/ipv4/tcp/str-->'mpls_bos=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -122,7 +122,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/mpls/ipv4/tcp/str",
+        "description":"ethernet/mpls(bsb=0)/mpls(bsb=1)/ipv4/tcp/str-->'mpls_bos=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -179,7 +179,7 @@
         ]
     },
     {
-        "description":"test03: match[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/ipv6/tcp/str",
+        "description":"ethernet/mpls(bsb=1)/ipv6/tcp/str-->'mpls_bos=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -239,7 +239,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/ipv6/tcp/str",
+        "description":"ethernet/mpls(bsb=1)/ipv6/tcp/str-->'mpls_bos=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -300,7 +300,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/mpls/ipv6/tcp/str",
+        "description":"ethernet/mpls(bsb=0)/mpls(bsb=1)/ipv6/tcp/str-->'mpls_bos=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -357,7 +357,7 @@
         ]
     },
     {
-        "description":"test06: match[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/arp/str",
+        "description":"ethernet/mpls(bsb=1)/arp/str-->'mpls_bos=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -415,7 +415,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/arp/str",
+        "description":"ethernet/mpls(bsb=1)/arp/str-->'mpls_bos=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -474,7 +474,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[eth_type=34887/mpls_bos=1] packet=ethernet/mpls/mpls/arp/str",
+        "description":"ethernet/mpls(bsb=0)/mpls(bsb=1)/arp/str-->'mpls_bos=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

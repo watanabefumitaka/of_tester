@@ -1,7 +1,7 @@
 [
     "match: 00_IN_PORT",
     {
-        "description":"test00: match[in_port=1] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4/tcp/str-->'in_port=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -53,7 +53,7 @@
         ]
     },
     {
-        "description":"test01: match(PACKET_IN)[in_port=1] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4/tcp/str-->'in_port=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -106,7 +106,7 @@
         ]
     },
     {
-        "description":"test02: unmatch[in_port=2] packet=ethernet/ipv4/tcp/str",
+        "description":"ethernet/ipv4/tcp/str-->'in_port=2, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -155,7 +155,7 @@
         ]
     },
     {
-        "description":"test03: match[in_port=1] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'in_port=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -207,7 +207,7 @@
         ]
     },
     {
-        "description":"test04: match(PACKET_IN)[in_port=1] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'in_port=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -260,7 +260,7 @@
         ]
     },
     {
-        "description":"test05: unmatch[in_port=2] packet=ethernet/ipv6/tcp/str",
+        "description":"ethernet/ipv6/tcp/str-->'in_port=2, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -309,7 +309,7 @@
         ]
     },
     {
-        "description":"test06: match[in_port=1] packet=ethernet/arp/str",
+        "description":"ethernet/arp/str-->'in_port=1, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -359,7 +359,7 @@
         ]
     },
     {
-        "description":"test07: match(PACKET_IN)[in_port=1] packet=ethernet/arp/str",
+        "description":"ethernet/arp/str-->'in_port=1, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -410,7 +410,7 @@
         ]
     },
     {
-        "description":"test08: unmatch[in_port=2] packet=ethernet/arp/str",
+        "description":"ethernet/arp/str-->'in_port=2, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
