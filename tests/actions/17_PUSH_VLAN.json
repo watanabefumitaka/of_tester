@@ -1,7 +1,7 @@
 [
     "action: 17_PUSH_VLAN",
     {
-        "description": "ethernet/ipv4/tcp-->\"ip, actions=push_vlan:0x8100, output:2\"",
+        "description": "ethernet/ipv4/tcp-->'ip, actions=push_vlan:0x8100, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -59,7 +59,7 @@
         ]
     },
     {
-        "description": "ethernet/ipv6/tcp-->\"dl_type=0x86dd, actions=push_vlan:0x8100, output:2\"",
+        "description": "ethernet/ipv6/tcp-->'dl_type=0x86dd, actions=push_vlan:0x8100, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -117,7 +117,7 @@
         ]
     },
     {
-        "description": "ethernet/arp-->\"arp, actions=push_vlan:0x8100, output:2\"",
+        "description": "ethernet/arp-->'arp, actions=push_vlan:0x8100, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

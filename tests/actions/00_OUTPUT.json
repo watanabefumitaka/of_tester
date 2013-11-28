@@ -1,7 +1,7 @@
 [
     "action: 00_OUTPUT",
     {
-        "description": "ethernet/ipv4/tcp-->\"actions=output:2\"",
+        "description": "ethernet/ipv4/tcp-->'actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -42,7 +42,7 @@
         ]
     },
     {
-        "description": "ethernet/ipv6/tcp-->\"actions=output:2\"",
+        "description": "ethernet/ipv6/tcp-->'actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -82,7 +82,7 @@
         ]
     },
     {
-        "description": "ethernet/arp-->\"actions=output:2\"",
+        "description": "ethernet/arp-->'actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
