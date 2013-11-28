@@ -1,7 +1,7 @@
 [
     "action: set_field: 35_MPLS_TC",
     {
-        "description":"test00: actions[OFPActionSetField[mpls_tc=5]] packet=ethernet/mpls/ipv4/tcp/str",
+        "description": "ethernet/mpls(exp=3)/ipv4/tcp-->'mpls_tc=3, actions=set_field:5->mpls_tc, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -71,7 +71,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[mpls_tc=5]] packet=ethernet/mpls/ipv6/tcp/str",
+        "description": "ethernet/mpls(exp=3)/ipv6/tcp-->'mpls_tc=3, actions=set_field:5->mpls_tc, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -141,7 +141,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[mpls_tc=5]] packet=ethernet/mpls/arp/str",
+        "description": "ethernet/mpls(exp=3)/arp-->'mpls_tc=3, actions=set_field:5->mpls_tc, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

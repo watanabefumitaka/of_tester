@@ -1,7 +1,7 @@
 [
     "action: 26_PUSH_PBB (multiple)",
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp-->'dl_type=0x88e7, actions=push_pbb:0x88e7, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp-->'eth_type=0x0800, actions=push_pbb:0x88e7, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -12,7 +12,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":35047
+                                        "value":2048
                                     }
                                 }
                             ]
@@ -70,7 +70,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp-->'dl_type=0x88e7, actions=push_pbb:0x88e7, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp-->'eth_type=0x86dd, actions=push_pbb:0x88e7, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -81,7 +81,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":35047
+                                        "value":34525
                                     }
                                 }
                             ]
@@ -139,7 +139,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp-->'dl_type=0x88e7, actions=push_pbb:0x88e7, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp-->'eth_type=0x0806, actions=push_pbb:0x88e7, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -150,7 +150,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":35047
+                                        "value":2054
                                     }
                                 }
                             ]

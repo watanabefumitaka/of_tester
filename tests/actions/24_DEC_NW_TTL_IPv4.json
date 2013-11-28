@@ -1,7 +1,7 @@
 [
     "action: 24_DEC_NW_TTL (IPv4)",
     {
-        "description": "ethernet/ipv4(ttl=64)/tcp-->'ip, actions=dec_nw_ttl, output:2'",
+        "description": "ethernet/ipv4(ttl=64)/tcp-->'eth_type=0x0800, actions=dec_nw_ttl, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -56,7 +56,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan/ipv4(ttl=64)/tcp-->'ip, actions=dec_nw_ttl, output:2'",
+        "description": "ethernet/vlan/ipv4(ttl=64)/tcp-->'eth_type=0x0800, actions=dec_nw_ttl, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -113,7 +113,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv4(ttl=64)/tcp-->'dl_type=0x8847, actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, ip, actions=dec_nw_ttl, output:2'",
+        "description": "ethernet/mpls/ipv4(ttl=64)/tcp-->'eth_type=0x8847, actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, eth_type=0x0800, actions=dec_nw_ttl, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -205,7 +205,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(ttl=64)/tcp-->'dl_type=0x88e7, actions=dec_nw_ttl, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(ttl=64)/tcp-->'eth_type=0x0800, actions=dec_nw_ttl, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -216,7 +216,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":35047
+                                        "value":2048
                                     }
                                 }
                             ]

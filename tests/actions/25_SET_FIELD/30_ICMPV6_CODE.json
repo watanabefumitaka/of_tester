@@ -1,7 +1,7 @@
 [
     "action: set_field: 30_ICMPV6_CODE",
     {
-        "description":"test00: actions[OFPActionSetField[icmpv6_code=1]] packet=ethernet/ipv6/icmpv6",
+        "description": "ethernet/ipv6/icmpv6(code=0)-->'icmpv6_code=0, actions=set_field:1->icmpv6_code, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -73,7 +73,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[icmpv6_code=1]] packet=ethernet/vlan/ipv6/icmpv6",
+        "description": "ethernet/vlan/ipv6/icmpv6(code=0)-->'icmpv6_code=0, actions=set_field:1->icmpv6_code, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -147,7 +147,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[icmpv6_code=1]] packet=ethernet/mpls/ipv6/icmpv6",
+        "description": "ethernet/mpls/ipv6/icmpv6(code=0)-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, icmpv6_code=0, actions=set_field:1->icmpv6_code, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -256,7 +256,7 @@
         ]
     },
     {
-        "description":"test03: actions[OFPActionSetField[icmpv6_code=1]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/icmpv6(code=0)-->'icmpv6_code=0, actions=set_field:1->icmpv6_code, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -1,7 +1,7 @@
 [
     "action: set_field: 37_PBB_ISID",
     {
-        "description":"test00: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp/str",
+        "description": "ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv4/tcp-->'pbb_itag=100, actions=set_field:203->pbb_itag, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -79,7 +79,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description": "ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv6/tcp-->'pbb_itag=100, actions=set_field:203->pbb_itag, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -157,7 +157,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[pbb_isid=203]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/arp/str",
+        "description": "ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/arp-->'pbb_itag=100, actions=set_field:203->pbb_itag, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -1,7 +1,7 @@
 [
     "action: set_field: 09_IP_ECN (IPv6)",
     {
-        "description":"test00: actions[OFPActionSetField[ip_ecn=1]] packet=ethernet/ipv6/tcp/str",
+        "description": "ethernet/ipv6(traffic_class=32)/tcp-->'ip_ecn=0, actions=set_field:1->ip_ecn, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -69,7 +69,7 @@
         ]
     },
     {
-        "description":"test01: actions[OFPActionSetField[ip_ecn=1]] packet=ethernet/vlan/ipv6/tcp/str",
+        "description": "ethernet/vlan/ipv6(traffic_class=32)/tcp-->'ip_ecn=0, actions=set_field:1->ip_ecn, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -139,7 +139,7 @@
         ]
     },
     {
-        "description":"test02: actions[OFPActionSetField[ip_ecn=1]] packet=ethernet/mpls/ipv6/tcp/str",
+        "description": "ethernet/mpls/ipv6(traffic_class=32)/tcp-->'eth_type=0x8847, actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, ip_ecn=0, actions=set_field:1->ip_ecn, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -244,7 +244,7 @@
         ]
     },
     {
-        "description":"test03: actions[OFPActionSetField[ip_ecn=1]] packet=ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp/str",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(traffic_class=32)/tcp-->'ip_ecn=0, actions=set_field:1->ip_ecn, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
