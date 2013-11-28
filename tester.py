@@ -198,13 +198,13 @@ class OfTester(app_manager.RyuApp):
         super(OfTester, self).__init__()
         self._set_logger()
 
-        self.target_dpid = self._convert_dpid(CONF.tester.target)
-        self.tester_dpid = self._convert_dpid(CONF.tester.tester)
+        self.target_dpid = self._convert_dpid(CONF['test-switch']['target'])
+        self.tester_dpid = self._convert_dpid(CONF['test-switch']['tester'])
         self.logger.info('target_dpid=%s',
                          dpid_lib.dpid_to_str(self.target_dpid))
         self.logger.info('tester_dpid=%s',
                          dpid_lib.dpid_to_str(self.tester_dpid))
-        test_dir = CONF.tester.directory
+        test_dir = CONF['test-switch']['dir']
         self.logger.info('Test files directory = %s', test_dir)
 
         self.target_sw = None
