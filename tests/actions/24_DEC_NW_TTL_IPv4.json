@@ -113,7 +113,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv4(ttl=64)/tcp-->'eth_type=0x8847, actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, eth_type=0x0800, actions=dec_nw_ttl, output:2'",
+        "description": "ethernet/mpls/ipv4(ttl=64)/tcp-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, eth_type=0x0800, actions=dec_nw_ttl, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

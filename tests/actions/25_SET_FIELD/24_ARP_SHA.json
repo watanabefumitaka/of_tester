@@ -1,7 +1,7 @@
 [
     "action: set_field: 24_ARP_SHA",
     {
-        "description": "ethernet/arp(src_mac=11:11:11:11:11:11)-->'arp_sha=11:11:11:11:11:11, actions=set_field:aa:aa:aa:aa:aa:aa->arp_sha, output:2'",
+        "description": "ethernet/arp(src_mac='11:11:11:11:11:11')-->'arp_sha=11:11:11:11:11:11, actions=set_field:aa:aa:aa:aa:aa:aa->arp_sha, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -67,7 +67,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan/arp(src_mac=11:11:11:11:11:11)-->'arp_sha=11:11:11:11:11:11, actions=set_field:aa:aa:aa:aa:aa:aa->arp_sha, output:2'",
+        "description": "ethernet/vlan/arp(src_mac='11:11:11:11:11:11')-->'arp_sha=11:11:11:11:11:11, actions=set_field:aa:aa:aa:aa:aa:aa->arp_sha, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -135,7 +135,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/arp(src_mac=11:11:11:11:11:11)-->'eth_type=0x8847, actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, arp_sha=11:11:11:11:11:11, actions=set_field:aa:aa:aa:aa:aa:aa->arp_sha, output:2'",
+        "description": "ethernet/mpls/arp(src_mac='11:11:11:11:11:11')-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, arp_sha=11:11:11:11:11:11, actions=set_field:aa:aa:aa:aa:aa:aa->arp_sha, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -238,7 +238,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp(src_mac=11:11:11:11:11:11)-->'arp_sha=11:11:11:11:11:11, actions=set_field:aa:aa:aa:aa:aa:aa->arp_sha, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp(src_mac='11:11:11:11:11:11')-->'arp_sha=11:11:11:11:11:11, actions=set_field:aa:aa:aa:aa:aa:aa->arp_sha, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

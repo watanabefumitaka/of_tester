@@ -1,7 +1,7 @@
 [
     "action: 27_POP_PBB",
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp-->'eth_type=0x0800, actions=pop_pbb, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp-->'eth_type=0x88e7, actions=pop_pbb, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -12,7 +12,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2048
+                                        "value":35047
                                     }
                                 }
                             ]
@@ -63,7 +63,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp-->'eth_type=0x86dd, actions=pop_pbb, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp-->'eth_type=0x88e7, actions=pop_pbb, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -74,7 +74,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":34525
+                                        "value":35047
                                     }
                                 }
                             ]
@@ -125,7 +125,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp-->'eth_type=0x0806, actions=pop_pbb, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp-->'eth_type=0x88e7, actions=pop_pbb, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -136,7 +136,7 @@
                                 {
                                     "OXMTlv":{
                                         "field":"eth_type",
-                                        "value":2054
+                                        "value":35047
                                     }
                                 }
                             ]
