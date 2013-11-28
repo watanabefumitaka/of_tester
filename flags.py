@@ -56,5 +56,5 @@ CONF.register_cli_opts([
     # app/tester
     cfg.StrOpt('target', default='0000000000000001', help='target sw dp-id'),
     cfg.StrOpt('tester', default='0000000000000002', help='tester sw dp-id'),
-    cfg.StrOpt('directory', default='./tests', help='test files directory')
+    cfg.StrOpt('directory', default='./of13', help='test files directory')
 ], group='tester')
