@@ -1,7 +1,7 @@
 [
     "action: 24_DEC_NW_TTL (IPv6)",
     {
-        "description": "ethernet/ipv6(hop_limit=64)/tcp-->'eth_type=0x86dd, actions=dec_nw_ttl:32, output:2'",
+        "description": "ethernet/ipv6(hop_limit=64)/tcp-->'eth_type=0x86dd, actions=dec_nw_ttl, output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
