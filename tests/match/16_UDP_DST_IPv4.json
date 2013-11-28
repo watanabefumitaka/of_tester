@@ -386,7 +386,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4/udp(dst_port=2222)-->'actions=pop_mpls, goto_table:1', 'table_id=1, udp_dst=2222, actions=output:2'",
+        "description":"ethernet/mpls/ipv4/udp(dst_port=2222)-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id=1, udp_dst=2222, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -487,7 +487,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4/udp(dst_port=2222)-->'actions=pop_mpls, goto_table:1', 'table_id=1, udp_dst=2222, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/ipv4/udp(dst_port=2222)-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id=1, udp_dst=2222, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -589,7 +589,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4/udp(dst_port=6789)-->'actions=pop_mpls, goto_table:1', 'table_id=1, udp_dst=2222, actions=output:2'",
+        "description":"ethernet/mpls/ipv4/udp(dst_port=6789)-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id=1, udp_dst=2222, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

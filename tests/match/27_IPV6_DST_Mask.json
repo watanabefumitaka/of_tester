@@ -356,7 +356,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(dst='20::20')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_dst=0::20(mask=0xffffffffffffffffffffffffffff), actions=output:2'",
+        "description":"ethernet/mpls/ipv6(dst='20::20')/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id=1, ipv6_dst=0::20(mask=0xffffffffffffffffffffffffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -452,7 +452,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(dst='20::20')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_dst=0::20(mask=0xffffffffffffffffffffffffffff), actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/ipv6(dst='20::20')/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id=1, ipv6_dst=0::20(mask=0xffffffffffffffffffffffffffff), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -549,7 +549,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(dst='b0::b0')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_dst=0::20(mask=0xffffffffffffffffffffffffffff), actions=output:2'",
+        "description":"ethernet/mpls/ipv6(dst='b0::b0')/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id=1, ipv6_dst=0::20(mask=0xffffffffffffffffffffffffffff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -356,7 +356,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_exthdr=64(mask=0x1f0), actions=output:2'",
+        "description":"ethernet/mpls/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id=1, ipv6_exthdr=64(mask=0x1f0), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -452,7 +452,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_exthdr=64(mask=0x1f0), actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/ipv6(ext_hdrs=[hop_opts(nxt=51), auth(nxt=6)]/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id=1, ipv6_exthdr=64(mask=0x1f0), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -549,7 +549,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_exthdr=64(mask=0x1f0), actions=output:2'",
+        "description":"ethernet/mpls/ipv6/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id=1, ipv6_exthdr=64(mask=0x1f0), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

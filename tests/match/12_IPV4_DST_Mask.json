@@ -356,7 +356,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4(dst='192.168.20.20')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_dst=192.168.0.20(mask=0xffff00ff), actions=output:2'",
+        "description":"ethernet/mpls/ipv4(dst='192.168.20.20')/tcp-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id=1, ipv4_dst=192.168.0.20(mask=0xffff00ff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -452,7 +452,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4(dst='192.168.20.20')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_dst=192.168.0.20(mask=0xffff00ff), actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/ipv4(dst='192.168.20.20')/tcp-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id=1, ipv4_dst=192.168.0.20(mask=0xffff00ff), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -549,7 +549,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv4(dst='10.10.20.20')/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv4_dst=192.168.0.20(mask=0xffff00ff), actions=output:2'",
+        "description":"ethernet/mpls/ipv4(dst='10.10.20.20')/tcp-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id=1, ipv4_dst=192.168.0.20(mask=0xffff00ff), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

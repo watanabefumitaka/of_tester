@@ -350,7 +350,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(flow_label=100)/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_flabel=100, actions=output:2'",
+        "description":"ethernet/mpls/ipv6(flow_label=100)/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id=1, ipv6_flabel=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -445,7 +445,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(flow_label=100)/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_flabel=100, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/ipv6(flow_label=100)/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id=1, ipv6_flabel=100, actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -541,7 +541,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/ipv6(flow_label=203)/tcp-->'actions=pop_mpls, goto_table:1', 'table_id=1, ipv6_flabel=100, actions=output:2'",
+        "description":"ethernet/mpls/ipv6(flow_label=203)/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id=1, ipv6_flabel=100, actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

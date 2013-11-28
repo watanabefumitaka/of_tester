@@ -346,7 +346,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(src_ip='192.168.10.10')-->'actions=pop_mpls, goto_table:1', 'table_id=1, arp_spa=192.168.10.0(mask=0xffffff00), actions=output:2'",
+        "description":"ethernet/mpls/arp(src_ip='192.168.10.10')-->'actions=pop_mpls:0x0806, goto_table:1', 'table_id=1, arp_spa=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -440,7 +440,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(src_ip='192.168.10.10')-->'actions=pop_mpls, goto_table:1', 'table_id=1, arp_spa=192.168.10.0(mask=0xffffff00), actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/arp(src_ip='192.168.10.10')-->'actions=pop_mpls:0x0806, goto_table:1', 'table_id=1, arp_spa=192.168.10.0(mask=0xffffff00), actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -535,7 +535,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(src_ip='10.10.10.10')-->'actions=pop_mpls, goto_table:1', 'table_id=1, arp_spa=192.168.10.0(mask=0xffffff00), actions=output:2'",
+        "description":"ethernet/mpls/arp(src_ip='10.10.10.10')-->'actions=pop_mpls:0x0806, goto_table:1', 'table_id=1, arp_spa=192.168.10.0(mask=0xffffff00), actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
