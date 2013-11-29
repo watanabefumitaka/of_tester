@@ -346,7 +346,7 @@ class OfTester(app_manager.RyuApp):
             result = RYU_INTERNAL_ERROR
 
         # Output test result.
-        self.logger.info('        %s : %s', test.description, result)
+        self.logger.info('    %s : %s', test.description, result)
         if (result == RYU_INTERNAL_ERROR
                 or result == 'An unknown exception'):
             self.logger.error(traceback.format_exc())
