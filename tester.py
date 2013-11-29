@@ -55,7 +55,7 @@ from ryu.ofproto import ofproto_v1_3_parser
     | controller |       |     |
     +------------+      (1)   (2)
            |          +-----------+
-           +----------| tester sw | Open vSwtich
+           +----------| tester sw | OpenFlow Switch
                       +-----------+
 
       (X) : port number
