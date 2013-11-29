@@ -1,7 +1,7 @@
 [
     "action: set_field: 27_IPV6_DST",
     {
-        "description": "ethernet/ipv6(dst='20::20')/tcp-->'ipv6_dst=20::20, actions=set_field:b0::b0->ipv6_dst, output:2'",
+        "description": "ethernet/ipv6(dst='20::20')/tcp-->'ipv6_dst=20::20,actions=set_field:b0::b0->ipv6_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -69,7 +69,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan/ipv6(dst='20::20')/tcp-->'ipv6_dst=20::20, actions=set_field:b0::b0->ipv6_dst, output:2'",
+        "description": "ethernet/vlan/ipv6(dst='20::20')/tcp-->'ipv6_dst=20::20,actions=set_field:b0::b0->ipv6_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -139,7 +139,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv6(dst='20::20')/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, ipv6_dst=20::20, actions=set_field:b0::b0->ipv6_dst, output:2'",
+        "description": "ethernet/mpls/ipv6(dst='20::20')/tcp-->'actions=pop_mpls:0x86dd,goto_table:1','table_id:1,ipv6_dst=20::20,actions=set_field:b0::b0->ipv6_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -244,7 +244,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(dst='20::20')/tcp--->'ipv6_dst=20::20, actions=set_field:b0::b0->ipv6_dst, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(dst='20::20')/tcp--->'ipv6_dst=20::20,actions=set_field:b0::b0->ipv6_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

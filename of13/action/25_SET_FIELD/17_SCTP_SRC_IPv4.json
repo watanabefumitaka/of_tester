@@ -1,7 +1,7 @@
 [
     "action: set_field: 17_SCTP_SRC (IPv4)",
     {
-        "description": "ethernet/ipv4/sctp(src_port=11111)-->'sctp_src=11111, actions=set_field:12345->sctp_src, output:2'",
+        "description": "ethernet/ipv4/sctp(src_port=11111)-->'sctp_src=11111,actions=set_field:12345->sctp_src,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -73,7 +73,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan/ipv4/sctp(src_port=11111)-->'sctp_src=11111, actions=set_field:12345->sctp_src, output:2'",
+        "description": "ethernet/vlan/ipv4/sctp(src_port=11111)-->'sctp_src=11111,actions=set_field:12345->sctp_src,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -147,7 +147,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv4/sctp(src_port=11111)-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, sctp_src=11111, actions=set_field:12345->sctp_src, output:2'",
+        "description": "ethernet/mpls/ipv4/sctp(src_port=11111)-->'actions=pop_mpls:0x0800,goto_table:1','table_id:1,sctp_src=11111,actions=set_field:12345->sctp_src,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -256,7 +256,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/sctp(src_port=11111)-->'sctp_src=11111, actions=set_field:12345->sctp_src, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/sctp(src_port=11111)-->'sctp_src=11111,actions=set_field:12345->sctp_src,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

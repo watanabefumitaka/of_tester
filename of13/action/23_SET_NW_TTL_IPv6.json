@@ -1,7 +1,7 @@
 [
     "action: 23_SET_NW_TTL (IPv6)",
     {
-        "description": "ethernet/ipv6(hop_limit=64)/tcp-->'eth_type=0x86dd, actions=set_nw_ttl:32, output:2'",
+        "description": "ethernet/ipv6(hop_limit=64)/tcp-->'eth_type=0x86dd,actions=set_nw_ttl:32,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -58,7 +58,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan/ipv6(hop_limit=64)/tcp-->'eth_type=0x86dd, actions=set_nw_ttl:32, output:2'",
+        "description": "ethernet/vlan/ipv6(hop_limit=64)/tcp-->'eth_type=0x86dd,actions=set_nw_ttl:32,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -117,7 +117,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv6(hop_limit=64)/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, eth_type=0x86dd, actions=set_nw_ttl:32, output:2'",
+        "description": "ethernet/mpls/ipv6(hop_limit=64)/tcp-->'actions=pop_mpls:0x86dd,goto_table:1','table_id:1,eth_type=0x86dd,actions=set_nw_ttl:32,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -211,7 +211,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(hop_limit=64)/tcp-->'eth_type=0x86dd, actions=set_nw_ttl:32, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(hop_limit=64)/tcp-->'eth_type=0x86dd,actions=set_nw_ttl:32,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

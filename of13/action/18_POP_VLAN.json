@@ -1,7 +1,7 @@
 [
     "action: 18_POP_VLAN",
     {
-        "description": "ethernet/vlan(vid=100)/ipv4/tcp-->'eth_type=0x0800, vlan_vid=0, actions=pop_vlan, output:2'",
+        "description": "ethernet/vlan(vid=100)/ipv4/tcp-->'eth_type=0x0800,vlan_vid=0,actions=pop_vlan,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -64,7 +64,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan(vid=100)/ipv6/tcp-->'eth_type=0x86dd, vlan_vid=0, actions=pop_vlan, output:2'",
+        "description": "ethernet/vlan(vid=100)/ipv6/tcp-->'eth_type=0x86dd,vlan_vid=0,actions=pop_vlan,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -127,7 +127,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan(vid=100)/arp-->'eth_type=0x0806, vlan_vid=0, actions=pop_vlan, output:2'",
+        "description": "ethernet/vlan(vid=100)/arp-->'eth_type=0x0806,vlan_vid=0,actions=pop_vlan,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

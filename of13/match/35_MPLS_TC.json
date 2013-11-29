@@ -1,7 +1,7 @@
 [
     "match: 35_MPLS_TC",
     {
-        "description":"ethernet/mpls(exp=3)/ipv4/tcp-->'mpls_tc=3, actions=output:2'",
+        "description":"ethernet/mpls(exp=3)/ipv4/tcp-->'mpls_tc=3,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -61,7 +61,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(exp=3)/ipv4/tcp-->'mpls_tc=3, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls(exp=3)/ipv4/tcp-->'mpls_tc=3,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -122,7 +122,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(exp=5)/ipv4/tcp-->'mpls_tc=3, actions=output:2'",
+        "description":"ethernet/mpls(exp=5)/ipv4/tcp-->'mpls_tc=3,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -178,7 +178,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(exp=3)/ipv6/tcp-->'mpls_tc=3, actions=output:2'",
+        "description":"ethernet/mpls(exp=3)/ipv6/tcp-->'mpls_tc=3,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -238,7 +238,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(exp=3)/ipv6/tcp-->'mpls_tc=3, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls(exp=3)/ipv6/tcp-->'mpls_tc=3,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -299,7 +299,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(exp=5)/ipv6/tcp-->'mpls_tc=3, actions=output:2'",
+        "description":"ethernet/mpls(exp=5)/ipv6/tcp-->'mpls_tc=3,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -355,7 +355,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(exp=3)/arp-->'mpls_tc=3, actions=output:2'",
+        "description":"ethernet/mpls(exp=3)/arp-->'mpls_tc=3,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -413,7 +413,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(exp=3)/arp-->'mpls_tc=3, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls(exp=3)/arp-->'mpls_tc=3,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -472,7 +472,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(exp=5)/arp-->'mpls_tc=3, actions=output:2'",
+        "description":"ethernet/mpls(exp=5)/arp-->'mpls_tc=3,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

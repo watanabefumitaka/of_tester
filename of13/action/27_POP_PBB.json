@@ -1,7 +1,7 @@
 [
     "action: 27_POP_PBB",
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp-->'eth_type=0x88e7, actions=pop_pbb, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4/tcp-->'eth_type=0x88e7,actions=pop_pbb,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -63,7 +63,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp-->'eth_type=0x88e7, actions=pop_pbb, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6/tcp-->'eth_type=0x88e7,actions=pop_pbb,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -125,7 +125,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp-->'eth_type=0x88e7, actions=pop_pbb, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp-->'eth_type=0x88e7,actions=pop_pbb,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

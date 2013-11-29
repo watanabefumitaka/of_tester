@@ -1,7 +1,7 @@
 [
     "action: 15_SET_MPLS_TTL",
     {
-        "description": "ethernet/mpls(ttl=64)/ipv4/tcp-->'eth_type=0x8847, actions=set_mpls_ttl:127, output:2'",
+        "description": "ethernet/mpls(ttl=64)/ipv4/tcp-->'eth_type=0x8847,actions=set_mpls_ttl:127,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -60,7 +60,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls(ttl=64)/ipv6/tcp-->'eth_type=0x8847, actions=set_mpls_ttl:127, output:2'",
+        "description": "ethernet/mpls(ttl=64)/ipv6/tcp-->'eth_type=0x8847,actions=set_mpls_ttl:127,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -119,7 +119,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls(ttl=64)/arp-->'eth_type=0x8847, actions=set_mpls_ttl:127, output:2'",
+        "description": "ethernet/mpls(ttl=64)/arp-->'eth_type=0x8847,actions=set_mpls_ttl:127,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

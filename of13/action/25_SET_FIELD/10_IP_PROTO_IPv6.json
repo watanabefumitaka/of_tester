@@ -1,7 +1,7 @@
 [
     "action: set_field: 10_IP_PROTO (IPv6)",
     {
-        "description": "ethernet/ipv6(nxt=6)/tcp-->'ip_proto=6, actions=set_field:17->ip_proto, output:2'",
+        "description": "ethernet/ipv6(nxt=6)/tcp-->'ip_proto=6,actions=set_field:17->ip_proto,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -69,7 +69,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan/ipv6(nxt=6)/tcp-->'ip_proto=6, actions=set_field:17->ip_proto, output:2'",
+        "description": "ethernet/vlan/ipv6(nxt=6)/tcp-->'ip_proto=6,actions=set_field:17->ip_proto,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -139,7 +139,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv6(nxt=6)/tcp-->'actions=pop_mpls:0x86dd, goto_table:1', 'table_id:1, ip_proto=6, actions=set_field:17->ip_proto, output:2'",
+        "description": "ethernet/mpls/ipv6(nxt=6)/tcp-->'actions=pop_mpls:0x86dd,goto_table:1','table_id:1,ip_proto=6,actions=set_field:17->ip_proto,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -244,7 +244,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(nxt=6)/tcp-->'ip_proto=6, actions=set_field:17->ip_proto, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv6(nxt=6)/tcp-->'ip_proto=6,actions=set_field:17->ip_proto,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -1,7 +1,7 @@
 [
     "action: set_field: 21_ARP_OP",
     {
-        "description": "ethernet/arp(opcode=1)-->'arp_op=1, actions=set_field:2->arp_op, output:2'",
+        "description": "ethernet/arp(opcode=1)-->'arp_op=1,actions=set_field:2->arp_op,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -67,7 +67,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan/arp(opcode=1)-->'arp_op=1, actions=set_field:2->arp_op, output:2'",
+        "description": "ethernet/vlan/arp(opcode=1)-->'arp_op=1,actions=set_field:2->arp_op,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -135,7 +135,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/arp(opcode=1)-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, arp_op=1, actions=set_field:2->arp_op, output:2'",
+        "description": "ethernet/mpls/arp(opcode=1)-->'actions=pop_mpls:0x0800,goto_table:1','table_id:1,arp_op=1,actions=set_field:2->arp_op,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -238,7 +238,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp(opcode=1)-->'arp_op=1, actions=set_field:2->arp_op, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/arp(opcode=1)-->'arp_op=1,actions=set_field:2->arp_op,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

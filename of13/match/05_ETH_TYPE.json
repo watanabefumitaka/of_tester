@@ -1,7 +1,7 @@
 [
     "match: 05_ETH_TYPE",
     {
-        "description":"ethernet(ethertype=0x0800)/ipv4/tcp-->'eth_type=0x0800, actions=output:2'",
+        "description":"ethernet(ethertype=0x0800)/ipv4/tcp-->'eth_type=0x0800,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -53,7 +53,7 @@
         ]
     },
     {
-        "description":"ethernet(ethertype=0x0800)/ipv4/tcp-->'eth_type=0x0800, actions=output:CONTROLLER'",
+        "description":"ethernet(ethertype=0x0800)/ipv4/tcp-->'eth_type=0x0800,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -106,7 +106,7 @@
         ]
     },
     {
-        "description":"ethernet(ethertype=0x0800)/ipv4/tcp-->'eth_type=0x0806, actions=output:2'",
+        "description":"ethernet(ethertype=0x0800)/ipv4/tcp-->'eth_type=0x0806,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -155,7 +155,7 @@
         ]
     },
     {
-        "description":"ethernet(ethertype=0x86dd)/ipv6/tcp-->'eth_type=0x86dd, actions=output:2'",
+        "description":"ethernet(ethertype=0x86dd)/ipv6/tcp-->'eth_type=0x86dd,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -207,7 +207,7 @@
         ]
     },
     {
-        "description":"ethernet(ethertype=0x86dd)/ipv6/tcp-->'eth_type=0x86dd, actions=output:CONTROLLER'",
+        "description":"ethernet(ethertype=0x86dd)/ipv6/tcp-->'eth_type=0x86dd,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -260,7 +260,7 @@
         ]
     },
     {
-        "description":"ethernet(ethertype=0x86dd)/ipv6/tcp-->'eth_type=0x0806, actions=output:2'",
+        "description":"ethernet(ethertype=0x86dd)/ipv6/tcp-->'eth_type=0x0806,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -309,7 +309,7 @@
         ]
     },
     {
-        "description":"ethernet(ethertype=0x0806)/arp-->'eth_type=0x0806, actions=output:2'",
+        "description":"ethernet(ethertype=0x0806)/arp-->'eth_type=0x0806,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -359,7 +359,7 @@
         ]
     },
     {
-        "description":"ethernet(ethertype=0x0806)/arp-->'eth_type=0x0806, actions=output:CONTROLLER'",
+        "description":"ethernet(ethertype=0x0806)/arp-->'eth_type=0x0806,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -410,7 +410,7 @@
         ]
     },
     {
-        "description":"ethernet(ethertype=0x0806)/arp-->'eth_type=0x0800, actions=output:2'",
+        "description":"ethernet(ethertype=0x0806)/arp-->'eth_type=0x0800,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

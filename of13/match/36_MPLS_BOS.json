@@ -1,7 +1,7 @@
 [
     "match: 36_MPLS_BOS",
     {
-        "description":"ethernet/mpls(bsb=1)/ipv4/tcp-->'mpls_bos=1, actions=output:2'",
+        "description":"ethernet/mpls(bsb=1)/ipv4/tcp-->'mpls_bos=1,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -61,7 +61,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(bsb=1)/ipv4/tcp-->'mpls_bos=1, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls(bsb=1)/ipv4/tcp-->'mpls_bos=1,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -122,7 +122,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(bsb=0)/mpls(bsb=1)/ipv4/tcp-->'mpls_bos=1, actions=output:2'",
+        "description":"ethernet/mpls(bsb=0)/mpls(bsb=1)/ipv4/tcp-->'mpls_bos=1,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -179,7 +179,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(bsb=1)/ipv6/tcp-->'mpls_bos=1, actions=output:2'",
+        "description":"ethernet/mpls(bsb=1)/ipv6/tcp-->'mpls_bos=1,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -239,7 +239,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(bsb=1)/ipv6/tcp-->'mpls_bos=1, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls(bsb=1)/ipv6/tcp-->'mpls_bos=1,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -300,7 +300,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(bsb=0)/mpls(bsb=1)/ipv6/tcp-->'mpls_bos=1, actions=output:2'",
+        "description":"ethernet/mpls(bsb=0)/mpls(bsb=1)/ipv6/tcp-->'mpls_bos=1,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -357,7 +357,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(bsb=1)/arp-->'mpls_bos=1, actions=output:2'",
+        "description":"ethernet/mpls(bsb=1)/arp-->'mpls_bos=1,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -415,7 +415,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(bsb=1)/arp-->'mpls_bos=1, actions=output:CONTROLLER'",
+        "description":"ethernet/mpls(bsb=1)/arp-->'mpls_bos=1,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -474,7 +474,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls(bsb=0)/mpls(bsb=1)/arp-->'mpls_bos=1, actions=output:2'",
+        "description":"ethernet/mpls(bsb=0)/mpls(bsb=1)/arp-->'mpls_bos=1,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

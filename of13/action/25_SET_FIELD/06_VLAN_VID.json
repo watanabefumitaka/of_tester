@@ -1,7 +1,7 @@
 [
     "action: set_field: 06_VLAN_VID",
     {
-        "description": "ethernet/vlan(vid=100)/ipv4/tcp-->'vlan_vid=100, actions=set_field:203->vlan_vid, output:2'",
+        "description": "ethernet/vlan(vid=100)/ipv4/tcp-->'vlan_vid=100,actions=set_field:203->vlan_vid,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -65,7 +65,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan(vid=100)/ipv6/tcp-->'vlan_vid=100, actions=set_field:203->vlan_vid, output:2'",
+        "description": "ethernet/vlan(vid=100)/ipv6/tcp-->'vlan_vid=100,actions=set_field:203->vlan_vid,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -129,7 +129,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan(vid=100)/arp-->'vlan_vid=100, actions=set_field:203->vlan_vid, output:2'",
+        "description": "ethernet/vlan(vid=100)/arp-->'vlan_vid=100,actions=set_field:203->vlan_vid,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

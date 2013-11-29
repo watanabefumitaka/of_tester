@@ -1,7 +1,7 @@
 [
     "action: 20_POP_MPLS",
     {
-        "description": "ethernet/mpls/ipv4/tcp-->'eth_type=0x8847, actions=pop_mpls:0x0800, output:2'",
+        "description": "ethernet/mpls/ipv4/tcp-->'eth_type=0x8847,actions=pop_mpls:0x0800,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -59,7 +59,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv6/tcp-->'eth_type=0x8847, actions=pop_mpls:0x86dd, output:2'",
+        "description": "ethernet/mpls/ipv6/tcp-->'eth_type=0x8847,actions=pop_mpls:0x86dd,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -117,7 +117,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/arp-->'eth_type=0x8847, actions=pop_mpls:0x0806, output:2'",
+        "description": "ethernet/mpls/arp-->'eth_type=0x8847,actions=pop_mpls:0x0806,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

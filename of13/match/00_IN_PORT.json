@@ -1,7 +1,7 @@
 [
     "match: 00_IN_PORT",
     {
-        "description":"ethernet/ipv4/tcp-->'in_port=1, actions=output:2'",
+        "description":"ethernet/ipv4/tcp-->'in_port=1,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -53,7 +53,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv4/tcp-->'in_port=1, actions=output:CONTROLLER'",
+        "description":"ethernet/ipv4/tcp-->'in_port=1,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -106,7 +106,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv4/tcp-->'in_port=2, actions=output:2'",
+        "description":"ethernet/ipv4/tcp-->'in_port=2,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -155,7 +155,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv6/tcp-->'in_port=1, actions=output:2'",
+        "description":"ethernet/ipv6/tcp-->'in_port=1,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -207,7 +207,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv6/tcp-->'in_port=1, actions=output:CONTROLLER'",
+        "description":"ethernet/ipv6/tcp-->'in_port=1,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -260,7 +260,7 @@
         ]
     },
     {
-        "description":"ethernet/ipv6/tcp-->'in_port=2, actions=output:2'",
+        "description":"ethernet/ipv6/tcp-->'in_port=2,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -309,7 +309,7 @@
         ]
     },
     {
-        "description":"ethernet/arp-->'in_port=1, actions=output:2'",
+        "description":"ethernet/arp-->'in_port=1,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -359,7 +359,7 @@
         ]
     },
     {
-        "description":"ethernet/arp-->'in_port=1, actions=output:CONTROLLER'",
+        "description":"ethernet/arp-->'in_port=1,actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -410,7 +410,7 @@
         ]
     },
     {
-        "description":"ethernet/arp-->'in_port=2, actions=output:2'",
+        "description":"ethernet/arp-->'in_port=2,actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

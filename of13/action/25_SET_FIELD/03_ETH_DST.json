@@ -1,7 +1,7 @@
 [
     "action: set_field: 03_ETH_DST",
     {
-        "description": "ethernet(dst='22:22:22:22:22:22')/ipv4/tcp-->'eth_dst=22:22:22:22:22:22, actions=set_field:bb:bb:bb:bb:bb:bb->eth_dst, output:2'",
+        "description": "ethernet(dst='22:22:22:22:22:22')/ipv4/tcp-->'eth_dst=22:22:22:22:22:22,actions=set_field:bb:bb:bb:bb:bb:bb->eth_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -63,7 +63,7 @@
         ]
     },
     {
-        "description": "ethernet(dst='22:22:22:22:22:22')/ipv6/tcp-->'eth_dst=22:22:22:22:22:22, actions=set_field:bb:bb:bb:bb:bb:bb->eth_dst, output:2'",
+        "description": "ethernet(dst='22:22:22:22:22:22')/ipv6/tcp-->'eth_dst=22:22:22:22:22:22,actions=set_field:bb:bb:bb:bb:bb:bb->eth_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -125,7 +125,7 @@
         ]
     },
     {
-        "description": "ethernet(dst='22:22:22:22:22:22')/arp-->'eth_dst=22:22:22:22:22:22, actions=set_field:bb:bb:bb:bb:bb:bb->eth_dst, output:2'",
+        "description": "ethernet(dst='22:22:22:22:22:22')/arp-->'eth_dst=22:22:22:22:22:22,actions=set_field:bb:bb:bb:bb:bb:bb->eth_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

@@ -1,7 +1,7 @@
 [
     "action: 12_COPY_TTL_IN",
     {
-        "description": "ethernet/mpls(ttl=64)/ipv4(ttl=32)/tcp-->'eth_type=0x8847, actions=copy_ttl_in, output:2'",
+        "description": "ethernet/mpls(ttl=64)/ipv4(ttl=32)/tcp-->'eth_type=0x8847,actions=copy_ttl_in,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -58,7 +58,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls(ttl=64)/ipv6(hop_limit=32)/tcp-->'eth_type=0x8847, actions=copy_ttl_in, output:2'",
+        "description": "ethernet/mpls(ttl=64)/ipv6(hop_limit=32)/tcp-->'eth_type=0x8847,actions=copy_ttl_in,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

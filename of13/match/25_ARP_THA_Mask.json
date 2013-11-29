@@ -1,7 +1,7 @@
 [
     "match: 25_ARP_THA (Mask)",
     {
-        "description":"ethernet/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
+        "description":"ethernet/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -58,7 +58,7 @@
         ]
     },
     {
-        "description":"ethernet/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:CONTROLLER'",
+        "description":"ethernet/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -116,7 +116,7 @@
         ]
     },
     {
-        "description":"ethernet/arp(dst_mac='bb:bb:bb:bb:bb:bb')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
+        "description":"ethernet/arp(dst_mac='bb:bb:bb:bb:bb:bb')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -171,7 +171,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
+        "description":"ethernet/vlan/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -230,7 +230,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:CONTROLLER'",
+        "description":"ethernet/vlan/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -290,7 +290,7 @@
         ]
     },
     {
-        "description":"ethernet/vlan/arp(dst_mac='bb:bb:bb:bb:bb:bb')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
+        "description":"ethernet/vlan/arp(dst_mac='bb:bb:bb:bb:bb:bb')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -346,7 +346,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(dst_mac='22:22:22:22:22:22')-->'actions=pop_mpls:0x0806, goto_table:1', 'table_id=1, arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
+        "description":"ethernet/mpls/arp(dst_mac='22:22:22:22:22:22')-->'actions=pop_mpls:0x0806,goto_table:1','table_id:1,arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -440,7 +440,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(dst_mac='22:22:22:22:22:22')-->'actions=pop_mpls:0x0806, goto_table:1', 'table_id=1, arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:CONTROLLER'",
+        "description":"ethernet/mpls/arp(dst_mac='22:22:22:22:22:22')-->'actions=pop_mpls:0x0806,goto_table:1','table_id:1,arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -535,7 +535,7 @@
         ]
     },
     {
-        "description":"ethernet/mpls/arp(dst_mac='bb:bb:bb:bb:bb:bb')-->'actions=pop_mpls:0x0806, goto_table:1', 'table_id=1, arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
+        "description":"ethernet/mpls/arp(dst_mac='bb:bb:bb:bb:bb:bb')-->'actions=pop_mpls:0x0806,goto_table:1','table_id:1,arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -627,7 +627,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -694,7 +694,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:CONTROLLER'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_mac='22:22:22:22:22:22')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -762,7 +762,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_mac='bb:bb:bb:bb:bb:bb')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff), actions=output:2'",
+        "description":"ethernet/svlan/itag/ethernet/svlan/vlan/arp(dst_mac='bb:bb:bb:bb:bb:bb')-->'arp_tha=22:22:00:22:22:22(mask=0xffff00ffffff),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

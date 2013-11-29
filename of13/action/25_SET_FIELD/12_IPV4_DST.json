@@ -1,7 +1,7 @@
 [
     "action: set_field: 12_IPV4_DST",
     {
-        "description": "ethernet/ipv4(dst='192.168.20.20')/tcp-->'ipv4_dst=192.168.20.20, actions=set_field:10.10.20.20->ipv4_dst, output:2'",
+        "description": "ethernet/ipv4(dst='192.168.20.20')/tcp-->'ipv4_dst=192.168.20.20,actions=set_field:10.10.20.20->ipv4_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -69,7 +69,7 @@
         ]
     },
     {
-        "description": "ethernet/vlan/ipv4(dst='192.168.20.20')/tcp-->'ipv4_dst=192.168.20.20, actions=set_field:10.10.20.20->ipv4_dst, output:2'",
+        "description": "ethernet/vlan/ipv4(dst='192.168.20.20')/tcp-->'ipv4_dst=192.168.20.20,actions=set_field:10.10.20.20->ipv4_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -139,7 +139,7 @@
         ]
     },
     {
-        "description": "ethernet/mpls/ipv4(dst='192.168.20.20')/tcp-->'actions=pop_mpls:0x0800, goto_table:1', 'table_id:1, ipv4_dst=192.168.20.20, actions=set_field:10.10.20.20->ipv4_dst, output:2'",
+        "description": "ethernet/mpls/ipv4(dst='192.168.20.20')/tcp-->'actions=pop_mpls:0x0800,goto_table:1','table_id:1,ipv4_dst=192.168.20.20,actions=set_field:10.10.20.20->ipv4_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -244,7 +244,7 @@
         ]
     },
     {
-        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(dst='192.168.20.20')/tcp-->'ipv4_dst=192.168.20.20, actions=set_field:10.10.20.20->ipv4_dst, output:2'",
+        "description": "ethernet/svlan/itag/ethernet/svlan/vlan/ipv4(dst='192.168.20.20')/tcp-->'ipv4_dst=192.168.20.20,actions=set_field:10.10.20.20->ipv4_dst,output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{

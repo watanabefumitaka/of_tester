@@ -1,7 +1,7 @@
 [
     "match: 37__PBB_ISID (Mask)",
     {
-        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv4/tcp-->'pbb_isid=96(mask=0xf0), actions=output:2'",
+        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv4/tcp-->'pbb_isid=96(mask=0xf0),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -70,7 +70,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv4/tcp-->'pbb_isid=96(mask=0xf0), actions=output:CONTROLLER'",
+        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv4/tcp-->'pbb_isid=96(mask=0xf0),actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -140,7 +140,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag(sid=203)/ethernet/svlan/vlan/ipv4/tcp-->'pbb_isid=96(mask=0xf0), actions=output:2'",
+        "description":"ethernet/svlan/itag(sid=203)/ethernet/svlan/vlan/ipv4/tcp-->'pbb_isid=96(mask=0xf0),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -201,7 +201,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv6/tcp-->'pbb_isid=96(mask=0xf0), actions=output:2'",
+        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv6/tcp-->'pbb_isid=96(mask=0xf0),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -270,7 +270,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv6/tcp-->'pbb_isid=96(mask=0xf0), actions=output:CONTROLLER'",
+        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv6/tcp-->'pbb_isid=96(mask=0xf0),actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -340,7 +340,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag(sid=203)/ethernet/svlan/vlan/ipv6/tcp-->'pbb_isid=96(mask=0xf0), actions=output:2'",
+        "description":"ethernet/svlan/itag(sid=203)/ethernet/svlan/vlan/ipv6/tcp-->'pbb_isid=96(mask=0xf0),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -401,7 +401,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/arp-->'pbb_isid=96(mask=0xf0), actions=output:2'",
+        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/arp-->'pbb_isid=96(mask=0xf0),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -468,7 +468,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/arp-->'pbb_isid=96(mask=0xf0), actions=output:CONTROLLER'",
+        "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/arp-->'pbb_isid=96(mask=0xf0),actions=output:CONTROLLER'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
@@ -536,7 +536,7 @@
         ]
     },
     {
-        "description":"ethernet/svlan/itag(sid=203)/ethernet/svlan/vlan/arp-->'pbb_isid=96(mask=0xf0), actions=output:2'",
+        "description":"ethernet/svlan/itag(sid=203)/ethernet/svlan/vlan/arp-->'pbb_isid=96(mask=0xf0),actions=output:2'",
         "prerequisite":[
             {
                 "OFPFlowMod":{
