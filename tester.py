@@ -108,8 +108,8 @@ STATE_UNMATCH_PKT_SEND = 8
 STATE_FLOW_UNMATCH_CHK = 9
 
 # Test result.
-OK = 'OK'
-NG = 'NG (%(detail)s)'
+TEST_OK = 'OK'
+TEST_ERROR = 'ERROR'
 RYU_INTERNAL_ERROR = '- (Ryu internal error.)'
 TEST_FILE_ERROR = '%(file)s : Test file format error (%(detail)s)'
 NO_TEST_FILE = 'Test file (*.json) is not found.'
@@ -168,7 +168,7 @@ ERR_MSG = 'OFPErrorMsg[type=0x%02x, code=0x%02x]'
 
 class TestMessageBase(RyuException):
     def __init__(self, state, message_type, **argv):
-        msg = NG % {'detail': (MSG[state][message_type] % argv)}
+        msg = MSG[state][message_type] % argv
         super(TestMessageBase, self).__init__(msg=msg)
 
 
@@ -344,23 +344,25 @@ class OfTester(app_manager.RyuApp):
                     self._test(STATE_UNMATCH_PKT_SEND, pkt)
                     hub.sleep(INTERVAL)
                     self._test(STATE_FLOW_UNMATCH_CHK, before_stats, pkt)
-            result = OK
+            result = [TEST_OK]
         except (TestFailure, TestError,
                 TestTimeout, TestReceiveError) as err:
-            result = str(err)
+            result = [TEST_ERROR, str(err)]
         except Exception:
-            result = RYU_INTERNAL_ERROR
+            result = [TEST_ERROR, RYU_INTERNAL_ERROR]
 
         # Output test result.
-        self.logger.info('    %s : %s', test.description, result)
-        if (result == RYU_INTERNAL_ERROR
-                or result == 'An unknown exception'):
-            self.logger.error(traceback.format_exc())
+        self.logger.info('    %-100s %s', test.description, result[0])
+        if 1 < len(result):
+            self.logger.info('        %s', result[1])
+            if (result[1] == RYU_INTERNAL_ERROR
+                    or result == 'An unknown exception'):
+                self.logger.error(traceback.format_exc())
 
         #TODO: for debug
         #print raw_input("> Enter")
 
-        if result != OK and self.state == STATE_INIT:
+        if result[0] != TEST_OK and self.state == STATE_INIT:
             self._test_end('--- Test terminated ---')
         hub.sleep(0)
 
@@ -544,7 +546,7 @@ class OfTester(app_manager.RyuApp):
                                   rcv_pkt=', '.join(log_msg))
             else:
                 return TIMEOUT
-        return OK
+        return TEST_OK
 
     def _test_no_pktin_reason_check(self, test_type,
                                     target_pkt_count, tester_pkt_count):
