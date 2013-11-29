@@ -122,32 +122,33 @@ TIMEOUT = 2
 RCV_ERR = 3
 
 MSG = {STATE_INIT:
-       {TIMEOUT: 'initialize is failure. no OFPBarrierReply.',
-        RCV_ERR: 'initialize is failure. %(err_msg)s'},
+       {TIMEOUT: 'Failed to initialize flow tables: '
+                 'OFPBarrierRequqest timeout.',
+        RCV_ERR: 'Failed to initialize flow tables: %(err_msg)s'},
        STATE_FLOW_INSTALL:
-       {TIMEOUT: 'flows install is failure. no OFPBarrierReply.',
-        RCV_ERR: 'flows install is failure. %(err_msg)s'},
+       {TIMEOUT: 'Failed to add flows: OFPBarrierRequest timeout.',
+        RCV_ERR: 'Failed to add flows: %(err_msg)s'},
        STATE_FLOW_EXIST_CHK:
        {FAILURE: 'expected flow was not installed. %(flows)s',
-        TIMEOUT: 'flow existence check is failure. no OFPFlowStatsReply.',
-        RCV_ERR: 'flow existence check is failure. %(err_msg)s'},
+        TIMEOUT: 'Failed to add flows: OFPFlowStatsRequest timeout.',
+        RCV_ERR: 'Failed to add flows: %(err_msg)s'},
        STATE_TARGET_PKT_COUNT:
-       {TIMEOUT: 'get before target SW packet count is failure.'
-                 ' no OFPPortStatsReply.',
-        RCV_ERR: 'get before target SW packet count is failure. %(err_msg)s'},
+       {TIMEOUT: 'Failed to request port stats from target: '
+                 'OFPPortStatsReply timeout.',
+        RCV_ERR: 'Failed to request port stats from target: %(err_msg)s'},
        STATE_TESTER_PKT_COUNT:
-       {TIMEOUT: 'get before tester SW packet count is failure.'
-                 ' no OFPPortStatsReply.',
-        RCV_ERR: 'get before tester SW packet count is failure. %(err_msg)s'},
+       {TIMEOUT: 'Failed to request port stats from tester: '
+                 'OFPPortStatsReply timeout.',
+        RCV_ERR: 'Failed to request port stats from tester: %(err_msg)s'},
        STATE_FLOW_MATCH_CHK:
-       {FAILURE: 'failed to validate packet. %(rcv_pkt)s',
-        RCV_ERR: 'flow matching is failure. tester SW error. %(err_msg)s'},
+       {FAILURE: 'Failed to validate packet: %(rcv_pkt)s',
+        RCV_ERR: 'Failed to validate packet: %(err_msg)s'},
        STATE_NO_PKTIN_REASON:
        {FAILURE: 'flow matching is failure. %(detail)s'},
        STATE_GET_MATCH_COUNT:
-       {TIMEOUT: 'get before table matched count is failure.'
-                 ' no OFPTableStatsReply.',
-        RCV_ERR: 'get before table matched count is failure. %(err_msg)s'},
+       {TIMEOUT: 'Failed to request table stats: '
+                 'OFPTableStatsReply timeout.',
+        RCV_ERR: 'Failed to request table stats: %(err_msg)s'},
        STATE_UNMATCH_PKT_SEND:
        {TIMEOUT: 'unmatch packet sending is failure. no OFPBarrierReply.',
         RCV_ERR: 'unmatch packet sending is failure. %(err_msg)s'},
@@ -157,7 +158,12 @@ MSG = {STATE_INIT:
         TIMEOUT: 'flow unmatching check is failure. no OFPTableStatsReply.',
         RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'}}
 
-ERR_MSG = 'OFPErrorMsg[type=0x%02x, code=0x%02x] received.'
+# TODO: renew STATE_FLOW_EXIST_CHK.FAILURE
+# TODO: renew STATE_NO_PKTIN_REASON.FAILURE
+# TODO: renew STATE_UNMATCH_PKT_SEND.[TIMEOUT|RCV_ERR]
+# TODO: renew STATE_FLOW_UNMATCH_CHK.[FAILURE|ERROR|TIMEOUT|RCV_ERR]
+
+ERR_MSG = 'OFPErrorMsg[type=0x%02x, code=0x%02x]'
 
 
 class TestMessageBase(RyuException):
