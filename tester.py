@@ -141,7 +141,7 @@ MSG = {STATE_INIT:
                  'request timeout.',
         RCV_ERR: 'Failed to request port stats from tester: %(err_msg)s'},
        STATE_FLOW_MATCH_CHK:
-       {FAILURE: 'Received incorrect packets: %(rcv_pkt)s',
+       {FAILURE: 'Received incorrect packet-in: %(rcv_pkt)s',
         RCV_ERR: 'Failed to receive packets: %(err_msg)s'},
        STATE_NO_PKTIN_REASON:
        {FAILURE: 'Receving timeout: %(detail)s'},
@@ -505,13 +505,12 @@ class OfTester(app_manager.RyuApp):
                                   packet.Packet(msg.data))
 
                 # 3. confirm which switch sent the message.
-                if msg.reason != ofproto_v1_3.OFPR_ACTION:
-                    log_msg.append('invalid OFPPacketIn[reason=%d]'
-                                   % msg.reason)
-                    continue
                 if msg.datapath.id != pkt_in_src_model.dp.id:
-                    log_msg.append('OFPPacketIn from unexpected SW[dpid=%s]'
+                    log_msg.append('SW[dpid=%s]'
                                    % dpid_lib.dpid_to_str(msg.datapath.id))
+                    continue
+                if msg.reason != ofproto_v1_3.OFPR_ACTION:
+                    log_msg.append('OFPPacketIn[reason=%d]' % msg.reason)
                     continue
 
                 if repr(msg.data) != repr(model_pkt):
