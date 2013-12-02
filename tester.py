@@ -153,7 +153,7 @@ MSG = {STATE_INIT:
         RCV_ERR: 'Faild to send packet: %(err_msg)s'},
        STATE_FLOW_UNMATCH_CHK:
        {FAILURE: 'Table-miss error: increment in matched_count.',
-        ERROR: 'Table-miss error: no change in looked_count.',
+        ERROR: 'Table-miss error: no change in lookup_count.',
         TIMEOUT: 'Failed to request table stats: request timeout.',
         RCV_ERR: 'Failed to request table stats: %(err_msg)s'}}
 
