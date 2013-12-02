@@ -554,14 +554,16 @@ class OfTester(app_manager.RyuApp):
             log_msg = 'no change in tx_packets on tester.'
         elif after_target_receive == before_target_receive:
             log_msg = 'no change in rx_packtes on target.'
-        elif (test_type == KEY_EGRESS and
-              after_target_send == before_target_send):
-            log_msg = 'no change in tx_packets on target.'
-        elif (test_type == KEY_EGRESS and
-              after_tester_receive == before_tester_receive):
-            log_msg = 'no change in rx_packets on tester.'
+        elif test_type == KEY_EGRESS:
+            if after_target_send == before_target_send:
+                log_msg = 'no change in tx_packets on target.'
+            elif after_tester_receive == before_tester_receive:
+                log_msg = 'no change in rx_packets on tester.'
+            else:
+                log_msg = 'increment in rx_packets in tester.'
         else:
-            log_msg = 'increment in rx_packets in tester.'
+            assert test_type == KEY_PKT_IN
+            log_msg = 'increment in rx_packets in target.'
 
         raise TestFailure(self.state, detail=log_msg)
 
