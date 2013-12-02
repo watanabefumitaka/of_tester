@@ -123,45 +123,39 @@ RCV_ERR = 3
 
 MSG = {STATE_INIT:
        {TIMEOUT: 'Failed to initialize flow tables: '
-                 'OFPBarrierRequqest timeout.',
+                 'barrier request timeout.',
         RCV_ERR: 'Failed to initialize flow tables: %(err_msg)s'},
        STATE_FLOW_INSTALL:
-       {TIMEOUT: 'Failed to add flows: OFPBarrierRequest timeout.',
+       {TIMEOUT: 'Failed to add flows: barrier request timeout.',
         RCV_ERR: 'Failed to add flows: %(err_msg)s'},
        STATE_FLOW_EXIST_CHK:
-       {FAILURE: 'expected flow was not installed. %(flows)s',
-        TIMEOUT: 'Failed to add flows: OFPFlowStatsRequest timeout.',
+       {FAILURE: 'Added incorrect flows: %(flows)s',
+        TIMEOUT: 'Failed to add flows: flow stats request timeout.',
         RCV_ERR: 'Failed to add flows: %(err_msg)s'},
        STATE_TARGET_PKT_COUNT:
        {TIMEOUT: 'Failed to request port stats from target: '
-                 'OFPPortStatsReply timeout.',
+                 'request timeout.',
         RCV_ERR: 'Failed to request port stats from target: %(err_msg)s'},
        STATE_TESTER_PKT_COUNT:
        {TIMEOUT: 'Failed to request port stats from tester: '
-                 'OFPPortStatsReply timeout.',
+                 'request timeout.',
         RCV_ERR: 'Failed to request port stats from tester: %(err_msg)s'},
        STATE_FLOW_MATCH_CHK:
-       {FAILURE: 'Failed to validate packet: %(rcv_pkt)s',
-        RCV_ERR: 'Failed to validate packet: %(err_msg)s'},
+       {FAILURE: 'Received incorrect packets: %(rcv_pkt)s',
+        RCV_ERR: 'Failed to receive packets: %(err_msg)s'},
        STATE_NO_PKTIN_REASON:
-       {FAILURE: 'flow matching is failure. %(detail)s'},
+       {FAILURE: 'Receving timeout: %(detail)s'},
        STATE_GET_MATCH_COUNT:
-       {TIMEOUT: 'Failed to request table stats: '
-                 'OFPTableStatsReply timeout.',
+       {TIMEOUT: 'Failed to request table stats: request timeout.',
         RCV_ERR: 'Failed to request table stats: %(err_msg)s'},
        STATE_UNMATCH_PKT_SEND:
-       {TIMEOUT: 'unmatch packet sending is failure. no OFPBarrierReply.',
-        RCV_ERR: 'unmatch packet sending is failure. %(err_msg)s'},
+       {TIMEOUT: 'Faild to send packet: barrier request timeout.',
+        RCV_ERR: 'Faild to send packet: %(err_msg)s'},
        STATE_FLOW_UNMATCH_CHK:
-       {FAILURE: 'send packet matched with the flow.',
-        ERROR: 'send packet did not look up at target tables.',
-        TIMEOUT: 'flow unmatching check is failure. no OFPTableStatsReply.',
-        RCV_ERR: 'flow unmatching check is failure. %(err_msg)s'}}
-
-# TODO: renew STATE_FLOW_EXIST_CHK.FAILURE
-# TODO: renew STATE_NO_PKTIN_REASON.FAILURE
-# TODO: renew STATE_UNMATCH_PKT_SEND.[TIMEOUT|RCV_ERR]
-# TODO: renew STATE_FLOW_UNMATCH_CHK.[FAILURE|ERROR|TIMEOUT|RCV_ERR]
+       {FAILURE: 'Table-miss error: increment in matched_count.',
+        ERROR: 'Table-miss error: no change in looked_count.',
+        TIMEOUT: 'Failed to request table stats: request timeout.',
+        RCV_ERR: 'Failed to request table stats: %(err_msg)s'}}
 
 ERR_MSG = 'OFPErrorMsg[type=0x%02x, code=0x%02x]'
 
@@ -560,17 +554,17 @@ class OfTester(app_manager.RyuApp):
         after_tester_send = tester_pkt_count[1][TESTER_SENDER_PORT]['tx']
 
         if after_tester_send == before_tester_send:
-            log_msg = 'tester SW send error.'
+            log_msg = 'no change in tx_packets on tester.'
         elif after_target_receive == before_target_receive:
-            log_msg = 'target SW receive error.'
+            log_msg = 'no change in rx_packtes on target.'
         elif (test_type == KEY_EGRESS and
               after_target_send == before_target_send):
-            log_msg = 'target SW send error.'
+            log_msg = 'no change in tx_packets on target.'
         elif (test_type == KEY_EGRESS and
               after_tester_receive == before_tester_receive):
-            log_msg = 'tester SW receive error.'
+            log_msg = 'no change in rx_packets on tester.'
         else:
-            log_msg = 'no OFPPacketIn.'
+            log_msg = 'increment in rx_packets in tester.'
 
         raise TestFailure(self.state, detail=log_msg)
 
