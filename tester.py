@@ -562,7 +562,7 @@ class OfTester(app_manager.RyuApp):
                 log_msg = 'increment in rx_packets in tester.'
         else:
             assert test_type == KEY_PKT_IN
-            log_msg = 'increment in rx_packets in target.'
+            log_msg = 'no packet-in.'
 
         raise TestFailure(self.state, detail=log_msg)
 
