@@ -144,7 +144,7 @@ MSG = {STATE_INIT:
        {FAILURE: 'Received incorrect packet-in: %(rcv_pkt)s',
         RCV_ERR: 'Failed to receive packets: %(err_msg)s'},
        STATE_NO_PKTIN_REASON:
-       {FAILURE: 'Receving timeout: %(detail)s'},
+       {FAILURE: 'Receiving timeout: %(detail)s'},
        STATE_GET_MATCH_COUNT:
        {TIMEOUT: 'Failed to request table stats: request timeout.',
         RCV_ERR: 'Failed to request table stats: %(err_msg)s'},
