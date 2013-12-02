@@ -188,7 +188,7 @@ class TestError(TestMessageBase):
 
 
 class OfTester(app_manager.RyuApp):
-    """ OpenFlowSwitch Tester. """
+    """ OpenFlow Switch Tester. """
 
     OFP_VERSIONS = [ofproto_v1_3.OFP_VERSION]
 
@@ -279,7 +279,7 @@ class OfTester(app_manager.RyuApp):
                              dpid_lib.dpid_to_str(dp.id), msg)
 
     def _test_sequential_execute(self, test_dir):
-        """ Execute OpenFlowSwitch test. """
+        """ Execute OpenFlow Switch test. """
         # Parse test pattern from test files.
         tests = TestPatterns(test_dir, self.logger)
         if not tests:
@@ -481,7 +481,7 @@ class OfTester(app_manager.RyuApp):
         self.logger.debug("packet_in:[%s]",
                           packet.Packet(pkt.get(KEY_PKT_IN)))
 
-        # 1. send a packet from the Open vSwitch.
+        # 1. send a packet from the OpenFlow Switch.
         xid = self.tester_sw.send_packet_out(pkt[KEY_INGRESS])
         self.send_msg_xids.append(xid)
 
@@ -579,7 +579,7 @@ class OfTester(app_manager.RyuApp):
         return result
 
     def _test_unmatch_packet_send(self, pkt):
-        # Send a packet from the Open vSwitch.
+        # Send a packet from the OpenFlow Switch.
         self.logger.debug("send_packet:[%s]", packet.Packet(pkt[KEY_INGRESS]))
         self.tester_sw.send_packet_out(pkt[KEY_INGRESS])
 
