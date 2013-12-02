@@ -353,9 +353,6 @@ class OfTester(app_manager.RyuApp):
                     or result == 'An unknown exception'):
                 self.logger.error(traceback.format_exc())
 
-        #TODO: for debug
-        #print raw_input("> Enter")
-
         if result[0] != TEST_OK and self.state == STATE_INIT:
             self._test_end('--- Test terminated ---')
         hub.sleep(0)
