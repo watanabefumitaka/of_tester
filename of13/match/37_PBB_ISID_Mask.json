@@ -1,5 +1,5 @@
 [
-    "match: 37__PBB_ISID (Mask)",
+    "match: 37_PBB_ISID (Mask)",
     {
         "description":"ethernet/svlan/itag(sid=100)/ethernet/svlan/vlan/ipv4/tcp-->'pbb_isid=96(mask=0xf0),actions=output:2'",
         "prerequisite":[
